@@ -17,7 +17,7 @@
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
-#' @examples
+#'
 #'
 iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
   n <- dim(adj)[1]
@@ -176,7 +176,7 @@ statistics <- return(output)
 } else if(apx == TRUE) {
   if(n > 6 | m > 20){
   m.seq <- 'NA'} else{
-  m.seq <- edge_multip_seq(adj, type)
+#  m.seq <- edge_multip_seq(adj, type)
   }
   output <- list("nr.multigraphs" = nrow(m.seq), "M" = out.M, "R" = out.R)
   statistics <- return(output)
