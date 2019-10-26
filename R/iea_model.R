@@ -19,7 +19,7 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #' @examples
 #'
-iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
+iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
   n <- dim(adj)[1]
   r <- choose(n+1,2)
 
@@ -67,7 +67,8 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
     }
     Q.seq <- Q.mat[upper.tri(Q.mat, diag = TRUE)]
   }
-# complexity and simplicity statistics under IEA (using derived formulas)
+
+  # complexity and simplicity statistics under IEA (using derived formulas)
   # m1 = number of loops
   # m2 = number of non-loops
   m1 <- sum(diag(m.mat))
@@ -126,7 +127,6 @@ R <- vector()
     for (k in 0:K) {
       R[k+1] <- sum(m.seq==k)
     }
-
 
 ER <- vector()
 for (k in 0:K) {
