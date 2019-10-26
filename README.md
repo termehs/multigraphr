@@ -3,12 +3,8 @@
 
 # multigraphr
 
-<!-- <!-- badges: start -->
-
-–\> <!-- <!-- badges: end -->
-–\>
-
-<!-- The goal of multigraphr is to analyse multigraphs using probability models -->
+Description coming
+soon…
 
 ## Installation
 
