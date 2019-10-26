@@ -1,0 +1,187 @@
+#' @title Complexity statistics under the IEA model for multigraphs
+#' @description summary of statistics estimated for
+#' global structure of random multigraphs under indepndent edge assignment model
+#' given observed adjacency matrix
+#' @param adj integer matrix
+#' @param type equals 'graph' if adjacency matrix is for graphs (default),
+#' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+#' (with the matrix diagonal double counted)
+#' @param K  upperl limit for the number of edge multiplicity to calculate the R statistic for
+#' default is maximum observed in adjacency matrix
+#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
+#' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq')
+#' @return number of multigraphs under the IEA model,
+#' the statistics number of loops and number of non-loos (M_1 and M__2),
+#' the statistics for frequencies of edge multiplicites R_k
+#' @details  to be completed
+#' @author Termeh Shafie
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+#' @examples
+#'
+iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
+  n <- dim(adj)[1]
+  r <- choose(n+1,2)
+
+  if(type == 'multigraph'){
+  m.mat <- adj - 0.5*diag(diag(adj))
+  m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
+  m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
+  m <- sum(m.seq)
+  } else if(type == 'graph'){
+  m.mat <- adj
+  m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
+  m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
+  m <- sum(m.seq)
+  }
+
+  if(K == 0){
+    K <- max(m.mat)
+  } else if(K > m) {
+    stop(paste0("K exceeds number of edges = ", m))
+  }
+  else{
+    K <- K
+  }
+
+  if(apx == FALSE){
+# possible number of outcomes for edge multiplicity sequences
+  mg.outcomes <- choose(m+r-1,r-1)
+
+# edge assignment probabilities (Q) as a  matrix and a sequence
+  Q.mat <- m.mat/m
+  Q.seq <- m.seq/m
+  } else if(apx == TRUE) {
+    deg.seq <- get_degree_seq(adj, type)
+    Q.mat <- matrix(0,n,n)
+    for (i in 1:n) {
+      for (j in 1:n) {
+        if (i==j) {
+          Q.mat[i,j] <- deg.seq[i]*(deg.seq[i]-1)/(2*m*(2*m-1))
+        } else if (i<j){
+          Q.mat[i,j] <- 2*deg.seq[i]*(deg.seq[j])/(2*m*(2*m-1))
+        } else {
+          Q.mat[i,j] <- 0
+        }
+      }
+    }
+    Q.seq <- Q.mat[upper.tri(Q.mat, diag = TRUE)]
+  }
+# complexity and simplicity statistics under IEA (using derived formulas)
+  # m1 = number of loops
+  # m2 = number of non-loops
+  m1 <- sum(diag(m.mat))
+  m2 <- sum(m.mat)-sum(diag(m.mat))
+
+  Em1 <- m*sum(diag(Q.mat))
+  Em2 <- m*sum(Q.mat[row(Q.mat) != col(Q.mat)])
+  # alt Em2=m-E(m1)
+
+  cov2 <- vector()
+  for (i in 1:n) {
+    for (j in 1:n) {
+      if (i!=j) {
+        cov1 <- Q.mat[i,i]*Q.mat[j,j]
+        cov2 <- c(cov2, cov1)
+      }
+    }
+  }
+  Vm1 <-  m*(sum(diag(Q.mat)*(1-diag(Q.mat)))-sum(cov2))
+  Vm2 <- Vm1
+
+# covariance matrix for m1 and m2
+  cov <- matrix(0,n,n)
+  for (i in 1:n) {
+    for (j in 1:n) {
+      if (i == j) {
+        cov[i,i] <- Q.mat[i,i]*(1-Q.mat[i,i])
+      } else{
+        cov[i,j] <- -Q.mat[i,i]*Q.mat[j,j]
+      }
+    }
+  }
+Vm1 <- m*sum(cov)
+Vm2 <- Vm1
+
+  # why does the below work?? m*Sum(Qii)*Sum_i<j_(Qij)
+test <- Q.mat
+test[lower.tri(test, diag = FALSE)] <- 0
+aa <-  sum(test)-sum(diag(test))
+m*aa*sum(diag(test))
+
+obs <- cbind(m1, m2)
+EM <- cbind(Em1, Em2)
+VarM <- cbind(Vm1, Vm2)
+lower <- EM - 2*sqrt(VarM)
+upper <- EM + 2*sqrt(VarM)
+
+out.M <- as.data.frame(rbind(obs, EM, VarM, upper, lower))
+colnames(out.M) <- NULL
+rownames(out.M) <- c("Observed", "Expected", "Variance", "Upper 95%", "Lower 95%")
+colnames(out.M) <-  c("M1", "M2")
+out.M <- round(out.M,3)
+
+# Rk = frequencies of sites with multiplicities k
+R <- vector()
+    for (k in 0:K) {
+      R[k+1] <- sum(m.seq==k)
+    }
+
+
+ER <- vector()
+for (k in 0:K) {
+  ER[k+1] <- sum(choose(m,k)*Q.seq^k*(1-Q.seq)^(m-k))
+}
+
+VarR <- vector()
+lower95 <- vector()
+upper95 <- vector()
+for (k in 0:K) {
+  covRk <- matrix(0,r,r)
+  for (i in 1:r) {
+    for (j in 1:r)
+      if(i != j){
+        covRk[i,j] <- (choose(m,k)*choose(m-k,k))*(Q.seq[i]^k)*(Q.seq[j]^k)*(1-Q.seq[i]-Q.seq[j])^(m-2*k)-
+                      ((choose(m,k)*(Q.seq[i]^k)*(1-Q.seq[i])^(m-k)*(choose(m,k)*(Q.seq[j]^k)*(1-Q.seq[j])^(m-k))))
+      } else{
+        covRk[i,j] <- (choose(m,k)*(Q.seq[i]^k)*(1-Q.seq[i])^(m-k))*
+                      (1-(choose(m,k)*Q.seq[i]^k*((1-Q.seq[i])^(m-k))))
+      }
+  }
+  VarR[k+1] <- sum(covRk)
+  lower95[k+1] <- ER[k+1] - 2*sqrt(VarR[k+1])
+  upper95[k+1] <- ER[k+1] + 2*sqrt(VarR[k+1])
+}
+
+out.R <- as.data.frame(round(rbind(R,ER,VarR, upper95, lower95),3))
+colnames(out.R) <- sprintf("R%d", 0:K)
+rownames(out.R) <- c("Observed", "Expected", "Variance", "Upper 95%", "Lower 95%")
+
+
+# the covariance matrix for local edge multiplicities (delete??)
+sigma <- matrix(0,r,r)
+ for (i in 1:r) {
+   for (j in 1:r) {
+     if (i == j) {
+       sigma[i,j] <- Q.seq[i]*(1-Q.seq[j])
+     } else {
+       sigma[i,j] <- -(Q.seq[i]*Q.seq[j])
+     }
+   }
+ }
+
+if(apx == FALSE){
+output <- list("nr.multigraphs" = mg.outcomes,"M" = out.M, "R" = out.R)
+statistics <- return(output)
+} else if(apx == TRUE) {
+  if(n > 6 | m > 20){
+  m.seq <- 'NA'} else{
+  m.seq <- edge_multip_seq(adj, type)
+  }
+  output <- list("nr.multigraphs" = nrow(m.seq), "M" = out.M, "R" = out.R)
+  statistics <- return(output)
+}
+}
+
+
+
