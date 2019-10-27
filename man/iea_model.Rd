@@ -7,34 +7,34 @@
 iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 }
 \arguments{
-\item{adj}{integer matrix}
+\item{adj}{Integer matrix}
 
-\item{type}{equals 'graph' if adjacency matrix is for graphs (default),
+\item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 (with the matrix diagonal double counted)}
 
-\item{K}{upperl limit for the number of edge multiplicity to calculate the R statistic for
+\item{K}{Upperl limit for the number of edge multiplicity to calculate the R statistic for
 default is maximum observed in adjacency matrix}
 
-\item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
+\item{apx}{Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
 the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq')}
 }
 \value{
-number of multigraphs under the IEA model,
-the statistics number of loops and number of non-loos (M_1 and M__2),
-the statistics for frequencies of edge multiplicites R_k
+List inlcuding number of multigraphs under the IEA model,
+summary and interval estomates for number of loops and number of non-loos (M_1 and M__2),
+summary and interval estimates for frequencies of edge multiplicites R_k
 }
 \description{
-summary of statistics estimated for
-global structure of random multigraphs under indepndent edge assignment model
+Summary of statistics estimated for
+global structure of random multigraphs under independent edge assignment model
 given observed adjacency matrix
 }
 \details{
-to be completed
+To be completed
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 }
 \author{
 Termeh Shafie
