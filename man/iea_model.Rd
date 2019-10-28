@@ -20,14 +20,16 @@ default is maximum observed in adjacency matrix}
 the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq')}
 }
 \value{
-List inlcuding number of multigraphs under the IEA model,
+List including number of multigraphs under the IEA model,
 summary and interval estomates for number of loops and number of non-loos (M_1 and M__2),
 summary and interval estimates for frequencies of edge multiplicites R_k
 }
 \description{
 Summary of statistics estimated for
 global structure of random multigraphs under independent edge assignment model
-given observed adjacency matrix
+given observed adjacency matrix.
+The edge assignment probabilities are estimated using the observed edge multiplicities
+(maximum likelihood estimattion)
 }
 \details{
 To be completed

@@ -12,7 +12,7 @@
 #' default is maximum observed in adjacency matrix
 #' @param apx Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
 #' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq')
-#' @return List inlcuding number of multigraphs under the IEA model,
+#' @return List including number of multigraphs under the IEA model,
 #' summary and interval estomates for number of loops and number of non-loos (M_1 and M__2),
 #' summary and interval estimates for frequencies of edge multiplicites R_k
 #' @details  To be completed
