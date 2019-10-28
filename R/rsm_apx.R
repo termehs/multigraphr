@@ -1,4 +1,4 @@
-#' @title IEA approximation of the statistics under the RSM model
+#' @title IEA approximation of the complexity statistics under the RSM model
 #' @description Summary of statistics estimated for
 #' global structure of random multigraphs under an IEA approximation of the RSM model.
 #' The degree sequence is used to estimate the edge assignment probabilities.

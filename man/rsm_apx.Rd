@@ -2,7 +2,7 @@
 % Please edit documentation in R/rsm_apx.R
 \name{rsm_apx}
 \alias{rsm_apx}
-\title{IEA approximation of the statistics under the RSM model}
+\title{IEA approximation of the complexity statistics under the RSM model}
 \usage{
 rsm_apx(deg.seq)
 }
