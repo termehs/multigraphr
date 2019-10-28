@@ -1,7 +1,9 @@
 #' @title Complexity statistics under the IEA model for multigraphs
 #' @description Summary of statistics estimated for
 #' global structure of random multigraphs under independent edge assignment model
-#' given observed adjacency matrix
+#' given observed adjacency matrix.
+#' The edge assignment probabilities are estimated using the observed edge multiplicities
+#' (maximum likelihood estimattion)
 #' @param adj Integer matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
@@ -156,6 +158,7 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
   statistics <- return(output)
   } else if(apx == TRUE) {
     if(n > 6 | m > 20){
+    print("size of graph is too large, no value assigned for nr.multigraphs")
     m.seq <- 'NA'} else{
     m.seq <- edge_multip_seq(adj, type)
     }
