@@ -3,21 +3,21 @@
 #' global structure of random multigraphs under independent edge assignment model
 #' given observed adjacency matrix.
 #' The edge assignment probabilities are estimated using the observed edge multiplicities
-#' (maximum likelihood estimattion)
+#' (maximum likelihood estimates)
 #' @param adj Integer matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with the matrix diagonal double counted)
-#' @param K  Upperl limit for the number of edge multiplicity to calculate the R statistic for
-#' default is maximum observed in adjacency matrix
-#' @param apx Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
-#' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq')
+#' @param K  Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix
+#' @param apx Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
+#' the statistics under the random stub matching model given observed degree sequence (uses function 'get_degree_seq')
 #' @return List including number of multigraphs under the IEA model,
-#' summary and interval estomates for number of loops and number of non-loos (M_1 and M__2),
+#' summary and interval estimates for number of loops and number of non-loos (M_1 and M__2),
 #' summary and interval estimates for frequencies of edge multiplicites R_k
 #' @details  To be completed
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
+#'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #'
 #'

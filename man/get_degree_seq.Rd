@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_degree_seq.R
 \name{get_degree_seq}
 \alias{get_degree_seq}
-\title{Degree sequence of multigraph}
+\title{Degree sequence of a multigraph}
 \usage{
 get_degree_seq(adj, type = "multigraph")
 }
@@ -20,7 +20,7 @@ Vector of integers representing the degree sequence
 Gives the degree sequence of observed graph or multigraph
 }
 \details{
-Tto be completed
+To be completed
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
