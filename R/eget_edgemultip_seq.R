@@ -3,7 +3,7 @@
 #' @param adj Integer matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-#' (with the matrix diagonal double counted)
+#' (with the elements of the matrix diagonal double counted)
 #' @return All unique edge multiplicity sequences as a dataframe
 #' @details  To be completed
 #' @author Termeh Shafie
@@ -12,7 +12,7 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #'
 
-edge_multip_seq <- function(adj, type = 'multigraph'){
+get_edgemultip_seq <- function(adj, type = 'multigraph'){
 
   n <- dim(adj)[1]
   r <- choose(n+1,2)

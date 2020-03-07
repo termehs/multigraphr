@@ -2,8 +2,8 @@
 #' @description Gives the degree sequence of observed graph or multigraph
 #' @param adj Integer matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
-#' equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
-#' (with diagonal double counted)
+#' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+#' (with the elements of the matrix diagonal double counted)
 #' @return Vector of integers representing the degree sequence
 #' @details To be completed
 #' @author Termeh Shafie
@@ -12,7 +12,6 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #'
 #'
-
 get_degree_seq <- function(adj, type = 'multigraph') {
   if(type == 'multigraph'){
     deg.seq <- sort(rowSums(adj))

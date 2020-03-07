@@ -10,8 +10,8 @@ get_degree_seq(adj, type = "multigraph")
 \item{adj}{Integer matrix}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
-equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
-(with diagonal double counted)}
+equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+(with the elements of the matrix diagonal double counted)}
 }
 \value{
 Vector of integers representing the degree sequence
