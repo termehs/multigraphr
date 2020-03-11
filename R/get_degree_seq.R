@@ -13,10 +13,10 @@
 #'
 #'
 get_degree_seq <- function(adj, type = 'multigraph') {
-  if(type == 'multigraph'){
+  if (type == 'multigraph') {
     deg.seq <- sort(rowSums(adj))
-  } else if(type == 'graph'){
-    deg.seq <- sort(rowSums(adj)+diag(adj))
+  } else if (type == 'graph') {
+    deg.seq <- sort(rowSums(adj) + diag(adj))
   }
   return(deg.seq)
 }

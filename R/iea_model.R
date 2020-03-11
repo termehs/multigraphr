@@ -26,15 +26,15 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
   r <- choose(n+1,2)
 
   if(type == 'multigraph'){
-  m.mat <- adj - 0.5*diag(diag(adj))
-  m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
-  m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
-  m <- sum(m.seq)
+    m.mat <- adj - 0.5*diag(diag(adj))
+    m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
+    m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
+    m <- sum(m.seq)
   } else if(type == 'graph'){
-  m.mat <- adj
-  m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
-  m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
-  m <- sum(m.seq)
+    m.mat <- adj
+    m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
+    m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
+    m <- sum(m.seq)
   }
 
   if(K == 0){
@@ -47,12 +47,12 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
   }
 
   if(apx == FALSE){
-  # possible number of outcomes for edge multiplicity sequences
-  mg.outcomes <- choose(m+r-1,r-1)
+    # possible number of outcomes for edge multiplicity sequences
+    mg.outcomes <- choose(m+r-1,r-1)
 
-  # edge assignment probabilities (Q) as a  matrix and a sequence
-  Q.mat <- m.mat/m
-  Q.seq <- m.seq/m
+    # edge assignment probabilities (Q) as a  matrix and a sequence
+    Q.mat <- m.mat/m
+    Q.seq <- m.seq/m
   } else if(apx == TRUE) {
     deg.seq <- get_degree_seq(adj, type)
     Q.mat <- matrix(0,n,n)
@@ -107,9 +107,9 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
 
   # Rk = frequencies of sites with multiplicities k
   R <- vector()
-      for (k in 0:K) {
-        R[k+1] <- sum(m.seq==k)
-      }
+  for (k in 0:K) {
+    R[k+1] <- sum(m.seq==k)
+  }
 
   ER <- vector()
   for (k in 0:K) {
@@ -125,10 +125,10 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
       for (j in 1:r)
         if(i != j){
           covRk[i,j] <- (choose(m,k)*choose(m-k,k))*(Q.seq[i]^k)*(Q.seq[j]^k)*(1-Q.seq[i]-Q.seq[j])^(m-2*k)-
-                        ((choose(m,k)*(Q.seq[i]^k)*(1-Q.seq[i])^(m-k)*(choose(m,k)*(Q.seq[j]^k)*(1-Q.seq[j])^(m-k))))
+            ((choose(m,k)*(Q.seq[i]^k)*(1-Q.seq[i])^(m-k)*(choose(m,k)*(Q.seq[j]^k)*(1-Q.seq[j])^(m-k))))
         } else{
           covRk[i,j] <- (choose(m,k)*(Q.seq[i]^k)*(1-Q.seq[i])^(m-k))*
-                        (1-(choose(m,k)*Q.seq[i]^k*((1-Q.seq[i])^(m-k))))
+            (1-(choose(m,k)*Q.seq[i]^k*((1-Q.seq[i])^(m-k))))
         }
     }
     VarR[k+1] <- sum(covRk)
@@ -143,25 +143,25 @@ iea_model <- function(adj, type = 'multigraph' ,  K = 0,  apx = FALSE) {
 
   # the covariance matrix for local edge multiplicities (delete??)
   sigma <- matrix(0,r,r)
-   for (i in 1:r) {
-     for (j in 1:r) {
-       if (i == j) {
-         sigma[i,j] <- Q.seq[i]*(1-Q.seq[j])
-       } else {
-         sigma[i,j] <- -(Q.seq[i]*Q.seq[j])
-       }
-     }
-   }
+  for (i in 1:r) {
+    for (j in 1:r) {
+      if (i == j) {
+        sigma[i,j] <- Q.seq[i]*(1-Q.seq[j])
+      } else {
+        sigma[i,j] <- -(Q.seq[i]*Q.seq[j])
+      }
+    }
+  }
 
   if(apx == FALSE){
-  output <- list("nr.multigraphs" = mg.outcomes,"M" = out.M, "R" = out.R)
-  statistics <- return(output)
+    output <- list("nr.multigraphs" = mg.outcomes,"M" = out.M, "R" = out.R)
+    statistics <- return(output)
   } else if(apx == TRUE) {
     if(n > 6 | m > 20){
-    print("size of graph is too large, no value assigned for nr.multigraphs")
-    m.seq <- 'NA'} else{
-    m.seq <- edge_multip_seq(adj, type)
-    }
+      print("size of graph is too large, no value assigned for nr.multigraphs")
+      m.seq <- 'NA'} else{
+        m.seq <- edge_multip_seq(adj, type)
+      }
     output <- list("nr.multigraphs" = nrow(m.seq), "M" = out.M, "R" = out.R)
     statistics <- return(output)
   }
