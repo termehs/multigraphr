@@ -1,11 +1,11 @@
 #' @title Goodness of Fit Tests for Random Multigraph Models
 #' @description gives the degree sequence of observed graph or multigraph
-#' @param adj integer matrix 
-#' @param type equals 'graph' if adjacency matrix is for graphs (default), 
-#' equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs 
+#' @param adj integer matrix
+#' @param type equals 'graph' if adjacency matrix is for graphs (default),
+#' equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
 #' (with diagonal double counted)
 #' model = either RSM, IEAS or ISA with modelled degree sequence deg.mod
-#' vechyp= hypothetical degree sequence,  
+#' vechyp= hypothetical degree sequence,
 #' hypothetical degree sequence:
 #'   if 'IEA': d = deg.hyp fully specified
 #'   if 'ISA': p = deg.hyp/2m fully specified
@@ -17,18 +17,18 @@
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #' @examples
-#' 
+#'
 gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
   n <- length(deg.mod)
   r <- choose(n+1, 2)
-  
+
   # model specification: IEAS or ISA
   if(model == 'IEAS'){
     Q.seq <- edge_assignment_probs(m, deg.mod, model = 'IEAS')
     # use IEA model to find probabilities of each multiplicity sequence/multigraph
     m.seq <- nsumk(r, m)
     prob.mg <-  apply(m.seq, 1, function(x) dmultinom(x, prob = Q.seq))
-  } 
+  }
   else if(model == 'ISA'){
     Q.seq <- edge_assignment_probs(m, deg.mod, model = 'ISA')
     # use ISA model to find probabilities of each multiplicity sequence/multigraph
@@ -41,8 +41,8 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
     m.seq <- rsm$m.seq
     prob.mg <- rsm$prob.dists[ ,1]
   }
-  
-  # according to hypothesis, get the values of test statistics 
+
+  # according to hypothesis, get the values of test statistics
   # hypothesis IEAS
   if(hyp == 'IEAS'){
     if(sum(deg.hyp) > 0){
@@ -67,10 +67,10 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
         deg.seq <- deg.est[d, ]
         Q.seq[d, ] <- edge_assignment_probs(m, deg.seq, model = 'IEAS')
       }
-      moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq) 
+      moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
   }
-  # hypothesis ISA 
+  # hypothesis ISA
   else if(hyp == 'ISA'){
     if(sum(deg.hyp) > 0){
       dof <- r - 1
@@ -94,7 +94,7 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
         deg.seq <- deg.est[d, ]
         Q.seq[d, ] <- edge_assignment_probs(m, deg.seq, model = 'ISA')
       }
-      moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq) 
+      moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
   }
 }

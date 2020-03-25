@@ -58,7 +58,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   S.bis <- S.uni * (dof / ExpS)
   ExpS.bis <- ExpS
   VarS.bis <- (2 * ExpS ^ 2) / dof
-  
+
   # D = divergence goodness-of-fit statistic
   if (is.vector(E)) {
     D <- (O / m) * log2(O %*% diag(1 / E))
@@ -90,7 +90,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   # D.g.cv <- sum(prob.D[D.uni > cv])
   # # prob(Shat > cv)
   # cvD <- ExpD+2*sqrt(VarD)
-  
+
   # probability distribution of the A values
   # A <- round(A,3) # if you wish to round
   A <- (2 * m * D) / log2(exp(1)) # the asymptotic T statistics
@@ -123,7 +123,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   A.bis <- A.uni * (dof / ExpA)
   ExpA.bis <- ExpA
   VarA.bis <- (2 * ExpA ^ 2) / dof
-  
+
   # output 1: probability distributions of S and A
   prob.Sout <-
     as.data.frame(round(cbind(S.uni, prob.S, cumprob.S), 5))
@@ -131,7 +131,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   prob.Aout <-
     as.data.frame(round(cbind(A.uni, prob.A, cumprob.A), 5))
   colnames(prob.Aout) <- c('A=a', 'P(A=a)', 'P(A<a)')
-  
+
   # output 2: summary for statistics S and A
   gof.sum <- as.data.frame(rbind(S.out, A.out))
   stat <- c('S', 'A')
@@ -145,20 +145,29 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'stat>cv',
       'cv(stat)',
       'stat>cv(stat)')
-  
-  
+
+
   # output 3: moments of approximate statistics (just differene in variance)
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
     cbind(VarS, VarS.prim, VarS.bis, VarA, VarA.prim, VarA.bis)
-  moms.apx <- as.data.frame(rbind(Exp.out, Var.out))
-  mom.lab <- c('Exp', 'Var')
-  moms.apx <- cbind(mom.lab, moms.apx)
-  colnames(moms.apx) <-
-    c('moment', 'S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
-  
-  # output 4: power approixmations with S and A
+  # Determine the best S and A approximations
+  Best.apx <- rep(0, 6)
+  var.adj.S <- Var.out[1, 2:3] # variance of S' and S''
+  var.S <- Var.out[1, 1] # variance of So
+  idx <- which.min(abs(var.adj.S - var.S))
+  Best.apx[idx + 1] <- 1
+  var.adj.A <- Var.out[1, 5:6] # variance of S' and S''
+  var.A <- Var.out[1, 4] # variance of So
+  idx <- which.min(abs(var.adj.A - var.A))
+  Best.apx[idx + 4] <- 1
+  adj.out <- as.data.frame(rbind(Exp.out, Var.out, Best.apx))
+  row.names(adj.out) <- c('Exp', 'Var', 'Best Adj.')
+  colnames(adj.out) <-
+    c('S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
+
+  # output 4: power approximations with S and A
   tmp <- cv * floor(ExpS) / ExpS
   powerS.prim <- pchisq(tmp, floor(ExpS))
   tmp2 <- cv * (2 * ExpS ^ 2 / dof) / ExpS
@@ -167,19 +176,19 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   powerA.prim <- pchisq(tmp, floor(ExpA))
   tmp2 <- cv * (2 * ExpA ^ 2 / dof) / ExpA
   powerA.bis <- pchisq(tmp2, floor(ExpA))
-  
+
   power.apx <- as.data.frame(round(cbind(
     powerS.prim, powerS.bis, powerA.prim, powerA.bis
   ), 5))
   colnames(power.apx) <- c('Sprim', 'Sbis', 'Aprim', 'Abis')
-  
+
   # output 5: plot the distributions of S and A, together with Chi
   listout <-
     list(
       "probS" = prob.Sout,
       "probA" = prob.Aout,
       "summmary" = gof.sum,
-      "moments.apx" = moms.apx,
+      "adjusted.stats" = adj.out,
       "power.apx" = power.apx,
       "degrees.of.freedom" = dof
     )
