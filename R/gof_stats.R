@@ -155,13 +155,25 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   # Determine the best S and A approximations
   Best.apx <- rep(0, 6)
   var.adj.S <- Var.out[1, 2:3] # variance of S' and S''
-  var.S <- Var.out[1, 1] # variance of So
-  idx <- which.min(abs(var.adj.S - var.S))
-  Best.apx[idx + 1] <- 1
-  var.adj.A <- Var.out[1, 5:6] # variance of S' and S''
-  var.A <- Var.out[1, 4] # variance of So
-  idx <- which.min(abs(var.adj.A - var.A))
-  Best.apx[idx + 4] <- 1
+  var.S <- Var.out[1, 1] # variance of S
+  if (Var.out[2] != Var.out[3]) {
+    idx <- which.min(abs(var.adj.S - var.S))
+    if (idx == 1) {
+      Best.apx[idx + 1] <- 1
+    } else if (idx == 2) {
+      Best.apx[idx + 1] <- 2
+    }
+  }
+  var.adj.A <- Var.out[1, 5:6] # variance of A' and A''
+  var.A <- Var.out[1, 4] # variance of A
+  if (Var.out[5] != Var.out[6]) {
+    idx <- which.min(abs(var.adj.A - var.A))
+    if (idx == 1) {
+      Best.apx[idx + 4] <- 1
+    } else if (idx == 2) {
+      Best.apx[idx + 4] <- 2
+    }
+  }
   adj.out <- as.data.frame(rbind(Exp.out, Var.out, Best.apx))
   row.names(adj.out) <- c('Exp', 'Var', 'Best Adj.')
   colnames(adj.out) <-
