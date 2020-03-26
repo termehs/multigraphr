@@ -36,7 +36,7 @@ rsm_model <- function(deg.seq) {
   {
     W <- vector("integer", 0)
     for (i in k:m) {
-      Wz <- z[i, ]
+      Wz <- z[i,]
       W <- c(W, Wz)
     }
     tmp <- c(W[1], W[2] + 1)
@@ -94,8 +94,8 @@ rsm_model <- function(deg.seq) {
       b <- vector()
       c <- vector()
       for (i in 1:m) {
-        b <- rbind(b, as.integer(z[j,] == z[i,])) #for multiple edges
-        c <- rbind(c, as.integer(z[j,] == f[i,])) #for loops
+        b <- rbind(b, as.integer(z[j, ] == z[i, ])) #for multiple edges
+        c <- rbind(c, as.integer(z[j, ] == f[i, ])) #for loops
       }
       if (length(rowSums(b) == 2) > 1) {
         A[z[j, 1], z[j, 2]] <- length(which(rowSums(b) == 2))
@@ -154,7 +154,7 @@ rsm_model <- function(deg.seq) {
   # probability of each multigrap under RSM
   prob.rsm <- vector()
   for (i in 1:nrow(edge.seq)) {
-    tmp <- factorial(m) / prod(factorial(m.seq[i, ]))
+    tmp <- factorial(m) / prod(factorial(m.seq[i,]))
     prob.rsm[i] <- ((2 ^ (m2[i])) * tmp) / Ntot
   }
   # expected values oof all statistics using probability distribution prob.rsm
