@@ -161,7 +161,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     if (idx == 1) {
       Best.apx[idx + 1] <- 1
     } else if (idx == 2) {
-      Best.apx[idx + 1] <- 2
+      Best.apx[idx + 1] <- 1
     }
   }
   var.adj.A <- Var.out[1, 5:6] # variance of A' and A''
@@ -171,7 +171,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     if (idx == 1) {
       Best.apx[idx + 4] <- 1
     } else if (idx == 2) {
-      Best.apx[idx + 4] <- 2
+      Best.apx[idx + 4] <- 1
     }
   }
   adj.out <- as.data.frame(rbind(Exp.out, Var.out, Best.apx))
