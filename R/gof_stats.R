@@ -72,25 +72,6 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   }
   # probability distribution of the D values
   D <- round(D, 5) # if you wish to round
-  #] D.uni <- sort(unique(D))
-  # prob.tmp <- vector()
-  # prob.D <- vector()
-  # for(i in 1:length(D.uni)){
-  #   for(j in 1:length(D)){
-  #     if(D.uni[i] == D[j]){
-  #       prob.tmp <- c(prob.tmp, prob.mg[j])
-  #     }
-  #   }
-  #   prob.D[i] <- sum(prob.tmp)
-  #   prob.tmp <- vector()
-  # }
-  # cumprob.D <- cumsum(prob.D)
-  # ExpD <- sum(D.uni*prob.D)
-  # VarD <- sum((D.uni^2*prob.D))-ExpD^2
-  # # prob(Shat > cv)
-  # D.g.cv <- sum(prob.D[D.uni > cv])
-  # # prob(Shat > cv)
-  # cvD <- ExpD+2*sqrt(VarD)
   
   # probability distribution of the A values
   # A <- round(A,3) # if you wish to round
