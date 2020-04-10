@@ -14,6 +14,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   cv <- dof + sqrt(8 * dof)
   prob.Chi <- pchisq(cv, dof) # prob(chi(dof) < cv)
   alpha <- 1 - prob.Chi # prob(chi(dof) > cv )
+  
   # S = Pearson goodness-of-fit statistic
   # Observed values = O, Expected values = E
   O = m.seq
@@ -70,6 +71,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     D[is.infinite(D) | is.na(D)] = 0
     D <- rowSums(D)
   }
+  
   # probability distribution of the D values
   D <- round(D, 5) # if you wish to round
   
@@ -93,11 +95,13 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   VarA <- sum((A.uni ^ 2 * prob.A)) - ExpA ^ 2
   # prob(Shat > cv)
   A.g.cv <- sum(prob.A[A.uni > cv])
+  
   # prob(Shat > cv)
   cvA <- ExpA + 2 * sqrt(VarA)
   A.g.cvA <- sum(prob.A[A.uni > cvA])
   A.out <-
     round(cbind(ExpA, VarA, cv, alpha, A.g.cv, cvA, A.g.cvA), 5)
+  
   # approximate statistics (adjusted chi square): S' and S''
   A.prim <- A.uni * (floor(ExpA) / ExpA)
   ExpA.prim <- ExpA
@@ -113,7 +117,6 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   prob.Aout <-
     as.data.frame(round(cbind(A.uni, prob.A, cumprob.A), 5))
   colnames(prob.Aout) <- c('A=a', 'P(A=a)', 'P(A<a)')
-  
   # output 2: summary for statistics S and A
   gof.sum <- as.data.frame(rbind(S.out, A.out))
   stat <- c('S', 'A')
@@ -127,8 +130,8 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'stat>cv',
       'cv(stat)',
       'stat>cv(stat)')
-
   # output 3: moments of approximate statistics (just differene in variance)
+  
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
@@ -148,7 +151,6 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   powerA.prim <- pchisq(tmp, floor(ExpA))
   tmp2 <- cv * (2 * ExpA ^ 2 / dof) / ExpA
   powerA.bis <- pchisq(tmp2, floor(ExpA))
-  
   power.apx <- as.data.frame(round(cbind(
     powerS.prim, powerS.bis, powerA.prim, powerA.bis
   ), 5))
