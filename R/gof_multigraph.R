@@ -75,6 +75,7 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
       moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
   }
+
   # hypothesis ISA
   else if (hyp == 'ISA') {
     if (sum(deg.hyp) > 0) {
