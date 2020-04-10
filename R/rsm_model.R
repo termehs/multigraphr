@@ -15,6 +15,7 @@ rsm_model <- function(deg.seq) {
   m <- sum(deg.seq / 2)
   n <- length(deg.seq)
   k <- m - 1
+
   #initial edge sequence (read as labelled 2-tuples of connected nodes connected)
   s <- vector()
   edge.seq <- vector()
@@ -68,7 +69,6 @@ rsm_model <- function(deg.seq) {
   # for each possible edge sequence/multigraph given degree sequence, count number of loops and number of multiple edges using:
   # edge multiplicity sequence = m.seq
   # ordered edge multiplicity sequence = m.seq.star
-
   m.seq <- vector()
   m1 <- vector()
   m2 <- vector()
@@ -81,7 +81,6 @@ rsm_model <- function(deg.seq) {
   shifts <- vector()
   tot <- vector()
   simple <- vector()
-
   for (g in 1:nrow(edge.seq)) {
     for (i in 1:m) {
       z[i, 1] = edge.seq[g, 2 * i - 1]
@@ -103,6 +102,7 @@ rsm_model <- function(deg.seq) {
         A[z[j, 1], z[j, 2]] <- 1
       }
     }
+
     # number of loops m1
     m1[g] <- sum(diag(A))
 
@@ -166,7 +166,6 @@ rsm_model <- function(deg.seq) {
   Vm2 <- sum(prob.rsm * m2 ^ 2) - Em2 ^ 2
   Em.seq <- sum(prob.rsm * mz)
   Et <- sum(prob.rsm * tz)
-
   prob.dists <-
     as.data.frame(cbind(
       'prob.rsm' = prob.rsm,
