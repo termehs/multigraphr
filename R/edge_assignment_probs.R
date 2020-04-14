@@ -1,4 +1,4 @@
-#' @title Edge Assignment Probabilities
+#' @title Edge Assignment Probabilities under the IEAS and ISA model
 #' @description Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
 #' model can be approxiated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
 #' the ISA (independent stub assignment) model.

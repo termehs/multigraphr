@@ -2,7 +2,7 @@
 % Please edit documentation in R/edge_assignment_probs.R
 \name{edge_assignment_probs}
 \alias{edge_assignment_probs}
-\title{Edge Assignment Probabilities}
+\title{Edge Assignment Probabilities under the IEAS and ISA model}
 \usage{
 edge_assignment_probs(m, deg.seq, model)
 }
