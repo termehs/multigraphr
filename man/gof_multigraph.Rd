@@ -9,11 +9,11 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 \arguments{
 \item{adj}{integer matrix}
 
-\item{type}{equals 'graph' if adjacency matrix is for graphs (default), 
-equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs 
+\item{type}{equals 'graph' if adjacency matrix is for graphs (default),
+equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
 (with diagonal double counted)
 model = either RSM, IEAS or ISA with modelled degree sequence deg.mod
-vechyp= hypothetical degree sequence,  
+vechyp= hypothetical degree sequence,
 hypothetical degree sequence:
   if 'IEA': d = deg.hyp fully specified
   if 'ISA': p = deg.hyp/2m fully specified

@@ -185,5 +185,6 @@ rsm_model <- function(deg.seq) {
          'prob.dists' = prob.dists,
          'stat.moms' = stat.moms)
 
+
   return(rsm.out)
 }
