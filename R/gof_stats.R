@@ -1,5 +1,5 @@
 #' @title Moments of Goodness of Fit Statistics
-#' @description Calculates the probability distribution and moments of Peearson's and divergence 
+#' @description Calculates the probability distribution and moments of Peearson's and divergence
 #' goodness of fit statistics when testing multigraph hypotheses against random multigraoh models.
 #' @param
 #' @return
@@ -14,7 +14,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   cv <- dof + sqrt(8 * dof)
   prob.Chi <- pchisq(cv, dof) # prob(chi(dof) < cv)
   alpha <- 1 - prob.Chi # prob(chi(dof) > cv )
-  
+
   # S = Pearson goodness-of-fit statistic
   # Observed values = O, Expected values = E
   O = m.seq
@@ -60,7 +60,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   S.bis <- S.uni * (dof / ExpS)
   ExpS.bis <- ExpS
   VarS.bis <- (2 * ExpS ^ 2) / dof
-  
+
   # D = divergence goodness-of-fit statistic
   if (is.vector(E)) {
     D <- (O / m) * log2(O %*% diag(1 / E))
@@ -71,10 +71,10 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     D[is.infinite(D) | is.na(D)] = 0
     D <- rowSums(D)
   }
-  
+
   # probability distribution of the D values
   D <- round(D, 5) # if you wish to round
-  
+
   # probability distribution of the A values
   # A <- round(A,3) # if you wish to round
   A <- (2 * m * D) / log2(exp(1)) # the asymptotic T statistics
@@ -95,13 +95,13 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   VarA <- sum((A.uni ^ 2 * prob.A)) - ExpA ^ 2
   # prob(Shat > cv)
   A.g.cv <- sum(prob.A[A.uni > cv])
-  
+
   # prob(Shat > cv)
   cvA <- ExpA + 2 * sqrt(VarA)
   A.g.cvA <- sum(prob.A[A.uni > cvA])
   A.out <-
     round(cbind(ExpA, VarA, cv, alpha, A.g.cv, cvA, A.g.cvA), 5)
-  
+
   # approximate statistics (adjusted chi square): S' and S''
   A.prim <- A.uni * (floor(ExpA) / ExpA)
   ExpA.prim <- ExpA
@@ -109,7 +109,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   A.bis <- A.uni * (dof / ExpA)
   ExpA.bis <- ExpA
   VarA.bis <- (2 * ExpA ^ 2) / dof
-  
+
   # output 1: probability distributions of S and A
   prob.Sout <-
     as.data.frame(round(cbind(S.uni, prob.S, cumprob.S), 5))
@@ -131,7 +131,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'cv(stat)',
       'stat>cv(stat)')
   # output 3: moments of approximate statistics (just differene in variance)
-  
+
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
@@ -141,7 +141,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   moms.apx <- cbind(mom.lab, moms.apx)
   colnames(moms.apx) <-
     c('moment', 'S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
-  
+
   # output 4: power approixmations with S and A
   tmp <- cv * floor(ExpS) / ExpS
   powerS.prim <- pchisq(tmp, floor(ExpS))
@@ -155,7 +155,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     powerS.prim, powerS.bis, powerA.prim, powerA.bis
   ), 5))
   colnames(power.apx) <- c('Sprim', 'Sbis', 'Aprim', 'Abis')
-  
+
   # output 5: plot the distributions of S and A, together with Chi
   listout <-
     list(
