@@ -131,16 +131,36 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'cv(stat)',
       'stat>cv(stat)')
   # output 3: moments of approximate statistics (just differene in variance)
-
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
     cbind(VarS, VarS.prim, VarS.bis, VarA, VarA.prim, VarA.bis)
-  moms.apx <- as.data.frame(rbind(Exp.out, Var.out))
-  mom.lab <- c('Exp', 'Var')
-  moms.apx <- cbind(mom.lab, moms.apx)
-  colnames(moms.apx) <-
-    c('moment', 'S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
+  # Determine the best S and A approximations
+  Best.apx <- rep(0, 6)
+  var.adj.S <- Var.out[1, 2:3] # variance of S' and S''
+  var.S <- Var.out[1, 1] # variance of S
+  if (Var.out[2] != Var.out[3]) {
+    idx <- which.min(abs(var.adj.S - var.S))
+    if (idx == 1) {
+      Best.apx[idx + 1] <- 1
+    } else if (idx == 2) {
+      Best.apx[idx + 1] <- 1
+    }
+  }
+  var.adj.A <- Var.out[1, 5:6] # variance of A' and A''
+  var.A <- Var.out[1, 4] # variance of A
+  if (Var.out[5] != Var.out[6]) {
+    idx <- which.min(abs(var.adj.A - var.A))
+    if (idx == 1) {
+      Best.apx[idx + 4] <- 1
+    } else if (idx == 2) {
+      Best.apx[idx + 4] <- 1
+    }
+  }
+  adj.out <- as.data.frame(rbind(Exp.out, Var.out, Best.apx))
+  row.names(adj.out) <- c('Exp', 'Var', 'Best Adj.')
+  colnames(adj.out) <-
+    c('S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
 
   # output 4: power approixmations with S and A
   tmp <- cv * floor(ExpS) / ExpS
@@ -162,7 +182,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       "probS" = prob.Sout,
       "probA" = prob.Aout,
       "summmary" = gof.sum,
-      "moments.apx" = moms.apx,
+      "adjusted.stats" = adj.out,
       "power.apx" = power.apx,
       "degrees.of.freedom" = dof
     )
