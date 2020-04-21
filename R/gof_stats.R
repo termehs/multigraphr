@@ -130,11 +130,13 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'stat>cv',
       'cv(stat)',
       'stat>cv(stat)')
+
   # output 3: moments of approximate statistics (just differene in variance)
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
     cbind(VarS, VarS.prim, VarS.bis, VarA, VarA.prim, VarA.bis)
+
   # Determine the best S and A approximations
   Best.apx <- rep(0, 6)
   var.adj.S <- Var.out[1, 2:3] # variance of S' and S''
