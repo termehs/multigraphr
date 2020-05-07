@@ -1,6 +1,6 @@
 #' @title Moments of Goodness of Fit Statistics
-#' @description Calculates the probability distribution and moments of Peearson's and divergence
-#' goodness of fit statistics when testing multigraph hypotheses against random multigraoh models.
+#' @description Calculates the probability distribution and moments of Pearson and divergence statistics
+#'of goodness of fit when testing various multigraph hypotheses against different random multigraoh models.
 #' @param
 #' @return
 #' @details  To be completed

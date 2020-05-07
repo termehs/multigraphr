@@ -10,8 +10,8 @@ gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 
 }
 \description{
-Calculates the probability distribution and moments of Peearson's and divergence 
-goodness of fit statistics when testing multigraph hypotheses against random multigraoh models.
+Calculates the probability distribution and moments of Pearson and divergence statistics
+of goodness of fit when testing various multigraph hypotheses against different random multigraoh models.
 }
 \details{
 To be completed
