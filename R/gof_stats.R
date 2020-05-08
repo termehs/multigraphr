@@ -164,7 +164,23 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   colnames(adj.out) <-
     c('S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
 
-  # output 4: power approixmations with S and A
+  # output 4: adjusted chi square distributions (their degrees of freeedom)
+  S.comp <- 2*(ExpS^2)/var.S
+  if (abs(S.comp - dof) < abs(S.comp - floor(ExpS))) {
+    adj.chi2.S <- dof
+  } else {
+    adj.chi2.S <- floor(ExpS)
+  }
+  A.comp<- 2*(ExpA^2)/var.A
+  if (abs(A.comp - dof) < abs(A.comp - floor(ExpA))) {
+    adj.chi2.A <- dof
+  } else {
+    adj.chi2.A <- floor(ExpA)
+  }
+  adj.chi2 <- cbind(adj.chi2.S, adj.chi2.A)
+  colnames(adj.chi2) <- c('df(S)', 'df(A)')
+
+  # output 5: power approixmations with S and A
   tmp <- cv * floor(ExpS) / ExpS
   powerS.prim <- pchisq(tmp, floor(ExpS))
   tmp2 <- cv * (2 * ExpS ^ 2 / dof) / ExpS
@@ -185,6 +201,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       "probA" = prob.Aout,
       "summmary" = gof.sum,
       "adjusted.stats" = adj.out,
+      "adjusted.chi2" = adj.chi2,
       "power.apx" = power.apx,
       "degrees.of.freedom" = dof
     )
