@@ -7,6 +7,7 @@
 #' @details  To be completed
 #' @author Termeh Shafie
 #' @examples
+#' @export
 #'
 nsumk <- function(n, k) {
   if (is.atomic(n) &&

@@ -21,9 +21,6 @@ Only practical for n < 15
 \details{
 To be completed
 }
-\examples{
-
-}
 \author{
 Termeh Shafie
 }

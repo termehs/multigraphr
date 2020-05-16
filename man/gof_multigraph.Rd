@@ -29,9 +29,6 @@ gives the degree sequence of observed graph or multigraph
 \details{
 to be completed
 }
-\examples{
-
-}
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.

@@ -8,9 +8,9 @@
 #' @details To be completed
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
-#'
+#' @examples
+#' @export
 #'
 get_degree_seq <- function(adj, type = 'multigraph') {
   if (type == 'multigraph') {
