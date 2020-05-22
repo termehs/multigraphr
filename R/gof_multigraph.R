@@ -1,17 +1,17 @@
 #' @title Goodness of Fit Tests for Random Multigraph Models
-#' @description gives the degree sequence of observed graph or multigraph
-#' @param adj integer matrix
-#' @param type equals 'graph' if adjacency matrix is for graphs (default),
-#' equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
-#' (with diagonal double counted)
-#' model = either RSM, IEAS or ISA with modelled degree sequence deg.mod
-#' vechyp= hypothetical degree sequence,
-#' hypothetical degree sequence:
+#' @description  Goodness of fits tests of multigraph models obtained by random stub matching (RSM) and  by independent edge assignments (IEA),
+#' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment
+#' @param m number of edges
+#' @param  model = assumed model, either RSM, IEAS or ISA
+#' @param deg.mod = modelled degree sequence
+#' @param hyp = hypothesis, either IEAS or ISA
+#' @param vechyp = hypothetical degree sequence
+#'  hypothetical degree sequence:
 #'   if 'IEA': d = deg.hyp fully specified
 #'   if 'ISA': p = deg.hyp/2m fully specified
 #'   if 'IEA' and deg.hyp = 0, d estimated from edge mutliplicity sequence
 #'   if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence
-#' @return vector of integers representing the degree sequence of the multigraph
+#' @return to be completed
 #' @details  to be completed
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
