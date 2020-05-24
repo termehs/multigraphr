@@ -7,24 +7,27 @@
 gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 }
 \arguments{
-\item{adj}{integer matrix}
+\item{m}{number of edges}
 
-\item{type}{equals 'graph' if adjacency matrix is for graphs (default),
-equals 'multigraph' if it is the equivalence of adjacency matrix for multigraphs
-(with diagonal double counted)
-model = either RSM, IEAS or ISA with modelled degree sequence deg.mod
-vechyp= hypothetical degree sequence,
+\item{model}{= assumed model, either RSM, IEAS or ISA}
+
+\item{deg.mod}{= modelled degree sequence}
+
+\item{hyp}{= hypothesis, either IEAS or ISA}
+
+\item{vechyp}{= hypothetical degree sequence
 hypothetical degree sequence:
-  if 'IEA': d = deg.hyp fully specified
-  if 'ISA': p = deg.hyp/2m fully specified
-  if 'IEA' and deg.hyp = 0, d estimated from edge mutliplicity sequence
-  if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence}
+ if 'IEA': d = deg.hyp fully specified
+ if 'ISA': p = deg.hyp/2m fully specified
+ if 'IEA' and deg.hyp = 0, d estimated from edge mutliplicity sequence
+ if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence}
 }
 \value{
-vector of integers representing the degree sequence of the multigraph
+to be completed
 }
 \description{
-gives the degree sequence of observed graph or multigraph
+Goodness of fits tests of multigraph models obtained by random stub matching (RSM) and  by independent edge assignments (IEA),
+where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment
 }
 \details{
 to be completed
