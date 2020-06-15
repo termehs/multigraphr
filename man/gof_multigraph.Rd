@@ -17,10 +17,10 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 
 \item{deg.hyp}{hypothetical degree sequence, vector of integers with even sum
 hypothetical degree sequence: \cr
- if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
- if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
- if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
- if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr}
+ - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+ - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+ - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
+ - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
@@ -33,9 +33,11 @@ hypothetical degree sequence: \cr
  \item{degrees.of.freedom}{Degrees of freedom for test performed}
 }
 \description{
-Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
-under the random stub matching (RSM) and by independent edge assignments (IEA) model,
-where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
+Goodness of fits tests of multigraph models using Pearson (S) and
+information divergence (A) test statistics under the random stub matching (RSM)
+and by independent edge assignments (IEA) model,
+where the latter is either independent edge assignments of stubs (IEAS) or
+independent stub assignment (ISA)
 }
 \details{
 to be completed
