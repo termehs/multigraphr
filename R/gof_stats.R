@@ -3,10 +3,10 @@
 #' under the random stub matching (RSM) and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 #' @param m number of edges
-#' @param dof = degrees of freedom for test
-#' @param m.mod = edge multiplicity sequence
-#' @param prob.mg = probability distribtuion of multigrpahs under specified model
-#' @param Q.seq = edge assignment probabilities
+#' @param dof  degrees of freedom for test
+#' @param m.mod  edge multiplicity sequence
+#' @param prob.mg  probability distribtuion of multigrpahs under specified model
+#' @param Q.seq  edge assignment probabilities
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of divergence statistic A}

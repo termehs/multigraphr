@@ -3,15 +3,15 @@
 #' under the random stub matching (RSM) and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 #' @param m number of edges
-#' @param model = assumed model, either RSM, IEAS or ISA
-#' @param deg.mod = modelled degree sequence, vector of integers with even sum
-#' @param hyp = hypothesis, either IEAS or ISA
-#' @param deg.hyp = hypothetical degree sequence, vector of integers with even sum
+#' @param model assumed model, either RSM, IEAS or ISA
+#' @param deg.mod  modelled degree sequence, vector of integers with even sum
+#' @param hyp  hypothesis, either IEAS or ISA
+#' @param deg.hyp  hypothetical degree sequence, vector of integers with even sum
 #'  hypothetical degree sequence:
-#'   if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
-#'   if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
-#'   if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
-#'   if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data
+#'   \item{if 'IEAS':}{simple IEAS hypothesis with fully specified degree sequence deg.hyp}
+#'   \item{if 'ISA':}{simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m}
+#'   \item{if 'IEAS' and deg.hyp = 0:}{composite IEAS hypothesis with edge mutliplicity sequence estimated from data}
+#'   \item{if 'ISA' and deg.hyp = 0:}{composite ISA hypothesis with edge mutliplicity sequence estimated from data}
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of divergence statistic A}
@@ -25,6 +25,7 @@
 #' @author Termeh Shafie
 #' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
+#'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #' @examples
 #' @export

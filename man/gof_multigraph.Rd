@@ -9,18 +9,18 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 \arguments{
 \item{m}{number of edges}
 
-\item{model}{= assumed model, either RSM, IEAS or ISA}
+\item{model}{assumed model, either RSM, IEAS or ISA}
 
-\item{deg.mod}{= modelled degree sequence, vector of integers with even sum}
+\item{deg.mod}{modelled degree sequence, vector of integers with even sum}
 
-\item{hyp}{= hypothesis, either IEAS or ISA}
+\item{hyp}{hypothesis, either IEAS or ISA}
 
-\item{deg.hyp}{= hypothetical degree sequence, vector of integers with even sum
+\item{deg.hyp}{hypothetical degree sequence, vector of integers with even sum
 hypothetical degree sequence:
- if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
- if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
- if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
- if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data}
+ \item{if 'IEAS':}{simple IEAS hypothesis with fully specified degree sequence deg.hyp}
+ \item{if 'ISA':}{simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m}
+ \item{if 'IEAS' and deg.hyp = 0:}{composite IEAS hypothesis with edge mutliplicity sequence estimated from data}
+ \item{if 'ISA' and deg.hyp = 0:}{composite ISA hypothesis with edge mutliplicity sequence estimated from data}}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
@@ -42,6 +42,7 @@ to be completed
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
+
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 }
 \seealso{

@@ -9,13 +9,13 @@ gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 \arguments{
 \item{m}{number of edges}
 
-\item{dof}{= degrees of freedom for test}
+\item{dof}{degrees of freedom for test}
 
-\item{prob.mg}{= probability distribtuion of multigrpahs under specified model}
+\item{prob.mg}{probability distribtuion of multigrpahs under specified model}
 
-\item{Q.seq}{= edge assignment probabilities}
+\item{Q.seq}{edge assignment probabilities}
 
-\item{m.mod}{= edge multiplicity sequence}
+\item{m.mod}{edge multiplicity sequence}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
