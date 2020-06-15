@@ -11,23 +11,31 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 
 \item{model}{= assumed model, either RSM, IEAS or ISA}
 
-\item{deg.mod}{= modelled degree sequence}
+\item{deg.mod}{= modelled degree sequence, vector of integers where even sum}
 
 \item{hyp}{= hypothesis, either IEAS or ISA}
 
-\item{vechyp}{= hypothetical degree sequence
+\item{deg.hyp}{= hypothetical degree sequence, vector of integers where even sum
 hypothetical degree sequence:
- if 'IEA': d = deg.hyp fully specified
- if 'ISA': p = deg.hyp/2m fully specified
- if 'IEA' and deg.hyp = 0, d estimated from edge mutliplicity sequence
- if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence}
+ if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
+ if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
+ if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
+ if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data}
 }
 \value{
-to be completed
+\item{probS}{Probability distribution of Pearson statistic S}
+ \item{probA}{Probability distribution of divergence statistic A}
+ \item{summary}{Expected value and variances of test statistics, critical values and significance level
+ according to asymptotic $\chi^2$-distribution, power of tests}
+ \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
+ \item{adjusted.chi2}{Degrees of freedom for adjusted $\chi^2$-distribution}
+ \item{power.apx}{Power approximations according to adjusted statistics}
+ \item{degrees.of.freedom}{Degrees of freedom for test performed}
 }
 \description{
-Goodness of fits tests of multigraph models obtained by random stub matching (RSM) and  by independent edge assignments (IEA),
-where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment
+Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
+under the random stub matching (RSM) and by independent edge assignments (IEA) model,
+where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 }
 \details{
 to be completed
@@ -35,6 +43,9 @@ to be completed
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+}
+\seealso{
+[gof_stats]
 }
 \author{
 Termeh Shafie
