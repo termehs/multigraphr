@@ -7,10 +7,10 @@
 #' @param hyp = hypothesis, either IEAS or ISA
 #' @param deg.hyp = hypothetical degree sequence, vector of integers where even sum
 #'  hypothetical degree sequence:
-#'   if 'IEAS': d = IEAS model with fully specified degree sequence deg.hyp
-#'   if 'ISA': p = ISA model with with fully specified stub assignment probabilities deg.hyp/2m
-#'   if 'IEA': and deg.hyp = 0, d estimated from edge mutliplicity sequence
-#'   if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence
+#'   if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
+#'   if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
+#'   if 'IEA': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
+#'   if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data
 #' @return to be completed
 #' @details  to be completed
 #' @author Termeh Shafie
