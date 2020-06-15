@@ -16,11 +16,11 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 \item{hyp}{hypothesis, either IEAS or ISA}
 
 \item{deg.hyp}{hypothetical degree sequence, vector of integers with even sum
-hypothetical degree sequence:
- \item{if 'IEAS':}{simple IEAS hypothesis with fully specified degree sequence deg.hyp}
- \item{if 'ISA':}{simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m}
- \item{if 'IEAS' and deg.hyp = 0:}{composite IEAS hypothesis with edge mutliplicity sequence estimated from data}
- \item{if 'ISA' and deg.hyp = 0:}{composite ISA hypothesis with edge mutliplicity sequence estimated from data}}
+hypothetical degree sequence: \cr
+ if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
+ if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
+ if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
+ if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
