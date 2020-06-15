@@ -195,7 +195,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   ), 5))
   colnames(power.apx) <- c('Sprim', 'Sbis', 'Aprim', 'Abis')
 
-  # output 5: plot the distributions of S and A, together with Chi
+  # output list
   listout <-
     list(
       "probS" = prob.Sout,
