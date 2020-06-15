@@ -16,7 +16,7 @@
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of divergence statistic A}
 #'  \item{summary}{Expected value and variances of test statistics, critical values and significance level
-#'  according to asymptotic $\chi^2$-distribution, power of tests}
+#'  according to asymptotic chi2-distribution, power of tests}
 #'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted $\chi^2$-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
