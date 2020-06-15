@@ -9,18 +9,13 @@ gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 \arguments{
 \item{m}{number of edges}
 
-\item{model}{= assumed model, either RSM, IEAS or ISA}
+\item{dof}{= degrees of freedom for test}
 
-\item{deg.mod}{= modelled degree sequence, vector of integers where even sum}
+\item{prob.mg}{= probability distribtuion of multigrpahs under specified model}
 
-\item{hyp}{= hypothesis, either IEAS or ISA}
+\item{Q.seq}{= edge assignment probabilities}
 
-\item{deg.hyp}{= hypothetical degree sequence, vector of integers where even sum
-hypothetical degree sequence:
- if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
- if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
- if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
- if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data}
+\item{m.mod}{= edge multiplicity sequence}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
