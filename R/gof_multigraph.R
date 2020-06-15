@@ -1,15 +1,15 @@
 #' @title Goodness of Fit Tests for Random Multigraph Models
-#' @description  Goodness of fits tests of multigraph models obtained by random stub matching (RSM) and  by independent edge assignments (IEA),
-#' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment
+#' @description  Goodness of fits tests of multigraph models obtained by random stub matching (RSM) and by independent edge assignments (IEA),
+#' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 #' @param m number of edges
-#' @param  model = assumed model, either RSM, IEAS or ISA
-#' @param deg.mod = modelled degree sequence
+#' @param model = assumed model, either RSM, IEAS or ISA
+#' @param deg.mod = modelled degree sequence, vector of integers where even sum
 #' @param hyp = hypothesis, either IEAS or ISA
-#' @param vechyp = hypothetical degree sequence
+#' @param deg.hyp = hypothetical degree sequence, vector of integers where even sum
 #'  hypothetical degree sequence:
-#'   if 'IEA': d = deg.hyp fully specified
-#'   if 'ISA': p = deg.hyp/2m fully specified
-#'   if 'IEA' and deg.hyp = 0, d estimated from edge mutliplicity sequence
+#'   if 'IEAS': d = IEAS model with fully specified degree sequence deg.hyp
+#'   if 'ISA': p = ISA model with with fully specified stub assignment probabilities deg.hyp/2m
+#'   if 'IEA': and deg.hyp = 0, d estimated from edge mutliplicity sequence
 #'   if 'ISA' and deg.hyp = 0, p estimated from edge mutliplicity sequence
 #' @return to be completed
 #' @details  to be completed
