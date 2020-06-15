@@ -8,10 +8,10 @@
 #' @param hyp  hypothesis, either IEAS or ISA
 #' @param deg.hyp  hypothetical degree sequence, vector of integers with even sum
 #'  hypothetical degree sequence: \cr
-#'   if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp
-#'   if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m
-#'   if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data
-#'   if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data
+#'   if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+#'   if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+#'   if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
+#'   if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of divergence statistic A}
@@ -25,7 +25,7 @@
 #' @author Termeh Shafie
 #' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#'
+#' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 #' @examples
 #' @export
