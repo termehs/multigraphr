@@ -18,7 +18,7 @@
 #'  \item{summary}{Expected value and variances of test statistics, critical values and significance level
 #'  according to asymptotic chi2-distribution, power of tests}
 #'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted $\chi^2$-distribution}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
 #'  \item{degrees.of.freedom}{Degrees of freedom for test performed}
 #' @details  to be completed
