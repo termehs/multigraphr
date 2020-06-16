@@ -46,11 +46,31 @@ and the expected multiplicity sequence according to a simple or composite hypoth
 Test statistics of Pearson type (S) and of information divergence (A) type are used.
 }
 \examples{
-# testing simple IEAS(\bf{d}_0) hypotheses against IEAS(\bf{d}) models on a multigrpah
-# with n = 4 nodes and m = 10 edges.
+## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
+## an IEAS model with degree sequence [14,2,2,2] on a multigrpah
+with n = 4 nodes and m = 10 edges.
 deg.mod <- c(14,2,2,2)
 deg.hyp <- c(6,6,6,2)
-gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
+test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
+
+## Non-null distributiona of test statistics S and A are given by
+test1$probS
+test1$probA
+
+#' ## Testing a composite IEAS hypothesis with degree sequence [15,15,15,15] against
+## an RSM model with degree sequence [15,15,15,15] on a multigrpah
+with n = 4 nodes and m = 30 edges.
+deg.mod <- c(15,15,15,15)
+deg.hyp <- c(15,15,15,15)
+test2 <- gof_multigraph <- (30, 'RSM', deg.mod, 'IEAS', deg.hyp)
+
+## Non-null distributions of test statistics S and A are given by
+test2$probS
+test2$probA
+
+## Summary of above tests
+test1$summary
+test2$summary
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
