@@ -33,7 +33,7 @@
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' # Testing a simple IEAS hypothesis
+#' ## Testing a simple IEAS hypothesis
 #' # with degree sequence [6,6,6,2] against
 #' # an IEAS model with degree sequence [14,2,2,2]
 #' # on a multigrpah with n = 4 nodes and m = 10 edges.
@@ -45,7 +45,7 @@
 #' test1$probS
 #' test1$probA
 #'
-#' # Testing a composite IEAS hypothesis
+#' ## Testing a composite IEAS hypothesis
 #' # with degree sequence [15,15,15,15] against
 #' # an RSM model with degree sequence [15,15,15,15]
 #' # on a multigrpah with n = 4 nodes and m = 30 edges.
