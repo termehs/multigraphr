@@ -3,7 +3,7 @@
 #' information divergence (A) test statistics under the random stub matching (RSM)
 #' and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or
-#' independent stub assignment (ISA)
+#' independent stub assignment (ISA).
 #' @param m number of edges
 #' @param model assumed model, either RSM, IEAS or ISA
 #' @param deg.mod  modelled degree sequence, vector of integers with even sum
@@ -23,13 +23,21 @@
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
 #'  \item{degrees.of.freedom}{Degrees of freedom for test performed}
-#' @details  to be completed
+#' @details The tests are performed using goodness-of-fit measures between the
+#' edge multiplicity sequence of an observed multigraph,
+#' and the expected multiplicity sequence according to a simple or composite hypothesis.
+#' Test statistics of Pearson type (S) and of information divergence (A) type are used.
 #' @author Termeh Shafie
 #' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
+#' # testing simple IEAS(\bf{d}_0) hypotheses against IEAS(\bf{d}) models on a multigrpah
+#' # with n = 4 nodes and m = 10 edges.
+#' deg.mod <- c(14,2,2,2)
+#' deg.hyp <- c(6,6,6,2)
+#' gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 #' @export
 #'
 gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
