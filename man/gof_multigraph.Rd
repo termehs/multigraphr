@@ -46,9 +46,10 @@ and the expected multiplicity sequence according to a simple or composite hypoth
 Test statistics of Pearson type (S) and of information divergence (A) type are used.
 }
 \examples{
-## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
-## an IEAS model with degree sequence [14,2,2,2] on a multigrpah
-with n = 4 nodes and m = 10 edges.
+# Testing a simple IEAS hypothesis
+# with degree sequence [6,6,6,2] against
+# an IEAS model with degree sequence [14,2,2,2]
+# on a multigrpah with n = 4 nodes and m = 10 edges.
 deg.mod <- c(14,2,2,2)
 deg.hyp <- c(6,6,6,2)
 test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
@@ -57,9 +58,10 @@ test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 test1$probS
 test1$probA
 
-#' ## Testing a composite IEAS hypothesis with degree sequence [15,15,15,15] against
-## an RSM model with degree sequence [15,15,15,15] on a multigrpah
-with n = 4 nodes and m = 30 edges.
+# Testing a composite IEAS hypothesis
+# with degree sequence [15,15,15,15] against
+# an RSM model with degree sequence [15,15,15,15]
+# on a multigrpah with n = 4 nodes and m = 30 edges.
 deg.mod <- c(15,15,15,15)
 deg.hyp <- c(15,15,15,15)
 test2 <- gof_multigraph <- (30, 'RSM', deg.mod, 'IEAS', deg.hyp)
