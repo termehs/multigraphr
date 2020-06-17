@@ -7,15 +7,16 @@
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
 \arguments{
-\item{m}{number of edges}
+\item{m}{integer giving number of edges in multigraph}
 
-\item{dof}{degrees of freedom for test}
+\item{dof}{integer giving degrees of freedom of test}
 
-\item{prob.mg}{probability distribtuion of multigrpahs under specified model}
+\item{m.seq}{vector of integers representing all possible multigraps}
 
-\item{Q.seq}{edge assignment probabilities}
+\item{prob.mg}{probability distribution of multigraphs under specified model}
 
-\item{m.mod}{edge multiplicity sequence}
+\item{Q.seq}{A numeric vector representing the edge assignment probabilities
+to all possible vertex pair sites}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
@@ -41,7 +42,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of 
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 }
 \seealso{
-[gof_multigraph]
+[gof_multigraph],[edge_assignment_probs],[nsumk],[rsm_model]
 }
 \author{
 Termeh Shafie

@@ -7,7 +7,7 @@
 gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 }
 \arguments{
-\item{m}{integer indicating number of edges}
+\item{m}{integer giving number of edges in multigraph}
 
 \item{model}{character string representing assumed model, either RSM, IEAS or ISA}
 

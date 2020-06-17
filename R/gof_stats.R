@@ -5,8 +5,9 @@
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test
 #' @param m.seq  vector of integers representing all possible multigraps
-#' @param prob.mg  probability distribtuion of multigrpahs under specified model
-#' @param Q.seq  edge assignment probabilities
+#' @param prob.mg  probability distribution of multigraphs under specified model
+#' @param Q.seq  A numeric vector representing the edge assignment probabilities
+#' to all possible vertex pair sites
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of divergence statistic A}
@@ -18,7 +19,7 @@
 #'  \item{degrees.of.freedom}{Degrees of freedom for test performed}
 #' @details  to be completed
 #' @author Termeh Shafie
-#' @seealso [gof_multigraph]
+#' @seealso [gof_multigraph],[edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.

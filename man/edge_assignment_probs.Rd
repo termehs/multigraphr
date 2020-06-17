@@ -7,14 +7,15 @@
 edge_assignment_probs(m, deg.seq, model)
 }
 \arguments{
-\item{m}{integer number of edges}
+\item{m}{integer giving number of edges in multigraph}
 
 \item{deg.seq}{vector of integers with sum 2m representing the degree sequence of the multigraph}
 
 \item{model}{character string, either IEAS or ISA}
 }
 \value{
-A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
+A numeric vector Q.seq representing the edge assignment probabilities
+to all possible vertex pair sites
 }
 \description{
 Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
