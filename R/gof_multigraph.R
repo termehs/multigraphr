@@ -4,7 +4,7 @@
 #' and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or
 #' independent stub assignment (ISA).
-#' @param m integer indicating number of edges
+#' @param m integer giving number of edges in multigraph
 #' @param model character string representing assumed model, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
 #' the modelled degree sequence of the multigraph

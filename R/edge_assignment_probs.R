@@ -2,7 +2,7 @@
 #' @description Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
 #' model can be approxiated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
 #' the ISA (independent stub assignment) model.
-#' @param m integer number of edges
+#' @param m integer giving number of edges in multigraph
 #' @param deg.seq vector of integers with sum 2m representing the degree sequence of the multigraph
 #' @param model character string, either IEAS or ISA
 #' @return  A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites

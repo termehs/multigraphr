@@ -2,7 +2,7 @@
 #' @description  Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
 #' under the random stub matching (RSM) and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
-#' @param m number of edges
+#' @param m integer giving number of edges in multigraph
 #' @param dof  degrees of freedom for test
 #' @param m.mod  edge multiplicity sequence
 #' @param prob.mg  probability distribtuion of multigrpahs under specified model
