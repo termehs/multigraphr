@@ -8,17 +8,18 @@
 #' @return  A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
 #' @details The IEAS and ISA edge assignment probabilities, to
 #' all possible vertext pairs are calculated given a fixed degree sequence \emph{deq.seq}
-#' under IEAS and \emph{deg.seq/2m} under ISA.
+#' under IEAS and \emph{deg.seq/2m} under ISA. Number of possible vertex pair sites is given by
+#' \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' ## Under the IEAS model
-#' edge_assignment_probs(m = 8, deg.seq = c(2,2,2,2), model = 'IEAS)
+#' ## Under the IEAS model with 10 possible vertex pair sites (4 vertices)
+#' edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
 #'
-#' #' ## Under the IEAS model
-#' edge_assignment_probs(m = 8, deg.seq = c(2,2,2,2), model = 'IEAS)
+#' #' ## Under the ISA model with 21 possible vertex pair sites (6 vertices)
+#' edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
 #' @export
 #'
 edge_assignment_probs <- function(m, deg.seq, model) {
