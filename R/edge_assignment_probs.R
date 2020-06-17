@@ -3,7 +3,7 @@
 #' model can be approxiated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
 #' the ISA (independent stub assignment) model.
 #' @param m integer number of edges
-#' @param deg.seq vector of integers with even sum representing the degree sequence of the multigraph
+#' @param deg.seq vector of integers with sum 2m representing the degree sequence of the multigraph
 #' @param model either
 #' @return  A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
 #' @details The IEAS and ISA edge assignment probabilities, to
@@ -15,7 +15,10 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## Under the IEAS model
+#' edge_assignment_probs(m = 8, deg.seq = c(2,2,2,2), model = 'IEAS)
 #'
+#' #' ## Under the IEAS model
+#' edge_assignment_probs(m = 8, deg.seq = c(2,2,2,2), model = 'IEAS)
 #' @export
 #'
 edge_assignment_probs <- function(m, deg.seq, model) {

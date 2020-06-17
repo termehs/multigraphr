@@ -9,7 +9,7 @@ edge_assignment_probs(m, deg.seq, model)
 \arguments{
 \item{m}{integer number of edges}
 
-\item{deg.seq}{vector of integers with even sum representing the degree sequence of the multigraph}
+\item{deg.seq}{vector of integers with sum 2m representing the degree sequence of the multigraph}
 
 \item{model}{either}
 }
@@ -25,10 +25,6 @@ the ISA (independent stub assignment) model.
 The IEAS and ISA edge assignment probabilities, to
 all possible vertext pairs are calculated given a fixed degree sequence \emph{deq.seq}
 under IEAS and \emph{deg.seq/2m} under ISA.
-}
-\examples{
-## Under the IEAS model
-
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.

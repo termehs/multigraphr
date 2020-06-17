@@ -11,12 +11,12 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 
 \item{model}{assumed model, either RSM, IEAS or ISA}
 
-\item{deg.mod}{vector of integers with even sum representing
+\item{deg.mod}{vector of integers with sum 2m representing
 the modelled degree sequence of the multigraph}
 
 \item{hyp}{testing hypothesis, either IEAS or ISA}
 
-\item{deg.hyp}{vector of integers with even sum representing the hypothetical
+\item{deg.hyp}{vector of integers with sum 2m representing the hypothetical
 degree sequence of the multigraph: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
