@@ -7,20 +7,21 @@
 gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 }
 \arguments{
-\item{m}{number of edges}
+\item{m}{integer indicating number of edges}
 
 \item{model}{assumed model, either RSM, IEAS or ISA}
 
-\item{deg.mod}{modelled degree sequence, vector of integers with even sum}
+\item{deg.mod}{vector of integers with even sum representing
+the modelled degree sequence of the multigraph}
 
-\item{hyp}{hypothesis, either IEAS or ISA}
+\item{hyp}{testing hypothesis, either IEAS or ISA}
 
-\item{deg.hyp}{hypothetical degree sequence, vector of integers with even sum
-hypothetical degree sequence: \cr
- - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
- - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
- - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
- - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr}
+\item{deg.hyp}{vector of integers with even sum representing the hypothetical
+degree sequence of the multigraph: \cr
+  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
+  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}

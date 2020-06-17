@@ -6,8 +6,15 @@
 \usage{
 edge_assignment_probs(m, deg.seq, model)
 }
+\arguments{
+\item{m}{integer number of edges}
+
+\item{deg.seq}{vector of integers with even sum representing the degree sequence of the multigraph}
+
+\item{model}{either}
+}
 \value{
-A vector Q.seq giving the edge assignment probabilities to all possible vertex pair sites
+A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
 }
 \description{
 Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
@@ -15,11 +22,18 @@ model can be approxiated by the IEA model. This is done by either the IEAS (inde
 the ISA (independent stub assignment) model.
 }
 \details{
-To be completed
+The IEAS and ISA edge assignment probabilities, to
+all possible vertext pairs are calculated given a fixed degree sequence \emph{deq.seq}
+under IEAS and \emph{deg.seq/2m} under ISA.
+}
+\examples{
+## Under the IEAS model
+
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+\cr
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \author{
 Termeh Shafie
