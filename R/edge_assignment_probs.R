@@ -2,14 +2,15 @@
 #' @description Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
 #' model can be approxiated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
 #' the ISA (independent stub assignment) model.
-#' @param deg.seq
-#' @return  A vector Q.seq giving the edge assignment probabilities to all possible vertex pair sites
-#' @details  To be completed
+#' @param m integer number of edges
+#' @param deg.seq vector of integers with even sum representing the degree seuqence of the multigraph
+#' @return  A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
+#' @details To be completed
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' \cr
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' @export
 #'
 edge_assignment_probs <- function(m, deg.seq, model) {
   n <- length(deg.seq)
