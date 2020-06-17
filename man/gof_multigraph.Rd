@@ -9,12 +9,12 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 \arguments{
 \item{m}{integer indicating number of edges}
 
-\item{model}{assumed model, either RSM, IEAS or ISA}
+\item{model}{character string representing assumed model, either RSM, IEAS or ISA}
 
 \item{deg.mod}{vector of integers with sum 2m representing
 the modelled degree sequence of the multigraph}
 
-\item{hyp}{testing hypothesis, either IEAS or ISA}
+\item{hyp}{character string representing testing hypothesis, either IEAS or ISA}
 
 \item{deg.hyp}{vector of integers with sum 2m representing the hypothetical
 degree sequence of the multigraph: \cr

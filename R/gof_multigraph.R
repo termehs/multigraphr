@@ -5,10 +5,10 @@
 #' where the latter is either independent edge assignments of stubs (IEAS) or
 #' independent stub assignment (ISA).
 #' @param m integer indicating number of edges
-#' @param model assumed model, either RSM, IEAS or ISA
+#' @param model character string representing assumed model, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
 #' the modelled degree sequence of the multigraph
-#' @param hyp  testing hypothesis, either IEAS or ISA
+#' @param hyp  character string representing testing hypothesis, either IEAS or ISA
 #' @param deg.hyp vector of integers with sum 2m representing the hypothetical
 #' degree sequence of the multigraph: \cr
 #'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr

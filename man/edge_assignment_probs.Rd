@@ -11,7 +11,7 @@ edge_assignment_probs(m, deg.seq, model)
 
 \item{deg.seq}{vector of integers with sum 2m representing the degree sequence of the multigraph}
 
-\item{model}{either}
+\item{model}{character string, either IEAS or ISA}
 }
 \value{
 A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites

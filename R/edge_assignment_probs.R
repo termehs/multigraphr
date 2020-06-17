@@ -4,7 +4,7 @@
 #' the ISA (independent stub assignment) model.
 #' @param m integer number of edges
 #' @param deg.seq vector of integers with sum 2m representing the degree sequence of the multigraph
-#' @param model either
+#' @param model character string, either IEAS or ISA
 #' @return  A vector Q.seq representing the edge assignment probabilities to all possible vertex pair sites
 #' @details The IEAS and ISA edge assignment probabilities, to
 #' all possible vertext pairs are calculated given a fixed degree sequence \emph{deq.seq}
