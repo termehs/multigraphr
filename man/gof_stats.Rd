@@ -34,7 +34,11 @@ under the random stub matching (RSM) and by independent edge assignments (IEA) m
 where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 }
 \details{
-to be completed
+The tests are performed using goodness-of-fit measures between the
+edge multiplicity sequence of an observed multigraph,
+and the expected multiplicity sequence according to a simple or composite hypothesis.
+Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
+of tests given these two statistics are given as output.
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
