@@ -2,28 +2,30 @@
 % Please edit documentation in R/rsm_model.R
 \name{rsm_model}
 \alias{rsm_model}
-\title{Random Stub Matching model}
+\title{Random stub matching model for multigraphs}
 \usage{
 rsm_model(deg.seq)
 }
 \arguments{
-\item{deg.seq}{Integer valued vector representing the degree sequence of a multigraph}
+\item{deg.seq}{Vctor of integers representing the degree sequence of a multigraph}
 }
 \value{
 all multigraphs as represented by their edge multiplicity sequences,
-probability distrbution of the multigrpahs, and several multigraph statistics such as number of loops, number of multipl edges
+probability distrbution of the multigraphs, and several multigraph statistics such as number of loops, number of multipl edges
 # and other complexity indiices
 }
 \description{
-Given a degree sequence, this function finds all unique multigraphs represented  by their edge multiplicity sequences
-compelxity statistics, together with their probability distributions
+Given a degree sequence, this function finds all unique multigraphs represented
+by their edge multiplicity sequences
+complexity statistics, together with their probability distributions
 }
 \details{
 To be completed
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
+\cr
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 }
 \author{
 Termeh Shafie

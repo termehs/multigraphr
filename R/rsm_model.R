@@ -2,14 +2,15 @@
 #' @description  Given a degree sequence, this function finds all unique multigraphs represented
 #' by their edge multiplicity sequences
 #' complexity statistics, together with their probability distributions
-#' @param deg.seq Integer valued vector representing the degree sequence of a multigraph
+#' @param deg.seq Vctor of integers representing the degree sequence of a multigraph
 #' @return all multigraphs as represented by their edge multiplicity sequences,
-#' probability distrbution of the multigrpahs, and several multigraph statistics such as number of loops, number of multipl edges
+#' probability distrbution of the multigraphs, and several multigraph statistics such as number of loops, number of multipl edges
 #' # and other complexity indiices
 #' @details  To be completed
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
+#' \cr
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 #' @examples
 #' @export
 #'
