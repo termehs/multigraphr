@@ -7,7 +7,7 @@
 iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 }
 \arguments{
-\item{adj}{Integer matrix}
+\item{adj}{Matrix of integers}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
@@ -16,12 +16,10 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 \item{K}{Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix}
 
 \item{apx}{Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-the statistics under the random stub matching model given observed degree sequence (uses function 'get_degree_seq')}
+the statistics under the random stub matching model given observed degree sequence}
 }
 \value{
-List including number of multigraphs under the IEA model,
-summary and interval estimates for number of loops and number of non-loos (M_1 and M__2),
-summary and interval estimates for frequencies of edge multiplicites R_k
+
 }
 \description{
 Summary of statistics estimated for
@@ -33,9 +31,16 @@ The edge assignment probabilities are estimated using the observed edge multipli
 \details{
 To be completed
 }
+\examples{
+
+}
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+\cr
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+}
+\seealso{
+[get_degree_seq]
 }
 \author{
 Termeh Shafie

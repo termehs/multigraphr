@@ -4,21 +4,26 @@
 #' given observed adjacency matrix.
 #' The edge assignment probabilities are estimated using the observed edge multiplicities
 #' (maximum likelihood estimates)
-#' @param adj Integer matrix
+#' @param adj Matrix of integers
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with the matrix diagonal double counted)
 #' @param K  Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix
 #' @param apx Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-#' the statistics under the random stub matching model given observed degree sequence (uses function 'get_degree_seq')
-#' @return List including number of multigraphs under the IEA model,
-#' summary and interval estimates for number of loops and number of non-loos (M_1 and M__2),
-#' summary and interval estimates for frequencies of edge multiplicites R_k
+#' the statistics under the random stub matching model given observed degree sequence
+#' @return
+#' \item{nr.multigraphs}{Number of multigrpahs (outcome space for multigraph). Not shown if umber of nodes
+#' \emph{n}>6 and/or number of edges \emph{m} > 20}
+#' \item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2}))}
+#' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{Rk}
 #' @details  To be completed
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+#' @seealso [get_degree_seq]
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' \cr
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
+#'
 #' @export
 #'
 iea_model <-
@@ -153,7 +158,7 @@ iea_model <-
       c("Observed", "Expected", "Variance", "Upper 95%", "Lower 95%")
 
 
-    # the covariance matrix for local edge multiplicities (delete??)
+    # the covariance matrix for local edge multiplicities
     sigma <- matrix(0, r, r)
     for (i in 1:r) {
       for (j in 1:r) {
