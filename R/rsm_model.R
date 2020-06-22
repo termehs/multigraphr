@@ -1,6 +1,7 @@
-#' @title Random Stub Matching model
-#' @description  Given a degree sequence, this function finds all unique multigraphs represented  by their edge multiplicity sequences
-#' compelxity statistics, together with their probability distributions
+#' @title Random stub matching model for multigraphs
+#' @description  Given a degree sequence, this function finds all unique multigraphs represented
+#' by their edge multiplicity sequences
+#' complexity statistics, together with their probability distributions
 #' @param deg.seq Integer valued vector representing the degree sequence of a multigraph
 #' @return all multigraphs as represented by their edge multiplicity sequences,
 #' probability distrbution of the multigrpahs, and several multigraph statistics such as number of loops, number of multipl edges
