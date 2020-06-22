@@ -7,7 +7,7 @@
 get_degree_seq(adj, type = "multigraph")
 }
 \arguments{
-\item{adj}{Integer matrix}
+\item{adj}{Matrix of integers}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
@@ -17,14 +17,15 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 Vector of integers representing the degree sequence
 }
 \description{
-Gives the degree sequence of observed graph or multigraph
+Gives the degree sequence given the adjancecy matrix of an observed graph or multigraph
 }
 \details{
 To be completed
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+\cr
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \author{
 Termeh Shafie

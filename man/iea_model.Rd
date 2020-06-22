@@ -2,7 +2,7 @@
 % Please edit documentation in R/iea_model.R
 \name{iea_model}
 \alias{iea_model}
-\title{Complexity statistics under the IEA model for multigraphs}
+\title{Complexity Atatistics under the IEA model for multigraphs}
 \usage{
 iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 }

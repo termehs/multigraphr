@@ -1,4 +1,4 @@
-#' @title Complexity statistics under the IEA model for multigraphs
+#' @title Complexity Atatistics under the IEA model for multigraphs
 #' @description Summary of statistics estimated for
 #' global structure of random multigraphs under independent edge assignment model
 #' given observed adjacency matrix.

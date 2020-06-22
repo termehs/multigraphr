@@ -1,14 +1,15 @@
 #' @title Degree sequence of a multigraph
-#' @description Gives the degree sequence of observed graph or multigraph
-#' @param adj Integer matrix
+#' @description Gives the degree sequence given the adjancecy matrix of an observed graph or multigraph
+#' @param adj Matrix of integers
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with the elements of the matrix diagonal double counted)
 #' @return Vector of integers representing the degree sequence
 #' @details To be completed
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' \cr
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' @export
 #'

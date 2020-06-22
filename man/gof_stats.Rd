@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_stats.R
 \name{gof_stats}
 \alias{gof_stats}
-\title{Goodness of Fit Test Statistics}
+\title{Goodness of fit test statistics and cumulative distribution functions}
 \usage{
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
