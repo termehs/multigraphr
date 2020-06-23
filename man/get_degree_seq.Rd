@@ -17,10 +17,18 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 Vector of integers representing the degree sequence
 }
 \description{
-Gives the degree sequence given the adjancecy matrix of an observed graph or multigraph
+Gives the degree sequence of the adjancecy matrix of an observed graph or multigraph
 }
 \details{
-To be completed
+Gives the degree sequence of the adjancecy matrix of an observed graph or multigraph
+}
+\examples{
+ ## Generate random adjancency matrix (6 nodes)
+ A <- matrix(sample(c(0,1,2), 36, replace = TRUE), 6, 6, byrow=TRUE)
+ # If A represents for graph
+ deg.seq <- get_degree_seq(adj = A, type = 'graph' )
+ #If A represents a multigraph
+ deg.seq <- get_degree_seq(adj = A, type = 'multigraph')
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
