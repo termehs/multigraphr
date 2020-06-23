@@ -12,14 +12,21 @@ nsumk(n, k)
 \item{k}{A positive integer}
 }
 \value{
-A matrix X with nchoosek(k+n-1,n-1) rows and n columns. Each row comprises non-negative integers summing to k.
+A matrix with nchoosek(k+n-1,n-1) rows and n columns. Each row comprises non-negative integers summing to k.
 }
 \description{
 Finds ordered n-tuples of non-integers summing to k.
-Only practical for n < 15
+Only practical for n < 15.
 }
 \details{
-To be completed
+Useful for finding all possible degree sequences for a network with n nodes
+and k/2 number of edges
+}
+\examples{
+## All possible degree sequences for a network with 4 nodes and 5 edges
+D <- nsumk(4, 10)
+# Remove isolated nodes
+D <- D[-which(rowSums(D == 0) > 0), ]
 }
 \author{
 Termeh Shafie
