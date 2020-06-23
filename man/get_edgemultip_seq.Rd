@@ -2,12 +2,12 @@
 % Please edit documentation in R/get_edgemultip_seq.R
 \name{get_edgemultip_seq}
 \alias{get_edgemultip_seq}
-\title{Edge multiplicity sequences}
+\title{Edge multiplicity sequences of multigraphs of specified size}
 \usage{
 get_edgemultip_seq(adj, type = "multigraph")
 }
 \arguments{
-\item{adj}{Integer matrix}
+\item{adj}{Matrix of integers}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
@@ -20,12 +20,19 @@ All unique edge multiplicity sequences as a dataframe
 Finds all unique multigraphs represented  by their edge multiplicity sequences
 }
 \details{
-To be completed
+Finds all multigraphs as represented by their edge multiplicity sequence
+at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.
+Only practical for small multigraphs.
+}
+\examples{
+#'  ## Adjancency matrix for undirected network with 3 nodes
+ A <-  matrix(c(0, 1, 2, 1, 2, 1, 2, 1, 2), nrow=3, ncol=3)
+ get_edgemultip_seq(adj = A, 'multigraph')
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+\cr
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \author{
 Termeh Shafie

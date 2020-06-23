@@ -1,16 +1,22 @@
-#' @title Edge multiplicity sequences
+#' @title Edge multiplicity sequences of multigraphs of specified size
 #' @description  Finds all unique multigraphs represented  by their edge multiplicity sequences
-#' @param adj Integer matrix
+#' @param adj Matrix of integers
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with the elements of the matrix diagonal double counted)
 #' @return All unique edge multiplicity sequences as a dataframe
-#' @details  To be completed
+#' @details  Finds all multigraphs as represented by their edge multiplicity sequence
+#' at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.
+#' Only practical for small multigraphs.
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. *Journal of Social Structure*, 16.
-#'
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
-#'
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' \cr
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' @examples
+#' #'  ## Adjancency matrix for undirected network with 3 nodes
+#'  A <-  matrix(c(0, 1, 2, 1, 2, 1, 2, 1, 2), nrow=3, ncol=3)
+#'  get_edgemultip_seq(adj = A, 'multigraph')
+#' @export
 
 get_edgemultip_seq <- function(adj, type = 'multigraph') {
   n <- dim(adj)[1]
