@@ -23,12 +23,12 @@ Gives the degree sequence of the adjancecy matrix of an observed graph or multig
 Gives the degree sequence of the adjancecy matrix of an observed graph or multigraph
 }
 \examples{
- ## Generate random adjancency matrix (6 nodes)
- A <- matrix(sample(c(0,1,2), 36, replace = TRUE), 6, 6, byrow=TRUE)
- # If A represents for graph
- deg.seq <- get_degree_seq(adj = A, type = 'graph' )
+ ## Adjancency matrix for undirected network with 3 nodes
+ A <-  matrix(c(0, 1, 2, 1, 2, 1, 2, 1, 2), nrow=3, ncol=3)
+ #If A represents a graph
+ get_degree_seq(adj = A, type = 'graph')
  #If A represents a multigraph
- deg.seq <- get_degree_seq(adj = A, type = 'multigraph')
+ get_degree_seq(adj = A, type = 'multigraph')
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
