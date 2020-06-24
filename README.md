@@ -21,6 +21,9 @@ Multigraphs are represented by their edge multiplicity sequence, where
 the edge multiplicity denotes the number of edges at possible vertex
 pair sites.
 
+Note that some of the functions are only practical for small scale
+multigraphs.
+
 ## Random multigraph models
 
 The first model is obtained by random stub matching (RSM) given observed
@@ -73,7 +76,21 @@ The development version from [GitHub](https://github.com/) with:
 devtools::install_github("termehs/multigraphr")
 ```
 
-<!-- ## Example -->
+## Example
+
+## Theoretical Background
+
+`multigraphr` is based on the following published papers. For more
+details reagrding the theoretical background of the package, consult the
+following literature:
+
+  - Shafie, T. (2015). A multigraph approach to social network analysis.
+    *Journal of Social Structure*, 16.
+    [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
+  - Shafie, T. (2016). Analyzing local and global properties of
+    multigraphs. *The Journal of Mathematical Sociology*, 40(4),
+    239-264.
+    [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
 
 <!-- This is a basic example which shows you how to solve a common problem: -->
 
