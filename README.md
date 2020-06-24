@@ -28,19 +28,19 @@ multigraphs.
 ## Random multigraph models
 
 The first model is obtained by random stub matching (RSM) given observed
-degree sequence of a multigrpahs, so that edge assignments to vertex
+degree sequence of a multigraphs, so that edge assignments to vertex
 pair sites are dependent. The second is obtained by independent edge
 assignments (IEA) according to a common probability distribution. There
 are two ways in which an approximate IEA model can be obtained from an
-RSM model faciliating the ananlysis. These two ways are indepndent stub
-assignment (ISA) and independent edge assignment of stubs (IEAS) (Shafie
-2015;2016).
+RSM model, thus facilitating the analysis. These two ways are
+independent stub assignment (ISA) and independent edge assignment of
+stubs (IEAS) (Shafie 2015;2016).
 
 ## Complexity statistics
 
 The statistic are complexity statistics such as number of loops
-(indicator of homophily) and number of multiple edges (indicator of
-multiplexity/interlocking of ties), together with their probability
+(indicator of e.g. homophily) and number of multiple edges (indicator of
+e.g. multiplexity/interlocking), together with their probability
 distributions, moments and interval estimates.
 
 ## Goodness of fit tests
@@ -54,7 +54,7 @@ goodness-of-fit measures between the edge multiplicity sequence of an
 observed multigraph, and the expected multiplicity sequence according to
 a simple or composite hypothesis.
 
-Porbability distributions of test statistics, summary of tests, moments
+Probability distributions of test statistics, summary of tests, moments
 of tests statistics. adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
 tests are
@@ -85,9 +85,8 @@ library('multigraphr')
 
 ## Theoretical Background
 
-`multigraphr` is based on the following published papers. For more
-details regarding the theoretical background of the package, consult the
-following literature:
+For more details regarding the theoretical background of the package,
+consult the following literature which the package is based on:
 
   - Shafie, T. (2015). A multigraph approach to social network analysis.
     *Journal of Social Structure*, 16.
