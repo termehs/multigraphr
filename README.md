@@ -9,12 +9,52 @@ directly observed or aggregated by classifying or cross-classifying node
 attributes into meta nodes. For the latter case, within group edges
 correspond to self-edges (for more details see Shafie 2015;2016). See
 example below where the original graph with four node attributes (left)
-are aggregated into a multigraph
-(right).
+are aggregated into a multigraph (right).
 
 ![](mg_ex.png)
 
-## Package overview: `multigraphr`
+# Package overview: `multigraphr`
+
+Two probability models for generating undirected random multigraphs are
+implemented together with several statistics under these two models.
+Multigraphs are represented by their edge multiplicity sequence, where
+the edge multiplicity denotes the number of edges at possible vertex
+pair sites.
+
+## Random multigraph models
+
+The first model is obtained by random stub matching (RSM) given observed
+degree sequence of a multigrpahs, so that edge assignments to vertex
+pair sites are dependent. The second is obtained by independent edge
+assignments (IEA) according to a common probability distribution. There
+are two ways in which an approximate IEA model can be obtained from an
+RSM model faciliating the ananlysis. These two ways are indepndent stub
+assignment (ISA) and independent edge assignment of stubs (IEAS) (Shafie
+2015;2016).
+
+## Complexity statistics
+
+The statistic are complexity statistics such as number of loops
+(indicator of homophily) and number of multiple edges (indicator of
+multiplexity/interlocking of ties), together with their probability
+distributions, moments and interval estimates.
+
+## Goodness of fit tests
+
+Goodness of fits tests of multigraph models using Pearson (S) and
+information divergence (A) test statistics under the random stub
+matching (RSM) and by independent edge assignments (IEA) model, where
+the latter is either independent edge assignments of stubs (IEAS) or
+independent stub assignment (ISA). The tests are performed using
+goodness-of-fit measures between the edge multiplicity sequence of an
+observed multigraph, and the expected multiplicity sequence according to
+a simple or composite hypothesis.
+
+Porbability distributions of test statistics, summary of tests, moments
+of tests statistics. adjusted test statistics, critical values,
+significance level according to asymptotic distribution, and power of
+tests are
+given.
 
 ## Installation
 
