@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 # Overview: multigraphs and applicability
-Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges (for more details see Shafie 2015;2016). See example below where the original graph with four node attributes (left) are aggregated into a multigraph (right).
+Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges (for more details see Shafie 2015;2016). See example below where the original graph with 15 nodes and 12 edges (left) is aggregated into a small multigraph with 4 nodes corresponding the available node attributes (right).
 
 ![](mg_ex.png){width=250px}
 
@@ -60,8 +60,39 @@ devtools::install_github("termehs/multigraphr")
 ## Example
 ```{r eval=TRUE}
 library('multigraphr')
-
 ```
+Consider a small multigraph example with 3 nodes and the following adjacency matrix:
+```{r adj, include=TRUE, results='markup', message=FALSE}
+A <-  matrix(c(1, 1, 0, 
+               1, 2, 2, 
+               0, 2, 0), 
+             nrow = 3, ncol = 3)
+A
+```
+The degree seuence of the multigraph has double counted diagonals (stubs for loops) and is given by
+```{r degseq, include=TRUE, results='markup', message=FALSE}
+D <- get_degree_seq(adj = A, type = 'graph')
+D
+```
+The RSM model applied shows there are 7 possible multigraphs given this fixed degree sequence, as represented by their multicplicity sequence  `m.seq`:
+```{r rsm_ex1, include=TRUE, results='markup', message=FALSE}
+rsm_1 <- rsm_model(deg.seq = D)
+rsm_1$m.seq
+```
+with probability disitrbutions of multigraphs and their number of loops, number of multiple and whether they are simple graphs given by
+```{r rsm_ex2, include=TRUE, results='markup', message=FALSE}
+rsm_1$prob.dists
+```
+First two moments of statistics 'number of loops' and 'number of multiple edges' are given by
+```{r rsm_ex3, include=TRUE, results='markup', message=FALSE}
+rsm_1$stat.moms
+```
+<!-- The IEA model applied shows that there are -->
+<!-- ```{r iea_ex1, include=TRUE, results='markup', message=FALSE} -->
+<!-- iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = FALSE) -->
+<!-- iea_1 -->
+<!-- ``` -->
+
 
 ## Theoretical Background
 For more details regarding the

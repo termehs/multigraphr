@@ -185,10 +185,10 @@ rsm_model <- function(deg.seq) {
       'simple' = simple
     ))
   stat.moms <- as.data.frame(cbind(
-    'Eloops' = Em1,
-    'Vloops' = Vm1,
-    'Emultiedges' = Em2,
-    'Vmultiedges' = Vm1
+    'E(loops)' = Em1,
+    'V(loops)' = Vm1,
+    'E(multiedges)' = Em2,
+    'V(multiedges)' = Vm1
   ))
 
   rsm.out <-

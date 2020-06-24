@@ -8,8 +8,9 @@ loops (self edges) are permitted. These data structures can be either
 directly observed or aggregated by classifying or cross-classifying node
 attributes into meta nodes. For the latter case, within group edges
 correspond to self-edges (for more details see Shafie 2015;2016). See
-example below where the original graph with four node attributes (left)
-are aggregated into a multigraph (right).
+example below where the original graph with 15 nodes and 12 edges (left)
+is aggregated into a small multigraph with 4 nodes corresponding the
+available node attributes (right).
 
 ![](mg_ex.png)
 
@@ -82,6 +83,81 @@ devtools::install_github("termehs/multigraphr")
 ``` r
 library('multigraphr')
 ```
+
+Consider a small multigraph example with 3 nodes and the following
+adjacency matrix:
+
+``` r
+A <-  matrix(c(1, 1, 0, 
+               1, 2, 2, 
+               0, 2, 0), 
+             nrow = 3, ncol = 3)
+A
+#>      [,1] [,2] [,3]
+#> [1,]    1    1    0
+#> [2,]    1    2    2
+#> [3,]    0    2    0
+```
+
+The degree seuence of the multigraph has double counted diagonals (stubs
+for loops) and is given by
+
+``` r
+D <- get_degree_seq(adj = A, type = 'graph')
+D
+#> [1] 2 3 7
+```
+
+The RSM model applied shows there are 7 possible multigraphs given this
+fixed degree sequence, as represented by their multicplicity sequence
+`m.seq`:
+
+``` r
+rsm_1 <- rsm_model(deg.seq = D)
+rsm_1$m.seq
+#>      [,1] [,2] [,3] [,4] [,5] [,6]
+#> [1,]    1    0    0    1    1    3
+#> [2,]    1    0    0    0    3    2
+#> [3,]    0    2    0    0    1    3
+#> [4,]    0    1    1    1    0    3
+#> [5,]    0    1    1    0    2    2
+#> [6,]    0    0    2    1    1    2
+#> [7,]    0    0    2    0    3    1
+```
+
+with probability disitrbutions of multigraphs and their number of loops,
+number of multiple and whether they are simple graphs given by
+
+``` r
+rsm_1$prob.dists
+#>     prob.rsm loops multiedges simple
+#> 1 0.03030303     5          1      0
+#> 2 0.06060606     3          3      0
+#> 3 0.06060606     3          3      0
+#> 4 0.06060606     4          2      0
+#> 5 0.36363636     2          4      0
+#> 6 0.18181818     3          3      0
+#> 7 0.24242424     1          5      0
+```
+
+First two moments of statistics ‘number of loops’ and ‘number of
+multiple edges’ are given by
+
+``` r
+rsm_1$stat.moms
+#>   E(loops)  V(loops) E(multiedges) V(multiedges)
+#> 1 2.272727 0.9862259      3.727273     0.9862259
+```
+
+<!-- The IEA model applied shows that there are -->
+
+<!-- ```{r iea_ex1, include=TRUE, results='markup', message=FALSE} -->
+
+<!-- iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = FALSE) -->
+
+<!-- iea_1 -->
+
+<!-- ``` -->
 
 ## Theoretical Background
 
