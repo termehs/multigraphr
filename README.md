@@ -19,7 +19,8 @@ Two probability models for generating undirected random multigraphs are
 implemented together with several statistics under these two models.
 Multigraphs are represented by their edge multiplicity sequence, where
 the edge multiplicity denotes the number of edges at possible vertex
-pair sites.
+pair sites ordered according to *(1,1) \< (1,2) \<···\< (1,n) \< (2,2)
+\< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
 
 Note that some of the functions are only practical for small scale
 multigraphs.
@@ -81,7 +82,7 @@ devtools::install_github("termehs/multigraphr")
 ## Theoretical Background
 
 `multigraphr` is based on the following published papers. For more
-details reagrding the theoretical background of the package, consult the
+details regarding the theoretical background of the package, consult the
 following literature:
 
   - Shafie, T. (2015). A multigraph approach to social network analysis.

@@ -18,7 +18,9 @@ Multigraphs are network representations in which multiple edges and edge loops (
 ![](mg_ex.png){width=250px}
 
 # Package overview: `multigraphr` 
-Two probability models for generating undirected random multigraphs are implemented together with several statistics under these two models. Multigraphs are represented by their edge multiplicity sequence, where the edge multiplicity denotes the number of edges at possible vertex pair sites.
+Two probability models for generating undirected random multigraphs are implemented together with several statistics under these two models. Multigraphs are represented by their edge multiplicity sequence, where the edge multiplicity denotes the number of edges at possible vertex pair sites ordered according to
+*(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
+where *n* is number of nodes.
 
 Note that some of the functions are only practical for small scale multigraphs.
 
@@ -60,7 +62,7 @@ devtools::install_github("termehs/multigraphr")
 
 
 ## Theoretical Background
-`multigraphr` is based on the following published papers. For more details reagrding the
+`multigraphr` is based on the following published papers. For more details regarding the
 theoretical background of the package, consult the following literature:
 
 - Shafie, T. (2015). A multigraph approach to social network analysis. *Journal of Social Structure*, 16. [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
