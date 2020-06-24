@@ -1,17 +1,25 @@
 #' @title Random stub matching model for multigraphs
-#' @description  Given a degree sequence, this function finds all unique multigraphs represented
-#' by their edge multiplicity sequences
-#' complexity statistics, together with their probability distributions
-#' @param deg.seq Vctor of integers representing the degree sequence of a multigraph
-#' @return all multigraphs as represented by their edge multiplicity sequences,
-#' probability distrbution of the multigraphs, and several multigraph statistics such as number of loops, number of multipl edges
-#' # and other complexity indiices
+#' @description  Given the degree sequence of a multigraph,
+#' this function finds all unique multigraphs represented
+#' by their edge multiplicity sequences and different
+#' complexity statistics together with their probability distributions and moments.
+#' @param deg.seq Vector of integers representing the degree sequence of a multigraph
+#' @return
+#' \item{m.seq}{Possible multigraphs represented by edge multiplicity sequences}
+#' \item{prob.dists}{Probability distrbution of the multigraphs/edge multiplicity sequences,
+#' statistics 'number of loops', 'number of multiple edges', and 'simple graph' (logical) for each multigraph}
+#' \item{stat.moms}{First two moments of statistics 'number of loops' and 'number of multiple edges'}
 #' @details  To be completed
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
+#' D <- c(2,2,3,3) # degree sequence
+#' mod1 <- rsm_model(c(2,2,3,3))
+#' mod1$m.seq
+#' mod1$prob.dists
+#' mod1$stat.moms
 #' @export
 #'
 rsm_model <- function(deg.seq) {
