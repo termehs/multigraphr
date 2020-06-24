@@ -1,4 +1,4 @@
-#' @title Goodness of fit test statistics and cumulative distribution functions
+#' @title Probability distributions of goodness of fit test statistics and summary of tests
 #' @description  Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
 #' under the random stub matching (RSM) and by independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
@@ -10,7 +10,7 @@
 #' to all possible vertex pair sites
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
-#'  \item{probA}{Probability distribution of divergence statistic A}
+#'  \item{probA}{Probability distribution of information divergence statistic A}
 #'  \item{summary}{Expected value and variances of test statistics, critical values and significance level
 #'  according to asymptotic chi2-distribution, power of tests}
 #'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}

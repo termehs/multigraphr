@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_stats.R
 \name{gof_stats}
 \alias{gof_stats}
-\title{Goodness of fit test statistics and cumulative distribution functions}
+\title{Probability distributions of goodness of fit test statistics and summary of tests}
 \usage{
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
@@ -20,7 +20,7 @@ to all possible vertex pair sites}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
- \item{probA}{Probability distribution of divergence statistic A}
+ \item{probA}{Probability distribution of information divergence statistic A}
  \item{summary}{Expected value and variances of test statistics, critical values and significance level
  according to asymptotic chi2-distribution, power of tests}
  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
