@@ -20,7 +20,7 @@ Only practical for n < 15.
 }
 \details{
 Useful for finding all possible degree sequences for a network with n nodes
-and k/2 number of edges
+and k/2 number of edges.
 }
 \examples{
 ## All possible degree sequences for a network with 4 nodes and 5 edges

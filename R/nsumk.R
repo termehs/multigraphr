@@ -5,7 +5,7 @@
 #' @param k A positive integer
 #' @return  A matrix with nchoosek(k+n-1,n-1) rows and n columns. Each row comprises non-negative integers summing to k.
 #' @details  Useful for finding all possible degree sequences for a network with n nodes
-#' and k/2 number of edges
+#' and k/2 number of edges.
 #' @author Termeh Shafie
 #' @examples
 #' ## All possible degree sequences for a network with 4 nodes and 5 edges
