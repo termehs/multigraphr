@@ -79,6 +79,10 @@ devtools::install_github("termehs/multigraphr")
 
 ## Example
 
+``` r
+library('multigraphr')
+```
+
 ## Theoretical Background
 
 `multigraphr` is based on the following published papers. For more
