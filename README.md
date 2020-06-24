@@ -1,10 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# multigraphr
+# Overview: multigraphs and applicability
 
-Description coming
-soon…
+Multigraphs are network representations in which multiple edges and edge
+loops (self edges) are permitted. These data structures can be either
+directly observed or aggregated by classifying or cross-classifying node
+attributes into meta nodes. For the latter case, within group edges
+correspond to self-edges (for more details see Shafie 2015;2016). See
+example below where the original graph with four node attributes (left)
+are aggregated into a multigraph
+(right).
+
+![](mg_ex.png)
+
+## Package overview: `multigraphr`
 
 ## Installation
 

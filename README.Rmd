@@ -12,8 +12,13 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# multigraphr
-Description coming soon...
+# Overview: multigraphs and applicability
+Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges (for more details see Shafie 2015;2016). See example below where the original graph with four node attributes (left) are aggregated into a multigraph (right).
+
+![](mg_ex.png){width=250px}
+
+## Package overview: `multigraphr` 
+
 
 ## Installation
 
