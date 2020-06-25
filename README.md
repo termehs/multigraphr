@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Installation
+# Package overview: `multigraphr`
+
+## Installation
 
 <!-- You can install the released version of multigraphr from [CRAN](https://CRAN.R-project.org) with: -->
 
@@ -29,16 +31,15 @@ example below where the original graph with 15 nodes and 12 edges (left)
 is aggregated into a small multigraph with 4 nodes corresponding the
 available node attributes (right).
 
-![](mg_ex.png)
-
-# Package overview: `multigraphr`
+![](mg_ex.png) Multigraphs are represented by their edge multiplicity
+sequence, where the edge multiplicity denotes the number of edges at
+possible vertex pair sites ordered according to *(1,1) \< (1,2) \<···\<
+(1,n) \< (2,2) \< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
 
 Two probability models for generating undirected random multigraphs are
-implemented together with several statistics under these two models.
-Multigraphs are represented by their edge multiplicity sequence, where
-the edge multiplicity denotes the number of edges at possible vertex
-pair sites ordered according to *(1,1) \< (1,2) \<···\< (1,n) \< (2,2)
-\< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
+implemented in the package together with several statistics under these
+two models. Moreover, functions for goodness of fit tests are available
+for the presented models.
 
 Note that some of the functions are only practical for small scale
 multigraphs.
@@ -119,7 +120,7 @@ rsm_1$prob.dists
 #> 7 0.24242424     1          5      0
 ```
 
-Consider using the IEA model to aproxiamte the RSM model so that edge
+Consider using the IEA model to approximate the RSM model so that edge
 assignment probabilities are functions of observed degree sequence. Note
 that the outcome space for multigraphs is much bigger than for the RSM
 model so the multiplicity sequences are not printed (they can be found
