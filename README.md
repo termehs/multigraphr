@@ -1,6 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/networkdata)](https://cran.r-project.org/package=multigrapr)
+<!-- badges: end -->
+
 # Package overview: `multigraphr`
 
 ## Installation

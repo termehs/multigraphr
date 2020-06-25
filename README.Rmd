@@ -12,6 +12,12 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/networkdata)](https://cran.r-project.org/package=multigrapr)
+<!-- badges: end -->
+
+
 # Package overview: `multigraphr` 
 ## Installation
 
