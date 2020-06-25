@@ -195,6 +195,125 @@ of tests statistics. adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
 tests are given.
 
+### Example
+
+Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
+
+  - Testing a simple IEAS hypothesis with degree sequence *(5,5,5,5)*
+    against a RSM model with degree sequence
+*(14,2,2,2)*:
+
+<!-- end list -->
+
+``` r
+gof_1 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(5,5,5,5))
+gof_1
+#> $probS
+#>      S=s  P(S=s)  P(S<s)
+#> 1  29.52 0.34675 0.34675
+#> 2  42.82 0.41610 0.76285
+#> 3  45.48 0.10402 0.86687
+#> 4  61.44 0.06935 0.93622
+#> 5  62.58 0.03467 0.97090
+#> 6  64.48 0.01734 0.98824
+#> 7  65.24 0.00867 0.99690
+#> 8  85.38 0.00165 0.99856
+#> 9  88.04 0.00124 0.99979
+#> 10 88.80 0.00021 1.00000
+#> 
+#> $probA
+#>         A=a  P(A=a)  P(A<a)
+#> 1  21.24967 0.34675 0.34675
+#> 2  22.54115 0.41610 0.76285
+#> 3  27.00793 0.06935 0.83220
+#> 4  27.14628 0.10402 0.93622
+#> 5  28.84047 0.03467 0.97090
+#> 6  32.55310 0.01734 0.98824
+#> 7  33.44560 0.00867 0.99690
+#> 8  34.58208 0.00165 0.99856
+#> 9  39.18721 0.00124 0.99979
+#> 10 40.07985 0.00021 1.00000
+#> 
+#> $summmary
+#>   stat      exp       var       cv   alpha stat>cv cv(stat) stat>cv(stat)
+#> 1    S 41.16706 115.37420 17.48528 0.04164       1 62.64954        0.0291
+#> 2    A 23.41280   8.19897 17.48528 0.04164       1 29.13957        0.0291
+#> 
+#> $adjusted.stats
+#>                   S    Sprim      Sbis         A    Aprim     Abis
+#> Exp        41.16706 41.16706  41.16706 23.412802 23.41280  23.4128
+#> Var       115.37420 82.66960 376.60594  8.198965 47.66603 121.8132
+#> Best Adj.   0.00000  1.00000   0.00000  0.000000  1.00000   0.0000
+#> 
+#> $adjusted.chi2
+#>      df(S) df(A)
+#> [1,]    41    23
+#> 
+#> $power.apx
+#>     Sprim Sbis   Aprim Abis
+#> 1 0.00046    1 0.19952    1
+#> 
+#> $degrees.of.freedom
+#> [1] 9
+```
+
+  - Testing a composite IEAS hypothesis against a RSM model with degree
+    sequence
+*(14,2,2,2)*:
+
+<!-- end list -->
+
+``` r
+gof_2 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
+gof_2
+#> $probS
+#>        S=s  P(S=s)  P(S<s)
+#> 1  1.48352 0.34675 0.34675
+#> 2  4.04121 0.41610 0.76285
+#> 3  8.37363 0.06935 0.83220
+#> 4 14.48077 0.00165 0.83385
+#> 5 19.23077 0.01734 0.85119
+#> 6 19.64835 0.10402 0.95521
+#> 7 22.62363 0.03467 0.98989
+#> 8 38.23077 0.00991 0.99979
+#> 9 57.23077 0.00021 1.00000
+#> 
+#> $probA
+#>         A=a  P(A=a)  P(A<a)
+#> 1   2.22362 0.34675 0.34675
+#> 2   3.21690 0.41610 0.76285
+#> 3   7.38562 0.06935 0.83220
+#> 4   8.76207 0.10402 0.93622
+#> 5  10.15821 0.03467 0.97090
+#> 6  12.93080 0.01734 0.98824
+#> 7  14.66173 0.00165 0.98989
+#> 8  15.70339 0.00867 0.99856
+#> 9  20.20690 0.00124 0.99979
+#> 10 22.97949 0.00021 1.00000
+#> 
+#> $summmary
+#>   stat     exp      var      cv   alpha stat>cv cv(stat) stat>cv(stat)
+#> 1    S 6.35294 51.88277 12.9282 0.04419  0.1678 20.75888       0.04479
+#> 2    A 4.29978  8.88590 12.9282 0.04419  0.0291 10.26162       0.02910
+#> 
+#> $adjusted.stats
+#>                   S     Sprim      Sbis        A    Aprim     Abis
+#> Exp        6.352943  6.352943  6.352943 4.299776 4.299776 4.299776
+#> Var       51.882769 13.453295 13.453295 8.885904 9.244037 6.162691
+#> Best Adj.  0.000000  0.000000  0.000000 0.000000 1.000000 0.000000
+#> 
+#> $adjusted.chi2
+#>      df(S) df(A)
+#> [1,]     6     4
+#> 
+#> $power.apx
+#>     Sprim    Sbis   Aprim    Abis
+#> 1 0.94255 0.99988 0.98285 0.99903
+#> 
+#> $degrees.of.freedom
+#> [1] 6
+```
+
 ## Theoretical Background
 
 For more details regarding the theoretical background of the package,

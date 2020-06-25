@@ -107,7 +107,19 @@ and the expected multiplicity sequence according to a simple or composite hypoth
 
 Probability distributions of test statistics, summary of tests, moments of tests statistics. adjusted test statistics, critical values, significance level according to asymptotic distribution, and power of tests are given.
 
+### Example
+Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
 
+- Testing a simple IEAS hypothesis with degree sequence *(5,5,5,5)* against a RSM model with degree sequence *(14,2,2,2)*:
+```{r gof_1, include=TRUE, results='markup', message=FALSE}
+gof_1 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(5,5,5,5))
+gof_1
+```
+- Testing a composite IEAS hypothesis against a RSM model with degree sequence *(14,2,2,2)*:
+```{r gof_2, include=TRUE, results='markup', message=FALSE}
+gof_2 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
+gof_2
+```
 
 
 ## Theoretical Background
