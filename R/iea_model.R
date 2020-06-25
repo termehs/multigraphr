@@ -4,15 +4,18 @@
 #' given observed adjacency matrix.
 #' The edge assignment probabilities are estimated using the observed edge multiplicities
 #' (maximum likelihood estimates)
-#' @param adj Matrix of integers
+#' @param adj Matrix of integers.
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-#' (with the matrix diagonal double counted)
-#' @param K  Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix
+#' (with the matrix diagonal double counted).
+#' @param K  Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
+#' frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.
+#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
+#' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
 #' @return
 #' \item{nr.multigraphs}{Number of unique multigraphs possible.}
-#' \item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2}))}
-#' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{Rk}
+#' \item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2})).}
+#' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{R_k}.}
 #' @details  To be completed
 #' @author Termeh Shafie
 #' @seealso [get_degree_seq]
@@ -23,10 +26,7 @@
 #'
 #' @export
 #'
-iea_model <-
-  function(adj,
-           type = 'multigraph' ,
-           K = 0) {
+  iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
     n <- dim(adj)[1]
     r <- choose(n + 1, 2)
 
@@ -51,10 +51,10 @@ iea_model <-
       K <- K
     }
 
-    if (apx == FALSE) {
-      # possible number of outcomes for edge multiplicity sequences
-      mg.outcomes <- choose(m + r - 1, r - 1)
+    # possible number of outcomes for edge multiplicity sequences
+    mg.outcomes <- choose(m + r - 1, r - 1)
 
+    if (apx == FALSE) {
       # edge assignment probabilities (Q) as a  matrix and a sequence
       Q.mat <- m.mat / m
       Q.seq <- m.seq / m
@@ -166,9 +166,6 @@ iea_model <-
       }
     }
 
-    output <-
-        list("nr.multigraphs" = mg.outcomes,
-             "M" = out.M,
-             "R" = out.R)
-    return(output)
-  }
+      output <- list("nr.multigraphs" = mg.outcomes, "M" = out.M, "R" = out.R)
+      return(output)
+    }

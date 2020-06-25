@@ -4,22 +4,28 @@
 \alias{iea_model}
 \title{Complexity Statistics under the IEA model for multigraphs}
 \usage{
-iea_model(adj, type = "multigraph", K = 0)
+iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 }
 \arguments{
-\item{adj}{Matrix of integers}
+\item{adj}{Matrix of integers.}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with the matrix diagonal double counted)}
+(with the matrix diagonal double counted).}
 
-\item{K}{Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix}
+\item{K}{Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
+frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
+
+\item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
+the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq').}
 }
 \value{
-
+\item{nr.multigraphs}{Number of unique multigraphs possible.}
+\item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2})).}
+\item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{R_k}.}
 }
 \description{
-Summary of statistics estimated for
+Summary of statistics estimated for analysing
 global structure of random multigraphs under independent edge assignment model
 given observed adjacency matrix.
 The edge assignment probabilities are estimated using the observed edge multiplicities

@@ -1,6 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# Installation
+
+<!-- You can install the released version of multigraphr from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` r -->
+
+<!-- install.packages("multigraphr") -->
+
+<!-- ``` -->
+
+The development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("termehs/multigraphr")
+```
+
 # Overview: multigraphs and applicability
 
 Multigraphs are network representations in which multiple edges and edge
@@ -100,29 +117,18 @@ rsm_1$prob.dists
 #> 7 0.24242424     1          5      0
 ```
 
-The IEA model applied shows that there are
+Consider using the IEA model to aproxiamte the RSM model so that edge
+assignment probabilities are functions of observed degree sequence. Note
+that the outcome space for multigraphs is much bigger than for the RSM
+model so the multiplicity sequences are not printed (they can be found
+using the function `get_edgemultip_seq` for very small multigraphs and
+probabilities can be found using the multinomial distribution). The
+following shows the number of multigraphs under the IEA model:
 
 ``` r
-iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = FALSE)
-iea_1
-#> $nr.multigraphs
+iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = TRUE)
+iea_1$nr.multigraphs
 #> [1] 180.4258
-#> 
-#> $M
-#>             M1 M2
-#> Observed   1.5  3
-#> Expected   1.5  3
-#> Variance   1.0  1
-#> Upper 95%  3.5  5
-#> Lower 95% -0.5  1
-#> 
-#> $R
-#>              R0     R1     R2
-#> Observed  2.000  2.000  1.000
-#> Expected  3.305  1.417  0.845
-#> Variance  0.470  0.936  0.595
-#> Upper 95% 4.676  3.352  2.387
-#> Lower 95% 1.935 -0.519 -0.697
 ```
 
 ## Complexity statistics
@@ -143,6 +149,30 @@ rsm_1$stat.moms
 #> 1 2.272727 0.9862259      3.727273     0.9862259
 ```
 
+which are calculated using the probability distributions of the
+statistics (no closed formulas exist for these moments). Under the IEA
+model, moments of these statistics (*M1* = number of loops, *M2* =
+number of multiple edges), together with the complexity statistic *R\_k*
+representing the sequence of frequencies of edge sites with
+multiplicities *0,1,…,k*, are found using derived formulas:
+
+``` r
+iea_1$M
+#>             M1 M2
+#> Observed   1.5  3
+#> Expected   1.5  6
+#> Variance   1.0  1
+#> Upper 95%  3.5  8
+#> Lower 95% -0.5  4
+iea_1$R
+#>              R0     R1     R2
+#> Observed  2.000  2.000  1.000
+#> Expected  3.044  1.758  0.892
+#> Variance  0.501  1.220  0.523
+#> Upper 95% 4.459  3.967  2.339
+#> Lower 95% 1.629 -0.451 -0.555
+```
+
 ## Goodness of fit tests
 
 Goodness of fits tests of multigraph models using Pearson (S) and
@@ -157,25 +187,7 @@ a simple or composite hypothesis.
 Probability distributions of test statistics, summary of tests, moments
 of tests statistics. adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
-tests are
-given.
-
-## Installation
-
-<!-- You can install the released version of multigraphr from [CRAN](https://CRAN.R-project.org) with: -->
-
-<!-- ``` r -->
-
-<!-- install.packages("multigraphr") -->
-
-<!-- ``` -->
-
-The development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("termehs/multigraphr")
-```
+tests are given.
 
 ## Theoretical Background
 
