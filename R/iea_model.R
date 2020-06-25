@@ -1,5 +1,5 @@
 #' @title Complexity Statistics under the IEA model for multigraphs
-#' @description Summary of statistics estimated for
+#' @description Summary of statistics estimated for analysing
 #' global structure of random multigraphs under independent edge assignment model
 #' given observed adjacency matrix.
 #' The edge assignment probabilities are estimated using the observed edge multiplicities
@@ -9,11 +9,8 @@
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with the matrix diagonal double counted)
 #' @param K  Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix
-#' @param apx Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-#' the statistics under the random stub matching model given observed degree sequence
 #' @return
-#' \item{nr.multigraphs}{Number of multigrpahs (outcome space for multigraph). Not shown if umber of nodes
-#' \emph{n}>6 and/or number of edges \emph{m} > 20}
+#' \item{nr.multigraphs}{Number of unique multigraphs possible.}
 #' \item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2}))}
 #' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{Rk}
 #' @details  To be completed
@@ -29,8 +26,7 @@
 iea_model <-
   function(adj,
            type = 'multigraph' ,
-           K = 0,
-           apx = FALSE) {
+           K = 0) {
     n <- dim(adj)[1]
     r <- choose(n + 1, 2)
 
@@ -170,23 +166,9 @@ iea_model <-
       }
     }
 
-    if (apx == FALSE) {
-      output <-
+    output <-
         list("nr.multigraphs" = mg.outcomes,
              "M" = out.M,
              "R" = out.R)
-      statistics <- return(output)
-    } else if (apx == TRUE) {
-      if (n > 6 | m > 20) {
-        print("size of graph is too large, no value assigned for nr.multigraphs")
-        m.seq <- 'NA'
-      } else{
-        m.seq <- edge_multip_seq(adj, type)
-      }
-      output <-
-        list("nr.multigraphs" = nrow(m.seq),
-             "M" = out.M,
-             "R" = out.R)
-      statistics <- return(output)
-    }
+    return(output)
   }

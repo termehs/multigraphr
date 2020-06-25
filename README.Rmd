@@ -27,8 +27,48 @@ Note that some of the functions are only practical for small scale multigraphs.
 ## Random multigraph models
 The first model is obtained by random stub matching (RSM) given observed degree sequence of a multigraphs, so that edge assignments to vertex pair sites are dependent. The second is obtained by independent edge assignments (IEA) according to a common probability distribution. There are two ways in which an approximate IEA model can be obtained from an RSM model, thus facilitating the analysis. These two ways are independent stub assignment (ISA) and independent edge assignment of stubs (IEAS) (Shafie 2015;2016).
 
+### Example
+```{r eval=TRUE}
+library('multigraphr')
+```
+Consider a small multigraph example with 3 nodes and the following adjacency matrix:
+```{r adj, include=TRUE, results='markup', message=FALSE}
+A <-  matrix(c(1, 1, 0, 
+               1, 2, 2, 
+               0, 2, 0), 
+             nrow = 3, ncol = 3)
+A
+```
+The degree seuence of the multigraph has double counted diagonals (stubs for loops) and is given by
+```{r degseq, include=TRUE, results='markup', message=FALSE}
+D <- get_degree_seq(adj = A, type = 'graph')
+D
+```
+The RSM model given observed degree sequence shows there are 7 possible multigraphs given this fixed degree sequence, as represented by their multiplicity sequence  `m.seq` (each row correspond to the multiplicity sequence of a unique multigraph):
+```{r rsm_ex1, include=TRUE, results='markup', message=FALSE}
+rsm_1 <- rsm_model(deg.seq = D)
+rsm_1$m.seq
+```
+with probabilities, number of loops, number of multiple edges and whether they are simple graphs or not:
+```{r rsm_ex2, include=TRUE, results='markup', message=FALSE}
+rsm_1$prob.dists
+```
+
+The IEA model applied shows that there are
+```{r iea_ex1, include=TRUE, results='markup', message=FALSE}
+iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = FALSE)
+iea_1
+```
+
+
 ## Complexity statistics 
 The statistic are complexity statistics such as number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), together with their probability distributions, moments and interval estimates.
+
+### Example (cont'd)
+First two moments of statistics 'number of loops' and 'number of multiple edges' under RSM are given by
+```{r rsm_ex3, include=TRUE, results='markup', message=FALSE}
+rsm_1$stat.moms
+```
 
 ## Goodness of fit tests
 Goodness of fits tests of multigraph models using Pearson (S) and
@@ -57,41 +97,6 @@ The development version from [GitHub](https://github.com/) with:
 devtools::install_github("termehs/multigraphr")
 ```
 
-## Example
-```{r eval=TRUE}
-library('multigraphr')
-```
-Consider a small multigraph example with 3 nodes and the following adjacency matrix:
-```{r adj, include=TRUE, results='markup', message=FALSE}
-A <-  matrix(c(1, 1, 0, 
-               1, 2, 2, 
-               0, 2, 0), 
-             nrow = 3, ncol = 3)
-A
-```
-The degree seuence of the multigraph has double counted diagonals (stubs for loops) and is given by
-```{r degseq, include=TRUE, results='markup', message=FALSE}
-D <- get_degree_seq(adj = A, type = 'graph')
-D
-```
-The RSM model applied shows there are 7 possible multigraphs given this fixed degree sequence, as represented by their multicplicity sequence  `m.seq`:
-```{r rsm_ex1, include=TRUE, results='markup', message=FALSE}
-rsm_1 <- rsm_model(deg.seq = D)
-rsm_1$m.seq
-```
-with probability disitrbutions of multigraphs and their number of loops, number of multiple and whether they are simple graphs given by
-```{r rsm_ex2, include=TRUE, results='markup', message=FALSE}
-rsm_1$prob.dists
-```
-First two moments of statistics 'number of loops' and 'number of multiple edges' are given by
-```{r rsm_ex3, include=TRUE, results='markup', message=FALSE}
-rsm_1$stat.moms
-```
-<!-- The IEA model applied shows that there are -->
-<!-- ```{r iea_ex1, include=TRUE, results='markup', message=FALSE} -->
-<!-- iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = FALSE) -->
-<!-- iea_1 -->
-<!-- ``` -->
 
 
 ## Theoretical Background

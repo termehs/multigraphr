@@ -4,7 +4,7 @@
 \alias{iea_model}
 \title{Complexity Statistics under the IEA model for multigraphs}
 \usage{
-iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
+iea_model(adj, type = "multigraph", K = 0)
 }
 \arguments{
 \item{adj}{Matrix of integers}
@@ -14,9 +14,6 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 (with the matrix diagonal double counted)}
 
 \item{K}{Upper limit for k in the complexity statistics R_k. Default is maximum observed in adjacency matrix}
-
-\item{apx}{Logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-the statistics under the random stub matching model given observed degree sequence}
 }
 \value{
 
