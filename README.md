@@ -75,14 +75,16 @@ A
 #> [3,]    0    2    0
 ```
 
-The degree seuence of the multigraph has double counted diagonals (stubs
-for loops) and is given by
+The degree sequence of the multigraph has double counted diagonals
+(stubs for loops) and is given by
 
 ``` r
 D <- get_degree_seq(adj = A, type = 'graph')
 D
 #> [1] 2 3 7
 ```
+
+so that number of edges in the multigraph is 6.
 
 The RSM model given observed degree sequence shows there are 7 possible
 multigraphs given this fixed degree sequence, as represented by their
@@ -126,9 +128,9 @@ probabilities can be found using the multinomial distribution). The
 following shows the number of multigraphs under the IEA model:
 
 ``` r
-iea_1 <-   iea_model(adj = A , type = 'multigraph', K = 0, apx = TRUE)
+iea_1 <-   iea_model(adj = A , type = 'graph', K = 0, apx = TRUE)
 iea_1$nr.multigraphs
-#> [1] 180.4258
+#> [1] 462
 ```
 
 ## Complexity statistics
@@ -158,20 +160,24 @@ multiplicities *0,1,…,k*, are found using derived formulas:
 
 ``` r
 iea_1$M
-#>             M1 M2
-#> Observed   1.5  3
-#> Expected   1.5  6
-#> Variance   1.0  1
-#> Upper 95%  3.5  8
-#> Lower 95% -0.5  4
+#>               M1    M2
+#> Observed   3.000 3.000
+#> Expected   2.273 7.455
+#> Variance   1.412 1.412
+#> Upper 95%  4.649 9.831
+#> Lower 95% -0.104 5.078
 iea_1$R
 #>              R0     R1     R2
-#> Observed  2.000  2.000  1.000
-#> Expected  3.044  1.758  0.892
-#> Variance  0.501  1.220  0.523
-#> Upper 95% 4.459  3.967  2.339
-#> Lower 95% 1.629 -0.451 -0.555
+#> Observed  2.000  2.000  2.000
+#> Expected  2.674  1.588  1.030
+#> Variance  0.575  1.129  0.760
+#> Upper 95% 4.191  3.713  2.773
+#> Lower 95% 1.156 -0.537 -0.713
 ```
+
+The inteval estimates can then be visualised as box plots to detect
+discrepancies between observed and expected, and to detect overlap and
+potential depndencies between different types of edges.
 
 ## Goodness of fit tests
 

@@ -166,6 +166,6 @@
       }
     }
 
-      output <- list("nr.multigraphs" = mg.outcomes, "M" = out.M, "R" = out.R)
-      return(output)
-    }
+   output <- list("nr.multigraphs" = mg.outcomes, "M" = out.M, "R" = out.R)
+    return(output)
+   }
