@@ -12,5 +12,5 @@ URL: https://github.com/termehs/multigraphr
 BugReports: https://github.com/termehs/multigraphr/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: true 
 RoxygenNote: 7.0.2
