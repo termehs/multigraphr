@@ -19,12 +19,12 @@ to all possible vertex pair sites
 }
 \description{
 Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
-model can be approxiated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
+model can be approximated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
 the ISA (independent stub assignment) model.
 }
 \details{
 The IEAS and ISA edge assignment probabilities, to
-all possible vertext pairs are calculated given a fixed degree sequence \emph{deq.seq}
+all possible vertex pairs are calculated given a fixed degree sequence \emph{deq.seq}
 under IEAS and \emph{deg.seq/2m} under ISA. Number of possible vertex pair sites is given by
 \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 }

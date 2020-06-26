@@ -20,8 +20,8 @@ the modelled degree sequence of the multigraph}
 degree sequence of the multigraph: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
-  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge mutliplicity sequence estimated from data\cr
-  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge mutliplicity sequence estimated from data\cr}
+  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 }
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
@@ -55,7 +55,7 @@ deg.mod <- c(14,2,2,2)
 deg.hyp <- c(6,6,6,2)
 test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 
-## Non-null distributiona of test statistics S and A are given by
+## Non-null distributions of test statistics S and A are given by
 test1$probS
 test1$probA
 

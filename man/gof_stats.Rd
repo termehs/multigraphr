@@ -11,7 +11,7 @@ gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 
 \item{dof}{integer giving degrees of freedom of test}
 
-\item{m.seq}{vector of integers representing all possible multigraps}
+\item{m.seq}{vector of integers representing all possible multigraphs}
 
 \item{prob.mg}{probability distribution of multigraphs under specified model}
 

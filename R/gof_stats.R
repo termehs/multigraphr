@@ -4,7 +4,7 @@
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test
-#' @param m.seq  vector of integers representing all possible multigraps
+#' @param m.seq  vector of integers representing all possible multigraphs
 #' @param prob.mg  probability distribution of multigraphs under specified model
 #' @param Q.seq  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites

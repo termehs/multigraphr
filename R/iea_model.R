@@ -10,12 +10,12 @@
 #' (with the matrix diagonal double counted).
 #' @param K  Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
 #' frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.
-#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to aproximate
-#' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
+#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
+#' the statistics under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
 #' @return
 #' \item{nr.multigraphs}{Number of unique multigraphs possible.}
 #' \item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
-#' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{R_k}.}
+#' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R_k}.}
 #' @details  To be completed
 #' @author Termeh Shafie
 #' @seealso [get_degree_seq]

@@ -14,7 +14,7 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 (with the elements of the matrix diagonal double counted)}
 }
 \value{
-All unique edge multiplicity sequences as a dataframe
+All unique edge multiplicity sequences as a data frame
 }
 \description{
 Finds all unique multigraphs represented  by their edge multiplicity sequences
@@ -26,7 +26,10 @@ Only practical for small multigraphs.
 }
 \examples{
 ## Adjancency matrix for undirected network with 3 nodes
- A <-  matrix(c(0, 1, 2, 1, 2, 1, 2, 1, 2), nrow=3, ncol=3)
+ A <-  matrix(c(0, 1, 2,
+                1, 2, 1,
+                2, 1, 2),
+              nrow=3, ncol=3)
  get_edgemultip_seq(adj = A, 'multigraph')
 }
 \references{
