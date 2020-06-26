@@ -1,13 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# Package overview: `multigraphr` <img src="man/figures/hex_multigraphr.png" align="right" width="130px"/>
+
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/networkdata)](https://cran.r-project.org/package=multigrapr)
+status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigrapr)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
-
-# Package overview: `multigraphr`
 
 ## Installation
 
@@ -32,17 +34,22 @@ Multigraphs are network representations in which multiple edges and edge
 loops (self edges) are permitted. These data structures can be either
 directly observed or aggregated by classifying or cross-classifying node
 attributes into meta nodes. For the latter case, within group edges
-correspond to self-edges (for more details see Shafie 2015;2016). See
-example below where the original graph with 15 nodes and 12 edges (left)
-is aggregated into a small multigraph with 4 nodes corresponding the
-available node attributes (right).
+correspond to self-edges. See example below where the original graph
+with 15 nodes and 12 edges (left) is aggregated based on node categories
+into a small multigraph with 4 nodes (right).
 
-![](mg_ex1.png) Edge aggretation can also be used to obtain aggregated
-multigraphs. Assume that we study a graph with three different types of
-relatins over three time periods period of time: ![](mg_ex2.png)
+<img src="man/figures/mg_ex1.png" align="right"/>
+
+Edge aggregation can also be used to obtain aggregated multigraphs.
+Assume that we study a graph with three different types of relations
+over three periods of time:
+<img src="man/figures/mg_ex2.png" align="right"/>
 
 If we aggregate over time periods, we obtain for each edge category a
-multigraph for the total time period of three days: ![](mg_ex3.png)
+multigraph for the total time period of three days:
+
+<img src="man/figures/mg_ex3.png" align="right"/> For more details see
+Shafie 2015;2016.
 
 Multigraphs are represented by their edge multiplicity sequence, where
 the edge multiplicity denotes the number of edges at possible vertex
@@ -64,9 +71,9 @@ degree sequence of a multigraphs, so that edge assignments to vertex
 pair sites are dependent. The second is obtained by independent edge
 assignments (IEA) according to a common probability distribution. There
 are two ways in which an approximate IEA model can be obtained from an
-RSM model, thus facilitating the analysis. These two ways are
+RSM model, thus facilitating the structural analysis. These two ways are
 independent stub assignment (ISA) and independent edge assignment of
-stubs (IEAS) (Shafie 2015;2016).
+stubs (IEAS) (Shafie, 2016).
 
 ### Example
 
@@ -88,8 +95,8 @@ A
 #> [3,]    0    2    0
 ```
 
-The degree sequence of the multigraph has double counted diagonals
-(stubs for loops) and is given by
+The degree sequence of the multigraph has double counted diagonals (edge
+stubs for loops) and is given by
 
 ``` r
 D <- get_degree_seq(adj = A, type = 'graph')
@@ -97,7 +104,8 @@ D
 #> [1] 2 3 7
 ```
 
-so that number of edges in the multigraph is 6.
+so that number of edges in the multigraph is half the sum of the degree
+sequence which is equal to 6.
 
 The RSM model given observed degree sequence shows there are 7 possible
 multigraphs given this fixed degree sequence, as represented by their
@@ -137,8 +145,8 @@ assignment probabilities are functions of observed degree sequence. Note
 that the outcome space for multigraphs is much bigger than for the RSM
 model so the multiplicity sequences are not printed (they can be found
 using the function `get_edgemultip_seq` for very small multigraphs and
-probabilities can be found using the multinomial distribution). The
-following shows the number of multigraphs under the IEA model:
+their probabilities can be found using the multinomial distribution).
+The following shows the number of multigraphs under the IEA model:
 
 ``` r
 iea_1 <-   iea_model(adj = A , type = 'graph', K = 0, apx = TRUE)
@@ -195,7 +203,8 @@ iea_1$R
 ```
 
 The interval estimates can then be visualised to detect discrepancies
-between observed and expected, and to detect overlap and potential
+between observed and expected values thus indicating social mechanisms
+at play in the generation of edges, and to detect overlap and potential
 dependencies between different types of edges.
 
 ## Goodness of fit tests
