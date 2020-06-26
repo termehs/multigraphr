@@ -37,8 +37,14 @@ devtools::install_github("termehs/multigraphr")
 # Multigraphs and applicability
 Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges (for more details see Shafie 2015;2016). See example below where the original graph with 15 nodes and 12 edges (left) is aggregated into a small multigraph with 4 nodes corresponding the available node attributes (right).
 
-![](mg_ex.png){width=250px}
- Multigraphs are represented by their edge multiplicity sequence, where the edge multiplicity denotes the number of edges at possible vertex pair sites ordered according to
+![](mg_ex1.png){width=250px}
+Edge aggretation can also be used to obtain aggregated multigraphs. Assume that we study a graph with three different types of relatins over three time periods period of time:
+![](mg_ex2.png){width=250px}
+
+If we aggregate over time periods, we obtain for each edge category a multigraph for the total time period of three days:
+![](mg_ex3.png){width=250px}
+
+Multigraphs are represented by their edge multiplicity sequence, where the edge multiplicity denotes the number of edges at possible vertex pair sites ordered according to
 *(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
 where *n* is number of nodes.
 

@@ -37,10 +37,17 @@ example below where the original graph with 15 nodes and 12 edges (left)
 is aggregated into a small multigraph with 4 nodes corresponding the
 available node attributes (right).
 
-![](mg_ex.png) Multigraphs are represented by their edge multiplicity
-sequence, where the edge multiplicity denotes the number of edges at
-possible vertex pair sites ordered according to *(1,1) \< (1,2) \<···\<
-(1,n) \< (2,2) \< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
+![](mg_ex1.png) Edge aggretation can also be used to obtain aggregated
+multigraphs. Assume that we study a graph with three different types of
+relatins over three time periods period of time: ![](mg_ex2.png)
+
+If we aggregate over time periods, we obtain for each edge category a
+multigraph for the total time period of three days: ![](mg_ex3.png)
+
+Multigraphs are represented by their edge multiplicity sequence, where
+the edge multiplicity denotes the number of edges at possible vertex
+pair sites ordered according to *(1,1) \< (1,2) \<···\< (1,n) \< (2,2)
+\< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
 
 Two probability models for generating undirected random multigraphs are
 implemented in the package together with several statistics under these
