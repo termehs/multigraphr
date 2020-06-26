@@ -40,8 +40,7 @@ A <-  matrix(c(1, 1, 0,
                1, 2, 2,
                0, 2, 0),
              nrow = 3, ncol = 3)
-
-mod1 <- iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
+iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.

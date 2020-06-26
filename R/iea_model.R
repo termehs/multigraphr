@@ -28,8 +28,7 @@
 #'                1, 2, 2,
 #'                0, 2, 0),
 #'              nrow = 3, ncol = 3)
-#'
-#' mod1 <- iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
+#'iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
 #' @export
 #'
   iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
