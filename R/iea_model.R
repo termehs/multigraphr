@@ -23,7 +23,13 @@
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
+#' ## Adjacency matrix of a small graph on 3 nodes
+#' A <-  matrix(c(1, 1, 0,
+#'                1, 2, 2,
+#'                0, 2, 0),
+#'              nrow = 3, ncol = 3)
 #'
+#' mod1 <- iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
 #' @export
 #'
   iea_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {

@@ -21,7 +21,7 @@ the statisitcs under the random stub matching model given observed degree sequen
 }
 \value{
 \item{nr.multigraphs}{Number of unique multigraphs possible.}
-\item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2})).}
+\item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
 \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{R_k}.}
 }
 \description{
@@ -35,7 +35,13 @@ The edge assignment probabilities are estimated using the observed edge multipli
 To be completed
 }
 \examples{
+## Adjacency matrix of a small graph on 3 nodes
+A <-  matrix(c(1, 1, 0,
+               1, 2, 2,
+               0, 2, 0),
+             nrow = 3, ncol = 3)
 
+mod1 <- iea_model(adj = A , type = 'graph', K = 0, apx = FALSE)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.

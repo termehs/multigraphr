@@ -40,6 +40,9 @@ and the expected multiplicity sequence according to a simple or composite hypoth
 Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 of tests given these two statistics are given as output.
 }
+\examples{
+## For examples see gof_multigraph()
+}
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 \cr

@@ -67,8 +67,7 @@ stubs (IEAS) (Shafie 2015;2016).
 library('multigraphr')
 ```
 
-Consider a small multigraph example with 3 nodes and the following
-adjacency matrix:
+Consider a small graph on 3 nodes and the following adjacency matrix:
 
 ``` r
 A <-  matrix(c(1, 1, 0, 

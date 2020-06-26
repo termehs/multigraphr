@@ -13,7 +13,7 @@ rsm_model(deg.seq)
 \item{m.seq}{Possible multigraphs represented by edge multiplicity sequences}
 \item{prob.dists}{Probability distrbution of the multigraphs/edge multiplicity sequences,
 statistics 'number of loops', 'number of multiple edges', and 'simple graph' (logical) for each multigraph}
-\item{stat.moms}{First two moments of statistics 'number of loops' and 'number of multiple edges'}
+\item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
 }
 \description{
 Given the degree sequence of a multigraph,

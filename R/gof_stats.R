@@ -28,6 +28,7 @@
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 #' @examples
+#' ## For examples see gof_multigraph()
 #' @export
 #'
 gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {

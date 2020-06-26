@@ -53,7 +53,7 @@ The first model is obtained by random stub matching (RSM) given observed degree 
 ```{r eval=TRUE}
 library('multigraphr')
 ```
-Consider a small multigraph example with 3 nodes and the following adjacency matrix:
+Consider a small graph on 3 nodes and the following adjacency matrix:
 ```{r adj, include=TRUE, results='markup', message=FALSE}
 A <-  matrix(c(1, 1, 0, 
                1, 2, 2, 
