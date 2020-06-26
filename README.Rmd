@@ -34,7 +34,7 @@ The development version from [GitHub](https://github.com/) with:
 devtools::install_github("termehs/multigraphr")
 ```
 
-# Overview: multigraphs and applicability
+# Multigraphs and applicability
 Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges (for more details see Shafie 2015;2016). See example below where the original graph with 15 nodes and 12 edges (left) is aggregated into a small multigraph with 4 nodes corresponding the available node attributes (right).
 
 ![](mg_ex.png){width=250px}

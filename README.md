@@ -26,7 +26,7 @@ The development version from [GitHub](https://github.com/) with:
 devtools::install_github("termehs/multigraphr")
 ```
 
-# Overview: multigraphs and applicability
+# Multigraphs and applicability
 
 Multigraphs are network representations in which multiple edges and edge
 loops (self edges) are permitted. These data structures can be either
