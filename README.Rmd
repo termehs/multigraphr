@@ -88,18 +88,19 @@ iea_1$nr.multigraphs
 The statistic are complexity statistics such as number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), together with their probability distributions, moments and interval estimates.
 
 ### Example (cont'd)
-First two moments of statistics 'number of loops' and 'number of multiple edges' under RSM are given by
+Under the RSM model, the first two moments and interval estimates of the statistics  *M1* = 'number of loops' and *M2* = 'number of multiple edges' are given by
 ```{r rsm_ex3, include=TRUE, results='markup', message=FALSE}
-rsm_1$stat.moms
+rsm_1$M
 ```
-which are calculated using the probability distributions of the statistics (no closed formulas exist for these moments).
-Under the IEA model, moments of these statistics (*M1* = number of loops, *M2* = number of multiple edges), together with the complexity statistic *R_k* representing the sequence of
+which are calculated using the numerically found probability distributions under RSM (no analytical solutions exist for these moments).
+
+Under the IEA model, moments of these statistics, together with the complexity statistic *R_k* representing the sequence of
 frequencies of edge sites with multiplicities *0,1,...,k*,  are found using derived formulas:
 ```{r iea_ex2, include=TRUE, results='markup', message=FALSE}
 iea_1$M
 iea_1$R
 ```
-The inteval estimates can then be visualised as box plots to detect discrepancies between observed and expected, and to detect overlap and potential depndencies between different types of edges. 
+The interval estimates can then be visualised to detect discrepancies between observed and expected, and to detect overlap and potential dependencies between different types of edges. 
 
 ## Goodness of fit tests
 Goodness of fits tests of multigraph models using Pearson (S) and

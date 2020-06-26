@@ -149,21 +149,27 @@ distributions, moments and interval estimates.
 
 ### Example (cont’d)
 
-First two moments of statistics ‘number of loops’ and ‘number of
-multiple edges’ under RSM are given by
+Under the RSM model, the first two moments and interval estimates of the
+statistics *M1* = ‘number of loops’ and *M2* = ‘number of multiple
+edges’ are given by
 
 ``` r
-rsm_1$stat.moms
-#>   E(loops)  V(loops) E(multiedges) V(multiedges)
-#> 1 2.272727 0.9862259      3.727273     0.9862259
+rsm_1$M
+#>              M1    M2
+#> Expected  2.273 3.727
+#> Variance  0.986 0.986
+#> Upper 95% 4.259 5.713
+#> Lower 95% 0.287 1.741
 ```
 
-which are calculated using the probability distributions of the
-statistics (no closed formulas exist for these moments). Under the IEA
-model, moments of these statistics (*M1* = number of loops, *M2* =
-number of multiple edges), together with the complexity statistic *R\_k*
-representing the sequence of frequencies of edge sites with
-multiplicities *0,1,…,k*, are found using derived formulas:
+which are calculated using the numerically found probability
+distributions under RSM (no analytical solutions exist for these
+moments).
+
+Under the IEA model, moments of these statistics, together with the
+complexity statistic *R\_k* representing the sequence of frequencies of
+edge sites with multiplicities *0,1,…,k*, are found using derived
+formulas:
 
 ``` r
 iea_1$M
@@ -182,9 +188,9 @@ iea_1$R
 #> Lower 95% 1.156 -0.537 -0.713
 ```
 
-The inteval estimates can then be visualised as box plots to detect
-discrepancies between observed and expected, and to detect overlap and
-potential depndencies between different types of edges.
+The interval estimates can then be visualised to detect discrepancies
+between observed and expected, and to detect overlap and potential
+dependencies between different types of edges.
 
 ## Goodness of fit tests
 

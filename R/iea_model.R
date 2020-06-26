@@ -14,7 +14,7 @@
 #' the statisitcs under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
 #' @return
 #' \item{nr.multigraphs}{Number of unique multigraphs possible.}
-#' \item{M}{Summary and interval estimates for number of loops and number of non-loos (\emph{M1} and \emph{M2})).}
+#' \item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
 #' \item{R}{Summary and interval estimates for frequencies of edge multiplicites \emph{R_k}.}
 #' @details  To be completed
 #' @author Termeh Shafie

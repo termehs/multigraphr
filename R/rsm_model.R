@@ -8,7 +8,7 @@
 #' \item{m.seq}{Possible multigraphs represented by edge multiplicity sequences}
 #' \item{prob.dists}{Probability distrbution of the multigraphs/edge multiplicity sequences,
 #' statistics 'number of loops', 'number of multiple edges', and 'simple graph' (logical) for each multigraph}
-#' \item{stat.moms}{First two moments of statistics 'number of loops' and 'number of multiple edges'}
+#' \item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
 #' @details  To be completed
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
@@ -168,7 +168,7 @@ rsm_model <- function(deg.seq) {
     tmp <- factorial(m) / prod(factorial(m.seq[i,]))
     prob.rsm[i] <- ((2 ^ (m2[i])) * tmp) / Ntot
   }
-  # expected values oof all statistics using probability distribution prob.rsm
+  # expected values of some statistics using probability distribution prob.rsm
   lg.prob <- -log2(prob.rsm)
   ElgP <- sum(prob.rsm * lg.prob)
   Em1 <- sum(prob.rsm * m1)
@@ -184,17 +184,23 @@ rsm_model <- function(deg.seq) {
       'multiedges' = m2,
       'simple' = simple
     ))
-  stat.moms <- as.data.frame(cbind(
-    'E(loops)' = Em1,
-    'V(loops)' = Vm1,
-    'E(multiedges)' = Em2,
-    'V(multiedges)' = Vm1
-  ))
+
+  EM <- cbind(Em1, Em2)
+  VarM <- cbind(Vm1, Vm2)
+  lower <- EM - 2 * sqrt(VarM)
+  upper <- EM + 2 * sqrt(VarM)
+
+  out.M <- as.data.frame(rbind(EM, VarM, upper, lower))
+  colnames(out.M) <- NULL
+  rownames(out.M) <-
+    c("Expected", "Variance", "Upper 95%", "Lower 95%")
+  colnames(out.M) <-  c("M1", "M2")
+  out.M <- round(out.M, 3)
 
   rsm.out <-
     list('m.seq' = m.seq,
          'prob.dists' = prob.dists,
-         'stat.moms' = stat.moms)
+         'M' = out.M)
 
   return(rsm.out)
 }
