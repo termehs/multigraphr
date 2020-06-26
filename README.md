@@ -107,10 +107,10 @@ D
 so that number of edges in the multigraph is half the sum of the degree
 sequence which is equal to 6.
 
-The RSM model given observed degree sequence shows there are 7 possible
-multigraphs given this fixed degree sequence, as represented by their
-multiplicity sequence `m.seq` (each row correspond to the multiplicity
-sequence of a unique multigraph):
+The RSM model given observed degree sequence shows the sample space
+consists of 7 possible multigraphs, as represented by their multiplicity
+sequence `m.seq` (each row correspond to the edge multiplicity sequence
+of a unique multigraph):
 
 ``` r
 rsm_1 <- rsm_model(deg.seq = D)
@@ -125,8 +125,9 @@ rsm_1$m.seq
 #> [7,]    0    0    2    0    3    1
 ```
 
-with probabilities, number of loops, number of multiple edges and
-whether they are simple graphs or not:
+with probabilities associated with each multigraph, together with
+statistics ‘number of loops’, ‘number of multiple edges’ and ‘simple
+graphs or not’:
 
 ``` r
 rsm_1$prob.dists
@@ -142,7 +143,7 @@ rsm_1$prob.dists
 
 Consider using the IEA model to approximate the RSM model so that edge
 assignment probabilities are functions of observed degree sequence. Note
-that the outcome space for multigraphs is much bigger than for the RSM
+that the sample space for multigraphs is much bigger than for the RSM
 model so the multiplicity sequences are not printed (they can be found
 using the function `get_edgemultip_seq` for very small multigraphs and
 their probabilities can be found using the multinomial distribution).
@@ -219,7 +220,7 @@ observed multigraph, and the expected multiplicity sequence according to
 a simple or composite hypothesis.
 
 Probability distributions of test statistics, summary of tests, moments
-of tests statistics. adjusted test statistics, critical values,
+of tests statistics, adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
 tests are given.
 
