@@ -40,16 +40,15 @@ into a small multigraph with 4 nodes (right).
 
 <img src="man/figures/mg_ex1.png" align="right"/>
 
-Edge aggregation can also be used to obtain aggregated multigraphs.
-Assume that we study a graph with three different types of relations
-over three periods of time:
-<img src="man/figures/mg_ex2.png" align="right"/>
+Edge aggregation can also be used to obtain multigraphs. Assume that we
+study a graph with three different types of relations over three periods
+of time: <img src="man/figures/mg_ex2.png" align="right"/>
 
 If we aggregate over time periods, we obtain for each edge category a
 multigraph for the total time period of three days:
 
 <img src="man/figures/mg_ex3.png" align="right"/> For more details see
-Shafie 2015;2016.
+Shafie (2015;2016).
 
 Multigraphs are represented by their edge multiplicity sequence, where
 the edge multiplicity denotes the number of edges at possible vertex
@@ -237,6 +236,9 @@ Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
 ``` r
 gof_1 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(5,5,5,5))
 gof_1
+#> $degrees.of.freedom
+#> [1] 9
+#> 
 #> $probS
 #>      S=s  P(S=s)  P(S<s)
 #> 1  29.52 0.34675 0.34675
@@ -264,9 +266,12 @@ gof_1
 #> 10 40.07985 0.00021 1.00000
 #> 
 #> $summmary
-#>   stat      exp       var       cv   alpha stat>cv cv(stat) stat>cv(stat)
-#> 1    S 41.16706 115.37420 17.48528 0.04164       1 62.64954        0.0291
-#> 2    A 23.41280   8.19897 17.48528 0.04164       1 29.13957        0.0291
+#>   Stat      Exp       Var cv(chi2) alpha(chi2) stat>cv(chi2) cv(stat)
+#> 1    S 41.16706 115.37420 17.48528     0.04164             1 62.64954
+#> 2    A 23.41280   8.19897 17.48528     0.04164             1 29.13957
+#>   stat>cv(stat)
+#> 1        0.0291
+#> 2        0.0291
 #> 
 #> $adjusted.stats
 #>                   S    Sprim      Sbis         A    Aprim     Abis
@@ -281,9 +286,6 @@ gof_1
 #> $power.apx
 #>     Sprim Sbis   Aprim Abis
 #> 1 0.00046    1 0.19952    1
-#> 
-#> $degrees.of.freedom
-#> [1] 9
 ```
 
   - Testing a composite IEAS hypothesis against a RSM model with degree
@@ -295,6 +297,9 @@ gof_1
 ``` r
 gof_2 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
 gof_2
+#> $degrees.of.freedom
+#> [1] 6
+#> 
 #> $probS
 #>        S=s  P(S=s)  P(S<s)
 #> 1  1.48352 0.34675 0.34675
@@ -321,9 +326,12 @@ gof_2
 #> 10 22.97949 0.00021 1.00000
 #> 
 #> $summmary
-#>   stat     exp      var      cv   alpha stat>cv cv(stat) stat>cv(stat)
-#> 1    S 6.35294 51.88277 12.9282 0.04419  0.1678 20.75888       0.04479
-#> 2    A 4.29978  8.88590 12.9282 0.04419  0.0291 10.26162       0.02910
+#>   Stat     Exp      Var cv(chi2) alpha(chi2) stat>cv(chi2) cv(stat)
+#> 1    S 6.35294 51.88277  12.9282     0.04419        0.1678 20.75888
+#> 2    A 4.29978  8.88590  12.9282     0.04419        0.0291 10.26162
+#>   stat>cv(stat)
+#> 1       0.04479
+#> 2       0.02910
 #> 
 #> $adjusted.stats
 #>                   S     Sprim      Sbis        A    Aprim     Abis
@@ -338,9 +346,6 @@ gof_2
 #> $power.apx
 #>     Sprim    Sbis   Aprim    Abis
 #> 1 0.94255 0.99988 0.98285 0.99903
-#> 
-#> $degrees.of.freedom
-#> [1] 6
 ```
 
 ## Theoretical Background

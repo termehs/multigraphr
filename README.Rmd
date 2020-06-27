@@ -37,13 +37,13 @@ Multigraphs are network representations in which multiple edges and edge loops (
 
 <img src="man/figures/mg_ex1.png" align="right"/>
 
-Edge aggregation can also be used to obtain aggregated multigraphs. Assume that we study a graph with three different types of relations over three periods of time:
+Edge aggregation can also be used to obtain multigraphs. Assume that we study a graph with three different types of relations over three periods of time:
 <img src="man/figures/mg_ex2.png" align="right"/>
 
 If we aggregate over time periods, we obtain for each edge category a multigraph for the total time period of three days:
 
 <img src="man/figures/mg_ex3.png" align="right"/>
-For more details see Shafie 2015;2016.
+For more details see Shafie (2015;2016).
 
 Multigraphs are represented by their edge multiplicity sequence, where the edge multiplicity denotes the number of edges at possible vertex pair sites ordered according to
 *(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
