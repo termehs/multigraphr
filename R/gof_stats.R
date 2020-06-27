@@ -11,7 +11,9 @@
 #' @return
 #'  \item{probS}{Probability distribution of Pearson statistic S}
 #'  \item{probA}{Probability distribution of information divergence statistic A}
-#'  \item{summary}{Expected value and variances of test statistics, critical values and significance level
+#'  \item{summary}{Expected value and variances of test statistics (stat), critical values (cv) according to
+#'  asymptotic chi2 distribution and according to cdf's of test statistics, and significance level (alpha) according to
+#'  asymptotic chi2 distribution, power of tests (P(stat>cv))
 #'  according to asymptotic chi2-distribution, power of tests}
 #'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
@@ -144,12 +146,12 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   stat <- c('S', 'A')
   gof.sum <- cbind(stat, gof.sum)
   colnames(gof.sum) <-
-    c('stat',
-      'exp',
-      'var',
-      'cv',
-      'alpha',
-      'stat>cv',
+    c('Stat',
+      'Exp',
+      'Var',
+      'cv(chi2)',
+      'alpha(chi2)',
+      'stat>cv(chi2)',
       'cv(stat)',
       'stat>cv(stat)')
 
@@ -219,13 +221,13 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   # output list
   listout <-
     list(
+      "degrees.of.freedom" = dof,
       "probS" = prob.Sout,
       "probA" = prob.Aout,
       "summmary" = gof.sum,
       "adjusted.stats" = adj.out,
       "adjusted.chi2" = adj.chi2,
-      "power.apx" = power.apx,
-      "degrees.of.freedom" = dof
+      "power.apx" = power.apx
     )
   return(listout)
 }

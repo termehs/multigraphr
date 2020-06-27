@@ -21,7 +21,9 @@ to all possible vertex pair sites}
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
  \item{probA}{Probability distribution of information divergence statistic A}
- \item{summary}{Expected value and variances of test statistics, critical values and significance level
+ \item{summary}{Expected value and variances of test statistics (stat), critical values (cv) according to
+ asymptotic chi2 distribution and according to cdf's of test statistics, and significance level (alpha) according to
+ asymptotic chi2 distribution, power of tests (P(stat>cv))
  according to asymptotic chi2-distribution, power of tests}
  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}

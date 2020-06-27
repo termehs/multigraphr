@@ -26,8 +26,10 @@ degree sequence of the multigraph: \cr
 \value{
 \item{probS}{Probability distribution of Pearson statistic S}
  \item{probA}{Probability distribution of divergence statistic A}
- \item{summary}{Expected value and variances of test statistics, critical values and significance level
- according to asymptotic distribution, power of tests}
+ \item{summary}{Expected value and variances of test statistics (stat), critical values (cv) according to
+ asymptotic chi2 distribution and according to cdf's of test statistics, and significance level (alpha) according to
+ asymptotic chi2 distribution, power of tests (P(stat>cv))
+ according to asymptotic chi2-distribution, power of tests}
  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
  \item{power.apx}{Power approximations according to adjusted statistics}
@@ -55,11 +57,11 @@ deg.mod <- c(14,2,2,2)
 deg.hyp <- c(6,6,6,2)
 test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 
-## Non-null distributions of test statistics S and A are given by
+# Non-null distributions of test statistics S and A are given by
 test1$probS
 test1$probA
 
-## Testing a composite IEAS hypothesis
+# Testing a composite IEAS hypothesis
 # with degree sequence [15,15,15,15] against
 # an RSM model with degree sequence [15,15,15,15]
 # on a multigrpah with n = 4 nodes and m = 30 edges.
@@ -67,11 +69,11 @@ deg.mod <- c(15,15,15,15)
 deg.hyp <- c(15,15,15,15)
 test2 <- gof_multigraph <- (30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 
-## Non-null distributions of test statistics S and A are given by
+# Non-null distributions of test statistics S and A are given by
 test2$probS
 test2$probA
 
-## Summary of above tests
+# Summary of above tests
 test1$summary
 test2$summary
 }
