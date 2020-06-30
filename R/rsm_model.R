@@ -23,11 +23,13 @@
 #' @export
 #'
 rsm_model <- function(deg.seq) {
+  if (sum(deg.seq) %% 2 == 1)
+    stop("sum of degree sequence must be an even number")
   m <- sum(deg.seq / 2)
   n <- length(deg.seq)
   k <- m - 1
 
-  #initial edge sequence (read as labelled 2-tuples of connected nodes connected)
+  #initial edge sequence (read as labelled 2-tuples of connected nodes)
   s <- vector()
   edge.seq <- vector()
   for (i in 1:n) {
