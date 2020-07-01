@@ -69,6 +69,11 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
   n <- length(deg.mod)
   r <- choose(n + 1, 2)
 
+  if (sum(deg.mod)/2 != m)
+    stop("number of edges must be half the sum of the degree sequence")
+  if (sum(deg.hyp)/2 != m)
+    stop("number of edges must be half the sum of the degree sequence")
+
   # model specification: IEAS or ISA
   if (model == 'IEAS') {
     Q.seq <- edge_assignment_probs(m, deg.mod, model = 'IEAS')
