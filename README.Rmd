@@ -125,7 +125,7 @@ Probability distributions of test statistics, summary of tests, moments of tests
 Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
 
 **(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2) against a RSM model with degrees (8,8,2,2)**:
-```{r gof1, include=TRUE, results='markup', message=FALSE, cache=FALSE}
+```{r gof1, include=TRUE, results='markup', message=FALSE}
 gof1 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
 head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
@@ -133,30 +133,33 @@ head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(2) Testing a correctly specified simple IEAS hypothesis with degree sequence (14,2,2,2)**:
-```{r gof2, include=TRUE, results='markup', message=FALSE, cache =TRUE}
+```{r gof2, include=TRUE, results='markup', message=FALSE}
 gof2 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(14,2,2,2))
 head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
 ```
+
 The non-null (`gof1`) and null (`gof2`)  distributions of the test statistics together with their asymptotic chi2-distribution can be visualised using  `ggplot2`:
 <div class="column">
 <img src="man/figures/p1_gof_1.png" width = 400 px/>
 <img src="man/figures/p2_gof_2.png" width = 400 px/>
  </div>
+ 
 **(3) Testing a composite IEAS hypothesis against a RSM model with degree sequence (14,2,2,2)**:
-```{r gof3, include=TRUE, results='markup', message=FALSE, cache =TRUE}
+```{r gof3, include=TRUE, results='markup', message=FALSE}
 gof3 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
 head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(4) Testing a composite ISA hypothesis against a ISA model with degree sequence (14,2,2,2)**:
-```{r gof4, include=TRUE, results='markup', message=FALSE, cache =TRUE}
+```{r gof4, include=TRUE, results='markup', message=FALSE}
 gof4 <- gof_multigraph(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), hyp = 'ISA', deg.hyp = 0)
 head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
 ```
-The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics together can then be visualised as shown above to check their fit to the asymptotic chi2-distribution.
+
+The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics can then be visualised as shown above to check their fit to the asymptotic chi2-distribution.
 
 ## Theoretical Background
 For more details regarding the

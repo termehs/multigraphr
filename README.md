@@ -370,8 +370,8 @@ head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 The non-null (`gof3`) and null (`gof4`) distributions of the test
-statistics together can then be visualised as shown above to check their
-fit to the asymptotic chi2-distribution.
+statistics can then be visualised as shown above to check their fit to
+the asymptotic chi2-distribution.
 
 ## Theoretical Background
 
