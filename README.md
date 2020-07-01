@@ -302,8 +302,12 @@ The non-null (`gof1`) and null (`gof2`) distributions of the test
 statistics together with their asymptotic chi2-distribution can be
 visualised using `ggraph`:
 
-<img src="man/figures/p1_gof_1.png" width = 350 px/>
-<img src="man/figures/p2_gof_2.png" width = 350 px/>
+<div class="column">
+
+<img src="man/figures/p1_gof_1.png" width = 380 px/>
+<img src="man/figures/p2_gof_2.png" width = 380 px/>
+
+</div>
 
 **(3) Testing a composite IEAS hypothesis against a RSM model with
 degree sequence
