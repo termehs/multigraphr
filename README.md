@@ -234,12 +234,9 @@ against a RSM model with degrees
 ``` r
 gof1 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
-#>   Stat      Exp      Var       cv   alpha P(Stat>cv(chi2)) cv(Stat)
-#> 1    S 13.61614 50.73657 17.48528 0.04164          0.21243 27.86206
-#> 2    A 13.40482 19.73839 17.48528 0.04164          0.17859 22.29040
-#>   P(Stat>cv(Stat))
-#> 1          0.04324
-#> 2          0.03490
+#>   Stat  E(Stat)  V(Stat)       cv   alpha P(Stat>cv) cv(Stat) P(Stat>cv(Stat))
+#> 1    S 13.61614 50.73657 17.48528 0.04164    0.21243 27.86206          0.04324
+#> 2    A 13.40482 19.73839 17.48528 0.04164    0.17859 22.29040          0.03490
 head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
 #>        S=s  P(S=s)  P(S<s)
 #> 1  1.71667 0.00026 0.00026

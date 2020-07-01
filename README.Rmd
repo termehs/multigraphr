@@ -125,7 +125,7 @@ Probability distributions of test statistics, summary of tests, moments of tests
 Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
 
 **(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2) against a RSM model with degrees (8,8,2,2)**:
-```{r gof1, include=TRUE, results='markup', message=FALSE, cache =TRUE}
+```{r gof1, include=TRUE, results='markup', message=FALSE, cache=FALSE}
 gof1 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
 head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
