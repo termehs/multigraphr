@@ -304,8 +304,8 @@ visualised using `ggraph`:
 
 <div class="column">
 
-<img src="man/figures/p1_gof_1.png" width = 380 px/>
-<img src="man/figures/p2_gof_2.png" width = 380 px/>
+<img src="man/figures/p1_gof_1.png" width = 400 px/>
+<img src="man/figures/p2_gof_2.png" width = 400 px/>
 
 </div>
 
