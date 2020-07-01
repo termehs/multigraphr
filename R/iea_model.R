@@ -36,11 +36,19 @@
     r <- choose(n + 1, 2)
 
     if (type == 'multigraph') {
+      if (sum(diag(adj)) %% 2 == 1)
+        stop("not an adjacency matrix for multigraphs
+           with diagonal elements double counted,
+           consider type 'graph' instead.")
+      if (sum(adj) %% 2 == 1)
+        stop("sum of adjacency matrix must be even")
       m.mat <- adj - 0.5 * diag(diag(adj))
       m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
       m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
       m <- sum(m.seq)
     } else if (type == 'graph') {
+      if (sum(adj) %% 2 == 1)
+        stop("sum of adjacency matrix must be even")
       m.mat <- adj
       m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
       m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
