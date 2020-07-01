@@ -300,7 +300,7 @@ head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
 
 The non-null (`gof1`) and null (`gof2`) distributions of the test
 statistics together with their asymptotic chi2-distribution can be
-visualised using `ggraph`:
+visualised using `ggplot2`:
 
 <div class="column">
 

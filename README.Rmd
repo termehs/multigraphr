@@ -138,7 +138,7 @@ gof2 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEA
 head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
 ```
-The non-null (`gof1`) and null (`gof2`)  distributions of the test statistics together with their asymptotic chi2-distribution can be visualised using  `ggraph`:
+The non-null (`gof1`) and null (`gof2`)  distributions of the test statistics together with their asymptotic chi2-distribution can be visualised using  `ggplot2`:
 <div class="column">
 <img src="man/figures/p1_gof_1.png" width = 400 px/>
 <img src="man/figures/p2_gof_2.png" width = 400 px/>
