@@ -227,80 +227,91 @@ tests are given.
 
 Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
 
-  - Testing a simple IEAS hypothesis with degree sequence *(5,5,5,5)*
-    against a RSM model with degree sequence
-*(14,2,2,2)*:
-
-<!-- end list -->
+**(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2)
+against a RSM model with degrees
+(8,8,2,2)**:
 
 ``` r
-gof_1 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(5,5,5,5))
-gof_1
-#> $degrees.of.freedom
-#> [1] 9
-#> 
-#> $probS
-#>      S=s  P(S=s)  P(S<s)
-#> 1  29.52 0.34675 0.34675
-#> 2  42.82 0.41610 0.76285
-#> 3  45.48 0.10402 0.86687
-#> 4  61.44 0.06935 0.93622
-#> 5  62.58 0.03467 0.97090
-#> 6  64.48 0.01734 0.98824
-#> 7  65.24 0.00867 0.99690
-#> 8  85.38 0.00165 0.99856
-#> 9  88.04 0.00124 0.99979
-#> 10 88.80 0.00021 1.00000
-#> 
-#> $probA
-#>         A=a  P(A=a)  P(A<a)
-#> 1  21.24967 0.34675 0.34675
-#> 2  22.54115 0.41610 0.76285
-#> 3  27.00793 0.06935 0.83220
-#> 4  27.14628 0.10402 0.93622
-#> 5  28.84047 0.03467 0.97090
-#> 6  32.55310 0.01734 0.98824
-#> 7  33.44560 0.00867 0.99690
-#> 8  34.58208 0.00165 0.99856
-#> 9  39.18721 0.00124 0.99979
-#> 10 40.07985 0.00021 1.00000
-#> 
-#> $summmary
-#>   Stat      Exp       Var cv(chi2) alpha(chi2) stat>cv(chi2) cv(stat)
-#> 1    S 41.16706 115.37420 17.48528     0.04164             1 62.64954
-#> 2    A 23.41280   8.19897 17.48528     0.04164             1 29.13957
-#>   stat>cv(stat)
-#> 1        0.0291
-#> 2        0.0291
-#> 
-#> $adjusted.stats
-#>                   S    Sprim      Sbis         A    Aprim     Abis
-#> Exp        41.16706 41.16706  41.16706 23.412802 23.41280  23.4128
-#> Var       115.37420 82.66960 376.60594  8.198965 47.66603 121.8132
-#> Best Adj.   0.00000  1.00000   0.00000  0.000000  1.00000   0.0000
-#> 
-#> $adjusted.chi2
-#>      df(S) df(A)
-#> [1,]    41    23
-#> 
-#> $power.apx
-#>     Sprim Sbis   Aprim Abis
-#> 1 0.00046    1 0.19952    1
+gof1 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
+gof1$test.summmary
+#>   Stat      Exp      Var       cv   alpha P(Stat>cv(chi2)) cv(Stat)
+#> 1    S 13.61614 50.73657 17.48528 0.04164          0.21243 27.86206
+#> 2    A 13.40482 19.73839 17.48528 0.04164          0.17859 22.29040
+#>   P(Stat>cv(Stat))
+#> 1          0.04324
+#> 2          0.03490
+head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
+#>        S=s  P(S=s)  P(S<s)
+#> 1  1.71667 0.00026 0.00026
+#> 2  2.03333 0.00112 0.00138
+#> 3  2.35000 0.00012 0.00150
+#> 4  2.77222 0.00069 0.00219
+#> 5  3.08889 0.00705 0.00924
+#> 6  3.40556 0.00220 0.01144
+#> 7  3.72222 0.00007 0.01150
+#> 8  3.82778 0.00037 0.01187
+#> 9  3.93333 0.00092 0.01279
+#> 10 4.14444 0.00291 0.01570
+head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
+#>        A=a  P(A=a)  P(A<a)
+#> 1  1.83545 0.00004 0.00004
+#> 2  2.41090 0.00017 0.00021
+#> 3  2.85715 0.00048 0.00069
+#> 4  2.98622 0.00006 0.00074
+#> 5  3.43246 0.00064 0.00138
+#> 6  3.45728 0.00022 0.00161
+#> 7  3.58648 0.00002 0.00163
+#> 8  3.87871 0.00012 0.00174
+#> 9  3.90367 0.00064 0.00239
+#> 10 4.03273 0.00041 0.00279
 ```
 
-  - Testing a composite IEAS hypothesis against a RSM model with degree
-    sequence
-*(14,2,2,2)*:
-
-<!-- end list -->
+**(2) Testing a correctly specified simple IEAS hypothesis with degree
+sequence
+(14,2,2,2)**:
 
 ``` r
-gof_2 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
-gof_2
-#> $degrees.of.freedom
-#> [1] 6
-#> 
-#> $probS
+gof2 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(14,2,2,2))
+head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
+#>        S=s  P(S=s)  P(S<s)
+#> 1  1.32692 0.03973 0.03973
+#> 2  1.48352 0.01019 0.04992
+#> 3  1.58791 0.04304 0.09295
+#> 4  2.26648 0.01332 0.10628
+#> 5  2.68407 0.02649 0.13276
+#> 6  2.84066 0.04075 0.17351
+#> 7  2.94505 0.02152 0.19503
+#> 8  3.41484 0.01254 0.20757
+#> 9  3.62363 0.03997 0.24753
+#> 10 4.04121 0.06054 0.30807
+head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
+#>        A=a  P(A=a)  P(A<a)
+#> 1  2.09774 0.03973 0.03973
+#> 2  2.22362 0.01019 0.04992
+#> 3  2.37458 0.04304 0.09295
+#> 4  2.98622 0.01332 0.10628
+#> 5  3.14425 0.02649 0.13276
+#> 6  3.21690 0.03405 0.16682
+#> 7  3.27013 0.04075 0.20756
+#> 8  3.34277 0.02619 0.23376
+#> 9  3.49374 0.01230 0.24605
+#> 10 3.90131 0.01254 0.25859
+```
+
+The non-null (`gof1`) and null (`gof2`) distributions of the test
+statistics together with their asymptotic chi2-distribution can be
+visualised using `ggraph`:
+
+<img src="man/figures/p1_gof_1.png" align="center" width = 400 px/>
+<img src="man/figures/p2_gof_2.png" align="center" width = 400 px/>
+
+**(3) Testing a composite IEAS hypothesis against a RSM model with
+degree sequence
+(14,2,2,2)**:
+
+``` r
+gof3 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
+head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
 #>        S=s  P(S=s)  P(S<s)
 #> 1  1.48352 0.34675 0.34675
 #> 2  4.04121 0.41610 0.76285
@@ -311,8 +322,7 @@ gof_2
 #> 7 22.62363 0.03467 0.98989
 #> 8 38.23077 0.00991 0.99979
 #> 9 57.23077 0.00021 1.00000
-#> 
-#> $probA
+head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
 #>         A=a  P(A=a)  P(A<a)
 #> 1   2.22362 0.34675 0.34675
 #> 2   3.21690 0.41610 0.76285
@@ -324,29 +334,43 @@ gof_2
 #> 8  15.70339 0.00867 0.99856
 #> 9  20.20690 0.00124 0.99979
 #> 10 22.97949 0.00021 1.00000
-#> 
-#> $summmary
-#>   Stat     Exp      Var cv(chi2) alpha(chi2) stat>cv(chi2) cv(stat)
-#> 1    S 6.35294 51.88277  12.9282     0.04419        0.1678 20.75888
-#> 2    A 4.29978  8.88590  12.9282     0.04419        0.0291 10.26162
-#>   stat>cv(stat)
-#> 1       0.04479
-#> 2       0.02910
-#> 
-#> $adjusted.stats
-#>                   S     Sprim      Sbis        A    Aprim     Abis
-#> Exp        6.352943  6.352943  6.352943 4.299776 4.299776 4.299776
-#> Var       51.882769 13.453295 13.453295 8.885904 9.244037 6.162691
-#> Best Adj.  0.000000  0.000000  0.000000 0.000000 1.000000 0.000000
-#> 
-#> $adjusted.chi2
-#>      df(S) df(A)
-#> [1,]     6     4
-#> 
-#> $power.apx
-#>     Sprim    Sbis   Aprim    Abis
-#> 1 0.94255 0.99988 0.98285 0.99903
 ```
+
+**(4) Testing a composite ISA hypothesis against a ISA model with degree
+sequence
+(14,2,2,2)**:
+
+``` r
+gof4 <- gof_multigraph(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), hyp = 'ISA', deg.hyp = 0)
+head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
+#>        S=s  P(S=s)  P(S<s)
+#> 1  0.00000 0.00080 0.00080
+#> 2  0.00102 0.00000 0.00080
+#> 3  0.02268 0.00041 0.00121
+#> 4  0.02770 0.00684 0.00805
+#> 5  0.09781 0.00012 0.00817
+#> 6  0.12346 0.02639 0.03456
+#> 7  0.22676 0.00000 0.03456
+#> 8  0.27778 0.00002 0.03458
+#> 9  0.28504 0.00019 0.03477
+#> 10 0.31142 0.06030 0.09507
+head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
+#>        A=a  P(A=a)  P(A<a)
+#> 1  0.00000 0.00080 0.00080
+#> 2  0.00097 0.00000 0.00080
+#> 3  0.02246 0.00041 0.00121
+#> 4  0.05268 0.00684 0.00805
+#> 5  0.09940 0.00012 0.00817
+#> 6  0.22264 0.02639 0.03456
+#> 7  0.22375 0.00000 0.03456
+#> 8  0.27684 0.00002 0.03458
+#> 9  0.37277 0.00019 0.03477
+#> 10 0.37555 0.00096 0.03573
+```
+
+The non-null (`gof3`) and null (`gof4`) distributions of the test
+statistics together can then be visualised as shown above to check their
+fit to the asymptotic chi2-distribution.
 
 ## Theoretical Background
 
@@ -360,33 +384,3 @@ consult the following literature which the package is based on:
     multigraphs. *The Journal of Mathematical Sociology*, 40(4),
     239-264.
     [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
-
-<!-- This is a basic example which shows you how to solve a common problem: -->
-
-<!-- ```{r example} -->
-
-<!-- library(multigraphr) -->
-
-<!-- ## basic example code -->
-
-<!-- ``` -->
-
-<!-- What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so: -->
-
-<!-- ```{r cars} -->
-
-<!-- summary(cars) -->
-
-<!-- ``` -->
-
-<!-- You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. -->
-
-<!-- You can also embed plots, for example: -->
-
-<!-- ```{r pressure, echo = FALSE} -->
-
-<!-- plot(pressure) -->
-
-<!-- ``` -->
-
-<!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub! -->
