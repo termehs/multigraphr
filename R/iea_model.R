@@ -47,8 +47,6 @@
       m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
       m <- sum(m.seq)
     } else if (type == 'graph') {
-      if (sum(adj) %% 2 == 1)
-        stop("sum of adjacency matrix must be even")
       m.mat <- adj
       m.mat[lower.tri(m.mat, diag = FALSE)] <- 0
       m.seq <-  m.mat[upper.tri(m.mat, diag = TRUE)]
