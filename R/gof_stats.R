@@ -9,16 +9,17 @@
 #' @param Q.seq  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites
 #' @return
-#'  \item{probS}{Probability distribution of Pearson statistic S}
-#'  \item{probA}{Probability distribution of information divergence statistic A}
-#'  \item{summary}{Expected value and variances of test statistics (stat), critical values (cv) according to
-#'  asymptotic chi2 distribution and according to cdf's of test statistics, and significance level (alpha) according to
-#'  asymptotic chi2 distribution, power of tests (P(stat>cv))
-#'  according to asymptotic chi2-distribution, power of tests}
-#'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
+#'  \item{test.summary}{Expected value and variances of test statistics (stat),
+#'  critical values (cv) according to asymptotic chi2 distribution and
+#'  according to cdf's of test statistics,
+#'  significance level (alpha) according to
+#'  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
+#'  \item{probS}{Probability distributions of Pearson statistic S}
+#'  \item{probA}{Probability distributions of information divergence statistic A}
+#'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
-#'  \item{degrees.of.freedom}{Degrees of freedom for test performed}
 #' @details The tests are performed using goodness-of-fit measures between the
 #' edge multiplicity sequence of an observed multigraph,
 #' and the expected multiplicity sequence according to a simple or composite hypothesis.
@@ -147,13 +148,13 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   gof.sum <- cbind(stat, gof.sum)
   colnames(gof.sum) <-
     c('Stat',
-      'Exp',
-      'Var',
-      'cv(chi2)',
-      'alpha(chi2)',
-      'stat>cv(chi2)',
-      'cv(stat)',
-      'stat>cv(stat)')
+      'E(Stat)',
+      'V(Stat)',
+      'cv',
+      'alpha',
+      'P(Stat>cv)',
+      'cv(Stat)',
+      'P(Stat>cv(Stat))')
 
   # output 3: moments of approximate statistics (just differene in variance)
   Exp.out <-
@@ -201,7 +202,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   } else {
     adj.chi2.A <- floor(ExpA)
   }
-  adj.chi2 <- cbind(adj.chi2.S, adj.chi2.A)
+  adj.chi2 <- as.data.frame(cbind(adj.chi2.S, adj.chi2.A))
   colnames(adj.chi2) <- c('df(S)', 'df(A)')
 
   # output 5: power approixmations with S and A
@@ -221,10 +222,10 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   # output list
   listout <-
     list(
+      "test.summmary" = gof.sum,
       "degrees.of.freedom" = dof,
       "probS" = prob.Sout,
       "probA" = prob.Aout,
-      "summmary" = gof.sum,
       "adjusted.stats" = adj.out,
       "adjusted.chi2" = adj.chi2,
       "power.apx" = power.apx

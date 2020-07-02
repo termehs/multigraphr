@@ -16,16 +16,17 @@
 #'   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @return
-#'  \item{probS}{Probability distribution of Pearson statistic S}
-#'  \item{probA}{Probability distribution of divergence statistic A}
-#'  \item{summary}{Expected value and variances of test statistics (stat), critical values (cv) according to
-#'  asymptotic chi2 distribution and according to cdf's of test statistics, and significance level (alpha) according to
-#'  asymptotic chi2 distribution, power of tests (P(stat>cv))
-#'  according to asymptotic chi2-distribution, power of tests}
-#'  \item{adjusted.stats}{Expected value and variances for adjusted test statistics, preferred adjusted statistics}
+#'  \item{test.summary}{Expected value and variances of test statistics (stat),
+#'  critical values (cv) according to asymptotic chi2 distribution and
+#'  according to cdf's of test statistics,
+#'  significance level (alpha) according to
+#'  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
+#'  \item{probS}{Probability distributions of Pearson statistic S}
+#'  \item{probA}{Probability distributions of information divergence statistic A}
+#'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
-#'  \item{degrees.of.freedom}{Degrees of freedom for test performed}
 #' @details The tests are performed using goodness-of-fit measures between the
 #' edge multiplicity sequence of an observed multigraph,
 #' and the expected multiplicity sequence according to a simple or composite hypothesis.
@@ -44,7 +45,7 @@
 #' deg.hyp <- c(6,6,6,2)
 #' test1 <- gof_multigraph <- (10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 #'
-#' # Non-null distributions of test statistics S and A are given by
+#' # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
 #' test1$probS
 #' test1$probA
 #'
@@ -56,13 +57,14 @@
 #' deg.hyp <- c(15,15,15,15)
 #' test2 <- gof_multigraph <- (30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 #'
-#' # Non-null distributions of test statistics S and A are given by
+#' # Summary of above tests
+#' test1$test.summary
+#' test2$test.summary
+#'
+#' # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
 #' test2$probS
 #' test2$probA
 #'
-#' # Summary of above tests
-#' test1$summary
-#' test2$summary
 #' @export
 #'
 gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
@@ -70,8 +72,6 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
   r <- choose(n + 1, 2)
 
   if (sum(deg.mod)/2 != m)
-    stop("number of edges must be half the sum of the degree sequence")
-  if (sum(deg.hyp)/2 != m)
     stop("number of edges must be half the sum of the degree sequence")
 
   # model specification: IEAS or ISA
@@ -102,6 +102,8 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
   # hypothesis IEAS
   if (hyp == 'IEAS') {
     if (sum(deg.hyp) > 0) {
+      if (sum(deg.hyp)/2 != m)
+        stop("number of edges must be half the sum of the degree sequence")
       dof <- r - 1
       # fully specified with deg.hyp
       Q.seq <- edge_assignment_probs(m, deg.hyp, model = 'IEAS')
@@ -131,6 +133,8 @@ gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
   # hypothesis ISA
   else if (hyp == 'ISA') {
     if (sum(deg.hyp) > 0) {
+      if (sum(deg.hyp)/2 != m)
+        stop("number of edges must be half the sum of the degree sequence")
       dof <- r - 1
       # fully specified with deg.hyp
       Q.seq <- edge_assignment_probs(m, deg.hyp, model = 'ISA')
