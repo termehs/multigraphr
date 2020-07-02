@@ -24,11 +24,6 @@
 #' @export
 #'
 edge_assignment_probs <- function(m, deg.seq, model) {
-  if (sum(deg.seq) %% 2 == 1)
-    stop("sum of degree sequence must be an even number")
-  if (sum(deg.seq)/2 != m)
-    stop("number of edges must be half the sum of the degree sequence")
-
   n <- length(deg.seq)
   if (model == 'IEAS') {
     Q.mat <- matrix(0, n, n)
