@@ -23,9 +23,10 @@ model can be approximated by the IEA model. This is done by either the IEAS (ind
 the ISA (independent stub assignment) model.
 }
 \details{
-The IEAS and ISA edge assignment probabilities, to
+The IEAS and ISA edge assignment probabilities to
 all possible vertex pairs are calculated given a fixed degree sequence \emph{deq.seq}
-under IEAS and \emph{deg.seq/2m} under ISA. Number of possible vertex pair sites is given by
+under the IEAS model, and \emph{deg.seq/2m} under the ISA model.
+Number of possible vertex pair sites is given by
 \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 }
 \examples{

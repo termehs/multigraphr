@@ -39,7 +39,7 @@ degree sequence of the multigraph: \cr
 \description{
 Goodness of fits tests of multigraph models using Pearson (S) and
 information divergence (A) test statistics under the random stub matching (RSM)
-and by independent edge assignments (IEA) model,
+and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA).
 }

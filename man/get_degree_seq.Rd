@@ -11,7 +11,7 @@ get_degree_seq(adj, type = "multigraph")
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with the elements of the matrix diagonal double counted)}
+(with the matrix diagonal representing loops being double counted).}
 }
 \value{
 Vector of integers representing the degree sequence
@@ -23,7 +23,7 @@ Gives the degree sequence of the adjacency matrix of an observed graph or multig
 Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
 }
 \examples{
- ## Adjancency matrix for undirected network with 3 nodes
+ ## Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2, 1, 2, 1, 2, 1, 2), nrow=3, ncol=3)
  # If A represents a graph
  get_degree_seq(adj = A, type = 'graph')
