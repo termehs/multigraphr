@@ -68,7 +68,7 @@ test1$probA
 # on a multigrpah with n = 4 nodes and m = 30 edges.
 deg.mod <- c(15,15,15,15)
 deg.hyp <- c(15,15,15,15)
-test2 <- gof_multigraph <- (30, 'RSM', deg.mod, 'IEAS', deg.hyp)
+test2 <- gof_multigraph(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 
 # Summary of above tests
 test1$test.summary
