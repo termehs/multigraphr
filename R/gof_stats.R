@@ -156,7 +156,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       'cv(Stat)',
       'P(Stat>cv(Stat))')
 
-  # output 3: moments of approximate statistics (just differene in variance)
+  # output 3: moments of approximate statistics (just difference in variance)
   Exp.out <-
     cbind(ExpS, ExpS.prim, ExpS.bis, ExpA, ExpA.prim, ExpA.bis)
   Var.out <-
@@ -205,7 +205,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   adj.chi2 <- as.data.frame(cbind(adj.chi2.S, adj.chi2.A))
   colnames(adj.chi2) <- c('df(S)', 'df(A)')
 
-  # output 5: power approixmations with S and A
+  # output 5: power approximations with S and A
   tmp <- cv * floor(ExpS) / ExpS
   powerS.prim <- pchisq(tmp, floor(ExpS))
   tmp2 <- cv * (2 * ExpS ^ 2 / dof) / ExpS
