@@ -1,4 +1,4 @@
-#' @title Goodness of fit tests for random multigraph models
+#' @title Goodness of fit for random multigraph models
 #' @description  Goodness of fits tests of multigraph models using Pearson (S) and
 #' information divergence (A) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,

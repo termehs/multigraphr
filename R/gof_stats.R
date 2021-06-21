@@ -1,4 +1,4 @@
-#' @title Probability distributions of goodness of fit test statistics and summary of tests
+#' @title Probability distributions and summary of goodness of fit test statistics
 #' @description  Goodness of fit between observed and expected tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
 #' under specified random stub matching (RSM) and independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
