@@ -40,10 +40,11 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   prob.Chi <- pchisq(cv, dof) # prob(chi(dof) < cv)
   alpha <- 1 - prob.Chi # prob(chi(dof) > cv )
 
-  # S = Pearson goodness-of-fit statistic
+
   # Observed values = O, Expected values = E
   O = m.seq
   E = m * Q.seq
+  # S = Pearson goodness-of-fit statistic
   if (is.vector(E)) {
     S = (t(O) - E) ^ 2 / E
     S[is.infinite(S) | is.na(S)] = 0
