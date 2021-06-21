@@ -1,10 +1,10 @@
 #' @title Probability distributions of goodness of fit test statistics and summary of tests
-#' @description  Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
-#' under the random stub matching (RSM) and by independent edge assignments (IEA) model,
+#' @description  Goodness of fit between observed and expected tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
+#' under specified random stub matching (RSM) and independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test
-#' @param m.seq  vector of integers representing all possible multigraphs
+#' @param m.seq  vector of integers, each representing possible multigraphs
 #' @param prob.mg  probability distribution of multigraphs under specified model
 #' @param Q.seq  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites
@@ -21,8 +21,8 @@
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
 #' @details The tests are performed using goodness-of-fit measures between the
-#' edge multiplicity sequence of an observed multigraph,
-#' and the expected multiplicity sequence according to a simple or composite hypothesis.
+#' edge multiplicity sequence of an observed multigraph under specified RSM or IEAS model,
+#' and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
 #' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 #' of tests given these two statistics are given as output.
 #' @author Termeh Shafie
