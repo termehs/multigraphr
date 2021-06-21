@@ -26,3 +26,7 @@
 #' @examples
 #' ## For examples see gof_multigraph()
 #' @export
+#' 
+#' gof_test <- function(m, dof, m.seq, Q.seq) {
+#' 
+#' }
