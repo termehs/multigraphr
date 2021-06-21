@@ -103,7 +103,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
 
   # probability distribution of the A values
   # A <- round(A,3) # if you wish to round
-  A <- (2 * m * D) / log2(exp(1)) # the asymptotic T statistics
+  A <- (2 * m * D) / log2(exp(1)) # the asymptotic A statistics
   A.uni <- sort(unique(A))
   prob.tmp <- vector()
   prob.A <- vector()
