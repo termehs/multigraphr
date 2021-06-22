@@ -33,16 +33,22 @@ O <- adj[lower.tri(t(adj), TRUE)]
 adj2 <- adj + diag(adj)
 O <- adj2[lower.tri(t(adj2), TRUE)]
 }
+}
 
 # expected values depending on whether simple or composite hypothesis
-if (deg.hyp == 0) {
-  deg.est <- matrix(0,     choose(m+r-1,m), n)
+if (sum(deg.hyp) == 0) {
+  deg.est <- matrix(0, choose(m+r-1,m), n)
+  m.seq <- nsumk(r, m)
   for (i in 1:nrow(m.seq)) {
     M <- matrix(0, n, n)
     M[lower.tri(M, diag = TRUE)] <- 1
     M[M == 1] <- m.seq[i,]
     M <- M + t(M)
-    deg.est[i,] <- colSums(M) / (2 * m)
+    if (hyp == 'ISA') {
+      deg.est[i,] <- colSums(M) / (2 * m)
+    } else {
+      deg.est[i,] <- colSums(M)
+    }
   }
   Q.seq <- matrix(0, nrow(m.seq), r)
   for (d in 1:nrow(deg.est)) {
@@ -56,7 +62,7 @@ if (deg.hyp == 0) {
     S = (t(O) - E) ^ 2 / E
     S[is.infinite(S) | is.na(S)] = 0
     S = colSums(S)
-  } else{
+  } else {
     S = (O - E) ^ 2 / E
     S[is.infinite(S) | is.na(S)] = 0
     S = rowSums(S)
@@ -72,9 +78,7 @@ if (deg.hyp == 0) {
     D[is.infinite(D) | is.na(D)] = 0
     D <- rowSums(D)
   }
-    # probability distribution of the D values
-  D <- round(D, 5) # if you wish to round
-  # probability distribution of the A values
+  D <- round(D, 3) # if you wish to round
   A <- (2 * m * D) / log2(exp(1)) # the asymptotic A statistics
   A <- round(A,3) # if you wish to round
   } else{
