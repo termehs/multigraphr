@@ -7,7 +7,7 @@
 gof_test(adj, type, hyp, deg.hyp, dof)
 }
 \arguments{
-\item{dof}{integer giving degrees of freedom of test, 
+\item{dof}{integer giving degrees of freedom of test,
 r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 (consider changing these according to preferred adjusted chi-square distributions)}
 
@@ -29,14 +29,14 @@ of test using these two statistics are  given as output.
 }
 \examples{
 ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
-m_F_PT <- t(matrix(c( 0,	1,	0,	3,
-                      0,	0,	1,	6,
-                      0,	0,	0,	3,
-                      0,	0,	0,	1), nrow= 4, ncol=4))
+m_F_PT <- t(matrix(c( 0, 1, 0, 3,
+                      0, 0, 1, 6,
+                      0, 0, 0, 3,
+                      0, 0, 0, 1), nrow= 4, ncol=4))
 # Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
-gof_test(adj, type, 'IEAS', c(4,4,8,14), 9) 
+gof_test(adj, type, 'IEAS', c(4,4,8,14), 9)
 # Testing a composite IEAS hypothesis
-gof_test(adj, type, 'IEAS', 0, 6)                       
+gof_test(adj, type, 'IEAS', 0, 6)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
