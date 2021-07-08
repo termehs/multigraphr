@@ -1,5 +1,5 @@
-#' @title Goodness of fit under the hood "for random multigraph models
-#' @description  Goodness of fits tests of multigraph models using Pearson (S) and
+#' @title Goodness of fit test simulations
+#' @description  Goodness of fits test simulations of specified multigraph models using Pearson (S) and
 #' information divergence (A) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or
@@ -37,25 +37,21 @@
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' ## Testing a simple IEAS hypothesis
-#' # with degree sequence [6,6,6,2] against
-#' # an IEAS model with degree sequence [14,2,2,2]
-#' # on a multigrpah with n = 4 nodes and m = 10 edges.
+#' ## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
+#' # an IEAS model with degree sequence [14,2,2,2] on a multigrpah with n = 4 nodes and m = 10 edges
 #' deg.mod <- c(14,2,2,2)
 #' deg.hyp <- c(6,6,6,2)
-#' test1 <- gof_multigraph(10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
+#' test1 <- gof_sim(10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 #'
 #' # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
 #' test1$probS
 #' test1$probA
 #'
-#' # Testing a composite IEAS hypothesis
-#' # with degree sequence [15,15,15,15] against
-#' # an RSM model with degree sequence [15,15,15,15]
-#' # on a multigrpah with n = 4 nodes and m = 30 edges.
+#' # Testing a composite IEAS hypothesi with degree sequence [15,15,15,15] against
+#' # an RSM model with degree sequence [15,15,15,15] on a multigraph with n = 4 nodes and m = 30 edges.
 #' deg.mod <- c(15,15,15,15)
 #' deg.hyp <- c(15,15,15,15)
-#' test2 <- gof_multigraph(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
+#' test2 <- gof_sim(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 #'
 #' # Summary of above tests
 #' test1$test.summary
@@ -67,7 +63,7 @@
 #'
 #' @export
 #'
-gof_multigraph <- function(m, model, deg.mod, hyp, deg.hyp) {
+gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
   n <- length(deg.mod)
   r <- choose(n + 1, 2)
 
