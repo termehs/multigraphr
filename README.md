@@ -370,6 +370,10 @@ The non-null (`gof3`) and null (`gof4`) distributions of the test
 statistics can then be visualised as shown above to check their fit to
 the asymptotic chi2-distribution.
 
+## Performing the goodness of fit test on your data
+
+Use function `gof_test` (examples coming soon)
+
 ## Theoretical Background
 
 For more details regarding the theoretical background of the package,
