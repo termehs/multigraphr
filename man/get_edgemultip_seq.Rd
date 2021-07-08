@@ -25,7 +25,7 @@ at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is nu
 Only practical for small multigraphs.
 }
 \examples{
-## Adjancency matrix for undirected network with 3 nodes
+## Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2),

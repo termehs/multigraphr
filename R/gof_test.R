@@ -1,5 +1,5 @@
 #'@title Goodness of fit tests for multigraph representations of observed networks
-#' @description  Goodness of fits between observed multigraph and specifiedRSM or IEAS hypotheses
+#' @description  Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
 #' using using Pearson (S) and information divergence (A) tests statistics
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test, 

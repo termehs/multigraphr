@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_multigraph.R
 \name{gof_multigraph}
 \alias{gof_multigraph}
-\title{Goodness of fit tests for random multigraph models}
+\title{Goodness of fit for random multigraph models}
 \usage{
 gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_stats.R
 \name{gof_stats}
 \alias{gof_stats}
-\title{Probability distributions of goodness of fit test statistics and summary of tests}
+\title{Probability distributions and summary of goodness of fit test statistics}
 \usage{
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
@@ -11,7 +11,7 @@ gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 
 \item{dof}{integer giving degrees of freedom of test}
 
-\item{m.seq}{vector of integers representing all possible multigraphs}
+\item{m.seq}{vector of integers, each representing possible multigraphs}
 
 \item{prob.mg}{probability distribution of multigraphs under specified model}
 
@@ -32,14 +32,14 @@ to all possible vertex pair sites}
  \item{power.apx}{Power approximations according to adjusted statistics}
 }
 \description{
-Goodness of fits tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
-under the random stub matching (RSM) and by independent edge assignments (IEA) model,
+Goodness of fit between observed and expected tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
+under specified random stub matching (RSM) and independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
 }
 \details{
 The tests are performed using goodness-of-fit measures between the
-edge multiplicity sequence of an observed multigraph,
-and the expected multiplicity sequence according to a simple or composite hypothesis.
+edge multiplicity sequence of an observed multigraph under specified RSM or IEAS model,
+and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
 Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 of tests given these two statistics are given as output.
 }
