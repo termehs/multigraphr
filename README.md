@@ -14,11 +14,8 @@ experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https:/
 ## Installation
 
 <!-- You can install the released version of multigraphr from [CRAN](https://CRAN.R-project.org) with: -->
-
 <!-- ``` r -->
-
 <!-- install.packages("multigraphr") -->
-
 <!-- ``` -->
 
 The development version from [GitHub](https://github.com/) with:
@@ -52,8 +49,8 @@ Shafie (2015;2016).
 
 Multigraphs are represented by their edge multiplicity sequence, where
 the edge multiplicity denotes the number of edges at possible vertex
-pair sites ordered according to *(1,1) \< (1,2) \<···\< (1,n) \< (2,2)
-\< (2,3) \<···\< (n,n)*, where *n* is number of nodes.
+pair sites ordered according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n) &lt;
+(2,2) &lt; (2,3) &lt;···&lt; (n,n)*, where *n* is number of nodes.
 
 Two probability models for generating undirected random multigraphs are
 implemented in the package together with several statistics under these
@@ -207,7 +204,7 @@ between observed and expected values thus indicating social mechanisms
 at play in the generation of edges, and to detect overlap and potential
 dependencies between different types of edges.
 
-## Goodness of fit tests
+## Simulated goodness of fit tests
 
 Goodness of fits tests of multigraph models using Pearson (S) and
 information divergence (A) test statistics under the random stub
@@ -223,16 +220,19 @@ of tests statistics, adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
 tests are given.
 
+Examples of using the tests on your data is shown further down using the
+function `gof_test`.
+
 ### Example
 
-Goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges.
+Simulated goodness of fit tests for multigraphs with *n=4* nodes and
+*m=10* edges.
 
 **(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2)
-against a RSM model with degrees
-(8,8,2,2)**:
+against a RSM model with degrees (8,8,2,2)**:
 
 ``` r
-gof1 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
+gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
 #>   Stat  E(Stat)  V(Stat)       cv   alpha P(Stat>cv) cv(Stat) P(Stat>cv(Stat))
 #> 1    S 13.61614 50.73657 17.48528 0.04164    0.21243 27.86206          0.04324
@@ -264,11 +264,10 @@ head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(2) Testing a correctly specified simple IEAS hypothesis with degree
-sequence
-(14,2,2,2)**:
+sequence (14,2,2,2)**:
 
 ``` r
-gof2 <- gof_multigraph(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(14,2,2,2))
+gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(14,2,2,2))
 head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
 #>        S=s  P(S=s)  P(S<s)
 #> 1  1.32692 0.03973 0.03973
@@ -307,11 +306,10 @@ visualised using `ggplot2`:
 </div>
 
 **(3) Testing a composite IEAS hypothesis against a RSM model with
-degree sequence
-(14,2,2,2)**:
+degree sequence (14,2,2,2)**:
 
 ``` r
-gof3 <- gof_multigraph(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
+gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
 head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
 #>        S=s  P(S=s)  P(S<s)
 #> 1  1.48352 0.34675 0.34675
@@ -338,11 +336,10 @@ head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(4) Testing a composite ISA hypothesis against a ISA model with degree
-sequence
-(14,2,2,2)**:
+sequence (14,2,2,2)**:
 
 ``` r
-gof4 <- gof_multigraph(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), hyp = 'ISA', deg.hyp = 0)
+gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), hyp = 'ISA', deg.hyp = 0)
 head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
 #>        S=s  P(S=s)  P(S<s)
 #> 1  0.00000 0.00080 0.00080
@@ -378,10 +375,11 @@ the asymptotic chi2-distribution.
 For more details regarding the theoretical background of the package,
 consult the following literature which the package is based on:
 
-  - Shafie, T. (2015). A multigraph approach to social network analysis.
+-   Shafie, T. (2015). A multigraph approach to social network analysis.
     *Journal of Social Structure*, 16.
     [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
-  - Shafie, T. (2016). Analyzing local and global properties of
+
+-   Shafie, T. (2016). Analyzing local and global properties of
     multigraphs. *The Journal of Mathematical Sociology*, 40(4),
     239-264.
     [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
