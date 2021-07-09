@@ -1,4 +1,4 @@
-#' @title Probability distributions and summary of goodness of fit test statistics
+#' @title Probability distributions and moment summary of goodness of fit test statistics
 #' @description  Goodness of fit between observed and expected tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
 #' under specified random stub matching (RSM) and independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
@@ -31,7 +31,7 @@
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 #' @examples
-#' ## For examples see gof_multigraph()
+#' ## For examples see gof_sim() or gof_test()
 #' @export
 #'
 gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
