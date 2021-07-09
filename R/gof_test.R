@@ -20,14 +20,14 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 #' @examples
 #' ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
-#' m_F_PT <- t(matrix(c( 0, 1, 0, 3,
-#'                       0, 0, 1, 6,
-#'                       0, 0, 0, 3,
-#'                       0, 0, 0, 1), nrow= 4, ncol=4))
+#' adj <- t(matrix(c( 0, 1, 0, 3,
+#'                    0, 0, 1, 6,
+#'                    0, 1, 0, 3,
+#'                    3, 6, 3, 2), nrow= 4, ncol=4))
 #' # Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
-#' gof_test(adj, type, 'IEAS', c(4,4,8,14), 9)
+#' gof_test(adj, type = 'multigraph', 'IEAS', c(4,4,8,14), 9)
 #' # Testing a composite IEAS hypothesis
-#' gof_test(adj, type, 'IEAS', 0, 6)
+#' gof_test(adj, type = 'multigraph', 'IEAS', 0, 6)
 #' @export
 #'
 gof_test <- function(adj, type, hyp, deg.hyp, dof) {
