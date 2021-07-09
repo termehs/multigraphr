@@ -32,7 +32,7 @@
 #' and the expected multiplicity sequence according to a simple or composite hypothesis.
 #' Test statistics of Pearson type (S) and of information divergence (A) type are used.
 #' @author Termeh Shafie
-#' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model]
+#' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
