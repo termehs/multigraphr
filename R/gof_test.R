@@ -27,7 +27,7 @@
 #' # Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
 #' gof_test(adj, type = 'multigraph', 'IEAS', c(4,4,8,14), 9)
 #' # Testing a composite IEAS hypothesis
-#' gof_test(adj, type = 'multigraph', 'IEAS', 0, 6)
+#' gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 #' @export
 #'
 gof_test <- function(adj, type, hyp, deg.hyp, dof) {
