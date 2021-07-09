@@ -190,7 +190,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   colnames(adj.out) <-
     c('S', 'Sprim', 'Sbis', 'A', 'Aprim', 'Abis')
 
-  # output 4: adjusted chi square distributions (their degrees of freeedom)
+  # output 4: adjusted chi square distributions (their degrees of freedom)
   S.comp <- 2*(ExpS^2)/var.S
   if (abs(S.comp - dof) < abs(S.comp - floor(ExpS))) {
     adj.chi2.S <- dof

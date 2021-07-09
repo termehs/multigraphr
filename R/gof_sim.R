@@ -8,8 +8,8 @@
 #' @param model character string representing assumed model, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
 #' the modelled degree sequence of the multigraph
-#' @param hyp  character string representing testing hypothesis, either IEAS or ISA
-#' @param deg.hyp vector of integers with sum 2m representing the hypothetical
+#' @param hyp  character string representing the hypothesis, either IEAS or ISA
+#' @param deg.hyp vector of integers with sum equal to 2m representing the hypothetical
 #' degree sequence of the multigraph: \cr
 #'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
 #'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
