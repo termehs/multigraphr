@@ -50,13 +50,15 @@ O <- adj[lower.tri(t(adj), TRUE)]
 } else if (type == 'graph') {
 adj2 <- adj + diag(adj)
 O <- adj2[lower.tri(t(adj2), TRUE)]
+} else {
+  stop("type must be defined as either 'graph' or 'multigraph'")
 }
 
 # expected values depending on whether simple or composite hypothesis
 if (sum(deg.hyp) == 0) {
   deg.est <- get_degree_seq(adj, type)
   Q.seq <-  edge_assignment_probs(m, deg.est, hyp)
-  E = m * Q.seq
+  E = round(m * Q.seq, 1)
   # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
   S[is.infinite(S) | is.na(S)] = 0
@@ -67,8 +69,8 @@ if (sum(deg.hyp) == 0) {
   A <- (2 * m * D) / log2(exp(1))
   A <- round(sum(A),3)
   } else if (sum(deg.hyp) > 0) {
-Q.seq <- edge_assignment_probs(m, deg.hyp, hyp)
-E = m * Q.seq
+  Q.seq <- edge_assignment_probs(m, deg.hyp, hyp)
+  E = round(m * Q.seq, 1)
 # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
   S[is.infinite(S) | is.na(S)] = 0
