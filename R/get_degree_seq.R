@@ -27,9 +27,9 @@ get_degree_seq <- function(adj, type = 'multigraph') {
            consider type 'graph' instead.")
     if (sum(adj) %% 2 == 1)
       stop("sum of adjacency matrix must be even")
-    deg.seq <- sort(rowSums(adj))
+    deg.seq <- (rowSums(adj))
   } else if (type == 'graph') {
-    deg.seq <- sort(rowSums(adj) + diag(adj))
+    deg.seq <- (rowSums(adj) + diag(adj))
   }
   else {
     stop("type must be defined as either 'graph' or 'multigraph'")
