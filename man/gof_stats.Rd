@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_stats.R
 \name{gof_stats}
 \alias{gof_stats}
-\title{Probability distributions and summary of goodness of fit test statistics}
+\title{Probability distributions and moment summary of goodness of fit test statistics}
 \usage{
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
@@ -44,7 +44,7 @@ Test statistics of Pearson type (S) and of information divergence (A) type are u
 of tests given these two statistics are given as output.
 }
 \examples{
-## For examples see gof_multigraph()
+## For examples see gof_sim() or gof_test()
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.

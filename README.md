@@ -204,24 +204,27 @@ between observed and expected values thus indicating social mechanisms
 at play in the generation of edges, and to detect overlap and potential
 dependencies between different types of edges.
 
-## Simulated goodness of fit tests
+## Goodness of fit tests
 
 Goodness of fits tests of multigraph models using Pearson (S) and
 information divergence (A) test statistics under the random stub
 matching (RSM) and by independent edge assignments (IEA) model, where
 the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA). The tests are performed using
-goodness-of-fit measures between the edge multiplicity sequence of an
-observed multigraph, and the expected multiplicity sequence according to
-a simple or composite hypothesis.
+goodness-of-fit measures between the edge multiplicity sequence of a
+specified model or an observed multigraph, and the expected multiplicity
+sequence according to a simple or composite hypothesis.
+
+## Simulated goodness of fit tests
 
 Probability distributions of test statistics, summary of tests, moments
 of tests statistics, adjusted test statistics, critical values,
 significance level according to asymptotic distribution, and power of
-tests are given.
-
-Examples of using the tests on your data is shown further down using the
-function `gof_test`.
+tests can be examined using `gof_sim` given a specified model from which
+we simulate observed values from, and a null or non-null hypothesis from
+which we calculate expected values from. This in order to investigate
+the behavior of the null and non-null distributions of the test
+statistics.
 
 ### Example
 

@@ -14,9 +14,9 @@ gof_sim(m, model, deg.mod, hyp, deg.hyp)
 \item{deg.mod}{vector of integers with sum 2m representing
 the modelled degree sequence of the multigraph}
 
-\item{hyp}{character string representing testing hypothesis, either IEAS or ISA}
+\item{hyp}{character string representing the hypothesis, either IEAS or ISA}
 
-\item{deg.hyp}{vector of integers with sum 2m representing the hypothetical
+\item{deg.hyp}{vector of integers with sum equal to 2m representing the hypothetical
 degree sequence of the multigraph: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
@@ -81,7 +81,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[gof_stats],[edge_assignment_probs],[nsumk],[rsm_model]
+[gof_stats],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 }
 \author{
 Termeh Shafie

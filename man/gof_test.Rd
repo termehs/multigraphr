@@ -7,9 +7,23 @@
 gof_test(adj, type, hyp, deg.hyp, dof)
 }
 \arguments{
+\item{adj}{Matrix of integer}
+
+\item{type}{Equals 'graph' if adjacency matrix is for graphs (default)}
+
+\item{hyp}{character string representing the hypothesized model (null), either IEAS or ISA}
+
+\item{deg.hyp}{vector of integers with sum equal to 2m representing the hypothesized
+degree sequence of the multigraph: \cr
+  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
+
 \item{dof}{integer giving degrees of freedom of test,
 r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
-(consider changing these according to preferred adjusted chi-square distributions)}
+(consider changing these according to preferred adjusted chi-square distributions
+for better power approximations)}
 
 \item{m}{integer giving number of edges in multigraph}
 }
@@ -29,14 +43,14 @@ of test using these two statistics are  given as output.
 }
 \examples{
 ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
-m_F_PT <- t(matrix(c( 0, 1, 0, 3,
-                      0, 0, 1, 6,
-                      0, 0, 0, 3,
-                      0, 0, 0, 1), nrow= 4, ncol=4))
+adj <- t(matrix(c( 0, 1, 0, 3,
+                   0, 0, 1, 6,
+                   0, 1, 0, 3,
+                   3, 6, 3, 2), nrow= 4, ncol=4))
 # Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
-gof_test(adj, type, 'IEAS', c(4,4,8,14), 9)
+gof_test(adj, type = 'multigraph', 'IEAS', c(4,4,8,14), 9)
 # Testing a composite IEAS hypothesis
-gof_test(adj, type, 'IEAS', 0, 6)
+gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
