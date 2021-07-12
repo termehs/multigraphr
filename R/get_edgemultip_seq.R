@@ -35,6 +35,8 @@ get_edgemultip_seq <- function(adj, type = 'multigraph') {
     deg.seq <- sort(rowSums(adj))
   } else if (type == 'graph') {
     deg.seq <- sort(rowSums(adj) + diag(adj))
+  } else {
+    stop("type must be defined as either 'graph' or 'multigraph'")
   }
 
   m <- sum(deg.seq) / 2

@@ -31,5 +31,8 @@ get_degree_seq <- function(adj, type = 'multigraph') {
   } else if (type == 'graph') {
     deg.seq <- sort(rowSums(adj) + diag(adj))
   }
+  else {
+    stop("type must be defined as either 'graph' or 'multigraph'")
+  }
   return(deg.seq)
 }
