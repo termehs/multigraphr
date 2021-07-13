@@ -21,9 +21,7 @@ degree sequence of the multigraph: \cr
   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 
 \item{dof}{integer giving degrees of freedom of test,
-r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
-(consider changing these according to preferred adjusted chi-square distributions
-for better power approximations)}
+r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$}
 
 \item{m}{integer giving number of edges in multigraph}
 }

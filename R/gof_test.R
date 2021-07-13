@@ -13,8 +13,6 @@
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test,
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
-#' (consider changing these according to preferred adjusted chi-square distributions
-#' for better power approximations)
 #' @return
 #'  \item{summary}{Table including observed test statistics S and A, degrees of freedom for
 #'  asymptotic chi-square distribution, and p-value for each test statistics.
