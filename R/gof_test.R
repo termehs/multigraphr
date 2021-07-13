@@ -58,7 +58,7 @@ O <- adj2[lower.tri(t(adj2), TRUE)]
 if (sum(deg.hyp) == 0) {
   deg.est <- get_degree_seq(adj, type)
   Q.seq <-  edge_assignment_probs(m, deg.est, hyp)
-  E = round(m * Q.seq, 1)
+  E = m * Q.seq
   # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
   S[is.infinite(S) | is.na(S)] = 0
@@ -70,7 +70,7 @@ if (sum(deg.hyp) == 0) {
   A <- round(sum(A),3)
   } else if (sum(deg.hyp) > 0) {
   Q.seq <- edge_assignment_probs(m, deg.hyp, hyp)
-  E = round(m * Q.seq, 1)
+  E = m * Q.seq
 # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
   S[is.infinite(S) | is.na(S)] = 0
