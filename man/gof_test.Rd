@@ -4,24 +4,24 @@
 \alias{gof_test}
 \title{Goodness of fit tests for multigraph representations of observed networks}
 \usage{
-gof_test(adj, type, mod.null, deg.null, dof)
+gof_test(adj, type, hyp, deg.hyp, dof)
 }
 \arguments{
-\item{adj}{Observed network represented by a matrix of integers (adjacency matrix)}
+\item{adj}{Matrix of integer}
 
-\item{type}{Equals 'graph' if adjacency matrix is for graphs (default), otherwise 'multigraph'}
+\item{type}{Equals 'graph' if adjacency matrix is for graphs (default)}
 
-\item{deg.null}{vector of integers with sum equal to 2m representing the null
-degree sequence: \cr
-  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.null\cr
-  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.null/2m\cr
-  - if 'IEAS': and deg.null = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
-  - if 'ISA' and deg.null = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
+\item{hyp}{character string representing the hypothesized model (null), either IEAS or ISA}
+
+\item{deg.hyp}{vector of integers with sum equal to 2m representing the null
+degree sequence of the multigraph: \cr
+  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 
 \item{dof}{integer giving degrees of freedom of test,
 r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$}
-
-\item{null.hyp}{character string representing the null model, either IEAS or ISA}
 
 \item{m}{integer giving number of edges in multigraph}
 }

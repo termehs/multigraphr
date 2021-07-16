@@ -1,15 +1,15 @@
 #'@title Goodness of fit tests for multigraph representations of observed networks
 #' @description  Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
 #' using using Pearson (S) and information divergence (A) tests statistics
-#' @param adj Observed network represented by a matrix of integers (adjacency matrix)
-#' @param type Equals 'graph' if adjacency matrix is for graphs (default), otherwise 'multigraph'
-#' @param null.hyp  character string representing the null model, either IEAS or ISA
-#' @param deg.null vector of integers with sum equal to 2m representing the null
-#' degree sequence: \cr
-#'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.null\cr
-#'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.null/2m\cr
-#'   - if 'IEAS': and deg.null = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
-#'   - if 'ISA' and deg.null = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
+#' @param adj Matrix of integer
+#' @param type Equals 'graph' if adjacency matrix is for graphs (default)
+#' @param hyp  character string representing the hypothesized model (null), either IEAS or ISA
+#' @param deg.hyp vector of integers with sum equal to 2m representing the null
+#' degree sequence of the multigraph: \cr
+#'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
+#'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+#'   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+#'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test,
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
@@ -38,7 +38,7 @@
 #' gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 #' @export
 #'
-gof_test <- function(adj, type, mod.null, deg.null, dof) {
+gof_test <- function(adj, type, hyp, deg.hyp, dof) {
 m <- sum(adj) / 2
 n <- nrow(adj)
 
@@ -53,9 +53,9 @@ O <- adj2[lower.tri(t(adj2), TRUE)]
 }
 
 # expected values depending on whether simple or composite hypothesis
-if (sum(deg.h) == 0) {
+if (sum(deg.hyp) == 0) {
   deg.est <- get_degree_seq(adj, type)
-  Q.seq <-  edge_assignment_probs(m, deg.est, null.hyp)
+  Q.seq <-  edge_assignment_probs(m, deg.est, hyp)
   E = m * Q.seq
   # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
@@ -66,8 +66,8 @@ if (sum(deg.h) == 0) {
   D[is.infinite(D) | is.na(D)] = 0
   A <- (2 * m * D) / log2(exp(1))
   A <- round(sum(A),3)
-  } else if (sum(deg.null) > 0) {
-  Q.seq <- edge_assignment_probs(m, deg.null, null.hyp)
+  } else if (sum(deg.hyp) > 0) {
+  Q.seq <- edge_assignment_probs(m, deg.hyp, hyp)
   E = m * Q.seq
 # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
