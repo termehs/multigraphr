@@ -1,11 +1,11 @@
 #'@title Goodness of fit tests for multigraph representations of observed networks
 #' @description  Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
 #' using using Pearson (S) and information divergence (A) tests statistics
-#' @param adj Observed network represented by a matrix of integers (adjacency mtrix)
-#' @param type Equals 'graph' if adjacency matrix is for graphs (default)
-#' @param hyp  character string representing the null model, either IEAS or ISA
+#' @param adj Observed network represented by a matrix of integers (adjacency matrix)
+#' @param type Equals 'graph' if adjacency matrix is for graphs (default), otherwise 'multigraph'
+#' @param mod.null  character string representing the null model, either IEAS or ISA
 #' @param deg.null vector of integers with sum equal to 2m representing the null
-#' degree sequence of the multigraph: \cr
+#' degree sequence: \cr
 #'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
 #'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
 #'   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
