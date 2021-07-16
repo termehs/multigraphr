@@ -4,17 +4,17 @@
 \alias{gof_test}
 \title{Goodness of fit tests for multigraph representations of observed networks}
 \usage{
-gof_test(adj, type, hyp, deg.hyp, dof)
+gof_test(adj, type, mod.null, deg.null, dof)
 }
 \arguments{
-\item{adj}{Matrix of integer}
+\item{adj}{Observed network represented by a matrix of integers (adjacency matrix)}
 
-\item{type}{Equals 'graph' if adjacency matrix is for graphs (default)}
+\item{type}{Equals 'graph' if adjacency matrix is for graphs (default), otherwise 'multigraph'}
 
-\item{hyp}{character string representing the hypothesized model (null), either IEAS or ISA}
+\item{mod.null}{character string representing the null model, either IEAS or ISA}
 
-\item{deg.hyp}{vector of integers with sum equal to 2m representing the hypothesized
-degree sequence of the multigraph: \cr
+\item{deg.null}{vector of integers with sum equal to 2m representing the null
+degree sequence: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
