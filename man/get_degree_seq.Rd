@@ -7,7 +7,7 @@
 get_degree_seq(adj, type = "multigraph")
 }
 \arguments{
-\item{adj}{Matrix of integers}
+\item{adj}{Matrix of integer representing graph adjacency matrix}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
