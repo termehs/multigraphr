@@ -7,7 +7,7 @@
 gof_test(adj, type, hyp, deg.hyp, dof)
 }
 \arguments{
-\item{adj}{Matrix of integer}
+\item{adj}{Matrix of integer representing graph adjacency matrix}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default)}
 
