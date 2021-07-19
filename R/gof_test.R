@@ -15,7 +15,7 @@
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 #' @return
 #'  \item{summary}{Table including observed test statistics S and A, degrees of freedom for
-#'  asymptotic chi-square distribution, and p-value for each test statistics.
+#'  their asymptotic chi-square distribution, and p-values for tests performed
 #' @details The tests are performed using goodness-of-fit measures between the
 #' edge multiplicity sequence of an observed multigraph,
 #' and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
