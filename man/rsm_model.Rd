@@ -16,7 +16,7 @@ statistics 'number of loops', 'number of multiple edges', and 'simple graph' (lo
 \item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
 }
 \description{
-Given the degree sequence of a multigraph,
+Given fixed degree sequence of a multigraph,
 this function finds all unique multigraphs represented
 by their edge multiplicity sequences and different
 complexity statistics together with their probability distributions and moments.

@@ -11,7 +11,7 @@ iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with the matrix diagonal representing loops being double counted).}
+(with matrix diagonal representing loops double counted).}
 
 \item{K}{Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
 frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}

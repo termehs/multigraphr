@@ -1,9 +1,9 @@
 #' @title Edge multiplicity sequences of multigraphs of specified size
 #' @description  Finds all unique multigraphs represented  by their edge multiplicity sequences
-#' @param adj Matrix of integers
+#' @param adj Matrix of integers representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-#' (with the matrix diagonal representing loops being double counted).
+#' (with matrix diagonal representing loops double counted).
 #' @return All unique edge multiplicity sequences as a data frame
 #' @details  Finds all multigraphs as represented by their edge multiplicity sequence
 #' at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.

@@ -1,5 +1,5 @@
 #' @title Random stub matching model for multigraphs
-#' @description  Given the degree sequence of a multigraph,
+#' @description  Given fixed degree sequence of a multigraph,
 #' this function finds all unique multigraphs represented
 #' by their edge multiplicity sequences and different
 #' complexity statistics together with their probability distributions and moments.

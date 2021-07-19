@@ -11,7 +11,7 @@ get_degree_seq(adj, type = "multigraph")
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with the matrix diagonal representing loops being double counted).}
+(with matrix diagonal representing loops double counted).}
 }
 \value{
 Vector of integers representing the degree sequence
