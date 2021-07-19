@@ -9,9 +9,10 @@
 #' at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.
 #' Only practical for small multigraphs.
 #' @author Termeh Shafie
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' @references
+#' - Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' - Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## Adjacency matrix for undirected network with 3 nodes
 #'  A <-  matrix(c(0, 1, 2,
