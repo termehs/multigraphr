@@ -38,7 +38,7 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
-#' # an IEAS model with degree sequence [14,2,2,2] on a multigrpah with n = 4 nodes and m = 10 edges
+#' # an IEAS model with degree sequence [14,2,2,2] on a multigraph with n = 4 nodes and m = 10 edges
 #' deg.mod <- c(14,2,2,2)
 #' deg.hyp <- c(6,6,6,2)
 #' test1 <- gof_sim(10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
