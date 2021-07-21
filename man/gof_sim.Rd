@@ -41,7 +41,8 @@ Goodness of fits test simulations of specified multigraph models using Pearson (
 information divergence (A) test statistics under the random stub matching (RSM)
 and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
-independent stub assignment (ISA).
+independent stub assignment (ISA). These can be used to examine the exact
+probability distributions of the test statistics.
 }
 \details{
 The tests are performed using goodness-of-fit measures between the
