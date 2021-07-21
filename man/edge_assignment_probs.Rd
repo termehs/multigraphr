@@ -26,7 +26,7 @@ the ISA (independent stub assignment) model.
 The IEAS and ISA edge assignment probabilities to
 all possible vertex pairs are calculated given a fixed degree sequence \emph{deq.seq}
 under the IEAS model, and \emph{deg.seq/2m} under the ISA model.
-Number of possible vertex pair sites is given by
+Number of possible vertex pair sites to which edges are assigned is given by
 \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 }
 \examples{
