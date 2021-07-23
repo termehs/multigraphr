@@ -93,7 +93,7 @@ isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
   m2 <- sum(m.mat) - sum(diag(m.mat))
 
   Em1 <- m * sum(diag(Q.mat))
-  Em2 <- m * sum(Q.mat[row(Q.mat) != col(Q.mat)])
+  Em2 <- m * sum(Q.upmat)
   # alt Em2=m-E(m1)
 
   cov2 <- vector()
