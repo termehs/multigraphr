@@ -1,6 +1,6 @@
 #' @title Complexity Statistics under the ISA model for multigraphs
 #' @description Summary of estimated statistics for analysing
-#' global structure of random multigraphs under independent edge assignment model
+#' global structure of random multigraphs under independent stub assignment model
 #' given observed adjacency matrix.
 #' The edge assignment probabilities are estimated using the observed edge multiplicities
 #' (maximum likelihood estimates)
@@ -10,7 +10,7 @@
 #' (with matrix diagonal representing loops double counted).
 #' @param K  Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
 #' frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.
-#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
+#' @param apx logical (default = 'FALSE', CURRENTLY NOT IMPLEMENTED). if 'TRUE', the ISA model is used to approximate
 #' the statistics under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
 #' @return
 #' \item{nr.multigraphs}{Number of unique multigraphs possible.}
@@ -37,9 +37,7 @@ isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
 
   if (type == 'multigraph') {
     if (sum(diag(adj)) %% 2 == 1)
-      stop("not an adjacency matrix for multigraphs
-           with diagonal elements double counted,
-           consider type 'graph' instead.")
+
     if (sum(adj) %% 2 == 1)
       stop("sum of adjacency matrix must be even")
     m.mat <- adj - 0.5 * diag(diag(adj))
@@ -67,17 +65,19 @@ isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
 
   if (apx == FALSE) {
     # edge assignment probabilities (Q) as a  matrix and a sequence
-    Q.mat <- m.mat / m
-    Q.seq <- m.seq / m
+    stop("currrently not implemented")
+   # Q.mat <- m.mat / m
+  # Q.seq <- m.seq / m
   } else if (apx == TRUE) {
     deg.seq <- get_degree_seq(adj, type)
+    p.seq <- deg.seq/(2*m)
     Q.mat <- matrix(0, n, n)
     for (i in 1:n) {
       for (j in 1:n) {
         if (i == j) {
-          Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
+          Q.mat[i, j] <- p.seq[i]^2
         } else if (i != j) {
-          Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
+          Q.mat[i, j] <- 2*p.seq[i]*p.seq[j]
         } else {
           Q.mat[i, j] <- 0
         }
