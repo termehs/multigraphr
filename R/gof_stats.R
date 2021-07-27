@@ -206,7 +206,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   adj.chi2 <- as.data.frame(cbind(adj.chi2.S, adj.chi2.A))
   colnames(adj.chi2) <- c('df(S)', 'df(A)')
 
-  # output 5: power approximations with S and A
+  # output 5: power approximations with adjusted S and A statistics
   tmp <- cv * floor(ExpS) / ExpS
   powerS.prim <- pchisq(tmp, floor(ExpS))
   tmp2 <- cv * (2 * ExpS ^ 2 / dof) / ExpS
