@@ -19,7 +19,7 @@
 #'  \item{probA}{Probability distributions of information divergence statistic A}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
-#'  \item{power.apx}{Power approximations according to adjusted statistics}
+#'  \item{power.apx}{Power approximations according to adjusted statistics and non-central chi2-distributions}
 #' @details The tests are performed using goodness-of-fit measures between the
 #' edge multiplicity sequence of an observed multigraph under specified RSM or IEAS model,
 #' and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
