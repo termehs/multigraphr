@@ -33,7 +33,8 @@ to all possible vertex pair sites}
 }
 \description{
 Goodness of fit between observed and expected edge multiplicities, where expected are
-calculated under some random  multigraph models using Pearson (S) and information divergence (A) tests statistics
+calculated under some random  multigraph models using Pearson (S) and information divergence (A) tests statistics.
+The exact distribution of these statistics and their moments are calculated using this function.
 }
 \details{
 The tests are performed using goodness-of-fit measures between the
