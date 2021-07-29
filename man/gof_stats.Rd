@@ -32,9 +32,8 @@ to all possible vertex pair sites}
  \item{power.apx}{Power approximations according to adjusted statistics}
 }
 \description{
-Goodness of fit between observed and expected tests of multigraph models using Pearson (S) and information divergence (A) tests statistics
-under specified random stub matching (RSM) and independent edge assignments (IEA) model,
-where the latter is either independent edge assignments of stubs (IEAS) or independent stub assignment (ISA)
+Goodness of fit between observed and expected edge multiplicities, where expected are
+calculated under some random  multigraph models using Pearson (S) and information divergence (A) tests statistics
 }
 \details{
 The tests are performed using goodness-of-fit measures between the
