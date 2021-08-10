@@ -1,6 +1,6 @@
 #' @title Edge assignment probabilities under the IEAS and ISA model
-#' @description Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
-#' model can be approximated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
+#' @description Calculates the edge assignment probabilities given specified degree sequence under the two ways in which the RSM
+#' model can be approximated by the IEA model: the IEAS (independent edge assignment of stubs) or
 #' the ISA (independent stub assignment) model.
 #' @param m integer giving number of edges in multigraph
 #' @param deg.seq vector of integers with sum 2m representing the degree sequence of the multigraph
