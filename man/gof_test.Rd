@@ -36,7 +36,7 @@ using using Pearson (S) and information divergence (A) tests statistics
 The tests are performed using goodness-of-fit measures between the
 edge multiplicity sequence of an observed multigraph,
 and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
-Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
+Test statistics of Pearson (S) and of information divergence (A) type are used and summary
 of test using these two statistics are  given as output.
 }
 \examples{
