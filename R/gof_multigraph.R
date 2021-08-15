@@ -1,9 +1,5 @@
 #' @title Goodness of fit test simulation sub-function
-#' @description  Goodness of fits tests of multigraph models using Pearson (S) and
-#' information divergence (A) test statistics under the random stub matching (RSM)
-#' and the independent edge assignments (IEA) model,
-#' where the latter is either independent edge assignments of stubs (IEAS) or
-#' independent stub assignment (ISA).
+#' @description  This is an 'under the hood' function for performing the goodness of fits tests
 #' @param m integer giving number of edges in multigraph
 #' @param model character string representing assumed model, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
@@ -18,7 +14,7 @@
 #' @return
 #'  \item{test.summary}{Expected value and variances of test statistics (stat),
 #'  critical values (cv) according to asymptotic chi2 distribution and
-#'  according to cdf's of test statistics,
+#'  according to cumulative distribution functions of test statistics,
 #'  significance level (alpha) according to
 #'  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
 #'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
