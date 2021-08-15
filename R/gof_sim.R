@@ -1,4 +1,4 @@
-#' @title Goodness of fit test simulations (exact distributions of test statistics)
+#' @title Goodness of fit test simulations (exact distributions of test statistics for small multigraphs)
 #' @description  Goodness of fits test simulations of specified multigraph models using Pearson (S) and
 #' information divergence (A) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,
