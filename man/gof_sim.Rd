@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_sim.R
 \name{gof_sim}
 \alias{gof_sim}
-\title{Goodness of fit test simulations}
+\title{Goodness of fit test simulations (exact distributions of test statistics)}
 \usage{
 gof_sim(m, model, deg.mod, hyp, deg.hyp)
 }

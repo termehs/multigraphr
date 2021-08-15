@@ -1,6 +1,6 @@
-#'@title Goodness of fit tests for multigraph representations of observed networks
-#' @description  Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
-#' using using Pearson (S) and information divergence (A) tests statistics
+#'@title Goodness of fit tests
+#' @description  Goodness of fits between observed and expected edge multiplicity sequence given a
+#' specified RSM or IEAS hypotheses using using Pearson (S) and information divergence (A) tests statistics
 #' @param adj Matrix of integer representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default)
 #' @param hyp  character string representing the hypothesized model (null), either IEAS or ISA

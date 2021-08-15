@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_test.R
 \name{gof_test}
 \alias{gof_test}
-\title{Goodness of fit tests for multigraph representations of observed networks}
+\title{Goodness of fit tests}
 \usage{
 gof_test(adj, type, hyp, deg.hyp, dof)
 }
@@ -29,8 +29,8 @@ r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1
 
 }
 \description{
-Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
-using using Pearson (S) and information divergence (A) tests statistics
+Goodness of fits between observed and expected edge multiplicity sequence given a
+specified RSM or IEAS hypotheses using using Pearson (S) and information divergence (A) tests statistics
 }
 \details{
 The tests are performed using goodness-of-fit measures between the
