@@ -9,7 +9,7 @@ gof_multigraph(m, model, deg.mod, hyp, deg.hyp)
 \arguments{
 \item{m}{integer giving number of edges in multigraph}
 
-\item{model}{character string representing assumed model, either RSM, IEAS or ISA}
+\item{model}{character string representing assumed model to simulate multigraphs from, either RSM, IEAS or ISA}
 
 \item{deg.mod}{vector of integers with sum 2m representing
 the modelled degree sequence of the multigraph}
@@ -26,7 +26,7 @@ degree sequence of the multigraph: \cr
 \value{
 \item{test.summary}{Expected value and variances of test statistics (stat),
  critical values (cv) according to asymptotic chi2 distribution and
- according to cdf's of test statistics,
+ according to cumulative distribution functions of test statistics,
  significance level (alpha) according to
  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
@@ -37,11 +37,7 @@ degree sequence of the multigraph: \cr
  \item{power.apx}{Power approximations according to adjusted statistics}
 }
 \description{
-Goodness of fits tests of multigraph models using Pearson (S) and
-information divergence (A) test statistics under the random stub matching (RSM)
-and the independent edge assignments (IEA) model,
-where the latter is either independent edge assignments of stubs (IEAS) or
-independent stub assignment (ISA).
+This is an 'under the hood' function for performing the goodness of fits tests
 }
 \details{
 The tests are performed using goodness-of-fit measures between the

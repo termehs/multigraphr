@@ -1,7 +1,7 @@
 #' @title Goodness of fit test simulation sub-function
 #' @description  This is an 'under the hood' function for performing the goodness of fits tests
 #' @param m integer giving number of edges in multigraph
-#' @param model character string representing assumed model, either RSM, IEAS or ISA
+#' @param model character string representing assumed model to simulate multigraphs from, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
 #' the modelled degree sequence of the multigraph
 #' @param hyp  character string representing testing hypothesis, either IEAS or ISA
