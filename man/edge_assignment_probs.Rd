@@ -18,8 +18,8 @@ A numeric vector Q.seq representing the edge assignment probabilities
 to all possible vertex pair sites
 }
 \description{
-Calculates the edge assignment probabilities given a degree sequence under the two ways in which the RSM
-model can be approximated by the IEA model. This is done by either the IEAS (independent edge assignment of stubs) or
+Calculates the edge assignment probabilities given specified degree sequence under the two ways in which the RSM
+model can be approximated by the IEA model: the IEAS (independent edge assignment of stubs) or
 the ISA (independent stub assignment) model.
 }
 \details{

@@ -1,6 +1,6 @@
-#'@title Goodness of fit tests for multigraph representations of observed networks
-#' @description  Goodness of fits between observed multigraph and specified RSM or IEAS hypotheses
-#' using using Pearson (S) and information divergence (A) tests statistics
+#'@title Goodness of fit tests
+#' @description  Goodness of fits between observed and expected edge multiplicity sequence given a
+#' specified RSM or IEAS hypotheses using using Pearson (S) and information divergence (A) tests statistics
 #' @param adj Matrix of integer representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default)
 #' @param hyp  character string representing the hypothesized model (null), either IEAS or ISA
@@ -19,8 +19,8 @@
 #' @details The tests are performed using goodness-of-fit measures between the
 #' edge multiplicity sequence of an observed multigraph,
 #' and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
-#' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
-#' of test using these two statistics are  given as output.
+#' Test statistics of Pearson (S) and of information divergence (A) type are used and summary
+#' of test using these two statistics are given as output.
 #' @author Termeh Shafie
 #' @seealso [get_edgemultipl_seq],[get_degree_seq],[edge_assignment_probs]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
