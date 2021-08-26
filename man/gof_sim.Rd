@@ -61,7 +61,7 @@ test1 <- gof_sim(10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 test1$probS
 test1$probA
 
-# Testing a composite IEAS hypothesi with degree sequence [15,15,15,15] against
+# Testing a composite IEAS hypothesis with degree sequence [15,15,15,15] against
 # an RSM model with degree sequence [15,15,15,15] on a multigraph with n = 4 nodes and m = 30 edges.
 deg.mod <- c(15,15,15,15)
 deg.hyp <- c(15,15,15,15)

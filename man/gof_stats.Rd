@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_stats.R
 \name{gof_stats}
 \alias{gof_stats}
-\title{Probability distributions and moment summary of goodness of fit test statistics}
+\title{Exact probability distributions and moments of goodness of fit test statistics}
 \usage{
 gof_stats(m, dof, m.seq, prob.mg, Q.seq)
 }
