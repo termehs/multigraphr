@@ -1,4 +1,4 @@
-#' @title Probability distributions and moment summary of goodness of fit test statistics
+#' @title Exact probability distributions and moments of goodness of fit test statistics
 #' @description  Goodness of fit between observed and expected edge multiplicities, where expected are
 #' calculated under some random  multigraph models using Pearson (S) and information divergence (A) tests statistics.
 #' The exact distribution of these statistics and their moments are calculated using this function.
