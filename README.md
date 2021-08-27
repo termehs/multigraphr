@@ -401,20 +401,30 @@ The multiplicity sequence represented as an upper triangular matrix for
 this mutigrpah is given by
 
 ``` r
-flor_m <- t(matrix(c (0, 0,  1, 0,  0,  0,  0,  0,
-                       0,   0,  0,  0,  0,  0,  0,  0,
-                       0,   0,  0,  2,  0,  0,  1,  5,
-                       0,   0,  0,  0,  0,  0,  1,  1,
-                       0,   0,  0,  0,  0,  0,  1,  2,
-                       0,   0,  0,  0,  0,  0,  2,  1,
-                       0,   0,  0,  0,  0,  0,  0,  2,
-                       0,   0,  0,  0,  0,  0,  0,  1), nrow= 8, ncol=8))
+flor_m <- t(matrix(c (0,  0,  1,    0,  0,  0,  0,  0,
+                      0,    0,  0,  0,  0,  0,  0,  0,
+                      0,    0,  0,  2,  0,  0,  1,  5,
+                      0,    0,  0,  0,  0,  0,  1,  1,
+                      0,    0,  0,  0,  0,  0,  1,  2,
+                      0,    0,  0,  0,  0,  0,  2,  1,
+                      0,    0,  0,  0,  0,  0,  0,  2,
+                      0,    0,  0,  0,  0,  0,  0,  1), nrow= 8, ncol=8))
 ```
 
 The equivalence of adjacency matrix for the multigraph is given by
 
 ``` r
 flor_adj <- flor_m+t(flor_m)
+flor_adj 
+#>      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+#> [1,]    0    0    1    0    0    0    0    0
+#> [2,]    0    0    0    0    0    0    0    0
+#> [3,]    1    0    0    2    0    0    1    5
+#> [4,]    0    0    2    0    0    0    1    1
+#> [5,]    0    0    0    0    0    0    1    2
+#> [6,]    0    0    0    0    0    0    2    1
+#> [7,]    0    0    1    1    1    2    0    2
+#> [8,]    0    0    5    1    2    1    2    2
 ```
 
 with the diagonal double counted (Shafie, 2016). The function
@@ -423,6 +433,8 @@ multigraph:
 
 ``` r
 flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
+flor_d
+#> [1]  1  0  9  4  3  3  7 13
 ```
 
 ## Theoretical Background
