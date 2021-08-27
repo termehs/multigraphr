@@ -437,7 +437,12 @@ flor_d
 #> [1]  1  0  9  4  3  3  7 13
 ```
 
-Tests:
+Now we test whether the observed network fits the IEAS or thew IEA
+model. The *p*-values for testing whether there is a significant
+difference between observed and expected edge multiplicity values
+according to the two approximate IEA models are given in the output
+tables below. Note that the asymptotic *χ*<sup>2</sup>-distribution has
+$\\binom{n+1}{2=35}$ degrees of freedom.
 
 ``` r
 flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
@@ -455,10 +460,14 @@ flor_isa_test
 #> 2    A  35    19.648   0.983
 ```
 
-## Theoretical Background
-
-For more details regarding the theoretical background of the package,
-consult the following literature which the package is based on:
+The results show that we have strong evidence for the null such that we
+fail to reject it. Thus, there is not a significant difference between
+the observed and the expected edge multiplicity sequence based on the
+two IEA models. Statistics derived under these models presented above
+can thus be used to analyze the structure of these multigraphs. \#\#
+Theoretical Background For more details regarding the theoretical
+background of the package, consult the following literature which the
+package is based on:
 
 -   Shafie, T. (2015). A multigraph approach to social network analysis.
     *Journal of Social Structure*, 16.
