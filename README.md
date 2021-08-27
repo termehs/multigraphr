@@ -97,7 +97,7 @@ stubs for loops) and is given by
 ``` r
 D <- get_degree_seq(adj = A, type = 'graph')
 D
-#> [1] 2 3 7
+#> [1] 3 7 2
 ```
 
 so that number of edges in the multigraph is half the sum of the degree
@@ -112,13 +112,13 @@ of a unique multigraph):
 rsm_1 <- rsm_model(deg.seq = D)
 rsm_1$m.seq
 #>      [,1] [,2] [,3] [,4] [,5] [,6]
-#> [1,]    1    0    0    1    1    3
-#> [2,]    1    0    0    0    3    2
-#> [3,]    0    2    0    0    1    3
-#> [4,]    0    1    1    1    0    3
-#> [5,]    0    1    1    0    2    2
-#> [6,]    0    0    2    1    1    2
-#> [7,]    0    0    2    0    3    1
+#> [1,]    1    1    0    3    0    1
+#> [2,]    1    1    0    2    2    0
+#> [3,]    1    0    1    3    1    0
+#> [4,]    0    3    0    2    0    1
+#> [5,]    0    3    0    1    2    0
+#> [6,]    0    2    1    2    1    0
+#> [7,]    0    1    2    3    0    0
 ```
 
 with probabilities associated with each multigraph, together with
@@ -129,12 +129,12 @@ graphs or not’:
 rsm_1$prob.dists
 #>     prob.rsm loops multiedges simple
 #> 1 0.03030303     5          1      0
-#> 2 0.06060606     3          3      0
-#> 3 0.06060606     3          3      0
-#> 4 0.06060606     4          2      0
-#> 5 0.36363636     2          4      0
-#> 6 0.18181818     3          3      0
-#> 7 0.24242424     1          5      0
+#> 2 0.18181818     3          3      0
+#> 3 0.06060606     4          2      0
+#> 4 0.06060606     3          3      0
+#> 5 0.24242424     1          5      0
+#> 6 0.36363636     2          4      0
+#> 7 0.06060606     3          3      0
 ```
 
 Consider using the IEA model to approximate the RSM model so that edge
@@ -186,10 +186,10 @@ formulas:
 iea_1$M
 #>               M1    M2
 #> Observed   3.000 3.000
-#> Expected   2.273 7.455
+#> Expected   2.273 3.727
 #> Variance   1.412 1.412
-#> Upper 95%  4.649 9.831
-#> Lower 95% -0.104 5.078
+#> Upper 95%  4.649 6.104
+#> Lower 95% -0.104 1.351
 iea_1$R
 #>              R0     R1     R2
 #> Observed  2.000  2.000  2.000
@@ -224,7 +224,7 @@ tests can be examined using `gof_sim` given a specified model from which
 we simulate observed values from, and a null or non-null hypothesis from
 which we calculate expected values from. This in order to investigate
 the behavior of the null and non-null distributions of the test
-statistics.
+statistics and their fit to to asymptotic chi-square distributions.
 
 ### Example
 
@@ -375,7 +375,28 @@ the asymptotic chi2-distribution.
 
 ## Performing the goodness of fit test on your data
 
-Use function `gof_test` (examples coming soon)
+Use function `gof_test` to test whether the observed data follows IEA
+approximations of the RSM model. The null hypotheses can be simple or
+composite, although the latter is not recommended for small multigraphs
+as it is difficult to detect a false composite hypothesis under an RSM
+model and under IEA models (this can be checked and verified using
+`gof_sim` to simulate these cases).
+
+Non-rejection of the null implies that the approximations fit the data,
+thus implying that above statistics under the IEA models can be used to
+further analyze the observed network. Consider the following multigraphs
+from the well known Florentine family network with financial (blue) and
+marital (red ties). This multigraphs is aggregated based on the three
+actor attributes wealth (W), number of priorates (P) and total number of
+ties (T) which are all dichotomised to reflect high or low economic,
+political and social influence (details on the aggregation can be found
+in Shafie, 2015).
+
+<div class="center">
+
+<img src="man/figures/mg_flor.png" width = 400 px/>
+
+</div>
 
 ## Theoretical Background
 

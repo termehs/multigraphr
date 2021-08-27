@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  cache = TRUE
 )
 ```
 # Package overview: `multigraphr` <img src="man/figures/hex_multigraphr.png" align="right" width="130px"/>
@@ -120,7 +121,7 @@ edge multiplicity sequence of a specified model or an observed multigraph,
 and the expected multiplicity sequence according to a simple or composite hypothesis.
 
 ## Simulated goodness of fit tests
-Probability distributions of test statistics, summary of tests, moments of tests statistics,  adjusted test statistics, critical values, significance level according to asymptotic distribution, and power of tests can be examined using `gof_sim` given a specified model from which we simulate observed values from, and a null or non-null hypothesis from which we calculate expected values from. This in order to investigate the behavior of the null and non-null distributions of the test statistics.
+Probability distributions of test statistics, summary of tests, moments of tests statistics,  adjusted test statistics, critical values, significance level according to asymptotic distribution, and power of tests can be examined using `gof_sim` given a specified model from which we simulate observed values from, and a null or non-null hypothesis from which we calculate expected values from. This in order to investigate the behavior of the null and non-null distributions of the test statistics and their fit to to asymptotic chi-square distributions.
 
 
 ### Example
@@ -164,7 +165,13 @@ head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
 The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics can then be visualised as shown above to check their fit to the asymptotic chi2-distribution.
 
 ## Performing the goodness of fit test on your data
-Use function `gof_test` (examples coming soon)
+Use function `gof_test` to test whether the observed data follows IEA approximations of the RSM model. The null hypotheses can be simple or composite, although the latter is not recommended for small multigraphs as it is difficult to detect a false composite hypothesis under an RSM model and under IEA models (this can be checked and verified using `gof_sim` to simulate these cases).
+
+Non-rejection of the null implies that the approximations fit the data, thus implying that above statistics under the IEA models can be used to further analyze the observed network. 
+Consider the following multigraphs from the well known Florentine family network with financial (blue) and marital (red ties). This multigraphs is aggregated based on the three actor attributes wealth (W), number of priorates (P) and total number of ties (T) which are all dichotomised to reflect high or low  economic, political and social influence (details on the aggregation can be found in Shafie, 2015).
+<div class="center">
+<img src="man/figures/mg_flor.png" width = 400 px/>
+ </div>
 
 ## Theoretical Background
 For more details regarding the
