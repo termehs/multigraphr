@@ -437,6 +437,24 @@ flor_d
 #> [1]  1  0  9  4  3  3  7 13
 ```
 
+Tests:
+
+``` r
+flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
+flor_ieas_test
+#>   Stat dof Stat(obs) p-value
+#> 1    S  35    15.762   0.998
+#> 2    A  35    18.905   0.988
+```
+
+``` r
+flor_isa_test <- gof_test(flor_adj, 'multigraph', 'ISA', flor_d, 35)
+flor_isa_test 
+#>   Stat dof Stat(obs) p-value
+#> 1    S  35    16.572   0.997
+#> 2    A  35    19.648   0.983
+```
+
 ## Theoretical Background
 
 For more details regarding the theoretical background of the package,

@@ -193,6 +193,16 @@ with the diagonal double counted (Shafie, 2016). The function  `get_degree_seq` 
 flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
 flor_d
 ```
+Tests:
+```{r flor4, include=TRUE, results='markup', message=FALSE}
+flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
+flor_ieas_test
+```
+
+```{r flor5, include=TRUE, results='markup', message=FALSE}
+flor_isa_test <- gof_test(flor_adj, 'multigraph', 'ISA', flor_d, 35)
+flor_isa_test 
+```
 ## Theoretical Background
 For more details regarding the
 theoretical background of the package, consult the following literature which the package is based on:
