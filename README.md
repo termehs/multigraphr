@@ -390,7 +390,7 @@ marital (red ties). This multigraphs is aggregated based on the three
 actor attributes wealth (W), number of priorates (P) and total number of
 ties (T) which are all dichotomised to reflect high or low economic,
 political and social influence (details on the aggregation can be found
-in Shafie, 2015).
+in Shafie, 2015):
 
 <div class="center">
 

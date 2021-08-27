@@ -168,7 +168,7 @@ The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics ca
 Use function `gof_test` to test whether the observed data follows IEA approximations of the RSM model. The null hypotheses can be simple or composite, although the latter is not recommended for small multigraphs as it is difficult to detect a false composite hypothesis under an RSM model and under IEA models (this can be checked and verified using `gof_sim` to simulate these cases).
 
 Non-rejection of the null implies that the approximations fit the data, thus implying that above statistics under the IEA models can be used to further analyze the observed network. 
-Consider the following multigraphs from the well known Florentine family network with financial (blue) and marital (red ties). This multigraphs is aggregated based on the three actor attributes wealth (W), number of priorates (P) and total number of ties (T) which are all dichotomised to reflect high or low  economic, political and social influence (details on the aggregation can be found in Shafie, 2015).
+Consider the following multigraphs from the well known Florentine family network with financial (blue) and marital (red ties). This multigraphs is aggregated based on the three actor attributes wealth (W), number of priorates (P) and total number of ties (T) which are all dichotomised to reflect high or low  economic, political and social influence (details on the aggregation can be found in Shafie, 2015):
 <div class="center">
 <img src="man/figures/mg_flor.png" width = 400 px/>
  </div>
