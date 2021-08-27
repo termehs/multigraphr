@@ -384,19 +384,46 @@ model and under IEA models (this can be checked and verified using
 
 Non-rejection of the null implies that the approximations fit the data,
 thus implying that above statistics under the IEA models can be used to
-further analyze the observed network. Consider the following multigraphs
-from the well known Florentine family network with financial (blue) and
-marital (red ties). This multigraphs is aggregated based on the three
-actor attributes wealth (W), number of priorates (P) and total number of
-ties (T) which are all dichotomised to reflect high or low economic,
-political and social influence (details on the aggregation can be found
-in Shafie, 2015):
+further analyze the observed network. Consider the following multigraph
+from the well known Florentine family network with marital. This
+multigraphs is aggregated based on the three actor attributes wealth
+(W), number of priorates (P) and total number of ties (T) which are all
+dichotomised to reflect high or low economic, political and social
+influence (details on the aggregation can be found in Shafie, 2015):
 
 <div class="center">
 
 <img src="man/figures/mg_flor.png" width = 400 px/>
 
 </div>
+
+The multiplicity sequence represented as an upper triangular matrix for
+this mutigrpah is given by
+
+``` r
+flor_m <- t(matrix(c (0, 0,  1, 0,  0,  0,  0,  0,
+                       0,   0,  0,  0,  0,  0,  0,  0,
+                       0,   0,  0,  2,  0,  0,  1,  5,
+                       0,   0,  0,  0,  0,  0,  1,  1,
+                       0,   0,  0,  0,  0,  0,  1,  2,
+                       0,   0,  0,  0,  0,  0,  2,  1,
+                       0,   0,  0,  0,  0,  0,  0,  2,
+                       0,   0,  0,  0,  0,  0,  0,  1), nrow= 8, ncol=8))
+```
+
+The equivalence of adjacency matrix for the multigraph is given by
+
+``` r
+flor_adj <- flor_m+t(flor_m)
+```
+
+with the diagonal double counted (Shafie, 2016). The function
+`get_degree_seq` can now be used to find the degree sequence for this
+multigraph:
+
+``` r
+flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
+```
 
 ## Theoretical Background
 
