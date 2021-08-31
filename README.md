@@ -401,14 +401,14 @@ The multiplicity sequence represented as an upper triangular matrix for
 this mutigrpah is given by
 
 ``` r
-flor_m <- t(matrix(c (0,  0,  1,    0,  0,  0,  0,  0,
-                      0,    0,  0,  0,  0,  0,  0,  0,
-                      0,    0,  0,  2,  0,  0,  1,  5,
-                      0,    0,  0,  0,  0,  0,  1,  1,
-                      0,    0,  0,  0,  0,  0,  1,  2,
-                      0,    0,  0,  0,  0,  0,  2,  1,
-                      0,    0,  0,  0,  0,  0,  0,  2,
-                      0,    0,  0,  0,  0,  0,  0,  1), nrow= 8, ncol=8))
+flor_m <- t(matrix(c (0, 0, 1, 0, 0, 0, 0, 0,
+                      0, 0, 0, 0, 0, 0, 0, 0,
+                      0, 0, 0, 2, 0, 0, 1, 5,
+                      0, 0, 0, 0, 0, 0, 1, 1,
+                      0, 0, 0, 0, 0, 0, 1, 2,
+                      0, 0, 0, 0, 0, 0, 2, 1,
+                      0, 0, 0, 0, 0, 0, 0, 2,
+                      0, 0, 0, 0, 0, 0, 0, 1), nrow= 8, ncol=8))
 ```
 
 The equivalence of adjacency matrix for the multigraph is given by
