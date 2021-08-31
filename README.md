@@ -482,4 +482,4 @@ consult the following literature which the package is based on:
 
 -   Shafie, T. and Schoch, D., (in press). Multiplexity Analysis of
     Networks using Multigraph Representations. *Statistical Methods &
-    Applications *
+    Applications*
