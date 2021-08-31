@@ -462,9 +462,9 @@ flor_isa_test
 
 The results show that we have strong evidence for the null such that we
 fail to reject it. Thus, there is not a significant difference between
-the observed and the expected edge multiplicity sequence based on the
-two IEA models. Statistics derived under these models presented above
-can thus be used to analyze the structure of these multigraphs.
+the observed and the expected edge multiplicity sequence according on
+the two IEA models. Statistics derived under these models presented
+above can thus be used to analyze the structure of these multigraphs.
 
 ## Theoretical Background
 
