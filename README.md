@@ -437,11 +437,11 @@ flor_d
 #> [1]  1  0  9  4  3  3  7 13
 ```
 
-Now we test whether the observed network fits the IEAS or thew IEA
-model. The *p*-values for testing whether there is a significant
-difference between observed and expected edge multiplicity values
-according to the two approximate IEA models are given in the output
-tables below. Note that the asymptotic *χ*<sup>2</sup>-distribution has
+Now we test whether the observed network fits the IEAS or the ISA model.
+The *p*-values for testing whether there is a significant difference
+between observed and expected edge multiplicity values according to the
+two approximate IEA models are given in the output tables below. Note
+that the asymptotic *χ*<sup>2</sup>-distribution has
 *r* − 1 = (*n*(*n* + 1)/2) − 1 = 35 degrees of freedom.
 
 ``` r

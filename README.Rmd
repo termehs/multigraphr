@@ -196,7 +196,7 @@ flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
 flor_d
 ```
 
-Now we test whether the observed network fits the IEAS or thew IEA model. The $p$-values for testing whether there is a significant difference between observed and expected edge multiplicity values according to the two approximate IEA models are given in the output tables below. Note that the asymptotic $\chi^2$-distribution has $r-1 = (n(n+1)/2) - 1 =35$ degrees of freedom.
+Now we test whether the observed network fits the IEAS or the ISA model. The $p$-values for testing whether there is a significant difference between observed and expected edge multiplicity values according to the two approximate IEA models are given in the output tables below. Note that the asymptotic $\chi^2$-distribution has $r-1 = (n(n+1)/2) - 1 =35$ degrees of freedom.
 ```{r flor4, include=TRUE, results='markup', message=FALSE}
 flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
 flor_ieas_test
