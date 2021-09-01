@@ -190,7 +190,7 @@ The equivalence of adjacency matrix for the multigraph is given by
 flor_adj <- flor_m+t(flor_m)
 flor_adj 
 ```
-with the diagonal double counted (Shafie, 2016). The function  `get_degree_seq` can now be used to find the degree sequence for this multigraph:
+with the diagonal representing the loops double counted (Shafie, 2016). The function  `get_degree_seq` can now be used to find the degree sequence for this multigraph:
 ```{r flor3, include=TRUE, results='markup', message=FALSE}
 flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
 flor_d

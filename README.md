@@ -427,9 +427,9 @@ flor_adj
 #> [8,]    0    0    5    1    2    1    2    2
 ```
 
-with the diagonal double counted (Shafie, 2016). The function
-`get_degree_seq` can now be used to find the degree sequence for this
-multigraph:
+with the diagonal representing the loops double counted (Shafie, 2016).
+The function `get_degree_seq` can now be used to find the degree
+sequence for this multigraph:
 
 ``` r
 flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
