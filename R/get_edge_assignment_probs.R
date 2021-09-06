@@ -5,7 +5,7 @@
 #' @param m integer giving number of edges in multigraph
 #' @param deg.seq vector of integers with the sum equal to \emph{2m} representing the degree sequence of the multigraph
 #' @param model character string, either IEAS or ISA
-#' @return  A numeric vector Q.seq representing the edge assignment probabilities
+#' @return  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites
 #' @details The IEAS and ISA edge assignment probabilities to
 #' possible vertex pairs are calculated given a fixed degree sequence \emph{deq.seq}

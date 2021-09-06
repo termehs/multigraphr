@@ -3,7 +3,7 @@
 #' @param adj Matrix of integer representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-#' (with matrix diagonal representing loops double counted).
+#' (with matrix diagonal representing edge loops double counted).
 #' @return Vector of integers representing the degree sequence
 #' @details Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
 #' @author Termeh Shafie

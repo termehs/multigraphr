@@ -14,7 +14,7 @@ get_edge_assignment_probs(m, deg.seq, model)
 \item{model}{character string, either IEAS or ISA}
 }
 \value{
-A numeric vector Q.seq representing the edge assignment probabilities
+A numeric vector representing the edge assignment probabilities
 to all possible vertex pair sites
 }
 \description{
