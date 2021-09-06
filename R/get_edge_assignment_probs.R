@@ -25,6 +25,8 @@
 #' @export
 #'
 get_edge_assignment_probs <- function(m, deg.seq, model) {
+  if (sum(deg.seq) %% 2 == 1)
+    stop("not a graphical degree sequence, the sum is not equal to 2m.")
   n <- length(deg.seq)
   if (model == 'IEAS') {
     Q.mat <- matrix(0, n, n)
