@@ -1,4 +1,4 @@
-#' @title Edge multiplicity sequences of multigraphs of specified size
+#' @title Edge multiplicity sequences of multigraphs of a specified size
 #' @description  Finds all unique multigraphs represented  by their edge multiplicity sequences
 #' @param adj Matrix of integers representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
@@ -18,10 +18,10 @@
 #'                 1, 2, 1,
 #'                 2, 1, 2),
 #'               nrow=3, ncol=3)
-#'  get_edgemultip_seq(adj = A, 'multigraph')
+#'  get_edge_multip_seq(adj = A, 'multigraph')
 #' @export
 
-get_edgemultip_seq <- function(adj, type = 'multigraph') {
+get_edge_multip_seq <- function(adj, type = 'multigraph') {
   n <- dim(adj)[1]
   r <- choose(n + 1, 2)
 
