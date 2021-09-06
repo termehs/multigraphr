@@ -24,7 +24,7 @@
 #' edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
 #' @export
 #'
-edge_assignment_probs <- function(m, deg.seq, model) {
+get_edge_assignment_probs <- function(m, deg.seq, model) {
   n <- length(deg.seq)
   if (model == 'IEAS') {
     Q.mat <- matrix(0, n, n)
