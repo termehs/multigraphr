@@ -18,10 +18,10 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## Under the IEAS model with 10 possible vertex pair sites (4 vertices)
-#' edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
+#' get_edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
 #'
-#' #' ## Under the ISA model with 21 possible vertex pair sites (6 vertices)
-#' edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
+#' ## Under the ISA model with 21 possible vertex pair sites (6 vertices)
+#' get_edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
 #' @export
 #'
 get_edge_assignment_probs <- function(m, deg.seq, model) {
