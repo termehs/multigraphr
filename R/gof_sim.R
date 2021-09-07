@@ -1,14 +1,16 @@
-#' @title Goodness of fit test simulations (exact distributions of test statistics for small multigraphs)
+#' @title Goodness of fit test simulations
 #' @description  Goodness of fits test simulations of specified multigraph models using Pearson (S) and
 #' information divergence (A) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or
-#' independent stub assignment (ISA). These can be used to examine the exact
-#' probability distributions of the test statistics.
+#' independent stub assignment (ISA). These can be used to examine to
+#' check the reliability of the tests by examining the exact probability
+#' distributions of the test statistics and their fit to the asymptotic  χ²-distributions
+#' Only practical for small multigraphs.
 #' @param m integer giving number of edges in multigraph
 #' @param model character string representing assumed model, either RSM, IEAS or ISA
-#' @param deg.mod vector of integers with sum 2m representing
-#' the modelled degree sequence of the multigraph
+#' @param deg.mod vector of integers with sum \eqn{2m} representing
+#' the modeled degree sequence of the multigraph
 #' @param hyp  character string representing the hypothesis, either IEAS or ISA
 #' @param deg.hyp vector of integers with sum equal to 2m representing the hypothetical
 #' degree sequence of the multigraph: \cr
@@ -18,15 +20,15 @@
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @return
 #'  \item{test.summary}{Expected value and variances of test statistics (stat),
-#'  critical values (cv) according to asymptotic chi2 distribution and
+#'  critical values (cv) according to asymptoticχ²-distribution and
 #'  according to cdf's of test statistics,
 #'  significance level (alpha) according to
-#'  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+#'  asymptotic χ² distribution, and power of tests (P(stat>cv))}
 #'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
 #'  \item{probS}{Probability distributions of Pearson statistic S}
 #'  \item{probA}{Probability distributions of information divergence statistic A}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
 #' @details The tests are performed using goodness-of-fit measures between simulated
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,

@@ -20,16 +20,17 @@ to all possible vertex pair sites}
 }
 \value{
 \item{test.summary}{Expected value and variances of test statistics (stat),
- critical values (cv) according to asymptotic chi2 distribution and
+ critical values (cv) according to asymptotic  χ²-distribution and
  according to cdf's of test statistics,
  significance level (alpha) according to
- asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+ asymptotic  χ²-distribution, and power of tests (P(stat>cv))}
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
  \item{probS}{Probability distributions of Pearson statistic S}
  \item{probA}{Probability distributions of information divergence statistic A}
  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
- \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
- \item{power.apx}{Power approximations according to adjusted statistics and non-central chi2-distributions}
+ \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
+ \item{power.apx}{Power approximations according to adjusted statistics and
+ non-central  χ²-distributions}
 }
 \description{
 Goodness of fit between observed and expected edge multiplicities, where expected are

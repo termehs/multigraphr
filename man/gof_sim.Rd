@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_sim.R
 \name{gof_sim}
 \alias{gof_sim}
-\title{Goodness of fit test simulations (exact distributions of test statistics for small multigraphs)}
+\title{Goodness of fit test simulations}
 \usage{
 gof_sim(m, model, deg.mod, hyp, deg.hyp)
 }
@@ -11,8 +11,8 @@ gof_sim(m, model, deg.mod, hyp, deg.hyp)
 
 \item{model}{character string representing assumed model, either RSM, IEAS or ISA}
 
-\item{deg.mod}{vector of integers with sum 2m representing
-the modelled degree sequence of the multigraph}
+\item{deg.mod}{vector of integers with sum \eqn{2m} representing
+the modeled degree sequence of the multigraph}
 
 \item{hyp}{character string representing the hypothesis, either IEAS or ISA}
 
@@ -25,15 +25,15 @@ degree sequence of the multigraph: \cr
 }
 \value{
 \item{test.summary}{Expected value and variances of test statistics (stat),
- critical values (cv) according to asymptotic chi2 distribution and
+ critical values (cv) according to asymptoticχ²-distribution and
  according to cdf's of test statistics,
  significance level (alpha) according to
- asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+ asymptotic χ² distribution, and power of tests (P(stat>cv))}
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
  \item{probS}{Probability distributions of Pearson statistic S}
  \item{probA}{Probability distributions of information divergence statistic A}
  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
- \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
+ \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
  \item{power.apx}{Power approximations according to adjusted statistics}
 }
 \description{
@@ -41,8 +41,10 @@ Goodness of fits test simulations of specified multigraph models using Pearson (
 information divergence (A) test statistics under the random stub matching (RSM)
 and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
-independent stub assignment (ISA). These can be used to examine the exact
-probability distributions of the test statistics.
+independent stub assignment (ISA). These can be used to examine to
+check the reliability of the tests by examining the exact probability
+distributions of the test statistics and their fit to the asymptotic  χ²-distributions
+Only practical for small multigraphs.
 }
 \details{
 The tests are performed using goodness-of-fit measures between simulated

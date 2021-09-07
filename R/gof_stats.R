@@ -10,23 +10,24 @@
 #' to all possible vertex pair sites
 #' @return
 #'  \item{test.summary}{Expected value and variances of test statistics (stat),
-#'  critical values (cv) according to asymptotic chi2 distribution and
+#'  critical values (cv) according to asymptotic  χ²-distribution and
 #'  according to cdf's of test statistics,
 #'  significance level (alpha) according to
-#'  asymptotic chi2 distribution, and power of tests (P(stat>cv))}
+#'  asymptotic  χ²-distribution, and power of tests (P(stat>cv))}
 #'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
 #'  \item{probS}{Probability distributions of Pearson statistic S}
 #'  \item{probA}{Probability distributions of information divergence statistic A}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
-#'  \item{power.apx}{Power approximations according to adjusted statistics and non-central chi2-distributions}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
+#'  \item{power.apx}{Power approximations according to adjusted statistics and
+#'  non-central  χ²-distributions}
 #' @details The tests are performed using goodness-of-fit measures between simulated
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 #' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
 #' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 #' of tests given these two statistics are given as output.
 #' @author Termeh Shafie
-#' @seealso [gof_multigraph],[edge_assignment_probs],[nsumk],[rsm_model]
+#' @seealso [gof_sim],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.

@@ -15,7 +15,7 @@
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 #' @return
 #'  \item{summary}{Table including observed test statistics S and A, degrees of freedom for
-#'  their asymptotic chi-square distribution, and p-values for tests performed
+#'  their asymptotic  χ²-distribution, and p-values for tests performed
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
 #'  to a simple or composite IEAS hypothesis.
@@ -24,7 +24,7 @@
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
 #'  that there is no significant difference between the observed and expected edge multiplicity sequence.
 #' @author Termeh Shafie
-#' @seealso [get_edgemultipl_seq],[get_degree_seq],[edge_assignment_probs]
+#' @seealso [gof_sim],[edge_assignment_probs],[nsumk],[rsm_model],[gof_stats
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
