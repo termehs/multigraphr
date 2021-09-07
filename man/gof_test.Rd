@@ -13,7 +13,7 @@ gof_test(adj, type, hyp, deg.hyp, dof)
 
 \item{hyp}{character string representing the hypothesized model (null), either IEAS or ISA}
 
-\item{deg.hyp}{vector of integers with sum equal to 2m representing the null
+\item{deg.hyp}{vector of integers with sum equal to \eqn{2m} representing the null
 degree sequence of the multigraph: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
@@ -30,8 +30,9 @@ r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1
  their asymptotic  χ²-distribution, and p-values for tests performed
 }
 \description{
-Goodness of fit tests between observed edge multiplicity sequence and expected edge multiplicity sequence given a
-specified RSM or IEAS hypotheses using using Pearson (S) and information divergence (A) tests statistics
+Goodness of fit tests between an observed edge multiplicity sequence and
+an expected edge multiplicity sequence given according to specified RSM or IEAS hypotheses
+using Pearson (S) and information divergence (A) tests statistics.
 }
 \details{
 This function can be used to test whether there is a significant difference between
@@ -60,7 +61,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of 
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 }
 \seealso{
-[gof_sim],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
+[gof_sim],[get_edge_assignment_probs],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
 }
 \author{
 Termeh Shafie

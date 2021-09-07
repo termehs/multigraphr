@@ -1,10 +1,11 @@
 #'@title Goodness of fit tests
-#' @description  Goodness of fit tests between observed edge multiplicity sequence and expected edge multiplicity sequence given a
-#' specified RSM or IEAS hypotheses using using Pearson (S) and information divergence (A) tests statistics
+#' @description  Goodness of fit tests between an observed edge multiplicity sequence and
+#' an expected edge multiplicity sequence given according to specified RSM or IEAS hypotheses
+#' using Pearson (S) and information divergence (A) tests statistics.
 #' @param adj Matrix of integer representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default)
 #' @param hyp  character string representing the hypothesized model (null), either IEAS or ISA
-#' @param deg.hyp vector of integers with sum equal to 2m representing the null
+#' @param deg.hyp vector of integers with sum equal to \eqn{2m} representing the null
 #' degree sequence of the multigraph: \cr
 #'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
 #'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
@@ -24,7 +25,7 @@
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
 #'  that there is no significant difference between the observed and expected edge multiplicity sequence.
 #' @author Termeh Shafie
-#' @seealso [gof_sim],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
+#' @seealso [gof_sim],[get_edge_assignment_probs],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.

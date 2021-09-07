@@ -36,7 +36,7 @@
 #' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 #' of tests given these two statistics are given as output.
 #' @author Termeh Shafie
-#' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
+#' @seealso [gof_stats],[get_edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
@@ -76,7 +76,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
 
   # model specification: IEAS or ISA
   if (model == 'IEAS') {
-    Q.seq <- edge_assignment_probs(m, deg.mod, model = 'IEAS')
+    Q.seq <- get_edge_assignment_probs(m, deg.mod, model = 'IEAS')
     # use IEA model to find probabilities of each multiplicity sequence/multigraph
     m.seq <- nsumk(r, m)
     prob.mg <-
@@ -84,7 +84,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
         dmultinom(x, prob = Q.seq))
   }
   else if (model == 'ISA') {
-    Q.seq <- edge_assignment_probs(m, deg.mod, model = 'ISA')
+    Q.seq <- get_edge_assignment_probs(m, deg.mod, model = 'ISA')
     # use ISA model to find probabilities of each multiplicity sequence/multigraph
     m.seq <- nsumk(r, m)
     prob.mg <-
@@ -106,7 +106,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
         stop("number of edges must be half the sum of the degree sequence")
       dof <- r - 1
       # fully specified with deg.hyp
-      Q.seq <- edge_assignment_probs(m, deg.hyp, model = 'IEAS')
+      Q.seq <- get_edge_assignment_probs(m, deg.hyp, model = 'IEAS')
       moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
     else if (sum(deg.hyp) == 0) {
@@ -124,7 +124,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
       for (d in 1:nrow(deg.est)) {
         deg.seq <- deg.est[d,]
         Q.seq[d,] <-
-          edge_assignment_probs(m, deg.seq, model = 'IEAS')
+          get_edge_assignment_probs(m, deg.seq, model = 'IEAS')
       }
       moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
@@ -137,7 +137,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
         stop("number of edges must be half the sum of the degree sequence")
       dof <- r - 1
       # fully specified with deg.hyp
-      Q.seq <- edge_assignment_probs(m, deg.hyp, model = 'ISA')
+      Q.seq <- get_edge_assignment_probs(m, deg.hyp, model = 'ISA')
       moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }
     else if (sum(deg.hyp) == 0) {
@@ -155,7 +155,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
       for (d in 1:nrow(deg.est)) {
         deg.seq <- deg.est[d,]
         Q.seq[d,] <-
-          edge_assignment_probs(m, deg.seq, model = 'ISA')
+          get_edge_assignment_probs(m, deg.seq, model = 'ISA')
       }
       moms <- gof_stats(m, dof, m.seq, prob.mg, Q.seq)
     }

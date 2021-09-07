@@ -27,7 +27,7 @@
 #' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 #' of tests given these two statistics are given as output.
 #' @author Termeh Shafie
-#' @seealso [gof_sim],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
+#' @seealso [gof_sim],[get_edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.

@@ -17,7 +17,7 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 Vector of integers representing the degree sequence
 }
 \description{
-Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
+Finds the degree sequence of the adjacency matrix of an observed graph or multigraph
 }
 \details{
 Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
