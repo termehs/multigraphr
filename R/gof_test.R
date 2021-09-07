@@ -26,9 +26,9 @@
 #'  that there is no significant difference between the observed and expected edge multiplicity sequence.
 #' @author Termeh Shafie
 #' @seealso [gof_sim],[get_edge_assignment_probs],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
 #' adj <- t(matrix(c( 0, 1, 0, 3,

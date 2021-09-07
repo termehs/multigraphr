@@ -6,8 +6,7 @@
 #' (with matrix diagonal representing loops double counted).
 #' @return All unique edge multiplicity sequences as a data frame
 #' @details  Finds all multigraphs as represented by their edge multiplicity sequence
-#' at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.
-#' Only practical for small multigraphs.
+#' at vertex pair sites. Only practical for small multigraphs.
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr

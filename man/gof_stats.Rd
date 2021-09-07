@@ -48,9 +48,9 @@ of tests given these two statistics are given as output.
 ## For examples see gof_sim() or gof_test()
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 \cr
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
 [gof_sim],[get_edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
