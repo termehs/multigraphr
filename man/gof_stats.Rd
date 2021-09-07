@@ -53,7 +53,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of 
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 }
 \seealso{
-[gof_multigraph],[edge_assignment_probs],[nsumk],[rsm_model]
+[gof_sim],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 }
 \author{
 Termeh Shafie

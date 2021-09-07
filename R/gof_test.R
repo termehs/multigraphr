@@ -14,7 +14,7 @@
 #' @param dof  integer giving degrees of freedom of test,
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 #' @return
-#'  \item{summary}{Table including observed test statistics S and A, degrees of freedom for
+#'  \item{summary} Table including observed test statistics S and A, degrees of freedom for
 #'  their asymptotic  χ²-distribution, and p-values for tests performed
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
@@ -24,18 +24,19 @@
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
 #'  that there is no significant difference between the observed and expected edge multiplicity sequence.
 #' @author Termeh Shafie
-#' @seealso [gof_sim],[edge_assignment_probs],[nsumk],[rsm_model],[gof_stats
+#' @seealso [gof_sim],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of Social Structure, 16.
 #' \cr
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 #' @examples
 #' ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
 #' adj <- t(matrix(c( 0, 1, 0, 3,
-#'                    0, 0, 1, 6,
+#'                    0, 0, 1, 7,
 #'                    0, 1, 0, 3,
 #'                    3, 6, 3, 2), nrow= 4, ncol=4))
-#' # Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
-#' gof_test(adj, type = 'multigraph', 'IEAS', c(4,4,8,14), 9)
+#' deg <- get_degree_seq(adj, 'multigraph')
+#' # Testing a simple IEAS hypothesis with above degree sequence
+#' gof_test(adj, type = 'multigraph', 'IEAS', deg, 9)
 #' # Testing a composite IEAS hypothesis
 #' gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 #' @export
@@ -57,7 +58,7 @@ O <- adj2[lower.tri(t(adj2), TRUE)]
 # expected values depending on whether simple or composite hypothesis
 if (sum(deg.hyp) == 0) {
   deg.est <- get_degree_seq(adj, type)
-  Q.seq <-  edge_assignment_probs(m, deg.est, hyp)
+  Q.seq <-  get_edge_assignment_probs(m, deg.est, hyp)
   E = m * Q.seq
   # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E
@@ -69,7 +70,7 @@ if (sum(deg.hyp) == 0) {
   A <- (2 * m * D) / log2(exp(1))
   A <- round(sum(A),3)
   } else if (sum(deg.hyp) > 0) {
-  Q.seq <- edge_assignment_probs(m, deg.hyp, hyp)
+  Q.seq <- get_edge_assignment_probs(m, deg.hyp, hyp)
   E = m * Q.seq
 # S = Pearson goodness-of-fit statistic
   S = (t(O) - E) ^ 2 / E

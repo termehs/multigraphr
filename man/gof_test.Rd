@@ -26,7 +26,8 @@ r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1
 \item{m}{integer giving number of edges in multigraph}
 }
 \value{
-
+\item{summary} Table including observed test statistics S and A, degrees of freedom for
+ their asymptotic  χ²-distribution, and p-values for tests performed
 }
 \description{
 Goodness of fit tests between observed edge multiplicity sequence and expected edge multiplicity sequence given a
@@ -44,11 +45,12 @@ This function can be used to test whether there is a significant difference betw
 \examples{
 ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
 adj <- t(matrix(c( 0, 1, 0, 3,
-                   0, 0, 1, 6,
+                   0, 0, 1, 7,
                    0, 1, 0, 3,
                    3, 6, 3, 2), nrow= 4, ncol=4))
-# Testing a simple IEAS hypothesis with degree sequence [4 4 8 14]
-gof_test(adj, type = 'multigraph', 'IEAS', c(4,4,8,14), 9)
+deg <- get_degree_seq(adj, 'multigraph')
+# Testing a simple IEAS hypothesis with above degree sequence
+gof_test(adj, type = 'multigraph', 'IEAS', deg, 9)
 # Testing a composite IEAS hypothesis
 gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 }
@@ -58,7 +60,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. Journal of 
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. The Journal of Mathematical Sociology, 40(4), 239-264.
 }
 \seealso{
-[get_edgemultipl_seq],[get_degree_seq],[edge_assignment_probs]
+[gof_sim],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
 }
 \author{
 Termeh Shafie
