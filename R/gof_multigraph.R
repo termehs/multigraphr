@@ -3,7 +3,7 @@
 #' @param m integer giving number of edges in multigraph
 #' @param model character string representing assumed model to simulate multigraphs from, either RSM, IEAS or ISA
 #' @param deg.mod vector of integers with sum 2m representing
-#' the modelled degree sequence of the multigraph
+#' the modeled degree sequence of the multigraph
 #' @param hyp  character string representing testing hypothesis, either IEAS or ISA
 #' @param deg.hyp vector of integers with the sum equal to 2m representing the hypothetical
 #' degree sequence of the multigraph: \cr
