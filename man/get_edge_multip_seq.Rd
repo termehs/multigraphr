@@ -20,7 +20,9 @@ All unique edge multiplicity sequences as a data frame
 Finds all unique multigraphs represented  by their edge multiplicity sequences
 }
 \details{
-
+Finds all multigraphs as represented by their edge multiplicity sequence
+at vertex pair sites \emph{(m_11, m_12,...,m_1n,...,m_nn)}, where \emph{n} is number of vertices.
+Only practical for small multigraphs.
 }
 \examples{
 ## Adjacency matrix for undirected network with 3 nodes

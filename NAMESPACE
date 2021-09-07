@@ -3,7 +3,6 @@
 export(get_degree_seq)
 export(get_edge_assignment_probs)
 export(get_edge_multip_seq)
-export(gof_multigraph)
 export(gof_sim)
 export(gof_stats)
 export(gof_test)

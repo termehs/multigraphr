@@ -45,10 +45,11 @@ independent stub assignment (ISA). These can be used to examine the exact
 probability distributions of the test statistics.
 }
 \details{
-The tests are performed using goodness-of-fit measures between the
-edge multiplicity sequence of an observed multigraph,
-and the expected multiplicity sequence according to a simple or composite hypothesis.
-Test statistics of Pearson type (S) and of information divergence (A) type are used.
+The tests are performed using goodness-of-fit measures between simulated
+edge multiplicity sequence of a multigraph according to an RSM or IEA model,
+and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
+Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
+of tests given these two statistics are given as output.
 }
 \examples{
 ## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against

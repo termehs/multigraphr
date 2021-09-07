@@ -37,9 +37,9 @@ calculated under some random  multigraph models using Pearson (S) and informatio
 The exact distribution of these statistics and their moments are calculated using this function.
 }
 \details{
-The tests are performed using goodness-of-fit measures between the
-edge multiplicity sequence of an observed multigraph under specified RSM or IEAS model,
-and the expected multiplicity sequence according to a simple or composite IEAS hypothesis.
+The tests are performed using goodness-of-fit measures between simulated
+edge multiplicity sequence of a multigraph according to an RSM or IEA model,
+and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
 Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
 of tests given these two statistics are given as output.
 }

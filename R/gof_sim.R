@@ -28,10 +28,11 @@
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted chi2-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics}
-#' @details The tests are performed using goodness-of-fit measures between the
-#' edge multiplicity sequence of an observed multigraph,
-#' and the expected multiplicity sequence according to a simple or composite hypothesis.
-#' Test statistics of Pearson type (S) and of information divergence (A) type are used.
+#' @details The tests are performed using goodness-of-fit measures between simulated
+#' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
+#' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
+#' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
+#' of tests given these two statistics are given as output.
 #' @author Termeh Shafie
 #' @seealso [gof_stats],[edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
