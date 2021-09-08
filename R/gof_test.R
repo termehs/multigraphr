@@ -1,10 +1,12 @@
 #'@title Goodness of fit tests
 #' @description  Goodness of fit tests between an observed edge multiplicity sequence and
 #' an expected edge multiplicity sequence given according to specified RSM or IEAS hypotheses
-#' using Pearson (S) and information divergence (A) tests statistics.
+#' using Pearson (\emph{S}) and information divergence (\wmph{A}) tests statistics.
 #' @param adj Matrix of integer representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default)
-#' @param hyp  character string representing the hypothesized model (null), either IEAS or ISA
+#' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+#' (with matrix diagonal representing edge loops double counted).
+#' @param hyp  character string representing the null model: either IEAS or ISA
 #' @param deg.hyp vector of integers with sum equal to \eqn{2m} representing the null
 #' degree sequence of the multigraph: \cr
 #'   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
@@ -16,11 +18,11 @@
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 #' @return
 #'  \item{summary} {Table including observed test statistics S and A, degrees of freedom for
-#'  their asymptotic  χ²-distribution, and p-values for tests performed}
+#'  their asymptotic χ²-distribution, and p-values for tests performed}
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
 #'  to a simple or composite IEAS hypothesis.
-#'  Test statistics of Pearson (S) and of information divergence (A) type are used and
+#'  Test statistics of Pearson (\emp{S}) and of information divergence (\emph{A}) type are used and
 #'  test summary based on these two statistics are given as output.
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
 #'  that there is no significant difference between the observed and
