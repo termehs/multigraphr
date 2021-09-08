@@ -14,7 +14,7 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 (with matrix diagonal representing loops double counted).}
 
 \item{K}{Upper limit for \emph{k} in the complexity statistics \emph{R(k)} representing the sequence of
-frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
+frequencies of vertex pair sites with edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
 
 \item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
 the statistics under the random stub matching model given observed degree sequence (use function [get_degree_seq]).}
