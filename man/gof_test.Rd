@@ -26,8 +26,8 @@ r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1
 \item{m}{integer giving number of edges in multigraph}
 }
 \value{
-\item{summary} Table including observed test statistics S and A, degrees of freedom for
- their asymptotic  χ²-distribution, and p-values for tests performed
+\item{summary} {Table including observed test statistics S and A, degrees of freedom for
+ their asymptotic  χ²-distribution, and p-values for tests performed}
 }
 \description{
 Goodness of fit tests between an observed edge multiplicity sequence and
@@ -41,7 +41,8 @@ This function can be used to test whether there is a significant difference betw
  Test statistics of Pearson (S) and of information divergence (A) type are used and
  test summary based on these two statistics are given as output.
  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
- that there is no significant difference between the observed and expected edge multiplicity sequence.
+ that there is no significant difference between the observed and
+ expected edge multiplicity sequence.
 }
 \examples{
 ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges

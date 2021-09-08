@@ -20,10 +20,10 @@ to all possible vertex pair sites}
 }
 \value{
 \item{test.summary}{Expected value and variances of test statistics (stat),
- critical values (cv) according to asymptotic  χ²-distribution and
+ critical values (\emph{cv}) according to asymptotic  χ²-distribution and
  according to cdf's of test statistics,
  significance level (alpha) according to
- asymptotic  χ²-distribution, and power of tests (P(stat>cv))}
+ asymptotic  χ²-distribution, and power of tests \emph{(P(stat>cv)}) }
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
  \item{probS}{Probability distributions of Pearson statistic S}
  \item{probA}{Probability distributions of information divergence statistic A}
@@ -53,7 +53,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[gof_sim],[get_edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
+[gof_sim],[get_edge_assignment_probs],[nsumk],[rsm_model]
 }
 \author{
 Termeh Shafie

@@ -19,26 +19,27 @@ the modeled degree sequence of the multigraph}
 \item{deg.hyp}{vector of integers with sum equal to \eqn{2m} representing the hypothetical
 degree sequence of the multigraph: \cr
   - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
-  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
+  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/\emph{2m}\cr
   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 }
 \value{
-\item{test.summary}{Expected value and variances of test statistics (stat),
- critical values (cv) according to asymptoticχ²-distribution and
+\item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
+ critical values (\emph{cv}) according to asymptotic χ²-distribution and
  according to cdf's of test statistics,
- significance level (alpha) according to
- asymptotic χ² distribution, and power of tests (P(stat>cv))}
+ significance level (α) according to asymptotic χ² distribution,
+ and power of tests (\emph{P(stat>cv)}) }
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
- \item{probS}{Probability distributions of Pearson statistic S}
- \item{probA}{Probability distributions of information divergence statistic A}
- \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
+ \item{probS}{Probability distributions of Pearson statistic \emph{S}}
+ \item{probA}{Probability distributions of information divergence statistic \emph{A}}
+ \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
+ preferred adjusted statistics}
  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
  \item{power.apx}{Power approximations according to adjusted statistics}
 }
 \description{
-Goodness of fits test simulations of specified multigraph models using Pearson (S) and
-information divergence (A) test statistics under the random stub matching (RSM)
+Goodness of fits test simulations of specified multigraph models using Pearson (\emph{S}) and
+information divergence (\emph{A}) test statistics under the random stub matching (RSM)
 and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA). These can be used to examine to
@@ -50,7 +51,7 @@ Only practical for small multigraphs.
 The tests are performed using goodness-of-fit measures between simulated
 edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
-Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
+Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
 of tests given these two statistics are given as output.
 }
 \examples{
@@ -85,7 +86,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[gof_stats],[get_edge_assignment_probs],[nsumk],[rsm_model],[gof_test]
+[gof_stats],[get_edge_assignment_probs],[nsumk],[rsm_model]
 }
 \author{
 Termeh Shafie

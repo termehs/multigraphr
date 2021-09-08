@@ -15,15 +15,16 @@
 #' @param dof  integer giving degrees of freedom of test,
 #' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
 #' @return
-#'  \item{summary} Table including observed test statistics S and A, degrees of freedom for
-#'  their asymptotic  χ²-distribution, and p-values for tests performed
+#'  \item{summary} {Table including observed test statistics S and A, degrees of freedom for
+#'  their asymptotic  χ²-distribution, and p-values for tests performed}
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
 #'  to a simple or composite IEAS hypothesis.
 #'  Test statistics of Pearson (S) and of information divergence (A) type are used and
 #'  test summary based on these two statistics are given as output.
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
-#'  that there is no significant difference between the observed and expected edge multiplicity sequence.
+#'  that there is no significant difference between the observed and
+#'  expected edge multiplicity sequence.
 #' @author Termeh Shafie
 #' @seealso [gof_sim],[get_edge_assignment_probs],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
