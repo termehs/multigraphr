@@ -2,37 +2,37 @@
 % Please edit documentation in R/iea_model.R
 \name{iea_model}
 \alias{iea_model}
-\title{Complexity Statistics under the IEA model for multigraphs}
+\title{Complexity statistics under the IEA model for multigraphs}
 \usage{
 iea_model(adj, type = "multigraph", K = 0, apx = FALSE)
 }
 \arguments{
-\item{adj}{Matrix of integers.}
+\item{adj}{Matrix of integers representing graph adjacency matrix}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 (with matrix diagonal representing loops double counted).}
 
-\item{K}{Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
+\item{K}{Upper limit for \emph{k} in the complexity statistics \emph{R(k)} representing the sequence of
 frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
 
 \item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-the statistics under the random stub matching model given observed degree sequence (use function 'get_degree_seq').}
+the statistics under the random stub matching model given observed degree sequence (use function [get_degree_seq]).}
 }
 \value{
-\item{nr.multigraphs}{Number of unique multigraphs possible.}
-\item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
-\item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R_k}.}
+\item{nr.multigraphs}{Number of unique multigraphs possible}
+\item{M}{Summary and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+\item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
 }
 \description{
-Summary of estimated statistics for analysing
-global structure of random multigraphs under independent edge assignment model
+Summary of estimated statistics for analyzing
+global structure of random multigraphs under the independent edge assignment model
 given observed adjacency matrix.
-The edge assignment probabilities are estimated using the observed edge multiplicities
-(maximum likelihood estimates)
 }
 \details{
-To be completed
+The edge assignment probabilities are estimated by using the observed edge multiplicities
+(maximum likelihood estimates) or by using the observed degree sequence if the IEA model is used
+as an approximation to the RSM model.
 }
 \examples{
 ## Adjacency matrix of a small graph on 3 nodes

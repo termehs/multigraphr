@@ -34,13 +34,13 @@ r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1
 \description{
 Goodness of fit tests between an observed edge multiplicity sequence and
 an expected edge multiplicity sequence given according to specified RSM or IEAS hypotheses
-using Pearson (\emph{S}) and information divergence (\wmph{A}) tests statistics.
+using Pearson (\emph{S}) and information divergence (\emph{A}) tests statistics.
 }
 \details{
 This function can be used to test whether there is a significant difference between
  observed multigraph and the expected multiplicity sequence according
  to a simple or composite IEAS hypothesis.
- Test statistics of Pearson (\emp{S}) and of information divergence (\emph{A}) type are used and
+ Test statistics of Pearson (\emph{S}) and of information divergence (\emph{A}) type are used and
  test summary based on these two statistics are given as output.
  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
  that there is no significant difference between the observed and
@@ -64,7 +64,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[gof_sim],[get_edge_assignment_probs],[get_degree_seq],[nsumk],[rsm_model],[gof_stats]
+[get_edge_assignment_probs],[get_degree_seq]
 }
 \author{
 Termeh Shafie
