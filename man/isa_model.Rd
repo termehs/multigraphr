@@ -2,37 +2,45 @@
 % Please edit documentation in R/isa_model.R
 \name{isa_model}
 \alias{isa_model}
-\title{Complexity Statistics under the ISA model for multigraphs}
+\title{Complexity statistics under the ISA model for multigraphs}
 \usage{
-isa_model(adj, type = "multigraph", K = 0, apx = FALSE)
+isa_model(adj, type = "multigraph", K = 0, apx = FALSE, p.seq = 0)
 }
 \arguments{
-\item{adj}{Matrix of integers.}
+\item{adj}{Matrix of integers representing graph adjacency matrix}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 (with matrix diagonal representing loops double counted).}
 
-\item{K}{Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
-frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
+\item{K}{Upper limit for \emph{k} in the complexity statistics \emph{R(k)}
+representing the sequence of
+frequencies of vertex pair sites with edge multiplicities \emph{0,1,...,k}.
+Default is maximum observed in adjacency matrix.}
 
-\item{apx}{logical (default = 'FALSE', CURRENTLY NOT IMPLEMENTED). if 'TRUE', the ISA model is used to approximate
-the statistics under the random stub matching model given observed degree sequence (use function 'get_degree_seq').}
+\item{apx}{logical (default = 'FALSE'). if 'TRUE', the ISA model is used to approximate
+the statistics under the random stub matching model
+given observed degree sequence (use function [get_degree_seq]).}
+
+\item{p.seq}{if apx = FALSE, specify this numerical vector of stub assignment probabilities}
 }
 \value{
-\item{nr.multigraphs}{Number of unique multigraphs possible.}
-\item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
-\item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R_k}.}
+\item{nr.multigraphs}{Number of unique multigraphs possible}
+\item{M}{Summary and interval estimates for \emph{number of loops} and
+\emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+\item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
 }
 \description{
-Summary of estimated statistics for analysing
-global structure of random multigraphs under independent stub assignment model
+Summary of estimated statistics for analyzing
+global structure of random multigraphs under the independent stub assignment model
 given observed adjacency matrix.
-The edge assignment probabilities are estimated using the observed edge multiplicities
-(maximum likelihood estimates)
 }
 \details{
-To be completed
+The edge assignment probabilities are estimated by
+using the observed edge multiplicities over \emph{2m}
+(maximum likelihood estimates) or by using the observed degree sequence
+over \emph{2m} if the ISA model is used
+as an approximation to the RSM model.
 }
 \examples{
 ## Adjacency matrix of a small graph on 3 nodes
@@ -40,12 +48,18 @@ A <-  matrix(c(1, 1, 0,
                1, 2, 2,
                0, 2, 0),
              nrow = 3, ncol = 3)
-isa_model(adj = A , type = 'graph', K = 0, apx = FALSE)
+## When the ISA model is used to approximate the RSM model
+isa_model(adj = A , type = 'graph', K = 0, apx = TRUE)
+
+## When the ISA model is used with a pre-specified stub assignment probabilities
+isa_model(adj = A , type = 'graph', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
 }
 \references{
-Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+Shafie, T. (2015). A Multigraph Approach to Social Network Analysis.
+\emph{Journal of Social Structure}, 16.
 \cr
-Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs.
+\emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
 [get_degree_seq]

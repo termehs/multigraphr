@@ -1,37 +1,50 @@
-#' @title Complexity Statistics under the ISA model for multigraphs
-#' @description Summary of estimated statistics for analysing
-#' global structure of random multigraphs under independent stub assignment model
+#' @title Complexity statistics under the ISA model for multigraphs
+#' @description Summary of estimated statistics for analyzing
+#' global structure of random multigraphs under the independent stub assignment model
 #' given observed adjacency matrix.
-#' The edge assignment probabilities are estimated using the observed edge multiplicities
-#' (maximum likelihood estimates)
-#' @param adj Matrix of integers.
+#' @param adj Matrix of integers representing graph adjacency matrix
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing loops double counted).
-#' @param K  Upper limit for k in the complexity statistics \emph{R_k} representing the sequence of
-#' frequencies of edge sites with multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.
-#' @param apx logical (default = 'FALSE', CURRENTLY NOT IMPLEMENTED). if 'TRUE', the ISA model is used to approximate
-#' the statistics under the random stub matching model given observed degree sequence (use function 'get_degree_seq').
+#' @param K  Upper limit for \emph{k} in the complexity statistics \emph{R(k)}
+#' representing the sequence of
+#' frequencies of vertex pair sites with edge multiplicities \emph{0,1,...,k}.
+#' Default is maximum observed in adjacency matrix.
+#' @param apx logical (default = 'FALSE'). if 'TRUE', the ISA model is used to approximate
+#' the statistics under the random stub matching model
+#' given observed degree sequence (use function [get_degree_seq]).
+#' @param p.seq if apx = FALSE, specify this numerical vector of stub assignment probabilities
 #' @return
-#' \item{nr.multigraphs}{Number of unique multigraphs possible.}
-#' \item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
-#' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R_k}.}
-#' @details  To be completed
+#' \item{nr.multigraphs}{Number of unique multigraphs possible}
+#' \item{M}{Summary and interval estimates for \emph{number of loops} and
+#' \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+#' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
+#' @details The edge assignment probabilities are estimated by
+#' using the observed edge multiplicities over \emph{2m}
+#' (maximum likelihood estimates) or by using the observed degree sequence
+#' over \emph{2m} if the ISA model is used
+#' as an approximation to the RSM model.
 #' @author Termeh Shafie
 #' @seealso [get_degree_seq]
-#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
+#' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis.
+#' \emph{Journal of Social Structure}, 16.
 #' \cr
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs.
+#' \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## Adjacency matrix of a small graph on 3 nodes
 #' A <-  matrix(c(1, 1, 0,
 #'                1, 2, 2,
 #'                0, 2, 0),
 #'              nrow = 3, ncol = 3)
-#'isa_model(adj = A , type = 'graph', K = 0, apx = FALSE)
+#' ## When the ISA model is used to approximate the RSM model
+#'isa_model(adj = A , type = 'graph', K = 0, apx = TRUE)
+#'
+#' ## When the ISA model is used with a pre-specified stub assignment probabilities
+#'isa_model(adj = A , type = 'graph', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
 #' @export
 #'
-isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
+isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE, p.seq = 0) {
   n <- dim(adj)[1]
   r <- choose(n + 1, 2)
 
@@ -64,10 +77,19 @@ isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
   mg.outcomes <- choose(m + r - 1, r - 1)
 
   if (apx == FALSE) {
-    # edge assignment probabilities (Q) as a  matrix and a sequence
-    stop("currrently not implemented")
-   # Q.mat <- m.mat / m
-  # Q.seq <- m.seq / m
+    Q.mat <- matrix(0, n, n)
+    for (i in 1:n) {
+      for (j in 1:n) {
+        if (i == j) {
+          Q.mat[i, j] <- p.seq[i]^2
+        } else if (i != j) {
+          Q.mat[i, j] <- 2*p.seq[i]*p.seq[j]
+        } else {
+          Q.mat[i, j] <- 0
+        }
+      }
+    }
+  Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
   } else if (apx == TRUE) {
     deg.seq <- get_degree_seq(adj, type)
     p.seq <- deg.seq/(2*m)
@@ -93,8 +115,8 @@ isa_model <- function(adj, type = 'multigraph' ,  K = 0, apx = FALSE) {
   m2 <- sum(m.mat) - sum(diag(m.mat))
 
   Em1 <- m * sum(diag(Q.mat))
-  Em2 <- m * sum(Q.upmat)
-  # alt Em2=m-E(m1)
+  Em2 <- m - Em1
+
 
   cov2 <- vector()
   for (i in 1:n) {
