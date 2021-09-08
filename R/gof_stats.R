@@ -1,7 +1,10 @@
-#' @title Exact probability distributions and moments of goodness of fit test statistics
+#' @title Exact probability distributions and moments of goodness of fit statistics
 #' @description  Goodness of fit between observed and expected edge multiplicities, where expected are
-#' calculated under some random  multigraph models using Pearson (S) and information divergence (A) tests statistics.
-#' The exact distribution of these statistics and their moments are calculated using this function.
+#' calculated under some random  multigraph models using Pearson (\emph{S}) and
+#' information divergence (\emph{A}) tests statistics.
+#' The exact distribution of these statistics and their central moments are calculated using this function.
+#' distributions of the test statistics and their fit to the asymptotic  χ²-distribution.
+#' Only practical for small multigraphs.
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test
 #' @param m.seq  vector of integers, each representing possible multigraphs
@@ -9,23 +12,24 @@
 #' @param Q.seq  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites
 #' @return
-#'  \item{test.summary}{Expected value and variances of test statistics (stat),
+#'  \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
 #'  critical values (\emph{cv}) according to asymptotic  χ²-distribution and
 #'  according to cdf's of test statistics,
 #'  significance level (alpha) according to
 #'  asymptotic  χ²-distribution, and power of tests \emph{(P(stat>cv)}) }
 #'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
-#'  \item{probS}{Probability distributions of Pearson statistic S}
-#'  \item{probA}{Probability distributions of information divergence statistic A}
-#'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics, preferred adjusted statistics}
+#'  \item{probS}{Probability distributions of Pearson statistic \emph{S}}
+#'  \item{probA}{Probability distributions of information divergence statistic \emph{A}}
+#'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics}
 #'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
 #'  \item{power.apx}{Power approximations according to adjusted statistics and
-#'  non-central  χ²-distributions}
+#'  non-central χ²-distributions}
 #' @details The tests are performed using goodness-of-fit measures between simulated
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 #' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
-#' Test statistics of Pearson type (S) and of information divergence (A) type are used and summary
-#' of tests given these two statistics are given as output.
+#' Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
+#' of tests given these two statistics are given as output. The adjusted statistics and
+#' χ²-distributions are useful for better power calculations.
 #' @author Termeh Shafie
 #' @seealso [gof_sim],[get_edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.

@@ -5,7 +5,7 @@
 #' where the latter is either independent edge assignments of stubs (IEAS) or
 #' independent stub assignment (ISA). These can be used to examine to
 #' check the reliability of the tests by examining the exact probability
-#' distributions of the test statistics and their fit to the asymptotic  χ²-distributions
+#' distributions of the test statistics and their fit to the asymptotic  χ²-distribution.
 #' Only practical for small multigraphs.
 #' @param m integer giving number of edges in multigraph
 #' @param model character string representing assumed model, either RSM, IEAS or ISA
@@ -18,7 +18,7 @@
 #'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/\emph{2m}\cr
 #'   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
-#' @return
+#' @return Output is generated from function gof_stats:
 #'  \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
 #'  critical values (\emph{cv}) according to asymptotic χ²-distribution and
 #'  according to cdf's of test statistics,
@@ -35,7 +35,8 @@
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 #' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
 #' Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
-#' of tests given these two statistics are given as output.
+#' of tests given these two statistics are given as output. The adjusted statistics and
+#' χ²-distributions are useful for better power calculations.
 #' @author Termeh Shafie
 #' @seealso [gof_stats],[get_edge_assignment_probs],[nsumk],[rsm_model]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.

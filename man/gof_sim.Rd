@@ -24,7 +24,8 @@ degree sequence of the multigraph: \cr
   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 }
 \value{
-\item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
+Output is generated from function gof_stats:
+ \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
  critical values (\emph{cv}) according to asymptotic χ²-distribution and
  according to cdf's of test statistics,
  significance level (α) according to asymptotic χ² distribution,
@@ -44,7 +45,7 @@ and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA). These can be used to examine to
 check the reliability of the tests by examining the exact probability
-distributions of the test statistics and their fit to the asymptotic  χ²-distributions
+distributions of the test statistics and their fit to the asymptotic  χ²-distribution.
 Only practical for small multigraphs.
 }
 \details{
@@ -52,7 +53,8 @@ The tests are performed using goodness-of-fit measures between simulated
 edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
 Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
-of tests given these two statistics are given as output.
+of tests given these two statistics are given as output. The adjusted statistics and
+χ²-distributions are useful for better power calculations.
 }
 \examples{
 ## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
