@@ -18,7 +18,7 @@
 #'   - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/\emph{2m}\cr
 #'   - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
-#' @return Output is generated from function gof_stats:
+#' @return Output is generated from function [gof_stats]:
 #'  \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
 #'  critical values (\emph{cv}) according to asymptotic χ²-distribution and
 #'  according to cdf's of test statistics,
@@ -60,7 +60,7 @@
 #' test2 <- gof_sim(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 #'
 #' # Summary of above tests
-#' test1$test.summary
+#' test2$test.summary
 #' test2$test.summary
 #'
 #' # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by

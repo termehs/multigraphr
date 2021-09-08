@@ -24,7 +24,7 @@ degree sequence of the multigraph: \cr
   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 }
 \value{
-Output is generated from function gof_stats:
+Output is generated from function [gof_stats]:
  \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
  critical values (\emph{cv}) according to asymptotic χ²-distribution and
  according to cdf's of test statistics,
@@ -74,7 +74,7 @@ deg.hyp <- c(15,15,15,15)
 test2 <- gof_sim(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
 
 # Summary of above tests
-test1$test.summary
+test2$test.summary
 test2$test.summary
 
 # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
