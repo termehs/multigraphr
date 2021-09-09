@@ -36,11 +36,10 @@ global structure of random multigraphs under the independent stub assignment mod
 given observed adjacency matrix.
 }
 \details{
-The edge assignment probabilities are estimated by
-using the observed edge multiplicities over \emph{2m}
-(maximum likelihood estimates) or by using the observed degree sequence
-over \emph{2m} if the ISA model is used
-as an approximation to the RSM model.
+The stub assignment probabilities are estimated by by using
+the observed degree sequence over \emph{2m} if the ISA model is used
+as an approximation to the RSM model. Otherwise, a sequence containing the stub assignment
+probabilities (for example based on prior belief) should be given as argument.
 }
 \examples{
 ## Adjacency matrix of a small graph on 3 nodes

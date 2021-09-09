@@ -19,11 +19,10 @@
 #' \item{M}{Summary and interval estimates for \emph{number of loops} and
 #' \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
 #' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
-#' @details The edge assignment probabilities are estimated by
-#' using the observed edge multiplicities over \emph{2m}
-#' (maximum likelihood estimates) or by using the observed degree sequence
-#' over \emph{2m} if the ISA model is used
-#' as an approximation to the RSM model.
+#' @details The stub assignment probabilities are estimated by by using
+#' the observed degree sequence over \emph{2m} if the ISA model is used
+#' as an approximation to the RSM model. Otherwise, a sequence containing the stub assignment
+#' probabilities (for example based on prior belief) should be given as argument.
 #' @author Termeh Shafie
 #' @seealso [get_degree_seq]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis.
