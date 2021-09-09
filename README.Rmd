@@ -86,10 +86,10 @@ with probabilities associated with each multigraph, together with statistics 'nu
 rsm_1$prob.dists
 ```
 
-Consider using the IEA model to approximate the RSM model so that edge assignment probabilities are functions of observed degree sequence. Note that the sample space for multigraphs is much bigger than for the RSM model so the multiplicity sequences are not printed (they can be found using the function `get_edgemultip_seq` for very small multigraphs and their probabilities can be found using the multinomial distribution). The following shows the number of multigraphs under the IEA model:
-```{r iea_ex1, include=TRUE, results='markup', message=FALSE}
-iea_1 <-   iea_model(adj = A , type = 'graph', K = 0, apx = TRUE)
-iea_1$nr.multigraphs
+Consider using the IEA model to approximate the RSM model so that edge assignment probabilities are functions of observed degree sequence. Note that the sample space for multigraphs is much bigger than for the RSM model so the multiplicity sequences are not printed (they can be found using the function `get_edgemultip_seq` for very small multigraphs and their probabilities can be found using the multinomial distribution). The following shows the number of multigraphs under either of the IEA models:
+```{r ieas_ex1, include=TRUE, results='markup', message=FALSE}
+ieas_1 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = TRUE)
+ieas_1$nr.multigraphs
 ```
 
 ## Complexity statistics 
@@ -102,13 +102,33 @@ rsm_1$M
 ```
 which are calculated using the numerically found probability distributions under RSM (no analytical solutions exist for these moments).
 
-Under the IEA model, moments of these statistics, together with the complexity statistic *R_k* representing the sequence of
-frequencies of edge sites with multiplicities *0,1,...,k*,  are found using derived formulas:
-```{r iea_ex2, include=TRUE, results='markup', message=FALSE}
-iea_1$M
-iea_1$R
+Under the IEA models (IEAS or ISA), moments of these statistics, together with the complexity statistic *R(k)* representing the sequence of
+frequencies of edge sites with multiplicities *0,1,...,k*,  are found using derived formulas. Thus, there is no limit on multigraph size to use these. When the IEAS model is used to approximate the RSM model as shown above:
+```{r ieas_ex2, include=TRUE, results='markup', message=FALSE}
+ieas_1$M
+ieas_1$R
 ```
-The interval estimates can then be visualised to detect discrepancies between observed and expected values thus indicating social mechanisms at play in the generation of edges, and to detect overlap and potential dependencies between different types of edges. 
+When the ISA model is used to approximate the RSM model as shown above:
+```{r isa_ex1, include=TRUE, results='markup', message=FALSE}
+isa_1 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = TRUE)
+isa_1$M
+isa_1$R
+```
+
+The IEA models can also be used independent of the RSM model. For example, the IEAS model can be used where edge assignment probabilities are estimated using the observed edge multiplicities (maximum likelihood estimates):
+```{r ieas_ex3, include=TRUE, results='markup', message=FALSE}
+ieas_2 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = FALSE)
+ieas_2$M
+ieas_2$R
+```
+The ISA model can be used where  a sequence containing the stub assignment probabilities (for example based on prior belief) should be given as argument:
+```{r isa_ex2, include=TRUE, results='markup', message=FALSE}
+isa_2 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
+isa_2$M
+isa_2$R
+```
+
+The interval estimates can then be visualized to detect discrepancies between observed and expected values thus indicating social mechanisms at play in the generation of edges, and to detect overlap and potential interdependence between different types of edges (see Shafie 2015,2016; Shafie & Schoch 2021). 
 
 ## Goodness of fit tests
 Goodness of fits tests of multigraph models using Pearson (S) and

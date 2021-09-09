@@ -143,11 +143,12 @@ that the sample space for multigraphs is much bigger than for the RSM
 model so the multiplicity sequences are not printed (they can be found
 using the function `get_edgemultip_seq` for very small multigraphs and
 their probabilities can be found using the multinomial distribution).
-The following shows the number of multigraphs under the IEA model:
+The following shows the number of multigraphs under either of the IEA
+models:
 
 ``` r
-iea_1 <-   iea_model(adj = A , type = 'graph', K = 0, apx = TRUE)
-iea_1$nr.multigraphs
+ieas_1 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = TRUE)
+ieas_1$nr.multigraphs
 #> [1] 462
 ```
 
@@ -177,20 +178,22 @@ which are calculated using the numerically found probability
 distributions under RSM (no analytical solutions exist for these
 moments).
 
-Under the IEA model, moments of these statistics, together with the
-complexity statistic *R\_k* representing the sequence of frequencies of
-edge sites with multiplicities *0,1,…,k*, are found using derived
-formulas:
+Under the IEA models (IEAS or ISA), moments of these statistics,
+together with the complexity statistic *R(k)* representing the sequence
+of frequencies of edge sites with multiplicities *0,1,…,k*, are found
+using derived formulas. Thus, there is no limit on multigraph size to
+use these. When the IEAS model is used to approximate the RSM model as
+shown above:
 
 ``` r
-iea_1$M
+ieas_1$M
 #>               M1    M2
 #> Observed   3.000 3.000
 #> Expected   2.273 3.727
 #> Variance   1.412 1.412
 #> Upper 95%  4.649 6.104
 #> Lower 95% -0.104 1.351
-iea_1$R
+ieas_1$R
 #>              R0     R1     R2
 #> Observed  2.000  2.000  2.000
 #> Expected  2.674  1.588  1.030
@@ -199,10 +202,76 @@ iea_1$R
 #> Lower 95% 1.156 -0.537 -0.713
 ```
 
-The interval estimates can then be visualised to detect discrepancies
+When the ISA model is used to approximate the RSM model as shown above:
+
+``` r
+isa_1 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = TRUE)
+isa_1$M
+#>              M1    M2
+#> Observed  3.000 3.000
+#> Expected  2.583 3.417
+#> Variance  1.471 1.471
+#> Upper 95% 5.009 5.842
+#> Lower 95% 0.158 0.991
+isa_1$R
+#>              R0     R1     R2
+#> Observed  2.000  2.000  2.000
+#> Expected  2.599  1.703  1.018
+#> Variance  0.622  1.223  0.748
+#> Upper 95% 4.176  3.915  2.748
+#> Lower 95% 1.021 -0.509 -0.711
+```
+
+The IEA models can also be used independent of the RSM model. For
+example, the IEAS model can be used where edge assignment probabilities
+are estimated using the observed edge multiplicities (maximum likelihood
+estimates):
+
+``` r
+ieas_2 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = FALSE)
+ieas_2$M
+#>              M1    M2
+#> Observed  3.000 3.000
+#> Expected  3.000 3.000
+#> Variance  1.500 1.500
+#> Upper 95% 5.449 5.449
+#> Lower 95% 0.551 0.551
+ieas_2$R
+#>              R0     R1     R2
+#> Observed  2.000  2.000  2.000
+#> Expected  2.845  1.331  1.060
+#> Variance  0.434  0.805  0.800
+#> Upper 95% 4.163  3.125  2.849
+#> Lower 95% 1.528 -0.464 -0.729
+```
+
+The ISA model can be used where a sequence containing the stub
+assignment probabilities (for example based on prior belief) should be
+given as argument:
+
+``` r
+isa_2 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
+isa_2$M
+#>               M1    M2
+#> Observed   3.000 3.000
+#> Expected   2.000 4.000
+#> Variance   1.333 1.333
+#> Upper 95%  4.309 6.309
+#> Lower 95% -0.309 1.691
+isa_2$R
+#>              R0     R1     R2
+#> Observed  2.000  2.000  2.000
+#> Expected  2.144  2.248  1.160
+#> Variance  0.632  1.487  0.710
+#> Upper 95% 3.734  4.687  2.845
+#> Lower 95% 0.554 -0.190 -0.525
+```
+
+The interval estimates can then be visualized to detect discrepancies
 between observed and expected values thus indicating social mechanisms
 at play in the generation of edges, and to detect overlap and potential
-dependencies between different types of edges.
+interdependence between different types of edges (see Shafie 2015,2016;
+Shafie & Schoch 2021).
 
 ## Goodness of fit tests
 
