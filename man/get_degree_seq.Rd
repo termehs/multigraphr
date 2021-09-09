@@ -35,6 +35,7 @@ Gives the degree sequence of the adjacency matrix of an observed graph or multig
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 \cr
+
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \author{

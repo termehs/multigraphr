@@ -15,10 +15,10 @@
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test,
-#' r-1 for simple hypotheses and r-n for composite hypotheses where \emph{r = n(n+1)/2}
+#' \emph{r-1} for simple hypotheses and \emph{r-n} for composite hypotheses where \emph{r = n(n+1)/2}
 #' @return
-#'  \item{summary} {Table including observed test statistics S and A, degrees of freedom for
-#'  their asymptotic χ²-distribution, and p-values for tests performed}
+#'  \item{summary}{Table including observed test statistics \emph{S} and \emph{A}, degrees of freedom for
+#'  their asymptotic χ²-distribution, and \emph{p}-values for tests performed}
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
 #'  to a simple or composite IEAS hypothesis.
@@ -28,9 +28,10 @@
 #'  that there is no significant difference between the observed and
 #'  expected edge multiplicity sequence.
 #' @author Termeh Shafie
-#' @seealso [get_edge_assignment_probs],[get_degree_seq]
+#' @seealso [get_edge_assignment_probs], [get_degree_seq]
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
+#'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
 #' ## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
@@ -39,8 +40,10 @@
 #'                    0, 1, 0, 3,
 #'                    3, 6, 3, 2), nrow= 4, ncol=4))
 #' deg <- get_degree_seq(adj, 'multigraph')
+#'
 #' # Testing a simple IEAS hypothesis with above degree sequence
 #' gof_test(adj, type = 'multigraph', 'IEAS', deg, 9)
+#'
 #' # Testing a composite IEAS hypothesis
 #' gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
 #' @export
