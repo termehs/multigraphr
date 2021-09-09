@@ -36,7 +36,7 @@ global structure of random multigraphs under the independent stub assignment mod
 given observed adjacency matrix.
 }
 \details{
-The stub assignment probabilities are estimated by by using
+The stub assignment probabilities are estimated by using
 the observed degree sequence over \emph{2m} if the ISA model is used
 as an approximation to the RSM model. Otherwise, a sequence containing the stub assignment
 probabilities (for example based on prior belief) should be given as argument.

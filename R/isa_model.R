@@ -19,7 +19,7 @@
 #' \item{M}{Summary and interval estimates for \emph{number of loops} and
 #' \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
 #' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
-#' @details The stub assignment probabilities are estimated by by using
+#' @details The stub assignment probabilities are estimated by using
 #' the observed degree sequence over \emph{2m} if the ISA model is used
 #' as an approximation to the RSM model. Otherwise, a sequence containing the stub assignment
 #' probabilities (for example based on prior belief) should be given as argument.

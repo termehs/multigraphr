@@ -12,29 +12,46 @@ rsm_model(deg.seq)
 \value{
 \item{m.seq}{Possible multigraphs represented by edge multiplicity sequences}
 \item{prob.dists}{Probability distribution of the multigraphs/edge multiplicity sequences,
-statistics 'number of loops', 'number of multiple edges', and 'simple graph' (logical) for each multigraph}
-\item{M}{Summary and interval estimates for 'number of loops' and 'number of multiple edges' (\emph{M1} and \emph{M2})).}
+statistics \emph{number of loops}, \emph{number of multiple edges}, and
+\emph{simple graph} (logical) for each multigraph}
+\item{M}{Summary and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
 }
 \description{
 Given fixed degree sequence of a multigraph,
 this function finds all unique multigraphs represented
-by their edge multiplicity sequences and different
-complexity statistics together with their probability distributions and moments.
+by their edge multiplicity sequences. Different
+complexity statistics together with their
+probability distributions and moments are calculated.
 }
 \details{
-The probability distributions of all unique multigraphs given fixed degree sequence, together with the first two moments and interval estimates of the statistics M1 = ‘number of loops’ and M2 = ‘number of multiple edges’ under the RSM model are calculated.
+The probability distributions of all unique multigraphs given fixed degree sequence,
+together with the first two moments and interval estimates of the statistics
+\emph{M1 = number of loops} and \emph{M2 = number of multiple edges} under the RSM model are calculated.
+For other structural statistics, use the IEA approximation of the RSM model [iea_model].
+Note that this is only practical for small multigraphs.
 }
 \examples{
+## Given a specified degree sequence
 D <- c(2,2,3,3) # degree sequence
-mod1 <- rsm_model(c(2,2,3,3))
+mod1 <- rsm_model(D)
 mod1$m.seq
 mod1$prob.dists
 mod1$stat.moms
+
+## Given an observed graph
+ A <-  matrix(c(0, 1, 2,
+                1, 2, 1,
+                2, 1, 2), nrow=3, ncol=3)
+D <-  get_degree_seq(adj = A, type = 'graph')
+mod2 <- rsm_model(D)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 \cr
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+}
+\seealso{
+[get_degree_seq], [iea_model]
 }
 \author{
 Termeh Shafie
