@@ -205,7 +205,8 @@ ieas_1$R
 When the ISA model is used to approximate the RSM model as shown above:
 
 ``` r
-isa_1 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = TRUE)
+isa_1 <-   iea_model(adj = A , type = 'graph',  
+                     model = 'ISA', K = 0, apx = TRUE)
 isa_1$M
 #>              M1    M2
 #> Observed  3.000 3.000
@@ -228,7 +229,8 @@ are estimated using the observed edge multiplicities (maximum likelihood
 estimates):
 
 ``` r
-ieas_2 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = FALSE)
+ieas_2 <-   iea_model(adj = A , type = 'graph',  
+                      model = 'IEAS', K = 0, apx = FALSE)
 ieas_2$M
 #>              M1    M2
 #> Observed  3.000 3.000
@@ -250,7 +252,8 @@ assignment probabilities (for example based on prior belief) should be
 given as argument:
 
 ``` r
-isa_2 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
+isa_2 <-   iea_model(adj = A , type = 'graph',  
+                     model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
 isa_2$M
 #>               M1    M2
 #> Observed   3.000 3.000
