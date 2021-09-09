@@ -108,7 +108,7 @@ frequencies of edge sites with multiplicities *0,1,...,k*,  are found using deri
 ieas_1$M
 ieas_1$R
 ```
-When the ISA model is used to approximate the RSM model as shown above:
+When the ISA model is used to approximate the RSM model (see above):
 ```{r isa_ex1, include=TRUE, results='markup', message=FALSE}
 isa_1 <-   iea_model(adj = A , type = 'graph',  
                      model = 'ISA', K = 0, apx = TRUE)
@@ -134,8 +134,8 @@ isa_2$R
 The interval estimates can then be visualized to detect discrepancies between observed and expected values thus indicating social mechanisms at play in the generation of edges, and to detect overlap and potential interdependence between different types of edges (see Shafie 2015,2016; Shafie & Schoch 2021). 
 
 ## Goodness of fit tests
-Goodness of fits tests of multigraph models using Pearson (S) and
-information divergence (A) test statistics under the random stub matching (RSM)
+Goodness of fits tests of multigraph models using Pearson (\emph{S}) and
+information divergence (\emph{A}) test statistics under the random stub matching (RSM)
 and by independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA).
@@ -152,7 +152,8 @@ Simulated goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edge
 
 **(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2) against a RSM model with degrees (8,8,2,2)**:
 ```{r gof1, include=TRUE, results='markup', message=FALSE}
-gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), hyp = 'IEAS', deg.hyp = c(6,6,6,2))
+gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), 
+                hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
 head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
@@ -160,7 +161,8 @@ head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
 
 **(2) Testing a correctly specified simple IEAS hypothesis with degree sequence (14,2,2,2)**:
 ```{r gof2, include=TRUE, results='markup', message=FALSE}
-gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = c(14,2,2,2))
+gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), 
+                hyp = 'IEAS', deg.hyp = c(14,2,2,2))
 head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
 ```
@@ -173,19 +175,21 @@ The non-null (`gof1`) and null (`gof2`)  distributions of the test statistics to
  
 **(3) Testing a composite IEAS hypothesis against a RSM model with degree sequence (14,2,2,2)**:
 ```{r gof3, include=TRUE, results='markup', message=FALSE}
-gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), hyp = 'IEAS', deg.hyp = 0)
+gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), 
+                hyp = 'IEAS', deg.hyp = 0)
 head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(4) Testing a composite ISA hypothesis against a ISA model with degree sequence (14,2,2,2)**:
 ```{r gof4, include=TRUE, results='markup', message=FALSE}
-gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), hyp = 'ISA', deg.hyp = 0)
+gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), 
+                hyp = 'ISA', deg.hyp = 0)
 head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
 head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
-The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics can then be visualised as shown above to check their fit to the asymptotic chi2-distribution.
+The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics can then be visualized as shown above to check their fit to the asymptotic χ²-distribution.
 
 ## Performing the goodness of fit test on your data
 Use function `gof_test` to test whether the observed data follows IEA approximations of the RSM model. The null hypotheses can be simple or composite, although the latter is not recommended for small multigraphs as it is difficult to detect a false composite hypothesis under an RSM model and under IEA models (this can be checked and verified using `gof_sim` to simulate these cases).
@@ -219,7 +223,7 @@ flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
 flor_d
 ```
 
-Now we test whether the observed network fits the IEAS or the ISA model. The $p$-values for testing whether there is a significant difference between observed and expected edge multiplicity values according to the two approximate IEA models are given in the output tables below. Note that the asymptotic $\chi^2$-distribution has $r-1 = (n(n+1)/2) - 1 =35$ degrees of freedom.
+Now we test whether the observed network fits the IEAS or the ISA model. The $p$-values for testing whether there is a significant difference between observed and expected edge multiplicity values according to the two approximate IEA models are given in the output tables below. Note that the asymptotic χ²-distribution has $r-1 = (n(n+1)/2) - 1 =35$ degrees of freedom.
 ```{r flor4, include=TRUE, results='markup', message=FALSE}
 flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
 flor_ieas_test
