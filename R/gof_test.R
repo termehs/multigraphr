@@ -15,7 +15,7 @@
 #'   - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @param m integer giving number of edges in multigraph
 #' @param dof  integer giving degrees of freedom of test,
-#' r-1 for simple hypotheses and r-n for composite hypotheses where $r = \binom{n+1}{2}$
+#' r-1 for simple hypotheses and r-n for composite hypotheses where \emph{r = n(n+1)/2}
 #' @return
 #'  \item{summary} {Table including observed test statistics S and A, degrees of freedom for
 #'  their asymptotic χ²-distribution, and p-values for tests performed}
