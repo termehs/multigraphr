@@ -113,7 +113,7 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
     }
     else if (sum(deg.hyp) == 0) {
       dof <- r - n
-      # estimated dest from data
+      # estimated deg.est from data
       deg.est <- matrix(0, nrow(m.seq), n)
       for (i in 1:nrow(m.seq)) {
         M <- matrix(0, n, n)
@@ -144,14 +144,14 @@ gof_sim <- function(m, model, deg.mod, hyp, deg.hyp) {
     }
     else if (sum(deg.hyp) == 0) {
       dof <- r - n
-      # estimated dest from data
+      # estimated deg.est from data
       deg.est <- matrix(0, nrow(m.seq), n)
       for (i in 1:nrow(m.seq)) {
         M <- matrix(0, n, n)
         M[lower.tri(M, diag = TRUE)] <- 1
         M[M == 1] <- m.seq[i,]
         M <- M + t(M)
-        deg.est[i,] <- colSums(M) / (2 * m)
+        deg.est[i,] <- colSums(M)
       }
       Q.seq <- matrix(0, nrow(m.seq), r)
       for (d in 1:nrow(deg.est)) {
