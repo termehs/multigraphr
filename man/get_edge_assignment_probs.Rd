@@ -7,26 +7,30 @@
 get_edge_assignment_probs(m, deg.seq, model)
 }
 \arguments{
-\item{m}{integer giving number of edges in multigraph}
+\item{m}{integer giving number of edges in multigraph.}
 
-\item{deg.seq}{vector of integers with the sum equal to \emph{2m} representing the degree sequence of the multigraph}
+\item{deg.seq}{vector of integers with the sum equal to 2\code{m} representing
+the degree sequence of the multigraph.}
 
-\item{model}{character string, either IEAS or ISA}
+\item{model}{character string, either 'IEAS' or 'ISA'.}
 }
 \value{
 A numeric vector representing the edge assignment probabilities
-to all possible vertex pair sites
+to all possible vertex pair sites.
 }
 \description{
-Calculates the edge assignment probabilities given specified degree sequence under the two ways in which the RSM
-model can be approximated by the IEA model: the IEAS (independent edge assignment of stubs) or
-the ISA (independent stub assignment) model.
+Calculates the edge assignment probabilities
+given specified degree sequence under the two ways in which the RSM
+model can be approximated by the IEA model: \cr
+ - the IEAS (independent edge assignment of stubs) model, \cr
+ - the ISA (independent stub assignment) model.
 }
 \details{
 The IEAS and ISA edge assignment probabilities to
-possible vertex pairs are calculated given a fixed degree sequence \emph{deq.seq}
-under the IEAS model, and \emph{deg.seq/2m} under the ISA model.
-Number of possible vertex pair sites to which edges are assigned is given by
+possible vertex pairs are calculated given a fixed degree sequence \code{deq.seq}
+under the IEAS model, and \code{deg.seq}/2\code{m} under the ISA model.
+
+Number of possible vertex pair sites (and thus the length of the edge assignment sequence) is given by
 \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 }
 \examples{
@@ -41,6 +45,9 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 \cr
 
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+}
+\seealso{
+\code{\link{get_degree_seq}}, \code{\link{iea_model}}
 }
 \author{
 Termeh Shafie
