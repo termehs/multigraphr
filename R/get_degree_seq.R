@@ -1,11 +1,12 @@
 #' @title Degree sequence of a multigraph
 #' @description Finds the degree sequence of the adjacency matrix of an observed graph or multigraph
-#' @param adj Matrix of integer representing graph adjacency matrix
+#' @param adj Matrix of integers representing graph adjacency matrix.
 #' @param type Equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing edge loops double counted).
-#' @return Vector of integers representing the degree sequence
-#' @details Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
+#' @return Vector of integers representing the degree sequence of a (multi)graph.
+#' @details Gives the degree sequence of the adjacency matrix of an observed graph or multigraph.
+#' Note that the matrix diagonal should be even if the matrix represents a multigraph.
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
@@ -16,8 +17,10 @@
 #'  A <-  matrix(c(0, 1, 2,
 #'                 1, 2, 1,
 #'                 2, 1, 2), nrow=3, ncol=3)
+#'
 #'  # If A represents a graph
 #'  get_degree_seq(adj = A, type = 'graph')
+#'
 #'  # If A represents a multigraph
 #'  get_degree_seq(adj = A, type = 'multigraph')
 #' @export

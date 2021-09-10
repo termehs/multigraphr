@@ -7,28 +7,31 @@
 get_degree_seq(adj, type = "multigraph")
 }
 \arguments{
-\item{adj}{Matrix of integer representing graph adjacency matrix}
+\item{adj}{Matrix of integers representing graph adjacency matrix.}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 (with matrix diagonal representing edge loops double counted).}
 }
 \value{
-Vector of integers representing the degree sequence
+Vector of integers representing the degree sequence of a (multi)graph.
 }
 \description{
 Finds the degree sequence of the adjacency matrix of an observed graph or multigraph
 }
 \details{
-Gives the degree sequence of the adjacency matrix of an observed graph or multigraph
+Gives the degree sequence of the adjacency matrix of an observed graph or multigraph.
+Note that the matrix diagonal should be even if the matrix represents a multigraph.
 }
 \examples{
  ## Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2), nrow=3, ncol=3)
+
  # If A represents a graph
  get_degree_seq(adj = A, type = 'graph')
+
  # If A represents a multigraph
  get_degree_seq(adj = A, type = 'multigraph')
 }
