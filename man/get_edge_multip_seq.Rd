@@ -2,38 +2,46 @@
 % Please edit documentation in R/get_edge_multip_seq.R
 \name{get_edge_multip_seq}
 \alias{get_edge_multip_seq}
-\title{Edge multiplicity sequences of multigraphs of a specified size}
+\title{Edge multiplicity sequences of multigraphs given fixed degrees}
 \usage{
-get_edge_multip_seq(adj, type = "multigraph")
+get_edge_multip_seq(deg.seq)
 }
 \arguments{
-\item{adj}{Matrix of integers representing graph adjacency matrix}
-
-\item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
-equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with matrix diagonal representing loops double counted).}
+\item{deg.seq}{vector of integers with the sum equal to 2\code{m} representing
+the degree sequence of the multigraph.}
 }
 \value{
-All unique edge multiplicity sequences as a data frame
+All unique edge multiplicity sequences as rows in a data frame.
+Each row in the data frame represents a unique multigraph given the degree sequence.
 }
 \description{
-Finds all unique multigraphs represented  by their edge multiplicity sequences
+Given a degree sequence, this function finds all unique multigraphs
+represented by their edge multiplicity sequences.
 }
 \details{
-Finds all multigraphs as represented by their edge multiplicity sequence
-at vertex pair sites. Only practical for small multigraphs.
+Multigraphs are represented by their edge multiplicity sequence \strong{M} with elements \emph{M(i,j)},
+denoting edge multiplicity at possible vertex pair sites \emph{(i,j)} ordered according to\cr
+\emph{(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)}, \cr
+where \emph{n} is number of vertices.
+
+Only practical for small multigraphs.
 }
 \examples{
 ## Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2), nrow=3, ncol=3)
- get_edge_multip_seq(adj = A, 'multigraph')
+deg <- get_degree_seq(A, 'multigraph')
+get_edge_multip_seq(deg)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 \cr
+
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+}
+\seealso{
+\code{\link{get_degree_seq}}
 }
 \author{
 Termeh Shafie

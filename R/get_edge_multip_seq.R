@@ -1,42 +1,34 @@
-#' @title Edge multiplicity sequences of multigraphs of a specified size
-#' @description  Finds all unique multigraphs represented  by their edge multiplicity sequences
-#' @param adj Matrix of integers representing graph adjacency matrix
-#' @param type Equals 'graph' if adjacency matrix is for graphs (default),
-#' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-#' (with matrix diagonal representing loops double counted).
-#' @return All unique edge multiplicity sequences as a data frame
-#' @details  Finds all multigraphs as represented by their edge multiplicity sequence
-#' at vertex pair sites. Only practical for small multigraphs.
+#' @title Edge multiplicity sequences of multigraphs given fixed degrees
+#' @description  Given a degree sequence, this function finds all unique multigraphs
+#' represented by their edge multiplicity sequences.
+#' @param deg.seq vector of integers with the sum equal to 2\code{m} representing
+#' the degree sequence of the multigraph.
+#' @return All unique edge multiplicity sequences as rows in a data frame.
+#' Each row in the data frame represents a unique multigraph given the degree sequence.
+#' @details   Multigraphs are represented by their edge multiplicity sequence \strong{M} with elements \emph{M(i,j)},
+#' denoting edge multiplicity at possible vertex pair sites \emph{(i,j)} ordered according to\cr
+#' \emph{(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)}, \cr
+#' where \emph{n} is number of vertices.
+#'
+#' Only practical for small multigraphs.
 #' @author Termeh Shafie
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
+#'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' @seealso \code{\link{get_degree_seq}}
 #' @examples
 #' ## Adjacency matrix for undirected network with 3 nodes
 #'  A <-  matrix(c(0, 1, 2,
 #'                 1, 2, 1,
 #'                 2, 1, 2), nrow=3, ncol=3)
-#'  get_edge_multip_seq(adj = A, 'multigraph')
+#' deg <- get_degree_seq(A, 'multigraph')
+#' get_edge_multip_seq(deg)
 #' @export
 
-get_edge_multip_seq <- function(adj, type = 'multigraph') {
-  n <- dim(adj)[1]
+get_edge_multip_seq <- function(deg.seq) {
+  n <- length(deg.seq)
   r <- choose(n + 1, 2)
-
-  if (type == 'multigraph') {
-    if (sum(diag(adj)) %% 2 == 1)
-      stop("not an adjacency matrix for multigraphs
-           with diagonal elements double counted,
-           consider type 'graph' instead.")
-    if (sum(adj) %% 2 == 1)
-      stop("sum of adjacency matrix must be even")
-    deg.seq <- sort(rowSums(adj))
-  } else if (type == 'graph') {
-    deg.seq <- sort(rowSums(adj) + diag(adj))
-  } else {
-    stop("type must be defined as either 'graph' or 'multigraph'")
-  }
-
   m <- sum(deg.seq) / 2
   k <- m - 1
 
@@ -49,7 +41,7 @@ get_edge_multip_seq <- function(adj, type = 'multigraph') {
   }
   s <- edge.seq
 
-  # inital edge list
+  # initial edge list
   z <- matrix(0, m, 2)
   for (i in 1:m) {
     z[i, 1] = edge.seq[2 * i - 1]
@@ -90,10 +82,7 @@ get_edge_multip_seq <- function(adj, type = 'multigraph') {
     }
   }
 
-  # for each possible edge sequence/multigraph given degree sequence, count number of loops and number of multiple edges using:
   # edge multiplicity sequence = m.seq
-  # ordered edge multiplicity sequence = multips.star
-
   m.seq <- vector()
 
   for (g in 1:nrow(edge.seq)) {
