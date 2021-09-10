@@ -179,11 +179,11 @@ distributions under RSM (no analytical solutions exist for these
 moments).
 
 Under the IEA models (IEAS or ISA), moments of these statistics,
-together with the complexity statistic *R(k)* representing the sequence
-of frequencies of edge sites with multiplicities *0,1,…,k*, are found
-using derived formulas. Thus, there is no limit on multigraph size to
-use these. When the IEAS model is used to approximate the RSM model as
-shown above:
+together with the complexity statistic *R*<sub>*k*</sub> representing
+the sequence of frequencies of edge sites with multiplicities *0,1,…,k*,
+are found using derived formulas. Thus, there is no limit on multigraph
+size to use these. When the IEAS model is used to approximate the RSM
+model as shown above:
 
 ``` r
 ieas_1$M
