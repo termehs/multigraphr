@@ -16,7 +16,7 @@ the degree sequence of the multigraph.}
 }
 \value{
 A numeric vector representing the edge assignment probabilities
-to all possible vertex pair sites.
+to all possible vertex pair sites. The number of vertex pair sites is given by \eqn{n(n+1)/2}.
 }
 \description{
 Calculates the edge assignment probabilities

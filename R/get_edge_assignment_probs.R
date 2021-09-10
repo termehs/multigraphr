@@ -9,7 +9,7 @@
 #' the degree sequence of the multigraph.
 #' @param model character string, either 'IEAS' or 'ISA'.
 #' @return  A numeric vector representing the edge assignment probabilities
-#' to all possible vertex pair sites.
+#' to all possible vertex pair sites. The number of vertex pair sites is given by \eqn{n(n+1)/2}.
 #' @details The IEAS and ISA edge assignment probabilities to
 #' possible vertex pairs are calculated given a fixed degree sequence \code{deq.seq}
 #' under the IEAS model, and \code{deg.seq}/2\code{m} under the ISA model.
