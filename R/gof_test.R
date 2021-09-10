@@ -24,6 +24,7 @@
 #'  to a simple or composite IEAS hypothesis.
 #'  Test statistics of Pearson (\emph{S}) and of information divergence (\emph{A}) type are used and
 #'  test summary based on these two statistics are given as output.
+#'
 #'  \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
 #'  that there is no significant difference between the observed and
 #'  expected edge multiplicity sequence.

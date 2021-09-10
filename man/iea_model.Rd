@@ -10,7 +10,7 @@ iea_model(
   model = "IEAS",
   K = 0,
   apx = FALSE,
-  p.seq = 0
+  p.seq = NULL
 )
 }
 \arguments{
@@ -22,8 +22,8 @@ equals 'multigraph' if it is the equivalence of the adjacency matrix for multigr
 
 \item{model}{character string representing which IEA model: either 'IEAS' (default) or 'ISA'}
 
-\item{K}{Upper limit for \emph{k} in the complexity statistics \emph{R(k)} representing the sequence of
-frequencies of vertex pair sites with edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.v}
+\item{K}{Upper limit for \emph{k} in the complexity statistics \eqn{R(k)} representing the sequence of
+frequencies of edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
 
 \item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
 the statistics under the random stub matching model given observed degree sequence}

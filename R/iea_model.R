@@ -11,8 +11,8 @@
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing loops double counted)
 #' @param model character string representing which IEA model: either 'IEAS' (default) or 'ISA'
-#' @param K  Upper limit for \emph{k} in the complexity statistics \emph{R(k)} representing the sequence of
-#' frequencies of vertex pair sites with edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.v
+#' @param K  Upper limit for \emph{k} in the complexity statistics \eqn{R(k)} representing the sequence of
+#' frequencies of edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.
 #' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
 #' the statistics under the random stub matching model given observed degree sequence
 #' @param p.seq if model = ISA and apx = FALSE, specify this numerical vector of stub assignment probabilities
@@ -54,7 +54,7 @@
 #'iea_model(adj = A , type = 'graph', model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
 #' @export
 #'
-iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FALSE, p.seq = 0) {
+iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FALSE, p.seq = NULL) {
   n <- dim(adj)[1]
   r <- choose(n + 1, 2)
 
@@ -89,11 +89,11 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
   mg.outcomes <- choose(m + r - 1, r - 1)
 
   if (model == 'IEAS'){
-    if (apx == FALSE) {
+    if (!apx) {
       # edge assignment probabilities (Q) as a  matrix and a sequence
       Q.mat <- m.mat / m
       Q.seq <- m.seq / m
-    } else if (apx == TRUE) {
+    } else if (apx) {
       deg.seq <- get_degree_seq(adj, type)
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
@@ -110,7 +110,10 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
     }
   } else if (model == 'ISA'){
-    if (apx == FALSE) {
+    if (!apx) {
+      if(is.null(p.seq)){
+        stop("p.seq must be specified when apx = FALSE")
+      }
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
         for (j in 1:n) {
@@ -124,7 +127,7 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
         }
       }
       Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
-    } else if (apx == TRUE) {
+    } else if (apx) {
       deg.seq <- get_degree_seq(adj, type)
       p.seq <- deg.seq/(2*m)
       Q.mat <- matrix(0, n, n)
