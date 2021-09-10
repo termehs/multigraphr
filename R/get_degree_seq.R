@@ -1,7 +1,7 @@
 #' @title Degree sequence of a multigraph
 #' @description Finds the degree sequence of the adjacency matrix of an observed graph or multigraph
-#' @param adj Matrix of integers representing graph adjacency matrix.
-#' @param type Equals 'graph' if adjacency matrix is for graphs (default),
+#' @param adj matrix of integers representing graph adjacency matrix.
+#' @param type equals 'graph' if adjacency matrix is for graphs (default),
 #' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing edge loops double counted).
 #' @return Vector of integers representing the degree sequence of a (multi)graph.
