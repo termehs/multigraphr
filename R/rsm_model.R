@@ -1,22 +1,25 @@
 #' @title Random stub matching model for multigraphs
-#' @description  Given fixed degree sequence of a multigraph,
+#' @description  Given a specified degree sequence,
 #' this function finds all unique multigraphs represented
 #' by their edge multiplicity sequences. Different
 #' complexity statistics together with their
 #' probability distributions and moments are calculated.
-#' @param deg.seq Vector of integers representing the degree sequence of a multigraph
+#' @param deg.seq vector of integers representing the degree sequence of a multigraph
 #' @return
-#' \item{m.seq}{Possible multigraphs represented by edge multiplicity sequences}
-#' \item{prob.dists}{Probability distribution of the multigraphs/edge multiplicity sequences,
-#' statistics \emph{number of loops}, \emph{number of multiple edges}, and
+#' \item{m.seq}{possible multigraphs represented by edge multiplicity sequences}
+#' \item{prob.dists}{probability distribution of the multigraphs/edge multiplicity sequences,
+#' and the probability distributions of the statistics \emph{number of loops},
+#' \emph{number of multiple edges}, and
 #' \emph{simple graph} (logical) for each multigraph}
-#' \item{M}{Summary and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+#' \item{M}{summary of moments and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
 #' @details  The probability distributions of all unique multigraphs given fixed degree sequence,
-#' together with the first two moments and interval estimates of the statistics
-#' \emph{M1 = number of loops} and \emph{M2 = number of multiple edges} under the RSM model are calculated.
-#' For other structural statistics, use the IEA approximation of the RSM model [iea_model].
+#' together with the first two central moments and interval estimates of the statistics
+#' \emph{M1 = number of loops} and \emph{M2 = number of multiple edges}, under the RSM model are calculated.
+#'
+#' For other structural statistics, use the IEA approximation of the RSM model \code{\link{iea_model}}
 #' Note that this is only practical for small multigraphs.
 #' @author Termeh Shafie
+#' @seealso \code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}},
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #'
@@ -35,7 +38,6 @@
 #'                 2, 1, 2), nrow=3, ncol=3)
 #' D <-  get_degree_seq(adj = A, type = 'graph')
 #' mod2 <- rsm_model(D)
-#' @seealso [get_degree_seq], [iea_model]
 #' @export
 #'
 rsm_model <- function(deg.seq) {
@@ -180,7 +182,7 @@ rsm_model <- function(deg.seq) {
   Ntot <-
     sum(tot)  # should be equal to: factorial(2*m)/prod(factorial(degvec))
 
-  # probability of each multigrap under RSM
+  # probability of each multigraph under RSM
   prob.rsm <- vector()
   for (i in 1:nrow(edge.seq)) {
     tmp <- factorial(m) / prod(factorial(m.seq[i,]))
@@ -195,6 +197,18 @@ rsm_model <- function(deg.seq) {
   Vm2 <- sum(prob.rsm * m2 ^ 2) - Em2 ^ 2
   Em.seq <- sum(prob.rsm * mz)
   Et <- sum(prob.rsm * tz)
+
+  m.seq <- as.data.frame(m.seq)
+  idx <- vector()
+  for (i in 1:n) {
+    for (j in 1:n) {
+      if (i <= j) {
+        idx <- c(idx, paste(i, j, sep = ""))
+      }
+    }
+  }
+  colnames(m.seq) <- sprintf("M%s", idx[1:r])
+
   prob.dists <-
     as.data.frame(cbind(
       'prob.rsm' = prob.rsm,
