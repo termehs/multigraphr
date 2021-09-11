@@ -27,6 +27,8 @@
 #' @export
 
 get_edge_multip_seq <- function(deg.seq) {
+  if (sum(deg.seq) %% 2 == 1)
+    stop("sum of degree sequence must be an even number")
   n <- length(deg.seq)
   r <- choose(n + 1, 2)
   m <- sum(deg.seq) / 2
