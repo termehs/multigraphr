@@ -2,7 +2,7 @@
 % Please edit documentation in R/iea_model.R
 \name{iea_model}
 \alias{iea_model}
-\title{Complexity statistics under the IEA model for multigraphs}
+\title{Independent edge assignment model for multigraphs}
 \usage{
 iea_model(
   adj,
@@ -14,21 +14,23 @@ iea_model(
 )
 }
 \arguments{
-\item{adj}{Matrix of integers representing graph adjacency matrix}
+\item{adj}{Matrix of integers representing graph adjacency matrix.}
 
 \item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
 equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with matrix diagonal representing loops double counted)}
+(with matrix diagonal representing loops double counted).}
 
-\item{model}{character string representing which IEA model: either 'IEAS' (default) or 'ISA'}
+\item{model}{character string representing which IEA model: either 'IEAS' (default) or 'ISA'.}
 
-\item{K}{Upper limit for \emph{k} in the complexity statistics \eqn{R(k)} representing the sequence of
-frequencies of edge multiplicities \emph{0,1,...,k}. Default is maximum observed in adjacency matrix.}
+\item{K}{Upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
+representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}.
+Default is maximum observed in adjacency matrix.}
 
 \item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
-the statistics under the random stub matching model given observed degree sequence}
+the statistics under the random stub matching model given observed degree sequence.}
 
-\item{p.seq}{if model = ISA and apx = FALSE, specify this numerical vector of stub assignment probabilities}
+\item{p.seq}{if model = ISA and apx = FALSE, specify this numerical vector of
+stub assignment probabilities.}
 }
 \value{
 \item{nr.multigraphs}{Number of unique multigraphs possible}
@@ -38,20 +40,23 @@ the statistics under the random stub matching model given observed degree sequen
 \description{
 Summary of estimated statistics for analyzing
 global structure of random multigraphs under the independent edge assignment model
-given observed adjacency matrix. Two versions of the IEA model can be used,
+given observed adjacency matrix.
+
+Two versions of the IEA model can be used,
 both of which can be used to approximate the RSM model:
 \cr
-  - independent edge assignment of stubs (IEAS) \cr
-  - independent stub assignment (ISA) \cr
+  1. independent edge assignment of stubs (IEAS) given an edge probability sequence\cr
+  2. independent stub assignment (ISA) given a stub probability sequence \cr
 }
 \details{
-When using the IEAS model: \cr The edge assignment probabilities are estimated by using the observed edge multiplicities
-(maximum likelihood estimates) or by using the observed degree sequence if the IEA model is used
-as an approximation to the RSM model. \cr
+When using the IEAS model: \cr If the IEAS model is used
+as an approximation to the RSM model, then the edge assignment probabilities are estimated
+by using the observed degree sequence. Otherwise, the edge assignment probabilities are
+estimated by using the observed edge multiplicities  (maximum likelihood estimates). \cr
 
-When using the ISA model: \cr The stub assignment probabilities are estimated by using
-the observed degree sequence over \emph{2m} if the ISA model is used
-as an approximation to the RSM model. Otherwise, a sequence containing the stub assignment
+When using the ISA model: \cr If the ISA model is used
+as an approximation to the RSM model, then the stub assignment probabilities are estimated by using
+the observed degree sequence over \emph{2m}  Otherwise, a sequence containing the stub assignment
 probabilities (for example based on prior belief) should be given as argument.
 }
 \examples{
@@ -80,7 +85,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[get_degree_seq]
+\code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}}
 }
 \author{
 Termeh Shafie
