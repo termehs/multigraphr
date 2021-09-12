@@ -7,7 +7,7 @@
 rsm_model(deg.seq)
 }
 \arguments{
-\item{deg.seq}{vector of integers representing the degree sequence of a multigraph}
+\item{deg.seq}{vector of integers representing the degree sequence of a multigraph.}
 }
 \value{
 \item{m.seq}{possible multigraphs represented by edge multiplicity sequences}
@@ -54,7 +54,7 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-\code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}},
+\code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}}
 }
 \author{
 Termeh Shafie

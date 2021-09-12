@@ -4,7 +4,7 @@
 #' by their edge multiplicity sequences. Different
 #' complexity statistics together with their
 #' probability distributions and moments are calculated.
-#' @param deg.seq vector of integers representing the degree sequence of a multigraph
+#' @param deg.seq vector of integers representing the degree sequence of a multigraph.
 #' @return
 #' \item{m.seq}{possible multigraphs represented by edge multiplicity sequences}
 #' \item{prob.dists}{probability distribution of the multigraphs/edge multiplicity sequences,
@@ -19,7 +19,7 @@
 #' For other structural statistics, use the IEA approximation of the RSM model \code{\link{iea_model}}
 #' Note that this is only practical for small multigraphs.
 #' @author Termeh Shafie
-#' @seealso \code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}},
+#' @seealso \code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}}
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #'
