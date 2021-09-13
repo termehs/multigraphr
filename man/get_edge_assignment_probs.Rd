@@ -12,7 +12,7 @@ get_edge_assignment_probs(m, deg.seq, model)
 \item{deg.seq}{vector of integers with the sum equal to 2\code{m} representing
 the degree sequence of the multigraph.}
 
-\item{model}{character string, either 'IEAS' or 'ISA'.}
+\item{model}{character string, either \code{'IEAS'} or \code{'ISA'}.}
 }
 \value{
 A numeric vector representing the edge assignment probabilities

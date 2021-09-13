@@ -7,7 +7,7 @@
 #' @param m integer giving number of edges in multigraph.
 #' @param deg.seq vector of integers with the sum equal to 2\code{m} representing
 #' the degree sequence of the multigraph.
-#' @param model character string, either 'IEAS' or 'ISA'.
+#' @param model character string, either \code{'IEAS'} or \code{'ISA'}.
 #' @return  A numeric vector representing the edge assignment probabilities
 #' to all possible vertex pair sites. The number of vertex pair sites is given by \eqn{n(n+1)/2}.
 #' @details The IEAS and ISA edge assignment probabilities to
@@ -49,11 +49,7 @@ get_edge_assignment_probs <- function(m, deg.seq, model) {
     return(Q.seq)
   }
   else if (model == 'ISA') {
-    if (sum(deg.seq) == 2 * m) {
-      p.seq <- deg.seq / (2 * m)
-    } else {
-      p.seq <- deg.seq
-    }
+    p.seq <- deg.seq / (2 * m)
     Q.mat <- matrix(0, n, n)
     for (i in 1:n) {
       for (j in 1:n) {
