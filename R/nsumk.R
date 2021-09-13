@@ -1,13 +1,15 @@
 #' @title Ordered \emph{n}-tuples of non-negative integers summing to \emph{k}
 #' @description Finds ordered \emph{n}-tuples of non-integers summing to \emph{k}.
 #' Only practical for \emph{n} < 15.
-#' @param n A positive integer
-#' @param k A positive integer
-#' @return  A matrix with \eqn{\binom(k+n-1,n-1)} rows and \emph{n} columns.
-#' Each row comprises non-negative integers summing to \emph{k}.
-#' @details  Useful for finding all possible degree sequences for a network with \emph{n} nodes
-#' and \emph{k/2} number of edges.
+#' @param n a positive integer.
+#' @param k a positive integer.
+#' @return  a matrix with \code{choose(k+n-1,n-1)} rows and \code{n} columns.
+#' Each row comprises non-negative integers summing to \code{k}.
+#' @details  Useful for finding all possible degree sequences for a network with \code{n} nodes
+#' and \code{k}/2 number of edges, or for finding all possible edge multiplicity sequences \code{n} that
+#' sum up to \emph{k/2} number of edges.
 #' @author Termeh Shafie
+#' @seealso \code{\link{gof_sim}}
 #' @examples
 #' ## All possible degree sequences for a network with 4 nodes and 5 edges
 #' D <- nsumk(4, 10)
