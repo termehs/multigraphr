@@ -25,14 +25,14 @@
 #'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' ## Given a specified degree sequence
+#' # Given a specified degree sequence
 #' D <- c(2,2,3,3) # degree sequence
 #' mod1 <- rsm_model(D)
 #' mod1$m.seq
 #' mod1$prob.dists
 #' mod1$stat.moms
 #'
-#' ## Given an observed graph
+#' # Given an observed graph
 #' A <-  matrix(c(0, 1, 2,
 #'                 1, 2, 1,
 #'                 2, 1, 2), nrow=3, ncol=3)

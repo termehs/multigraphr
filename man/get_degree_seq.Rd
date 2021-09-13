@@ -24,7 +24,7 @@ Gives the degree sequence of the adjacency matrix of an observed graph or multig
 Note that the matrix diagonal should be even if the matrix represents a multigraph.
 }
 \examples{
- ## Adjacency matrix for undirected network with 3 nodes
+ # Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2), nrow=3, ncol=3)
