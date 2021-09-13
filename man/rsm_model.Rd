@@ -29,8 +29,8 @@ The probability distributions of all unique multigraphs given fixed degree seque
 together with the first two central moments and interval estimates of the statistics
 \emph{M1 = number of loops} and \emph{M2 = number of multiple edges}, under the RSM model are calculated.
 
-For other structural statistics, use the IEA approximation of the RSM model \code{\link{iea_model}}
-Note that this is only practical for small multigraphs.
+For other structural statistics and for large multigraphs,
+use the IEA approximation of the RSM model via the function \code{\link{iea_model}}
 }
 \examples{
 ## Given a specified degree sequence
@@ -41,7 +41,7 @@ mod1$prob.dists
 mod1$stat.moms
 
 ## Given an observed graph
- A <-  matrix(c(0, 1, 2,
+A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2), nrow=3, ncol=3)
 D <-  get_degree_seq(adj = A, type = 'graph')

@@ -16,8 +16,8 @@
 #' together with the first two central moments and interval estimates of the statistics
 #' \emph{M1 = number of loops} and \emph{M2 = number of multiple edges}, under the RSM model are calculated.
 #'
-#' For other structural statistics, use the IEA approximation of the RSM model \code{\link{iea_model}}
-#' Note that this is only practical for small multigraphs.
+#' For other structural statistics and for large multigraphs,
+#' use the IEA approximation of the RSM model via the function \code{\link{iea_model}}
 #' @author Termeh Shafie
 #' @seealso \code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}}
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
@@ -33,7 +33,7 @@
 #' mod1$stat.moms
 #'
 #' ## Given an observed graph
-#'  A <-  matrix(c(0, 1, 2,
+#' A <-  matrix(c(0, 1, 2,
 #'                 1, 2, 1,
 #'                 2, 1, 2), nrow=3, ncol=3)
 #' D <-  get_degree_seq(adj = A, type = 'graph')
@@ -46,6 +46,7 @@ rsm_model <- function(deg.seq) {
   m <- sum(deg.seq / 2)
   n <- length(deg.seq)
   k <- m - 1
+  r <- choose(n + 1, 2)
 
   #initial edge sequence (read as labelled 2-tuples of connected nodes)
   s <- vector()
@@ -190,13 +191,13 @@ rsm_model <- function(deg.seq) {
   }
   # expected values of some statistics using probability distribution prob.rsm
   lg.prob <- -log2(prob.rsm)
-  ElgP <- sum(prob.rsm * lg.prob)
+  ElgP <- sum(prob.rsm * lg.prob) # currently not in output
   Em1 <- sum(prob.rsm * m1)
   Em2 <- sum(prob.rsm * m2)
   Vm1 <- sum(prob.rsm * m1 ^ 2) - Em1 ^ 2
   Vm2 <- sum(prob.rsm * m2 ^ 2) - Em2 ^ 2
-  Em.seq <- sum(prob.rsm * mz)
-  Et <- sum(prob.rsm * tz)
+  Em.seq <- sum(prob.rsm * mz) # currently not in output
+  Et <- sum(prob.rsm * tz) # currently not in output
 
   m.seq <- as.data.frame(m.seq)
   idx <- vector()
