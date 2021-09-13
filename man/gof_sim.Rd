@@ -7,32 +7,32 @@
 gof_sim(m, model, deg.mod, hyp, deg.hyp)
 }
 \arguments{
-\item{m}{integer giving number of edges in multigraph}
+\item{m}{integer giving number of edges in multigraph.}
 
-\item{model}{character string representing assumed model, either RSM, IEAS or ISA}
+\item{model}{character string representing assumed model, either \code{'RSM'}, \code{'IEAS'} or \code{'ISA'}.}
 
-\item{deg.mod}{vector of integers with sum \eqn{2m} representing
-the modeled degree sequence of the multigraph}
+\item{deg.mod}{vector of integers with the sum equal to 2\code{m} representing
+the degree sequence of the multigraph.}
 
-\item{hyp}{character string representing the hypothesis, either IEAS or ISA}
+\item{hyp}{character string representing the null hypothesis, either \code{'IEAS'} or \code{'ISA'}.}
 
-\item{deg.hyp}{vector of integers with sum equal to \eqn{2m} representing the hypothetical
+\item{deg.hyp}{vector of integers with the sum equal to to 2\code{m} representing the hypothetical
 degree sequence of the multigraph: \cr
-  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
-  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/\emph{2m}\cr
-  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
-  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
+  - if \code{hyp = 'IEAS'}, then simple IEAS hypothesis with fully specified degree sequence \code{deg.hyp}\cr
+  - if \code{hyp = 'ISA'}, then simple ISA hypothesis with with fully specified stub assignment probabilities \code{deg.hyp}/2\code{m}\cr
+  - if \code{hyp = 'IEAS'} and \code{deg.hyp = 0}, then composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+  - if \code{hyp = 'ISA'} and \code{deg.hyp = 0}, then composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 }
 \value{
-Output is generated from function [gof_stats]:
- \item{test.summary}{Expected value and variances of test statistics (\emph{stat}),
- critical values (\emph{cv}) according to asymptotic χ²-distribution and
+Output is generated from function \code{\link{gof_stats}}:
+ \item{test.summary}{Expected value and variances of test statistics (\code{stat}),
+ critical values (\code{cv}) according to asymptotic χ²-distribution and
  according to cdf's of test statistics,
  significance level (α) according to asymptotic χ² distribution,
- and power of tests (\emph{P(stat>cv)}) }
+ and power of tests (\code{P(stat>cv)})}
  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
- \item{probS}{Probability distributions of Pearson statistic \emph{S}}
- \item{probA}{Probability distributions of information divergence statistic \emph{A}}
+ \item{probS}{Probability distributions of Pearson statistic \code{S}}
+ \item{probA}{Probability distributions of information divergence statistic \code{A}}
  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
  preferred adjusted statistics}
  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
@@ -43,43 +43,43 @@ Goodness of fits test simulations of specified multigraph models using Pearson (
 information divergence (\emph{A}) test statistics under the random stub matching (RSM)
 and the independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
-independent stub assignment (ISA). These can be used to examine to
+independent stub assignment (ISA).
+
+These can be used to examine to
 check the reliability of the tests by examining the exact probability
-distributions of the test statistics and their fit to the asymptotic  χ²-distribution.
-Only practical for small multigraphs.
+distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
+Only practical for small multigraphs as exact distributions all calculated.
 }
 \details{
 The tests are performed using goodness-of-fit measures between simulated
 edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
+
 Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
 of tests given these two statistics are given as output. The adjusted statistics and
 χ²-distributions are useful for better power calculations.
 }
 \examples{
-## Testing a simple IEAS hypothesis with degree sequence [6,6,6,2] against
-# an IEAS model with degree sequence [14,2,2,2] on a multigraph with n = 4 nodes and m = 10 edges
-deg.mod <- c(14,2,2,2)
-deg.hyp <- c(6,6,6,2)
-test1 <- gof_sim(10, 'IEAS', deg.mod, 'IEAS', deg.hyp)
+# Testing a simple IEAS hypothesis with degree sequence [6,6,6] against
+# an IEAS model with degree sequence [14,2,2] on a multigraph with n = 3 nodes and m = 9 edges
+deg.mod <- c(14,2,2)
+deg.hyp <- c(6,6,6)
+test1 <- gof_sim(9, 'IEAS', deg.mod, 'IEAS', deg.hyp)
 
 # Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
 test1$probS
 test1$probA
 
-# Testing a composite IEAS hypothesis with degree sequence [15,15,15,15] against
-# an RSM model with degree sequence [15,15,15,15] on a multigraph with n = 4 nodes and m = 30 edges.
-deg.mod <- c(15,15,15,15)
-deg.hyp <- c(15,15,15,15)
-test2 <- gof_sim(30, 'RSM', deg.mod, 'IEAS', deg.hyp)
+# Testing a simple ISA hypothesis with degree sequence [6,6,6] against
+# an IEAS model with degree sequence [12,3,3] on a multigraph with n = 3 nodes and m = 9 edges
+deg.mod <- c(12,3,3)
+deg.hyp <- c(6,6,6)
+test2 <- gof_sim(9, 'IEAS', deg.mod, 'ISA', deg.hyp)
 
-# Summary of above tests
-test2$test.summary
-test2$test.summary
-
-# Non-null distributions (pdf's and cdf's) of test statistics S and A are given by
-test2$probS
-test2$probA
+# Testing a composite IEAS hypothesis against
+# an RSM model with degree sequence [6,6,6,6] on a multigraph with n = 4 nodes and m = 20 edges.
+deg.mod <- c(6,6,6,6)
+test3 <- gof_sim(12, 'RSM', deg.mod, 'IEAS', deg.hyp = 0)
 
 }
 \references{
@@ -89,7 +89,8 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[gof_stats],[get_edge_assignment_probs],[nsumk],[rsm_model]
+\code{\link{gof_stats}},\code{\link{get_edge_assignment_probs}},
+\code{\link{nsumk}},\code{\link{rsm_model}}
 }
 \author{
 Termeh Shafie
