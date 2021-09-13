@@ -14,27 +14,28 @@ iea_model(
 )
 }
 \arguments{
-\item{adj}{Matrix of integers representing graph adjacency matrix.}
+\item{adj}{matrix of integers representing graph adjacency matrix.}
 
-\item{type}{Equals 'graph' if adjacency matrix is for graphs (default),
-equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+\item{type}{equals \code{'graph'} if adjacency matrix is for graphs (default),
+equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for multigraphs
 (with matrix diagonal representing loops double counted).}
 
-\item{model}{character string representing which IEA model: either 'IEAS' (default) or 'ISA'.}
+\item{model}{character string representing which IEA model: either \code{'IEAS'} (default) or \code{'ISA'}.}
 
-\item{K}{Upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
-representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}.
-Default is maximum observed in adjacency matrix.}
+\item{K}{upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
+representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}
+(default is maximum observed in adjacency matrix).}
 
-\item{apx}{logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
+\item{apx}{logical (default = \code{'FALSE'}). if \code{'TRUE'}, the IEA model is used to approximate
 the statistics under the random stub matching model given observed degree sequence.}
 
-\item{p.seq}{if model = ISA and apx = FALSE, specify this numerical vector of
+\item{p.seq}{if \code{model = ISA} and \code{apx = FALSE}, then specify this numerical vector of
 stub assignment probabilities.}
 }
 \value{
 \item{nr.multigraphs}{Number of unique multigraphs possible}
-\item{M}{Summary and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+\item{M}{Summary and interval estimates for \emph{number of loops (M1)} and
+\emph{number of multiple edges (M2)}.}
 \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
 }
 \description{
@@ -42,7 +43,7 @@ Summary of estimated statistics for analyzing
 global structure of random multigraphs under the independent edge assignment model
 given observed adjacency matrix.
 
-Two versions of the IEA model can be used,
+Two versions of the IEA model are implemented,
 both of which can be used to approximate the RSM model:
 \cr
   1. independent edge assignment of stubs (IEAS) given an edge probability sequence\cr
@@ -56,8 +57,8 @@ estimated by using the observed edge multiplicities  (maximum likelihood estimat
 
 When using the ISA model: \cr If the ISA model is used
 as an approximation to the RSM model, then the stub assignment probabilities are estimated by using
-the observed degree sequence over \emph{2m}  Otherwise, a sequence containing the stub assignment
-probabilities (for example based on prior belief) should be given as argument.
+the observed degree sequence over \emph{2m}.  Otherwise, a sequence containing the stub assignment
+probabilities (for example based on prior belief) should be given as argument \code{p.seq}.
 }
 \examples{
 ## Adjacency matrix of a small graph on 3 nodes

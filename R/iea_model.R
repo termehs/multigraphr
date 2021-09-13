@@ -3,26 +3,27 @@
 #' global structure of random multigraphs under the independent edge assignment model
 #' given observed adjacency matrix.
 #'
-#' Two versions of the IEA model can be used,
+#' Two versions of the IEA model are implemented,
 #' both of which can be used to approximate the RSM model:
 #' \cr
 #'   1. independent edge assignment of stubs (IEAS) given an edge probability sequence\cr
 #'   2. independent stub assignment (ISA) given a stub probability sequence \cr
-#' @param adj Matrix of integers representing graph adjacency matrix.
-#' @param type Equals 'graph' if adjacency matrix is for graphs (default),
-#' equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
+#' @param adj matrix of integers representing graph adjacency matrix.
+#' @param type equals \code{'graph'} if adjacency matrix is for graphs (default),
+#' equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing loops double counted).
-#' @param model character string representing which IEA model: either 'IEAS' (default) or 'ISA'.
-#' @param K  Upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
-#' representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}.
-#' Default is maximum observed in adjacency matrix.
-#' @param apx logical (default = 'FALSE'). if 'TRUE', the IEA model is used to approximate
+#' @param model character string representing which IEA model: either \code{'IEAS'} (default) or \code{'ISA'}.
+#' @param K  upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
+#' representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}
+#' (default is maximum observed in adjacency matrix).
+#' @param apx logical (default = \code{'FALSE'}). if \code{'TRUE'}, the IEA model is used to approximate
 #' the statistics under the random stub matching model given observed degree sequence.
-#' @param p.seq if model = ISA and apx = FALSE, specify this numerical vector of
+#' @param p.seq if \code{model = ISA} and \code{apx = FALSE}, then specify this numerical vector of
 #' stub assignment probabilities.
 #' @return
 #' \item{nr.multigraphs}{Number of unique multigraphs possible}
-#' \item{M}{Summary and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+#' \item{M}{Summary and interval estimates for \emph{number of loops (M1)} and
+#' \emph{number of multiple edges (M2)}.}
 #' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
 #' @details When using the IEAS model: \cr If the IEAS model is used
 #' as an approximation to the RSM model, then the edge assignment probabilities are estimated
@@ -31,8 +32,8 @@
 #'
 #' When using the ISA model: \cr If the ISA model is used
 #' as an approximation to the RSM model, then the stub assignment probabilities are estimated by using
-#' the observed degree sequence over \emph{2m}  Otherwise, a sequence containing the stub assignment
-#' probabilities (for example based on prior belief) should be given as argument.
+#' the observed degree sequence over \emph{2m}.  Otherwise, a sequence containing the stub assignment
+#' probabilities (for example based on prior belief) should be given as argument \code{p.seq}.
 #' @author Termeh Shafie
 #' @seealso \code{\link{get_degree_seq}}, \code{\link{get_edge_multip_seq}}, \code{\link{iea_model}}
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
