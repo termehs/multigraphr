@@ -18,7 +18,7 @@
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @seealso \code{\link{get_degree_seq}}
 #' @examples
-#' ## Adjacency matrix for undirected network with 3 nodes
+#' # Adjacency matrix for undirected network with 3 nodes
 #'  A <-  matrix(c(0, 1, 2,
 #'                 1, 2, 1,
 #'                 2, 1, 2), nrow=3, ncol=3)

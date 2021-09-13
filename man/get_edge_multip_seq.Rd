@@ -27,7 +27,7 @@ where \emph{n} is number of vertices.
 Only practical for small multigraphs.
 }
 \examples{
-## Adjacency matrix for undirected network with 3 nodes
+# Adjacency matrix for undirected network with 3 nodes
  A <-  matrix(c(0, 1, 2,
                 1, 2, 1,
                 2, 1, 2), nrow=3, ncol=3)
