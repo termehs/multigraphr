@@ -1,21 +1,20 @@
-#' @title Goodness of fit test simulations
+#' @title Goodness of fit test simulations of random multigraph models
 #' @description  Goodness of fits test simulations of specified multigraph models using Pearson (\emph{S}) and
 #' information divergence (\emph{A}) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,
 #' where the latter is either independent edge assignments of stubs (IEAS) or
 #' independent stub assignment (ISA).
 #'
-#' These can be used to examine to
-#' check the reliability of the tests by examining the exact probability
+#' These can be used to check the reliability of the tests by examining the exact probability
 #' distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
 #' Only practical for small multigraphs as exact distributions all calculated.
 #' @param m integer giving number of edges in multigraph.
 #' @param model character string representing assumed model, either \code{'RSM'}, \code{'IEAS'} or \code{'ISA'}.
 #' @param deg.mod vector of integers with the sum equal to 2\code{m} representing
-#' the degree sequence of the multigraph.
-#' @param hyp  character string representing the null hypothesis, either \code{'IEAS'} or \code{'ISA'}.
+#' the degree sequence of the multigraph under specified model.
+#' @param hyp  character string representing the hypothesized null model, either \code{'IEAS'} or \code{'ISA'}.
 #' @param deg.hyp vector of integers with the sum equal to to 2\code{m} representing the hypothetical
-#' degree sequence of the multigraph: \cr
+#' degree sequence of the multigraph under the null model: \cr
 #'   - if \code{hyp = 'IEAS'}, then simple IEAS hypothesis with fully specified degree sequence \code{deg.hyp}\cr
 #'   - if \code{hyp = 'ISA'}, then simple ISA hypothesis with with fully specified stub assignment probabilities \code{deg.hyp}/2\code{m}\cr
 #'   - if \code{hyp = 'IEAS'} and \code{deg.hyp = 0}, then composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
@@ -25,7 +24,9 @@
 #'  critical values (\code{cv}) according to asymptotic χ²-distribution and
 #'  according to cdf's of test statistics,
 #'  significance level (α) according to asymptotic χ² distribution,
-#'  and power of tests (\code{P(stat>cv)})}
+#'  power of tests (\code{P(stat>cv)}), critical values and power
+#'  according to the distributions of test statistics (\code{cv(stat)}
+#'  and \code{ P(Stat>cv(Stat))})}
 #'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
 #'  \item{probS}{Probability distributions of Pearson statistic \code{S}}
 #'  \item{probA}{Probability distributions of information divergence statistic \code{A}}
@@ -37,7 +38,8 @@
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 #' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.
 #'
-#' Test statistics of Pearson type (\emph{S}) and of information divergence (\emph{A}) type are used and summary
+#' Test statistics of Pearson type (\emph{S}) and
+#' of information divergence (\emph{A}) type are used and summary
 #' of tests given these two statistics are given as output. The adjusted statistics and
 #' χ²-distributions are useful for better power calculations.
 #' @author Termeh Shafie
