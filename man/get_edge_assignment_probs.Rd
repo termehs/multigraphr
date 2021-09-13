@@ -34,10 +34,10 @@ Number of possible vertex pair sites (and thus the length of the edge assignment
 \eqn{(n+1)n/2} where \emph{n} is number of vertices.
 }
 \examples{
-## Under the IEAS model with 10 possible vertex pair sites (4 vertices)
+# Under the IEAS model with 10 possible vertex pair sites (4 vertices)
 get_edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
 
-## Under the ISA model with 21 possible vertex pair sites (6 vertices)
+# Under the ISA model with 21 possible vertex pair sites (6 vertices)
 get_edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
 }
 \references{
