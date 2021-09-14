@@ -41,22 +41,22 @@
 #'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' ## Adjacency matrix of a small graph on 3 nodes
+#' # Adjacency matrix of a small graph on 3 nodes
 #' A <-  matrix(c(1, 1, 0,
 #'                1, 2, 2,
 #'                0, 2, 0),
 #'              nrow = 3, ncol = 3)
 #'
-#' ## When the IEAS model is used
+#' # When the IEAS model is used
 #' iea_model(adj = A , type = 'graph', model = 'IEAS', K = 0, apx = FALSE)
 #'
-#' ## When the IEAS model is used to approximate the RSM model
+#' # When the IEAS model is used to approximate the RSM model
 #' iea_model(adj = A , type = 'graph', model = 'IEAS', K = 0, apx = TRUE)
 #'
-#' ## When the ISA model is used to approximate the RSM model
+#' # When the ISA model is used to approximate the RSM model
 #' iea_model(adj = A , type = 'graph', model = 'ISA', K = 0, apx = TRUE)
 #'
-#' ## When the ISA model is used with a pre-specified stub assignment probabilities
+#' # When the ISA model is used with a pre-specified stub assignment probabilities
 #'iea_model(adj = A , type = 'graph', model = 'ISA', K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
 #' @export
 #'
