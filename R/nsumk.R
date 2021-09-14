@@ -11,7 +11,8 @@
 #' @author Termeh Shafie
 #' @seealso \code{\link{gof_sim}}
 #' @examples
-#' ## All possible degree sequences for a network with 4 nodes and 5 edges
+#' # All possible degree sequences for
+#' # a network with 4 nodes and 5 edges
 #' D <- nsumk(4, 10)
 #'
 #' # Remove isolated nodes

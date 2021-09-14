@@ -25,7 +25,8 @@ and \code{k}/2 number of edges, or for finding all possible edge multiplicity se
 sum up to \emph{k/2} number of edges.
 }
 \examples{
-## All possible degree sequences for a network with 4 nodes and 5 edges
+# All possible degree sequences for
+# a network with 4 nodes and 5 edges
 D <- nsumk(4, 10)
 
 # Remove isolated nodes
