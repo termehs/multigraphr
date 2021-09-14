@@ -18,7 +18,7 @@
 #' @return
 #'  \item{summary}{Data frame including observed  values of test statistics \code{S} and \code{A},
 #'  degrees of freedom for the asymptotic χ²-distributions of tests statistics,
-#'  and \emph{p}-values for the tests performed}
+#'  and \emph{p}-values for the tests performed.}
 #' @details This function can be used to test whether there is a significant difference between
 #'  observed multigraph and the expected multiplicity sequence according
 #'  to a simple or composite IEA hypothesis.

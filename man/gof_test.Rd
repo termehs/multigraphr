@@ -28,7 +28,7 @@ degree sequence of the multigraph under the null model: \cr
 \value{
 \item{summary}{Data frame including observed  values of test statistics \code{S} and \code{A},
  degrees of freedom for the asymptotic χ²-distributions of tests statistics,
- and \emph{p}-values for the tests performed}
+ and \emph{p}-values for the tests performed.}
 }
 \description{
 Goodness of fit tests between an observed edge multiplicity sequence and
