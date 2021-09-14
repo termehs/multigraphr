@@ -1,4 +1,4 @@
-#' @title Goodness of fit test simulations of random multigraph models
+#' @title Goodness of fit test simulations for random multigraph models
 #' @description  Goodness of fits test simulations of specified multigraph models using Pearson (\emph{S}) and
 #' information divergence (\emph{A}) test statistics under the random stub matching (RSM)
 #' and the independent edge assignments (IEA) model,
@@ -7,7 +7,7 @@
 #'
 #' These can be used to check the reliability of the tests by examining the exact probability
 #' distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
-#' Only practical for small multigraphs as exact distributions all calculated.
+#' Only practical for small multigraphs as exact distributions are calculated.
 #' @param m integer giving number of edges in multigraph.
 #' @param model character string representing assumed model, either \code{'RSM'}, \code{'IEAS'} or \code{'ISA'}.
 #' @param deg.mod vector of integers with the sum equal to 2\code{m} representing
@@ -26,14 +26,14 @@
 #'  significance level (α) according to asymptotic χ² distribution,
 #'  power of tests (\code{P(stat>cv)}), critical values and power
 #'  according to the distributions of test statistics (\code{cv(stat)}
-#'  and \code{ P(Stat>cv(Stat))})}
-#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
-#'  \item{probS}{Probability distributions of Pearson statistic \code{S}}
-#'  \item{probA}{Probability distributions of information divergence statistic \code{A}}
+#'  and \code{ P(Stat>cv(Stat))}).}
+#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed.}
+#'  \item{probS}{Probability distributions of Pearson statistic \code{S}.}
+#'  \item{probA}{Probability distributions of information divergence statistic \code{A}.}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
-#'  preferred adjusted statistics}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
-#'  \item{power.apx}{Power approximations according to adjusted statistics}
+#'  preferred adjusted statistics.}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution.}
+#'  \item{power.apx}{Power approximations according to adjusted statistics.}
 #' @details The tests are performed using goodness-of-fit measures between simulated
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
 #' and the expected multiplicity sequence according to a simple or composite IEA hypothesis.

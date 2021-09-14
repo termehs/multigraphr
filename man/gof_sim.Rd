@@ -2,7 +2,7 @@
 % Please edit documentation in R/gof_sim.R
 \name{gof_sim}
 \alias{gof_sim}
-\title{Goodness of fit test simulations of random multigraph models}
+\title{Goodness of fit test simulations for random multigraph models}
 \usage{
 gof_sim(m, model, deg.mod, hyp, deg.hyp)
 }
@@ -31,14 +31,14 @@ Output is generated from function \code{\link{gof_stats}}:
  significance level (α) according to asymptotic χ² distribution,
  power of tests (\code{P(stat>cv)}), critical values and power
  according to the distributions of test statistics (\code{cv(stat)}
- and \code{ P(Stat>cv(Stat))})}
- \item{degrees.of.freedom}{Degrees of freedom for tests performed}
- \item{probS}{Probability distributions of Pearson statistic \code{S}}
- \item{probA}{Probability distributions of information divergence statistic \code{A}}
+ and \code{ P(Stat>cv(Stat))}).}
+ \item{degrees.of.freedom}{Degrees of freedom for tests performed.}
+ \item{probS}{Probability distributions of Pearson statistic \code{S}.}
+ \item{probA}{Probability distributions of information divergence statistic \code{A}.}
  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
- preferred adjusted statistics}
- \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
- \item{power.apx}{Power approximations according to adjusted statistics}
+ preferred adjusted statistics.}
+ \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution.}
+ \item{power.apx}{Power approximations according to adjusted statistics.}
 }
 \description{
 Goodness of fits test simulations of specified multigraph models using Pearson (\emph{S}) and
@@ -49,7 +49,7 @@ independent stub assignment (ISA).
 
 These can be used to check the reliability of the tests by examining the exact probability
 distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
-Only practical for small multigraphs as exact distributions all calculated.
+Only practical for small multigraphs as exact distributions are calculated.
 }
 \details{
 The tests are performed using goodness-of-fit measures between simulated
