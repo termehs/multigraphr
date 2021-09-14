@@ -22,8 +22,8 @@ equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for 
 
 \item{model}{character string representing which IEA model: either \code{'IEAS'} (default) or \code{'ISA'}.}
 
-\item{K}{upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
-representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}
+\item{K}{upper limit for the complexity statistics \emph{R(k)},
+\emph{k}=(0,1,...,\code{K}), representing the sequence of frequencies of edge multiplicities
 (default is maximum observed in adjacency matrix).}
 
 \item{apx}{logical (default = \code{'FALSE'}). if \code{'TRUE'}, the IEA model is used to approximate
@@ -33,10 +33,11 @@ the statistics under the random stub matching model given observed degree sequen
 stub assignment probabilities.}
 }
 \value{
-\item{nr.multigraphs}{Number of unique multigraphs possible}
-\item{M}{Summary and interval estimates for \emph{number of loops (M1)} and
-\emph{number of multiple edges (M2)}.}
-\item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
+\item{nr.multigraphs}{Number of unique multigraphs possible.}
+\item{M}{Summary and interval estimates for \emph{number of loops} (\code{M1}) and
+\emph{number of multiple edges} (\code{M2}).}
+\item{R}{Summary and interval estimates for frequencies of edge multiplicities
+\code{R1},\code{R2},...,\code{RK}, where \code{K} is a function argument.}
 }
 \description{
 Summary of estimated statistics for analyzing

@@ -13,18 +13,19 @@
 #' equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for multigraphs
 #' (with matrix diagonal representing loops double counted).
 #' @param model character string representing which IEA model: either \code{'IEAS'} (default) or \code{'ISA'}.
-#' @param K  upper limit for \emph{k} in the complexity statistics \eqn{R(k)}
-#' representing the sequence of frequencies of edge multiplicities \emph{0,1,...,k}
+#' @param K  upper limit for the complexity statistics \emph{R(k)},
+#' \emph{k}=(0,1,...,\code{K}), representing the sequence of frequencies of edge multiplicities
 #' (default is maximum observed in adjacency matrix).
 #' @param apx logical (default = \code{'FALSE'}). if \code{'TRUE'}, the IEA model is used to approximate
 #' the statistics under the random stub matching model given observed degree sequence.
 #' @param p.seq if \code{model = ISA} and \code{apx = FALSE}, then specify this numerical vector of
 #' stub assignment probabilities.
 #' @return
-#' \item{nr.multigraphs}{Number of unique multigraphs possible}
-#' \item{M}{Summary and interval estimates for \emph{number of loops (M1)} and
-#' \emph{number of multiple edges (M2)}.}
-#' \item{R}{Summary and interval estimates for frequencies of edge multiplicities \emph{R(k)}.}
+#' \item{nr.multigraphs}{Number of unique multigraphs possible.}
+#' \item{M}{Summary and interval estimates for \emph{number of loops} (\code{M1}) and
+#' \emph{number of multiple edges} (\code{M2}).}
+#' \item{R}{Summary and interval estimates for frequencies of edge multiplicities
+#' \code{R1},\code{R2},...,\code{RK}, where \code{K} is a function argument.}
 #' @details When using the IEAS model: \cr If the IEAS model is used
 #' as an approximation to the RSM model, then the edge assignment probabilities are estimated
 #' by using the observed degree sequence. Otherwise, the edge assignment probabilities are
