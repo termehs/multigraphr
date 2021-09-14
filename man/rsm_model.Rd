@@ -15,7 +15,8 @@ rsm_model(deg.seq)
 and the probability distributions of the statistics \emph{number of loops},
 \emph{number of multiple edges}, and
 \emph{simple graph} (logical) for each multigraph}
-\item{M}{summary of moments and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+\item{M}{summary of moments and interval estimates for
+\emph{number of loops} and \emph{number of multiple edges} (\code{M1} and \code{M2})).}
 }
 \description{
 Given a specified degree sequence,

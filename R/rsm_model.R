@@ -11,7 +11,8 @@
 #' and the probability distributions of the statistics \emph{number of loops},
 #' \emph{number of multiple edges}, and
 #' \emph{simple graph} (logical) for each multigraph}
-#' \item{M}{summary of moments and interval estimates for \emph{number of loops} and \emph{number of multiple edges} (\emph{M1} and \emph{M2})).}
+#' \item{M}{summary of moments and interval estimates for
+#' \emph{number of loops} and \emph{number of multiple edges} (\code{M1} and \code{M2})).}
 #' @details  The probability distributions of all unique multigraphs given fixed degree sequence,
 #' together with the first two central moments and interval estimates of the statistics
 #' \emph{M1 = number of loops} and \emph{M2 = number of multiple edges}, under the RSM model are calculated.
