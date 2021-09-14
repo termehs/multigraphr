@@ -1,16 +1,18 @@
 #' @title Exact probability distributions and moments of goodness of fit statistics
-#' @description  Goodness of fit between two specified edge multiplicity sequences.
+#' @description  Goodness of fit between two specified edge multiplicity sequences
+#' (e.g. observed vs. expected).
 #' Pearson (\emph{S}) and information divergence (\emph{A}) tests statistics are used and
 #' the exact distribution of these statistics,  their asymptotic χ²-distributions,
 #' and their first two central moments are calculated using this function.
 #' Only practical for small multigraphs.
 #' @param m integer giving number of edges in multigraph.
 #' @param dof  integer giving degrees of freedom of test performed.
-#' @param m.seq  matrix of integers, each row representing the edge multiplicity sequence of a multigraph.
-#' @param prob.mg  numerical vector representing a probability distribution of
+#' @param m.seq  matrix of integers, each row representing the
+#' edge multiplicity sequence of a multigraph (which correspond to observed values).
+#' @param prob.mg  numerical vector representing a given probability distribution of
 #' multigraphs/edge multiplicity sequences in \code{m.seq}.
-#' @param Q.seq  a numeric vector representing the edge assignment probabilities
-#' to all possible vertex pair sites.
+#' @param Q.seq  a numeric vector representing the hypothetical edge assignment probabilities
+#' to all possible vertex pair sites (from which expected values are calculate).
 #' @return
 #'  \item{test.summary}{Expected value and variances of test statistics (\code{stat}),
 #'  critical values (\code{cv}) according to asymptotic χ²-distribution and
@@ -18,14 +20,14 @@
 #'  significance level (α) according to asymptotic χ² distribution,
 #'  power of tests (\code{P(stat>cv)}), critical values and power
 #'  according to the distributions of test statistics (\code{cv(stat)}
-#'  and \code{ P(Stat>cv(Stat))})}
-#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed}
-#'  \item{probS}{Probability distributions of Pearson statistic \code{S}}
-#'  \item{probA}{Probability distributions of information divergence statistic \code{A}}
+#'  and \code{ P(Stat>cv(Stat))}).}
+#'  \item{degrees.of.freedom}{Degrees of freedom for tests performed.}
+#'  \item{probS}{Probability distributions of Pearson statistic \code{S}.}
+#'  \item{probA}{Probability distributions of information divergence statistic \code{A}.}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
-#'  preferred adjusted statistics}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution}
-#'  \item{power.apx}{Power approximations according to adjusted statistics}
+#'  preferred adjusted statistics.}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution.}
+#'  \item{power.apx}{Power approximations according to adjusted statistics.}
 #' @details The tests are performed using goodness-of-fit measures between two edge multiplicity sequences
 #' (e.g. observed vs. expected).
 #'
@@ -54,7 +56,7 @@
 #'                    deg.seq = c(4,4,6,6), model = 'IEAS')
 #'
 #' # Perform the test
-#' moms <- gof_stats(m = 10, dof = deg.f,
+#' test <- gof_stats(m = 10, dof = deg.f,
 #'                    m.seq = mg, prob.mg = mg.p, eap)
 #'
 #' @export
