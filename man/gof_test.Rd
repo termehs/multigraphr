@@ -2,64 +2,64 @@
 % Please edit documentation in R/gof_test.R
 \name{gof_test}
 \alias{gof_test}
-\title{Goodness of fit tests}
+\title{Goodness of fit tests for random multigraph models}
 \usage{
 gof_test(adj, type, hyp, deg.hyp, dof)
 }
 \arguments{
-\item{adj}{Matrix of integer representing graph adjacency matrix}
+\item{adj}{matrix of integer representing graph adjacency matrix.}
 
-\item{type}{Equals 'graph' if adjacency matrix is for graphs (default)
-equals 'multigraph' if it is the equivalence of the adjacency matrix for multigraphs
-(with matrix diagonal representing edge loops double counted).}
+\item{type}{equals \code{'graph'} if adjacency matrix is for graphs (default),
+equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for multigraphs
+(with matrix diagonal representing loops double counted).}
 
-\item{hyp}{character string representing the null model: either IEAS or ISA}
+\item{hyp}{character string representing the null model, either \code{'IEAS'} or \code{'ISA'}.}
 
-\item{deg.hyp}{vector of integers with sum equal to \eqn{2m} representing the null
-degree sequence of the multigraph: \cr
-  - if 'IEAS': simple IEAS hypothesis with fully specified degree sequence deg.hyp\cr
-  - if 'ISA': simple ISA hypothesis with with fully specified stub assignment probabilities deg.hyp/2m\cr
-  - if 'IEAS': and deg.hyp = 0: composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
-  - if 'ISA' and deg.hyp = 0: composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
+\item{deg.hyp}{vector of integers with the sum equal to to 2\code{m} representing the
+degree sequence of the multigraph under the null model: \cr
+  - if \code{hyp = 'IEAS'}, then simple IEAS hypothesis with fully specified degree sequence \code{deg.hyp}\cr
+  - if \code{hyp = 'ISA'}, then simple ISA hypothesis with with fully specified stub assignment probabilities \code{deg.hyp}/2\code{m}\cr
+  - if \code{hyp = 'IEAS'} and \code{deg.hyp = 0}, then composite IEAS hypothesis with edge multiplicity sequence estimated from data\cr
+  - if \code{hyp = 'ISA'} and \code{deg.hyp = 0}, then composite ISA hypothesis with edge multiplicity sequence estimated from data\cr}
 
 \item{dof}{integer giving degrees of freedom of test,
 \emph{r-1} for simple hypotheses and \emph{r-n} for composite hypotheses where \emph{r = n(n+1)/2}}
-
-\item{m}{integer giving number of edges in multigraph}
 }
 \value{
-\item{summary}{Table including observed test statistics \emph{S} and \emph{A}, degrees of freedom for
- their asymptotic χ²-distribution, and \emph{p}-values for tests performed}
+\item{summary}{Data frame including observed  values of test statistics \code{S} and \code{A},
+ degrees of freedom for the asymptotic χ²-distributions of tests statistics,
+ and \emph{p}-values for the tests performed}
 }
 \description{
 Goodness of fit tests between an observed edge multiplicity sequence and
-an expected edge multiplicity sequence given according to specified RSM or IEAS hypotheses
+an expected edge multiplicity sequence according to specified RSM or IEA hypotheses
 using Pearson (\emph{S}) and information divergence (\emph{A}) tests statistics.
 }
 \details{
 This function can be used to test whether there is a significant difference between
  observed multigraph and the expected multiplicity sequence according
- to a simple or composite IEAS hypothesis.
+ to a simple or composite IEA hypothesis.
+
  Test statistics of Pearson (\emph{S}) and of information divergence (\emph{A}) type are used and
  test summary based on these two statistics are given as output.
 
- \emph{P}-values indicate whether the null we have sufficient evidence to reject the null
+ \emph{p}-values indicate whether we have sufficient evidence to reject the null
  that there is no significant difference between the observed and
  expected edge multiplicity sequence.
 }
 \examples{
-## adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
-adj <- t(matrix(c( 0, 1, 0, 3,
+Adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
+A <- t(matrix(c( 0, 1, 0, 3,
                    0, 0, 1, 7,
                    0, 1, 0, 3,
                    3, 6, 3, 2), nrow= 4, ncol=4))
-deg <- get_degree_seq(adj, 'multigraph')
+deg <- get_degree_seq(adj = A, type = 'multigraph')
 
 # Testing a simple IEAS hypothesis with above degree sequence
-gof_test(adj, type = 'multigraph', 'IEAS', deg, 9)
+gof_test(adj = A, type = 'multigraph', hyp = 'IEAS', deg.hyp = deg, dof = 9)
 
 # Testing a composite IEAS hypothesis
-gof_test(adj, type  = 'multigraph', 'IEAS', 0, 6)
+gof_test(adj = A, type  = 'multigraph', hyp = 'IEAS', deg.hyp = 0, dof = 6)
 }
 \references{
 Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
@@ -68,7 +68,8 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-[get_edge_assignment_probs], [get_degree_seq]
+\code{\link{gof_deg_seq}},\code{\link{get_edge_assignment_probs}},
+\code{\link{get_sim}} to check the reliability of your test
 }
 \author{
 Termeh Shafie
