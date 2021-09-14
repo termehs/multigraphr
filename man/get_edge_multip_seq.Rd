@@ -22,7 +22,7 @@ represented by their edge multiplicity sequences.
 Multigraphs are represented by their edge multiplicity sequence \strong{M} with elements \emph{M(i,j)},
 denoting edge multiplicity at possible vertex pair sites \emph{(i,j)} ordered according to\cr
 \emph{(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)}, \cr
-where \emph{n} is number of vertices.
+where \emph{n} is number of nodes.
 
 Only practical for small multigraphs.
 }
