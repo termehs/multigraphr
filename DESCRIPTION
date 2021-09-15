@@ -1,12 +1,12 @@
 Package: multigraphr
-Title: Random Multigraphs: Probability Models and Statistical Analysis
+Title: Probability Models and Statistical Analysis for Random Multigraphs
 Version: 0.1.0.9000
 Authors@R: 
     person(given = "Termeh",
            family = "Shafie",
            role = c("aut", "cre"),
            email = "termeh.shafie@manchester.ac.uk")
-Description: Methods and models for analysing multigraphs.
+Description: Methods and models for analysing multigraphs as introduced by Shafie (2015) <doi:10.21307/joss-2019-011>, including methods to study local and global properties <doi:10.1080/0022250X.2016.1219732> and goodness of fit tests.
 Depends: R (>= 3.2.0)
 URL: https://github.com/termehs/multigraphr
 BugReports: https://github.com/termehs/multigraphr/issues
@@ -16,5 +16,7 @@ LazyData: true
 RoxygenNote: 7.1.2
 Suggests: 
     rmarkdown,
-    knitr
+    knitr,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3

@@ -7,8 +7,6 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigrapr)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 ## Installation
@@ -114,14 +112,14 @@ of a unique multigraph):
 ``` r
 rsm_1 <- rsm_model(deg.seq = D)
 rsm_1$m.seq
-#>      [,1] [,2] [,3] [,4] [,5] [,6]
-#> [1,]    1    1    0    3    0    1
-#> [2,]    1    1    0    2    2    0
-#> [3,]    1    0    1    3    1    0
-#> [4,]    0    3    0    2    0    1
-#> [5,]    0    3    0    1    2    0
-#> [6,]    0    2    1    2    1    0
-#> [7,]    0    1    2    3    0    0
+#>   M11 M12 M13 M22 M23 M33
+#> 1   1   1   0   3   0   1
+#> 2   1   1   0   2   2   0
+#> 3   1   0   1   3   1   0
+#> 4   0   3   0   2   0   1
+#> 5   0   3   0   1   2   0
+#> 6   0   2   1   2   1   0
+#> 7   0   1   2   3   0   0
 ```
 
 with probabilities associated with each multigraph, together with
@@ -130,14 +128,14 @@ graphs or not’:
 
 ``` r
 rsm_1$prob.dists
-#>     prob.rsm loops multiedges simple
-#> 1 0.03030303     5          1      0
-#> 2 0.18181818     3          3      0
-#> 3 0.06060606     4          2      0
-#> 4 0.06060606     3          3      0
-#> 5 0.24242424     1          5      0
-#> 6 0.36363636     2          4      0
-#> 7 0.06060606     3          3      0
+#>    prob.rsm loops multiedges simple
+#> 1 0.0303030     5          1      0
+#> 2 0.1818182     3          3      0
+#> 3 0.0606061     4          2      0
+#> 4 0.0606061     3          3      0
+#> 5 0.2424242     1          5      0
+#> 6 0.3636364     2          4      0
+#> 7 0.0606061     3          3      0
 ```
 
 Consider using the IEA model to approximate the RSM model so that edge
@@ -313,33 +311,8 @@ against a RSM model with degrees (8,8,2,2)**:
 gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), 
                 hyp = 'IEAS', deg.hyp = c(6,6,6,2))
 gof1$test.summmary
-#>   Stat  E(Stat)  V(Stat)       cv   alpha P(Stat>cv) cv(Stat) P(Stat>cv(Stat))
-#> 1    S 13.61614 50.73657 17.48528 0.04164    0.21243 27.86206          0.04324
-#> 2    A 13.40482 19.73839 17.48528 0.04164    0.17859 22.29040          0.03490
 head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
-#>        S=s  P(S=s)  P(S<s)
-#> 1  1.71667 0.00026 0.00026
-#> 2  2.03333 0.00112 0.00138
-#> 3  2.35000 0.00012 0.00150
-#> 4  2.77222 0.00069 0.00219
-#> 5  3.08889 0.00705 0.00924
-#> 6  3.40556 0.00220 0.01144
-#> 7  3.72222 0.00007 0.01150
-#> 8  3.82778 0.00037 0.01187
-#> 9  3.93333 0.00092 0.01279
-#> 10 4.14444 0.00291 0.01570
 head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
-#>        A=a  P(A=a)  P(A<a)
-#> 1  1.83545 0.00004 0.00004
-#> 2  2.41090 0.00017 0.00021
-#> 3  2.85715 0.00048 0.00069
-#> 4  2.98622 0.00006 0.00074
-#> 5  3.43246 0.00064 0.00138
-#> 6  3.45728 0.00022 0.00161
-#> 7  3.58648 0.00002 0.00163
-#> 8  3.87871 0.00012 0.00174
-#> 9  3.90367 0.00064 0.00239
-#> 10 4.03273 0.00041 0.00279
 ```
 
 **(2) Testing a correctly specified simple IEAS hypothesis with degree
@@ -349,29 +322,7 @@ sequence (14,2,2,2)**:
 gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), 
                 hyp = 'IEAS', deg.hyp = c(14,2,2,2))
 head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
-#>        S=s  P(S=s)  P(S<s)
-#> 1  1.32692 0.03973 0.03973
-#> 2  1.48352 0.01019 0.04992
-#> 3  1.58791 0.04304 0.09295
-#> 4  2.26648 0.01332 0.10628
-#> 5  2.68407 0.02649 0.13276
-#> 6  2.84066 0.04075 0.17351
-#> 7  2.94505 0.02152 0.19503
-#> 8  3.41484 0.01254 0.20757
-#> 9  3.62363 0.03997 0.24753
-#> 10 4.04121 0.06054 0.30807
 head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
-#>        A=a  P(A=a)  P(A<a)
-#> 1  2.09774 0.03973 0.03973
-#> 2  2.22362 0.01019 0.04992
-#> 3  2.37458 0.04304 0.09295
-#> 4  2.98622 0.01332 0.10628
-#> 5  3.14425 0.02649 0.13276
-#> 6  3.21690 0.03405 0.16682
-#> 7  3.27013 0.04075 0.20756
-#> 8  3.34277 0.02619 0.23376
-#> 9  3.49374 0.01230 0.24605
-#> 10 3.90131 0.01254 0.25859
 ```
 
 The non-null (`gof1`) and null (`gof2`) distributions of the test
@@ -392,28 +343,7 @@ degree sequence (14,2,2,2)**:
 gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), 
                 hyp = 'IEAS', deg.hyp = 0)
 head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
-#>        S=s  P(S=s)  P(S<s)
-#> 1  1.48352 0.34675 0.34675
-#> 2  4.04121 0.41610 0.76285
-#> 3  8.37363 0.06935 0.83220
-#> 4 14.48077 0.00165 0.83385
-#> 5 19.23077 0.01734 0.85119
-#> 6 19.64835 0.10402 0.95521
-#> 7 22.62363 0.03467 0.98989
-#> 8 38.23077 0.00991 0.99979
-#> 9 57.23077 0.00021 1.00000
 head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
-#>         A=a  P(A=a)  P(A<a)
-#> 1   2.22362 0.34675 0.34675
-#> 2   3.21690 0.41610 0.76285
-#> 3   7.38562 0.06935 0.83220
-#> 4   8.76207 0.10402 0.93622
-#> 5  10.15821 0.03467 0.97090
-#> 6  12.93080 0.01734 0.98824
-#> 7  14.66173 0.00165 0.98989
-#> 8  15.70339 0.00867 0.99856
-#> 9  20.20690 0.00124 0.99979
-#> 10 22.97949 0.00021 1.00000
 ```
 
 **(4) Testing a composite ISA hypothesis against a ISA model with degree
@@ -423,29 +353,7 @@ sequence (14,2,2,2)**:
 gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), 
                 hyp = 'ISA', deg.hyp = 0)
 head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
-#>        S=s  P(S=s)  P(S<s)
-#> 1  0.00000 0.00080 0.00080
-#> 2  0.00102 0.00000 0.00080
-#> 3  0.02268 0.00041 0.00121
-#> 4  0.02770 0.00684 0.00805
-#> 5  0.09781 0.00012 0.00817
-#> 6  0.12346 0.02639 0.03456
-#> 7  0.22676 0.00000 0.03456
-#> 8  0.27778 0.00002 0.03458
-#> 9  0.28504 0.00019 0.03477
-#> 10 0.31142 0.06030 0.09507
 head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
-#>        A=a  P(A=a)  P(A<a)
-#> 1  0.00000 0.00080 0.00080
-#> 2  0.00097 0.00000 0.00080
-#> 3  0.02246 0.00041 0.00121
-#> 4  0.05268 0.00684 0.00805
-#> 5  0.09940 0.00012 0.00817
-#> 6  0.22264 0.02639 0.03456
-#> 7  0.22375 0.00000 0.03456
-#> 8  0.27684 0.00002 0.03458
-#> 9  0.37277 0.00019 0.03477
-#> 10 0.37555 0.00096 0.03573
 ```
 
 The non-null (`gof3`) and null (`gof4`) distributions of the test
