@@ -1,0 +1,161 @@
+---
+title: "Introduction to multigraphr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{multigraphr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup,echo=FALSE}
+knitr::opts_chunk$set(out.width = "100%")
+```
+
+
+This vignette serves as an introduction to the package `multigraphr`. Parts of the theoretical background is provided but for more details, consult the following literature which the package is based on:
+
+>  Shafie, T. (2015). A multigraph approach to social network analysis. *Journal of Social Structure*, **16**. [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
+
+>  Shafie, T. (2016). Analyzing local and global properties of multigraphs. *The Journal of Mathematical Sociology*, **40**(4), 239-264.  [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
+
+> Shafie, T. and Schoch, D., (to appear in 2021). Multiplexity analysis of networks using multigraph representations. *Statistical Methods \& Applications*
+
+> Shafie, T. (Under review). Goodness of fit tests for random multigraph models.
+
+Make sure the library is loaded
+```{r eval=TRUE}
+library('multigraphr')
+```
+
+## Multigraphs and applicability
+Multigraphs are network representations in which multiple edges and edge loops (self edges) are permitted. These data structures can be either directly observed or aggregated by classifying or cross-classifying node attributes into meta nodes. For the latter case, within group edges correspond to self-edges. See example below where the original graph with 15 nodes and 12 edges (left) is aggregated based on node categories into a small multigraph with 4 nodes (right).
+
+
+
+<img src="mg_ex1.png" 
+     width="700" 
+     align="center"/>
+
+Edge aggregation can also be used to obtain multigraphs. Assume that we study a graph with three different types of relations over three periods of time:
+
+<img src="mg_ex2.png" 
+     width="700" 
+     align="center"/>
+
+If we aggregate over time periods, we obtain for each edge category a multigraph for the total time period of three days:
+
+<img src="mg_ex3.png"
+     width="700" 
+     align="center"/>
+     
+     
+For more details on these kinds of aggregations, see Shafie (2015;2016).
+
+## Multigraph representation of network data
+Multigraphs are represented by their edge multiplicity sequence $$\mathbf{M} = (M_{ij} : (i,j) \in \cal{R} )$$  where $\cal{R}$ is the canonical site space for undirected edges 
+$$R =  \lbrace (i,j) : 1 \leq i \leq j \leq n \rbrace$$
+i.e. *(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
+where *n* is number of nodes. 
+
+The number of vertex pair sites is given by 
+$\displaystyle r = \binom{n+1}{2}$.
+
+Edge multiplicities can also be represented as entries in a matrix
+$$\mathbf{M}=  \begin{bmatrix}
+	M_{11}       & M_{12} & \dots & M_{1n} \\
+	0      & M_{22} & \dots & M_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	0      & 0& \ldots  & M_{nn}
+\end{bmatrix}  \qquad 
+\mathbf{M} + \mathbf{M'}=  \begin{bmatrix}
+	2M_{11}       & M_{12} & \dots & M_{1n} \\
+	M_{12}     & 2M_{22} & \dots & M_{2n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	M_{1n}     & M_{2n}  & \ldots  & 2M_{nn}
+\end{bmatrix}$$
+where the right hand matrix is the equivalence of an adjacency matrix of a multigraph (Shafie, 2016). 
+
+
+## Random multigraph models
+Two probability models for generating undirected random multigraphs are implemented in the package together with several statistics under these two models. Moreover, functions for goodness of fit tests are available for the presented models.
+
+Note that some of the functions are only practical for small scale multigraphs (with number of nodes less than 10 and number of edges less than 20).
+
+### Random stub matching model for multigraphs
+The first model is obtained by random stub matching (RSM) given observed degree sequence of a multigraphs, so that edges are assigned to sites given fixed degree sequence  $\mathbf{d}=(d_1, \ldots, d_n)$. The edge assignment probability sequence $\mathbf{Q}$
+is defined as a function of these degrees and the
+edge assignment probabilities are given by
+\begin{equation} Q_{ij}=  \left\{ \begin{array}{ll}
+		\displaystyle \binom{d_i}{2}\bigg/ \binom{2m}{2} & \mbox{for $i=j$}\\
+		\displaystyle d_id_j\bigg/ \binom{2m}{2} & \mbox{for $i<j$}
+		\ , \end{array} \right  .
+	 \end{equation} 
+	 
+The probability of a multigraph under this model is given by
+\begin{equation}P(\mathbf{M}=\mathbf{m})=\frac{2^{m_2} \binom {m}{\mathbf{m}}}{\binom{2m}{\mathbf{d}}}=\frac{2^{m_2} m! \prod_{i=1}^n d_i!}{(2m)! \prod_{i\leq j} m_{ij}!} \ ,\end{equation}
+where $m_2=\sum \sum_{i<j}m_{ij}$ (Shafie, 2016).
+
+#### Example
+Consider a small graph on 3 nodes and the following adjacency matrix:
+```{r adj, include=TRUE, results='markup', message=FALSE}
+A <-  matrix(c(1, 1, 0, 
+               1, 2, 2, 
+               0, 2, 0), 
+             nrow = 3, ncol = 3)
+A
+```
+The degree sequence of the multigraph has double counted diagonals (edge stubs for loops) and is given by
+```{r degseq, include=TRUE, results='markup', message=FALSE}
+D <- get_degree_seq(adj = A, type = 'graph')
+D
+```
+so that number of edges in the multigraph is half the sum of the degree sequence which is equal to 6.
+
+The RSM model given this degree sequence shows that the sample space consists of 7 possible multigraphs, as represented by their multiplicity 
+$$\mathbf{M}= (M_{11}, M_{12}, M_{1,3}, M_{22}, M_{23}, M_{33})$$
+which is stored in data frame `m.seq` 
+(each row correspond to the edge multiplicity sequence of a unique multigraph):
+```{r rsm_ex1, include=TRUE, results='markup', message=FALSE}
+rsm_1 <- rsm_model(deg.seq = D)
+rsm_1$m.seq
+```
+The probabilities associated with each multigraph/edge multiplicity sequence, together with statistics 'number of loops', 'number of multiple edges' and 'simple graphs or not', are stored in `prob.dists`:
+```{r rsm_ex2, include=TRUE, results='markup', message=FALSE}
+rsm_1$prob.dists
+```
+More details on these statistics for analyzing structural properties of a multigrpahs is given below.
+
+
+### Independent edge assignment model for multigraphs
+The second is obtained by independent edge assignments (IEA) according to a common probability distribution. 
+The $m$ edges of the multigraph are independently assigned to the sites
+$(i,j)\in \mathcal{R}$ and the edge multiplicity sequence $\mathbf{M}$ follows a
+multinomial distribution with parameters $m$ and $\mathbf{Q}=(Q_{ij}: (i, j) \in
+\mathcal{R})$, where $\mathbf{Q}$ is the edge probability sequence with edge
+assignment probabilities $Q_{ij}$ for each site $(i,j)\in \mathcal{R}$ (Shafie, 2015). The probability of a multigraph under this model is
+given by
+\begin{equation} P(\mathbf{M}=\mathbf{m})= \binom{m}{\mathbf{m}} \mathbf{Q}^{\mathbf{m}} = \frac{m!}{\prod_{i\leq j} m_{ij} !} \prod_{i\leq j}Q_{ij}^{m_{ij}}.
+\end{equation} 
+Moments of certain statistics to analyse multigraph structures are easier derived under this model, facilitating the structural analysis of the multigraphs since the full probability distribution of multigraphs is not needed. Thus, it is of interest to approximate the RSM model by the IEA model.
+There are two ways in which  this can be done:
+
+**1. Independent edge assignment of stubs (IEAS)**
+
+
+**2. Independent stub assignment (ISA)**
+
+#### Example
+
+
+### Statistics to analyze structural properties
+The statistic are complexity statistics such as number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), together with their probability distributions, moments and interval estimates.
+
+#### Example
+
+### Goodness of fit tests
+
+#### Example
+
+## Other functions in the package and their usage
+
+
