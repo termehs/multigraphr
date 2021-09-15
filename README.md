@@ -44,13 +44,18 @@ of time: <img src="man/figures/mg_ex2.png" align="right"/>
 If we aggregate over time periods, we obtain for each edge category a
 multigraph for the total time period of three days:
 
-<img src="man/figures/mg_ex3.png" align="right"/> For more details see
-Shafie (2015;2016).
+<img src="man/figures/mg_ex3.png" align="right"/> For more details on
+these kinds of aggregations, see Shafie (2015;2016).
 
-Multigraphs are represented by their edge multiplicity sequence, where
-the edge multiplicity denotes the number of edges at possible vertex
-pair sites ordered according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n) &lt;
-(2,2) &lt; (2,3) &lt;···&lt; (n,n)*, where *n* is number of nodes.
+# Multigraph representation of network data
+
+Multigraphs are represented by their edge multiplicity sequence with
+elements , denoting the number of edges at vertex pair sites ordered
+according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n) &lt; (2,2) &lt; (2,3)
+&lt;···&lt; (n,n)*, where *n* is number of nodes. The number of vertex
+pair sites is given by *r = n(n+1)/2*.
+
+## Random multigraph models
 
 Two probability models for generating undirected random multigraphs are
 implemented in the package together with several statistics under these
@@ -60,15 +65,13 @@ for the presented models.
 Note that some of the functions are only practical for small scale
 multigraphs.
 
-## Random multigraph models
-
 The first model is obtained by random stub matching (RSM) given observed
 degree sequence of a multigraphs, so that edge assignments to vertex
 pair sites are dependent. The second is obtained by independent edge
 assignments (IEA) according to a common probability distribution. There
 are two ways in which an approximate IEA model can be obtained from an
 RSM model, thus facilitating the structural analysis. These two ways are
-independent stub assignment (ISA) and independent edge assignment of
+- independent stub assignment (ISA) - independent edge assignment of
 stubs (IEAS) (Shafie, 2016).
 
 ### Example
@@ -152,9 +155,9 @@ ieas_1$nr.multigraphs
 #> [1] 462
 ```
 
-## Complexity statistics
+## Statistics to analyze structural properties
 
-The statistic are complexity statistics such as number of loops
+These statistics are complexity statistics such as number of loops
 (indicator of e.g. homophily) and number of multiple edges (indicator of
 e.g. multiplexity/interlocking), together with their probability
 distributions, moments and interval estimates.
@@ -247,9 +250,9 @@ ieas_2$R
 #> Lower 95% 1.528 -0.464 -0.729
 ```
 
-The ISA model can be used where a sequence containing the stub
-assignment probabilities (for example based on prior belief) should be
-given as argument:
+The ISA model can also be used independent of the RSM model. Then, a
+sequence containing the stub assignment probabilities (for example based
+on prior belief) should be given as argument:
 
 ``` r
 isa_2 <-   iea_model(adj = A , type = 'graph',  
@@ -272,9 +275,9 @@ isa_2$R
 
 The interval estimates can then be visualized to detect discrepancies
 between observed and expected values thus indicating social mechanisms
-at play in the generation of edges, and to detect overlap and potential
-interdependence between different types of edges (see Shafie 2015,2016;
-Shafie & Schoch 2021).
+at play in the generation of edges, and to detect interval overlap and
+potential interdependence between different types of edges (see Shafie
+2015,2016; Shafie & Schoch 2021).
 
 ## Goodness of fit tests
 
@@ -547,15 +550,17 @@ above can thus be used to analyze the structure of these multigraphs.
 For more details regarding the theoretical background of the package,
 consult the following literature which the package is based on:
 
--   Shafie, T. (2015). A multigraph approach to social network analysis.
-    *Journal of Social Structure*, 16.
-    [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
+> Shafie, T. (2015). A multigraph approach to social network analysis.
+> *Journal of Social Structure*, 16.
+> [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
 
--   Shafie, T. (2016). Analyzing local and global properties of
-    multigraphs. *The Journal of Mathematical Sociology*, 40(4),
-    239-264.
-    [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
+> Shafie, T. (2016). Analyzing local and global properties of
+> multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
+> [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
 
--   Shafie, T. and Schoch, D., (to appear). Multiplexity analysis of
-    networks using multigraph representations. *Statistical Methods &
-    Applications*
+> Shafie, T. and Schoch, D., (to appear). Multiplexity analysis of
+> networks using multigraph representations. *Statistical Methods &
+> Applications*
+
+> Shafie, T. (Under review). Goodness of fit tests for random multigraph
+> models.
