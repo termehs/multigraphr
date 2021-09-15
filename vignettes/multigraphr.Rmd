@@ -150,6 +150,12 @@ This approximation can be viewed as repeated assignments with replacements of st
 
 A Bayesian version of the RSM model is obtained by assigning a prior to the parameter $\mathbf{d}$, i.e., assuming that the stubs are independently attached to the $n$ nodes according to a probability distribution $\mathbf{p}=(p_1, p_2, \ldots, p_n)$ where $p_i>0$ and $\sum_{i=1}^np_i  = 1$. Thus, \mathbf{d} is the outcome of a random degree sequence that is multinomial distributed with parameters $2m$ and $\mathbf{p}=\mathbf{d}$.  Then it follows that the multiplicity sequence $\mathbf{M}$ has an IEA distribution with edge probability sequence $\mathbf{Q}(\mathbf{p})$. For the RSM approximation, $\mathbf{p}=\mathbf{d}/2m$.
 
+
+The relations between the models are summarized in the below figure:
+<img src="mg_models.png" 
+     width="500" 
+     align="center"/>
+     
 #### Example
 The function  `iea_model` has both versions of the IEA model implemented and can be specified to approximate the RSM model.
 Consider using the IEA model to approximate the RSM model so that edge assignment probabilities are functions of observed degree sequence. Note that the sample space for multigraphs is much bigger than for the RSM model so the multiplicity sequences are not printed (they can be found using the function `get_edgemultip_seq` for very small multigraphs and their probabilities can be found using the multinomial distribution). The following shows the number of multigraphs under either of the two IEA models:
@@ -217,6 +223,34 @@ independent stub assignment (ISA).
 The tests are performed using goodness-of-fit measures between the
 edge multiplicity sequence of a specified model or an observed multigraph,
 and the expected multiplicity sequence according to a simple or composite hypothesis.
+
+### Tests of a simple multigraph hypothesis
+The following test statistics are used when edge multiplicities  according to $\textrm{IEA}(\mathbf{Q})$ and correct model $\mathbf{Q_0}=\mathbf{Q}$ is tested:
+
+- the Pearson statistic
+		$$S_0=\sum\sum_{i \leq j}\frac{(M_{ij}-mQ_{0ij})^2}{mQ_{0ij}}=\sum\sum_{i \leq j}\frac{M_{ij}^2}{mQ_{0ij}}-m \stackrel{asymp}{\sim} \chi^2(r-1)$$
+
+		
+		
+		
+- the divergence statistic
+		$$D_0=\sum\sum_{i\leq j}\frac{M_{ij}}{m} \log \frac{M_{ij}}{mQ_{0ij}} \quad  \textrm{and} \quad A_0=\frac{2m}{\log \textrm{e}}D_0 \stackrel{asymp}{\sim} \chi^2(r-1)$$
+
+### Tests of a composite multigraph hypothesis
+The composite multigraph hypotheses are
+ISA for unknown $\mathbf{p}$ 
+and IEAS for unknown $\mathbf{d}$
+where parameters have to be estimated from data $\mathbf{M}$.
+
+When the correct model is tested, the statistics are given by
+
+- the  Pearson statistic
+	$$\hat{S}=\sum\sum_{i \leq j}\frac{(M_{ij}-m\hat{Q}_{ij})^2}{m\hat{Q}_{ij}}=\sum\sum_{i \leq j}\frac{M_{ij}^2}{m\hat{Q}_{ij}}-m \stackrel{asymp}{\sim} \chi^2(r-n)$$ 
+	
+- the divergence statistic
+	$$\hat{D}=\sum\sum_{i\leq j}\frac{M_{ij}}{m} \log \frac{M_{ij}}{m\hat{Q}_{ij}} \qquad \textrm{and} \quad \hat{A}=\frac{2m}{\log \textrm{e}}\hat{D}\stackrel{asymp}{\sim} \chi^2(r-n)$$
+
+
 
 
 ## Simulated goodness of fit tests
