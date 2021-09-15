@@ -7,8 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup,echo=FALSE}
-knitr::opts_chunk$set(out.width = "100%")
+```{r, include = FALSE}
+knitr::opts_chunk$set(out.width = "100%",
+  cache = TRUE
+)
 ```
 
 
@@ -104,7 +106,7 @@ A <-  matrix(c(1, 1, 0,
              nrow = 3, ncol = 3)
 A
 ```
-The degree sequence of the multigraph has double counted diagonals (edge stubs for loops) and is given by
+The degree sequence of the multigraph has double counted diagonals (see the edge multiplciity matrix defined above) and is given by
 ```{r degseq, include=TRUE, results='markup', message=FALSE}
 D <- get_degree_seq(adj = A, type = 'graph')
 D
@@ -141,21 +143,203 @@ There are two ways in which  this can be done:
 
 **1. Independent edge assignment of stubs (IEAS)**
 
+In order to get an RSM approximation using the IEA model we can simply ignore the dependency between the edge assignments in the RSM model. The distribution of $\mathbf{M}$ is approximated with the edge probability sequence defined as a function of the fixed degrees $\mathbf{Q}(\mathbf{d})$.
+This approximation can be viewed as repeated assignments with replacements of stubs, whereas RSM is repeated assignments without replacement of stubs. 
 
 **2. Independent stub assignment (ISA)**
 
-#### Example
+A Bayesian version of the RSM model is obtained by assigning a prior to the parameter $\mathbf{d}$, i.e., assuming that the stubs are independently attached to the $n$ nodes according to a probability distribution $\mathbf{p}=(p_1, p_2, \ldots, p_n)$ where $p_i>0$ and $\sum_{i=1}^np_i  = 1$. Thus, \mathbf{d} is the outcome of a random degree sequence that is multinomial distributed with parameters $2m$ and $\mathbf{p}=\mathbf{d}$.  Then it follows that the multiplicity sequence $\mathbf{M}$ has an IEA distribution with edge probability sequence $\mathbf{Q}(\mathbf{p})$. For the RSM approximation, $\mathbf{p}=\mathbf{d}/2m$.
 
+#### Example
+The function  `iea_model` has both versions of the IEA model implemented and can be specified to approximate the RSM model.
+Consider using the IEA model to approximate the RSM model so that edge assignment probabilities are functions of observed degree sequence. Note that the sample space for multigraphs is much bigger than for the RSM model so the multiplicity sequences are not printed (they can be found using the function `get_edgemultip_seq` for very small multigraphs and their probabilities can be found using the multinomial distribution). The following shows the number of multigraphs under either of the two IEA models:
+```{r ieas_ex1, include=TRUE, results='markup', message=FALSE}
+ieas_1 <-   iea_model(adj = A , type = 'graph',  model = 'IEAS', K = 0, apx = TRUE)
+isa_1 <-   iea_model(adj = A , type = 'graph',  model = 'ISA', K = 0, apx = TRUE)
+isa_1$nr.multigraphs
+ieas_1$nr.multigraphs
+```
+The logical parameter `apx` determines whether the IEA model is being used as an approximation to the RSM model and the parameter `model` specifies which IEA model is used for the approximation. 
+
+The IEA models can also be used independent of the RSM model. For example, the IEAS model can be used where edge assignment probabilities are estimated using the observed edge multiplicities (maximum likelihood estimates):
+```{r ieas_ex3, include=TRUE, results='markup', message=FALSE}
+ieas_2 <-   iea_model(adj = A , type = 'graph', model = 'IEAS', 
+                      K = 0, apx = FALSE)
+```
+The ISA model can also be used independent of the RSM model. Then, a sequence with the stub assignment probabilities (for example based on prior belief) should be given as argument:
+```{r isa_ex2, include=TRUE, results='markup', message=FALSE}
+isa_2 <-   iea_model(adj = A , type = 'graph', model = 'ISA', 
+                     K = 0, apx = FALSE, p.seq = c(1/3, 1/3, 1/3))
+```
 
 ### Statistics to analyze structural properties
-The statistic are complexity statistics such as number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), together with their probability distributions, moments and interval estimates.
+Several statistics for analyzing the structural properties of multigraphs under the different models are implemented in the package.  These include number of loops denoted $M_1$ and number of non-loops denoted $M_2$ (indicator of e.g. homophily and heterophily). Other statistics which are only implemented for the IEA model are those part of a so called complexity sequence
+with the distribution of edge multiplicities. 
+This sequence is given by $\mathbf{R}=(R_0, R_1, R_2, \ldots, R_m)$ where
+\begin{equation}
+	R_k = \sum \sum_{i<j}I(M_{ij} = k) \ \textrm{ for } \ k = 0,1, \ldots, m \ ,
+\end{equation}
+and $I$ is an indicator variable.
+Thus, $R_0$ denotes the number of vertex pair sites with no edge occupancy,
+$R_1$ single edge occupancy, $R_2$ double edge occupancy, and so forth. These statistics are useful as an indicator of e.g. multiplexity/interlocking.
 
-#### Example
+Approximate 95\% interval estimates for these statistics are given by
+$\hat{E} \pm 2\sqrt{\hat{V}}$.
+
+
+#### Example (continued)
+Under the RSM model, the first two moments and interval estimates of the statistics $M_1$  and $M_2$ are given by
+```{r rsm_ex3, include=TRUE, results='markup', message=FALSE}
+rsm_1$M
+```
+which are calculated using the numerically found probability distributions under RSM (no analytical solutions exist for these moments).
+
+Under the IEA models (IEAS or ISA), moments of these statistics, together with the complexity statistic $R_k$ representing the sequence of
+frequencies of edge sites with multiplicities $k = 0,1, \ldots, m$ are found using derived formulas. Thus, there is no limit on multigraph size. When the IEAS model is used to approximate the RSM model (see above), these statistics are:
+```{r ieas_ex2, include=TRUE, results='markup', message=FALSE}
+ieas_1$M
+ieas_1$R
+```
+When the ISA model is used to approximate the RSM model (see above):
+```{r isa_ex1, include=TRUE, results='markup', message=FALSE}
+isa_1$M
+isa_1$R
+```
+
+The interval estimates can then be visualized to detect discrepancies between observed and expected values thus indicating social mechanisms at play, and to detect interval overlap and potential interdependence between different types of edges (for examples, see Shafie 2015,2016; Shafie & Schoch 2021). 
 
 ### Goodness of fit tests
+Goodness of fits tests of multigraph models using Pearson ($S$) and
+information divergence ($A$) test statistics under the random stub matching (RSM)
+and by independent edge assignments (IEA) model,
+where the latter is either independent edge assignments of stubs (IEAS) or
+independent stub assignment (ISA).
+The tests are performed using goodness-of-fit measures between the
+edge multiplicity sequence of a specified model or an observed multigraph,
+and the expected multiplicity sequence according to a simple or composite hypothesis.
+
+
+## Simulated goodness of fit tests
+Probability distributions of test statistics, summary of tests, moments of tests statistics,  adjusted test statistics, critical values, significance level according to asymptotic distribution, and power of tests can be examined using `gof_sim` given a specified model from which we simulate observed values from, and a null or non-null hypothesis from which we calculate expected values from. This in order to investigate the behavior of the null and non-null distributions of the test statistics and their fit to to asymptotic $\chi^2$ distributions, thus also checking how reliable the tests are for small sized multigraphs.
 
 #### Example
+Simulated goodness of fit tests for multigraphs with *n=4* nodes and *m=10* edges (be patient, these take a while to run).
+
+**(1) Testing a simple IEAS hypothesis with degree sequence (6,6,6,2) against a RSM model with degrees (8,8,2,2)**:
+```{r gof1, include=TRUE, results='markup', message=FALSE}
+gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), 
+                hyp = 'IEAS', deg.hyp = c(6,6,6,2))
+gof1$test.summmary
+head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
+head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
+```
+
+**(2) Testing a correctly specified simple IEAS hypothesis with degree sequence (14,2,2,2)**:
+```{r gof2, include=TRUE, results='markup', message=FALSE}
+gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), 
+                hyp = 'IEAS', deg.hyp = c(14,2,2,2))
+head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
+head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
+```
+
+The non-null (`gof1`) and null (`gof2`)  distributions of the test statistics together with their asymptotic chi2-distribution can be visualized using  e.g. `ggplot2`:
+
+<div class="column">
+<img src="p1_gof_1.png" width = "400" align="center" />
+<img src="p2_gof_2.png" width = "400"  align="center"/>
+ </div>
+ 
+ 
+**(3) Testing a composite IEAS hypothesis against a RSM model with degree sequence (14,2,2,2)**:
+```{r gof3, include=TRUE, results='markup', message=FALSE}
+gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), 
+                hyp = 'IEAS', deg.hyp = 0)
+head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
+head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
+```
+
+**(4) Testing a composite ISA hypothesis against a ISA model with degree sequence (14,2,2,2)**:
+```{r gof4, include=TRUE, results='markup', message=FALSE}
+gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), 
+                hyp = 'ISA', deg.hyp = 0)
+head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
+head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
+```
+
+The non-null (`gof3`) and null (`gof4`)  distributions of the test statistics can then be visualized as shown above to check their fit to the asymptotic $\chi^2$-distribution.
+
+## Performing the goodness of fit test on your data
+Use function `gof_test` to test whether the observed data follows IEA approximations of the RSM model. The null hypotheses can be simple or composite, although the latter is not recommended for small multigraphs as it is difficult to detect a false composite hypothesis under an RSM model and under IEA models (this can be checked and verified using `gof_sim` to simulate these cases).
+
+Non-rejection of the null implies that the approximations fit the data, thus implying that above statistics under the IEA models can be used to further analyze the observed network. 
+Consider the following multigraph from the well known Florentine family network with  marital. This multigraphs is aggregated based on the three actor attributes wealth (W), number of priorates (P) and total number of ties (T) which are all dichotomized to reflect high or low  economic, political and social influence (details on the aggregation can be found in Shafie, 2015):
+<div class="center">
+<img src="mg_flor.png" width = "400" align ="center"/>
+ </div>
+The multiplicity sequence represented as an upper triangular matrix for this mutigrpah is given by
+
+```{r flor1, include=TRUE, results='markup', message=FALSE}
+flor_m <- t(matrix(c (0, 0, 1, 0, 0, 0,	0, 0,
+                      0, 0, 0, 0, 0, 0,	0, 0,
+                      0, 0,	0, 2, 0, 0,	1, 5,
+                      0, 0,	0, 0, 0, 0,	1, 1,
+                      0, 0,	0, 0, 0, 0,	1, 2,
+                      0, 0,	0, 0, 0, 0,	2, 1,
+                      0, 0,	0, 0, 0, 0,	0, 2,
+                      0, 0,	0, 0, 0, 0,	0, 1), nrow= 8, ncol=8))
+```
+
+The equivalence of adjacency matrix for the multigraph is given by 
+```{r flor2, include=TRUE, results='markup', message=FALSE}
+flor_adj <- flor_m+t(flor_m)
+flor_adj 
+```
+with the diagonal representing the loops double counted (Shafie, 2016). The function  `get_degree_seq` can now be used to find the degree sequence for this multigraph:
+```{r flor3, include=TRUE, results='markup', message=FALSE}
+flor_d <- get_degree_seq(adj = flor_adj, type = 'multigraph')
+flor_d
+```
+
+Now we test whether the observed network fits the IEAS or the ISA model. The $p$-values for testing whether there is a significant difference between observed and expected edge multiplicity values according to the two approximate IEA models are given in the output tables below. Note that the asymptotic $\chi^2$-distribution has $r-1 = \binom{n+1}{2} - 1 =35$ degrees of freedom.
+```{r flor4, include=TRUE, results='markup', message=FALSE}
+flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
+flor_ieas_test
+```
+
+```{r flor5, include=TRUE, results='markup', message=FALSE}
+flor_isa_test <- gof_test(flor_adj, 'multigraph', 'ISA', flor_d, 35)
+flor_isa_test 
+```
+The results show that we have strong evidence for the null such that we fail to reject it. Thus, there is not a significant difference between the observed and the expected edge multiplicity sequence according on the two IEA models. Statistics derived under these models presented above can thus be used to analyze the structure of these multigraphs. 
+
 
 ## Other functions in the package and their usage
+The function `nsumk`  is useful for finding all possible degree sequences for a network with $n$ nodes and $k/2$ number of edges, or for finding all possible edge multiplicity sequence $n$ that sum up to $k$ number of edges.
 
+#### Example
+All edge multiplicity sequences/multigraph with 2 nodes and 4 edges
+```{r func1, include=TRUE, results='markup', message=FALSE}
+r <- (2*3)/2 # vertex pair sites (or length of edge multiplicity sequences)
+mg <- nsumk(r,4) # number of rows give number of possible multigraphs
+mg
+```
+
+The function `get_edge_assignment_probs` can be used to calculates the edge assignment probabilities $\mathbf{Q}$ given specified degree sequence under the two ways in which the RSM model can be approximated by the IEA model.
+
+#### Example
+Under the IEAS model with 10 possible vertex pair sites (4 nodes), the edge assignment probabilities are given by
+```{r func2, include=TRUE, results='markup', message=FALSE}
+Q <- get_edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
+Q
+```
+
+Given a degree sequence, the function `get_edge_multip_seq` can be used to find all unique edge multiplicity sequences as rows in a data frame. Each row in the data frame represents a unique multigraph given the degree sequence. This is useful if you need to find the full outcome space of multgraphs under the IEA model (but only practical and readable for small multigraphs)
+
+
+#### Example
+To find all multigraphs with degree sequence $(4,2,2)$
+```{r func3, include=TRUE, results='markup', message=FALSE}
+mg <- get_edge_multip_seq(deg.seq = c(4,2,2))
+mg
+```
 
