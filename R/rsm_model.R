@@ -31,7 +31,7 @@
 #' mod1 <- rsm_model(D)
 #' mod1$m.seq
 #' mod1$prob.dists
-#' mod1$stat.moms
+#' mod1$M
 #'
 #' # Given an observed graph
 #' A <-  matrix(c(0, 1, 2,
