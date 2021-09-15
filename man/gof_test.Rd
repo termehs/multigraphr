@@ -48,7 +48,7 @@ This function can be used to test whether there is a significant difference betw
  expected edge multiplicity sequence.
 }
 \examples{
-Adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
+# Adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
 A <- t(matrix(c( 0, 1, 0, 3,
                    0, 0, 1, 7,
                    0, 1, 0, 3,
@@ -68,8 +68,8 @@ Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journ
 Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 }
 \seealso{
-\code{\link{gof_deg_seq}},\code{\link{get_edge_assignment_probs}},
-\code{\link{get_sim}} to check the reliability of your test
+\code{\link{get_degree_seq}},\code{\link{get_edge_assignment_probs}},
+\code{\link{gof_sim}} to check the reliability of your test
 }
 \author{
 Termeh Shafie

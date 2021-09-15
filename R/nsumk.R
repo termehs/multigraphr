@@ -1,6 +1,7 @@
 #' @title Ordered \emph{n}-tuples of non-negative integers summing to \emph{k}
 #' @description Finds ordered \emph{n}-tuples of non-integers summing to \emph{k}.
 #' Only practical for \emph{n} < 15.
+#' @importFrom utils combn
 #' @param n a positive integer.
 #' @param k a positive integer.
 #' @return  A matrix with \code{choose(k+n-1,n-1)} rows and \code{n} columns.
@@ -34,7 +35,7 @@ nsumk <- function(n, k) {
     )), n - 1)), cbind(rep(1, tot) * (k + n)))
     X = t(apply(divs, 1, diff)) - 1
   } else{
-    warning('n and k are not scalars')
+    stop('n and k must be scalars')
   }
   return(X)
 }

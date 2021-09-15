@@ -5,6 +5,7 @@
 #' the exact distribution of these statistics,  their asymptotic χ²-distributions,
 #' and their first two central moments are calculated using this function.
 #' Only practical for small multigraphs.
+#' @importFrom stats pchisq
 #' @param m integer giving number of edges in multigraph.
 #' @param dof  integer giving degrees of freedom of test performed.
 #' @param m.seq  matrix of integers, each row representing the

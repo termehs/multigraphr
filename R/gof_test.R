@@ -2,6 +2,7 @@
 #' @description  Goodness of fit tests between an observed edge multiplicity sequence and
 #' an expected edge multiplicity sequence according to specified RSM or IEA hypotheses
 #' using Pearson (\emph{S}) and information divergence (\emph{A}) tests statistics.
+#' @importFrom stats pchisq
 #' @param adj matrix of integer representing graph adjacency matrix.
 #' @param type equals \code{'graph'} if adjacency matrix is for graphs (default),
 #' equals \code{'multigraph'} if it is the equivalence of the adjacency matrix for multigraphs
@@ -30,14 +31,14 @@
 #'  that there is no significant difference between the observed and
 #'  expected edge multiplicity sequence.
 #' @author Termeh Shafie
-#' @seealso \code{\link{gof_deg_seq}},\code{\link{get_edge_assignment_probs}},
-#' \code{\link{get_sim}} to check the reliability of your test
+#' @seealso \code{\link{get_degree_seq}},\code{\link{get_edge_assignment_probs}},
+#' \code{\link{gof_sim}} to check the reliability of your test
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
 #' @examples
-#' Adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
+#' # Adjacency matrix of observed network (multigraph), n = 4 nodes , m = 15 edges
 #' A <- t(matrix(c( 0, 1, 0, 3,
 #'                    0, 0, 1, 7,
 #'                    0, 1, 0, 3,

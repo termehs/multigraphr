@@ -8,6 +8,7 @@
 #' These can be used to check the reliability of the tests by examining the exact probability
 #' distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
 #' Only practical for small multigraphs as exact distributions are calculated.
+#' @importFrom stats dmultinom
 #' @param m integer giving number of edges in multigraph.
 #' @param model character string representing assumed model, either \code{'RSM'}, \code{'IEAS'} or \code{'ISA'}.
 #' @param deg.mod vector of integers with the sum equal to 2\code{m} representing

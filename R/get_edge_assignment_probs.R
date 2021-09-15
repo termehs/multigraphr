@@ -62,5 +62,7 @@ get_edge_assignment_probs <- function(m, deg.seq, model) {
     }
     Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
     return(Q.seq)
+  } else{
+    stop("model must be one of 'IEAS' or 'ISA'.")
   }
 }
