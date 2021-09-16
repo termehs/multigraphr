@@ -47,11 +47,11 @@ these kinds of aggregations, see Shafie (2015;2016).
 
 # Multigraph representation of network data
 
-Multigraphs are represented by their edge multiplicity sequence with
-elements , denoting the number of edges at vertex pair sites ordered
-according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n) &lt; (2,2) &lt; (2,3)
-&lt;···&lt; (n,n)*, where *n* is number of nodes. The number of vertex
-pair sites is given by *r = n(n+1)/2*.
+Multigraphs are represented by their edge multiplicity sequence **M**
+with elements *M(i,j)*, denoting the number of edges at vertex pair
+sites *(i,j)* ordered according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n)
+&lt; (2,2) &lt; (2,3) &lt;···&lt; (n,n)*, where *n* is number of nodes.
+The number of vertex pair sites is given by *r = n(n+1)/2*.
 
 ## Random multigraph models
 
@@ -69,8 +69,9 @@ pair sites are dependent. The second is obtained by independent edge
 assignments (IEA) according to a common probability distribution. There
 are two ways in which an approximate IEA model can be obtained from an
 RSM model, thus facilitating the structural analysis. These two ways are
-- independent stub assignment (ISA) - independent edge assignment of
-stubs (IEAS) (Shafie, 2016).
+- independent stub assignment (ISA)
+
+-   independent edge assignment of stubs (IEAS) (Shafie, 2016).
 
 ### Example
 
@@ -155,10 +156,11 @@ ieas_1$nr.multigraphs
 
 ## Statistics to analyze structural properties
 
-These statistics are complexity statistics such as number of loops
-(indicator of e.g. homophily) and number of multiple edges (indicator of
-e.g. multiplexity/interlocking), together with their probability
-distributions, moments and interval estimates.
+These statistics include number of loops (indicator of e.g. homophily)
+and number of multiple edges (indicator of
+e.g. multiplexity/interlocking), which are implemented in the package
+together with their probability distributions, moments and interval
+estimates under the different multigraph models.
 
 ### Example (cont’d)
 
@@ -279,14 +281,14 @@ potential interdependence between different types of edges (see Shafie
 
 ## Goodness of fit tests
 
-Goodness of fits tests of multigraph models using Pearson () and
-information divergence () test statistics under the random stub matching
-(RSM) and by independent edge assignments (IEA) model, where the latter
-is either independent edge assignments of stubs (IEAS) or independent
-stub assignment (ISA). The tests are performed using goodness-of-fit
-measures between the edge multiplicity sequence of a specified model or
-an observed multigraph, and the expected multiplicity sequence according
-to a simple or composite hypothesis.
+Goodness of fits tests of multigraph models using Pearson (*S*) and
+information divergence (*A*) test statistics under the random stub
+matching (RSM) and by independent edge assignments (IEA) model, where
+the latter is either independent edge assignments of stubs (IEAS) or
+independent stub assignment (ISA). The tests are performed using
+goodness-of-fit measures between the edge multiplicity sequence of a
+specified model or an observed multigraph, and the expected multiplicity
+sequence according to a simple or composite hypothesis.
 
 ## Simulated goodness of fit tests
 

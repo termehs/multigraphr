@@ -46,7 +46,7 @@ If we aggregate over time periods, we obtain for each edge category a multigraph
 For more details on these kinds of aggregations, see Shafie (2015;2016).
 
 # Multigraph representation of network data
-Multigraphs are represented by their edge multiplicity sequence \strong{M} with elements \emph{M(i,j)}, denoting the number of edges at vertex pair sites \emph{(i,j)} ordered according to *(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
+Multigraphs are represented by their edge multiplicity sequence **M** with elements *M(i,j)*, denoting the number of edges at vertex pair sites *(i,j)* ordered according to *(1,1) < (1,2) <···< (1,n) < (2,2) < (2,3) <···< (n,n)*, 
 where *n* is number of nodes. The number of vertex pair sites is given by 
 *r = n(n+1)/2*.
 
@@ -58,6 +58,7 @@ Note that some of the functions are only practical for small scale multigraphs.
 
 The first model is obtained by random stub matching (RSM) given observed degree sequence of a multigraphs, so that edge assignments to vertex pair sites are dependent. The second is obtained by independent edge assignments (IEA) according to a common probability distribution. There are two ways in which an approximate IEA model can be obtained from an RSM model, thus facilitating the structural analysis. These two ways are 
  - independent stub assignment (ISA) 
+ 
  - independent edge assignment of stubs (IEAS) 
 (Shafie, 2016).
 
@@ -99,7 +100,7 @@ ieas_1$nr.multigraphs
 
 
 ## Statistics to analyze structural properties
-These statistics are complexity statistics such as number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), together with their probability distributions, moments and interval estimates.
+These statistics include number of loops (indicator of e.g. homophily) and number of multiple edges (indicator of e.g. multiplexity/interlocking), which are implemented in the package together with their probability distributions, moments and interval estimates under the different multigraph models.
 
 ### Example (cont'd)
 Under the RSM model, the first two moments and interval estimates of the statistics  *M1* = 'number of loops' and *M2* = 'number of multiple edges' are given by
@@ -140,8 +141,8 @@ isa_2$R
 The interval estimates can then be visualized to detect discrepancies between observed and expected values thus indicating social mechanisms at play in the generation of edges, and to detect interval overlap and potential interdependence between different types of edges (see Shafie 2015,2016; Shafie & Schoch 2021). 
 
 ## Goodness of fit tests
-Goodness of fits tests of multigraph models using Pearson (\emph{S}) and
-information divergence (\emph{A}) test statistics under the random stub matching (RSM)
+Goodness of fits tests of multigraph models using Pearson (*S*) and
+information divergence (*A*) test statistics under the random stub matching (RSM)
 and by independent edge assignments (IEA) model,
 where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA).
