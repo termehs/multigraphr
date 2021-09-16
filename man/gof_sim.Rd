@@ -26,9 +26,9 @@ degree sequence of the multigraph under the null model: \cr
 \value{
 Output is generated from function \code{\link{gof_stats}}:
  \item{test.summary}{Expected value and variances of test statistics (\code{stat}),
- critical values (\code{cv}) according to asymptotic χ²-distribution and
+ critical values (\code{cv}) according to asymptotic chi^2-distribution and
  according to cdf's of test statistics,
- significance level (α) according to asymptotic χ² distribution,
+ significance level (alpha) according to asymptotic chi^2 distribution,
  power of tests (\code{P(stat>cv)}), critical values and power
  according to the distributions of test statistics (\code{cv(stat)}
  and \code{ P(Stat>cv(Stat))}).}
@@ -37,7 +37,7 @@ Output is generated from function \code{\link{gof_stats}}:
  \item{probA}{Probability distributions of information divergence statistic \code{A}.}
  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
  preferred adjusted statistics.}
- \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution.}
+ \item{adjusted.chi2}{Degrees of freedom for adjusted  chi^2-distribution.}
  \item{power.apx}{Power approximations according to adjusted statistics.}
 }
 \description{
@@ -48,7 +48,7 @@ where the latter is either independent edge assignments of stubs (IEAS) or
 independent stub assignment (ISA).
 
 These can be used to check the reliability of the tests by examining the exact probability
-distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
+distributions of the test statistics and their fit to their asymptotic  chi^2-distributions.
 Only practical for small multigraphs as exact distributions are calculated.
 }
 \details{
@@ -59,7 +59,7 @@ and the expected multiplicity sequence according to a simple or composite IEA hy
 Test statistics of Pearson type (\emph{S}) and
 of information divergence (\emph{A}) type are used and summary
 of tests given these two statistics are given as output. The adjusted statistics and
-χ²-distributions are useful for better power calculations.
+chi^2-distributions are useful for better power calculations.
 }
 \examples{
 # Testing a simple IEAS hypothesis with degree sequence [6,6,6] against
