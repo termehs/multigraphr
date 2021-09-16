@@ -4,9 +4,7 @@
 # Package overview: `multigraphr` <img src="man/figures/hex_multigraphr.png" align="right" width="130px"/>
 
 <!-- badges: start -->
-
-[![CRAN
-status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigrapr)
+<!-- [![CRAN status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigraphr) -->
 <!-- badges: end -->
 
 ## Installation
