@@ -6,7 +6,7 @@
 #' independent stub assignment (ISA).
 #'
 #' These can be used to check the reliability of the tests by examining the exact probability
-#' distributions of the test statistics and their fit to their asymptotic  χ²-distributions.
+#' distributions of the test statistics and their fit to their asymptotic  chi^2-distributions.
 #' Only practical for small multigraphs as exact distributions are calculated.
 #' @importFrom stats dmultinom
 #' @param m integer giving number of edges in multigraph.
@@ -22,9 +22,9 @@
 #'   - if \code{hyp = 'ISA'} and \code{deg.hyp = 0}, then composite ISA hypothesis with edge multiplicity sequence estimated from data\cr
 #' @return Output is generated from function \code{\link{gof_stats}}:
 #'  \item{test.summary}{Expected value and variances of test statistics (\code{stat}),
-#'  critical values (\code{cv}) according to asymptotic χ²-distribution and
+#'  critical values (\code{cv}) according to asymptotic chi^2-distribution and
 #'  according to cdf's of test statistics,
-#'  significance level (α) according to asymptotic χ² distribution,
+#'  significance level (alpha) according to asymptotic chi^2 distribution,
 #'  power of tests (\code{P(stat>cv)}), critical values and power
 #'  according to the distributions of test statistics (\code{cv(stat)}
 #'  and \code{ P(Stat>cv(Stat))}).}
@@ -33,7 +33,7 @@
 #'  \item{probA}{Probability distributions of information divergence statistic \code{A}.}
 #'  \item{adjusted.stats}{Expected values and variances for adjusted test statistics,
 #'  preferred adjusted statistics.}
-#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  χ²-distribution.}
+#'  \item{adjusted.chi2}{Degrees of freedom for adjusted  chi^2-distribution.}
 #'  \item{power.apx}{Power approximations according to adjusted statistics.}
 #' @details The tests are performed using goodness-of-fit measures between simulated
 #' edge multiplicity sequence of a multigraph according to an RSM or IEA model,
@@ -42,7 +42,7 @@
 #' Test statistics of Pearson type (\emph{S}) and
 #' of information divergence (\emph{A}) type are used and summary
 #' of tests given these two statistics are given as output. The adjusted statistics and
-#' χ²-distributions are useful for better power calculations.
+#' chi^2-distributions are useful for better power calculations.
 #' @author Termeh Shafie
 #' @seealso \code{\link{gof_stats}},\code{\link{get_edge_assignment_probs}},
 #' \code{\link{nsumk}},\code{\link{rsm_model}}
