@@ -128,14 +128,14 @@ graphs or not’:
 
 ``` r
 rsm_1$prob.dists
-#>    prob.rsm loops multiedges simple
-#> 1 0.0303030     5          1      0
-#> 2 0.1818182     3          3      0
-#> 3 0.0606061     4          2      0
-#> 4 0.0606061     3          3      0
-#> 5 0.2424242     1          5      0
-#> 6 0.3636364     2          4      0
-#> 7 0.0606061     3          3      0
+#>     prob.rsm loops multiedges simple
+#> 1 0.03030303     5          1      0
+#> 2 0.18181818     3          3      0
+#> 3 0.06060606     4          2      0
+#> 4 0.06060606     3          3      0
+#> 5 0.24242424     1          5      0
+#> 6 0.36363636     2          4      0
+#> 7 0.06060606     3          3      0
 ```
 
 Consider using the IEA model to approximate the RSM model so that edge
@@ -310,9 +310,6 @@ against a RSM model with degrees (8,8,2,2)**:
 ``` r
 gof1 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(8,8,2,2), 
                 hyp = 'IEAS', deg.hyp = c(6,6,6,2))
-gof1$test.summmary
-head(gof1$probS, 10) # pdf and cdf for Pearson test statistic S
-head(gof1$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(2) Testing a correctly specified simple IEAS hypothesis with degree
@@ -321,8 +318,6 @@ sequence (14,2,2,2)**:
 ``` r
 gof2 <- gof_sim(m = 10, model = 'IEAS', deg.mod = c(14,2,2,2), 
                 hyp = 'IEAS', deg.hyp = c(14,2,2,2))
-head(gof2$probS, 10) # pdf and cdf for Pearson test statistic S
-head(gof2$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 The non-null (`gof1`) and null (`gof2`) distributions of the test
@@ -342,8 +337,6 @@ degree sequence (14,2,2,2)**:
 ``` r
 gof3 <- gof_sim(m = 10, model = 'RSM', deg.mod = c(14,2,2,2), 
                 hyp = 'IEAS', deg.hyp = 0)
-head(gof3$probS, 10) # pdf and cdf for Pearson test statistic S
-head(gof3$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 **(4) Testing a composite ISA hypothesis against a ISA model with degree
@@ -352,8 +345,6 @@ sequence (14,2,2,2)**:
 ``` r
 gof4 <- gof_sim(m = 10, model = 'ISA', deg.mod = c(14,2,2,2), 
                 hyp = 'ISA', deg.hyp = 0)
-head(gof4$probS, 10) # pdf and cdf for Pearson test statistic S
-head(gof4$probA, 10) # pdf and cdf for information divergence statistic A
 ```
 
 The non-null (`gof3`) and null (`gof4`) distributions of the test
