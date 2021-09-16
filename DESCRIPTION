@@ -1,5 +1,5 @@
 Package: multigraphr
-Title: Probability Models and Statistical Analysis for Random Multigraphs
+Title: Probability Models and Statistical Analysis of Random Multigraphs
 Version: 0.1.0
 Authors@R: 
     person(given = "Termeh",
