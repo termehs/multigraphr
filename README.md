@@ -3,16 +3,21 @@
 
 # Package overview: `multigraphr` <img src="man/figures/hex_multigraphr.png" align="right" width="130px"/>
 
-<!-- badges: start -->
-<!-- [![CRAN status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigraphr) -->
-<!-- badges: end -->
+<!-- [![R-CMD-check](https://github.com/schochastics/netrankr/workflows/R-CMD-check/badge.svg)](https://github.com/termehs/multigraphr/actions) -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/multigraphr)](https://cran.r-project.org/package=multigraphr)
+[![CRAN
+Downloads](http://cranlogs.r-pkg.org/badges/multigraphr)](https://CRAN.R-project.org/package=multigraphr)
 
 ## Installation
 
-<!-- You can install the released version of multigraphr from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` r -->
-<!-- install.packages("multigraphr") -->
-<!-- ``` -->
+You can install the released version of multigraphr from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("multigraphr")
+```
 
 The development version from [GitHub](https://github.com/) with:
 
