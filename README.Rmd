@@ -2,8 +2,6 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -233,7 +231,6 @@ flor_isa_test
 ```
 The results show that we have strong evidence for the null such that we fail to reject it. Thus, there is not a significant difference between the observed and the expected edge multiplicity sequence according on the two IEA models. Statistics derived under these models presented above can thus be used to analyze the structure of these multigraphs. 
 
-
 ## Theoretical Background
 For more details regarding the
 theoretical background of the package, consult the following literature which the package is based on:
@@ -245,4 +242,3 @@ theoretical background of the package, consult the following literature which th
 >  Shafie, T. and Schoch, D., (to appear). Multiplexity analysis of networks using multigraph representations. *Statistical Methods \& Applications*
 
 > Shafie, T. (Under review). Goodness of fit tests for random multigraph models.
-

@@ -1,6 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # Package overview: `multigraphr` <img src="man/figures/hex_multigraphr.png" align="right" width="130px"/>
 
 [![CRAN
