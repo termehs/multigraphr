@@ -458,9 +458,8 @@ consult the following literature which the package is based on:
 > multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
 > [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
 
-> Shafie, T. and Schoch, D., (to appear). Multiplexity analysis of
-> networks using multigraph representations. *Statistical Methods &
-> Applications*
+> Shafie, T. and Schoch, D., (2021). Multiplexity analysis of networks
+> using multigraph representations. *Statistical Methods & Applications*
 
 > Shafie, T. (Under review). Goodness of fit tests for random multigraph
 > models.
