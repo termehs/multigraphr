@@ -40,7 +40,13 @@
 #' @references Shafie, T. (2015). A Multigraph Approach to Social Network Analysis. \emph{Journal of Social Structure}, 16.
 #' \cr
 #'
-#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs.
+#' \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#'
+#' Shafie, T., Schoch, D. (2021). Multiplexity analysis of networks using multigraph representations.
+#' \emph{Statistical Methods & Applications} 30, 1425–1444.
+
+
 #' @examples
 #' # Adjacency matrix of a small graph on 3 nodes
 #' A <-  matrix(c(1, 1, 0,
