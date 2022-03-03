@@ -22,6 +22,10 @@
 #' \cr
 #'
 #' Shafie, T. (2016). Analyzing Local and Global Properties of Multigraphs. \emph{The Journal of Mathematical Sociology}, 40(4), 239-264.
+#' \cr
+#'
+#' #' Shafie, T., Schoch, D. (2021). Multiplexity analysis of networks using multigraph representations.
+#' \emph{Statistical Methods & Applications} 30, 1425–1444.
 #' @examples
 #' # Under the IEAS model with 10 possible vertex pair sites (4 vertices)
 #' get_edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
