@@ -23,110 +23,87 @@
 #' @seealso \code{\link{get_degree_seq}}
 #' @examples
 #' # Adjacency matrix for undirected network with 3 nodes
-#'  A <-  matrix(c(0, 1, 2,
-#'                 1, 2, 1,
-#'                 2, 1, 2), nrow=3, ncol=3)
-#' deg <- get_degree_seq(A, 'multigraph')
+#' A <- matrix(c(
+#'     0, 1, 2,
+#'     1, 2, 1,
+#'     2, 1, 2
+#' ), nrow = 3, ncol = 3)
+#' deg <- get_degree_seq(A, "multigraph")
 #' get_edge_multip_seq(deg)
 #' @export
 
 get_edge_multip_seq <- function(deg.seq) {
-  if (sum(deg.seq) %% 2 == 1)
-    stop("sum of degree sequence must be an even number")
-  n <- length(deg.seq)
-  r <- choose(n + 1, 2)
-  m <- sum(deg.seq) / 2
-  k <- m - 1
-
-  #initial edge sequence (read as labelled 2-tuples of connected nodes connected)
-  s <- vector()
-  edge.seq <- vector()
-  for (i in 1:n) {
-    s <- rep(i, deg.seq[i])
-    edge.seq <- c(edge.seq, s)
-  }
-  s <- edge.seq
-
-  # initial edge list
-  z <- matrix(0, m, 2)
-  for (i in 1:m) {
-    z[i, 1] = edge.seq[2 * i - 1]
-    z[i, 2] = edge.seq[2 * i]
-  }
-
-  # create all possible sequences of edges given degree sequence
-  while (k > 0)
-  {
-    W <- vector("integer", 0)
-    for (i in k:m) {
-      Wz <- z[i, ]
-      W <- c(W, Wz)
+    if (sum(deg.seq) %% 2 == 1) {
+        stop("sum of degree sequence must be an even number")
     }
-    tmp <- c(W[1], W[2] + 1)
-    W <- sort(W)
-    if (length(which(tmp[1] == W)) <= length(which(tmp[2] <= W))) {
-      i1 <- which(tmp[1] == W)
-      i2 <- which(tmp[2] <= W)
-      W1 <- vector("integer", 0)
-      del <- vector("integer", 0)
-      for (i in 1:min(length(i1), length(i2))) {
-        w <- c(W[i1[i]], W[i2[i]])
-        W1 <- c(W1, w)
-        del <- c(del, c(i1[i], i2[i]))
-      }
-      W <- W[-del]
-      ss <- c(W1, W)
-      s[(2 * m - length(ss) + 1):(2 * m)] <- ss
-      edge.seq <- rbind(edge.seq, s, deparse.level = 0)
-      for (i in 1:m) {
-        z[i, 1] = s[2 * i - 1]
-        z[i, 2] = s[2 * i]
-      }
-      k = m - 1
-    } else {
-      k = k - 1
-    }
-  }
+    n <- length(deg.seq)
+    r <- choose(n + 1, 2)
+    m <- sum(deg.seq) / 2
+    k <- m - 1
 
-  # edge multiplicity sequence = m.seq
-  m.seq <- vector()
+    # initial edge sequence (read as labelled 2-tuples of connected nodes connected)
+    s <- edge.seq <- rep(seq_len(n), deg.seq)
 
-  for (g in 1:nrow(edge.seq)) {
-    for (i in 1:m) {
-      z[i, 1] = edge.seq[g, 2 * i - 1]
-      z[i, 2] = edge.seq[g, 2 * i]
-    }
-    A <- matrix(0, n, n) #adjacency matrix
-    f <- z
-    f[, c(1, 2)] <- z[, c(2, 1)]
-    for (j in 1:m) {
-      b <- vector()
-      c <- vector()
-      for (i in 1:m) {
-        b <- rbind(b, as.integer(z[j,] == z[i,])) #for multiple edges
-        c <- rbind(c, as.integer(z[j,] == f[i,])) #for loops
-      }
-      if (length(rowSums(b) == 2) > 1) {
-        A[z[j, 1], z[j, 2]] <- length(which(rowSums(b) == 2))
-      } else {
-        A[z[j, 1], z[j, 2]] <- 1
-      }
+    # initial edge list
+    z <- matrix(edge.seq, ncol = 2, byrow = TRUE)
+    # create all possible sequences of edges given degree sequence
+    while (k > 0) {
+        tz <- t(z)
+        W <- c(tz[, k:m])
+
+        tmp <- c(W[1], W[2] + 1)
+        W <- sort(W)
+        if (length(which(tmp[1] == W)) <= length(which(tmp[2] <= W))) {
+            i1 <- which(tmp[1] == W)
+            i2 <- which(tmp[2] <= W)
+            ni <- seq_len(min(length(i1), length(i2)))
+            del <- c(rbind(i1[ni], i2[ni]))
+            W1 <- c(rbind(W[i1[ni]], W[i2[ni]]))
+
+            W <- W[-del]
+            ss <- c(W1, W)
+            s[(2 * m - length(ss) + 1):(2 * m)] <- ss
+            edge.seq <- rbind(edge.seq, s, deparse.level = 0)
+            for (i in 1:m) {
+                z[i, 1] <- s[2 * i - 1]
+                z[i, 2] <- s[2 * i]
+            }
+            k <- m - 1
+        } else {
+            k <- k - 1
+        }
     }
 
-    # the edge multiplicity sequence
-    tmp <- t(A)[lower.tri(t(A), diag = TRUE)]
-    m.seq <- rbind(m.seq, tmp, deparse.level = 0)
-  }
-  m.seq <- as.data.frame(m.seq)
+    # edge multiplicity sequence = m.seq
+    m.seq <- vector()
 
-  idx <- vector()
-  for (i in 1:n) {
-    for (j in 1:n) {
-      if (i <= j) {
-        idx <- c(idx, paste(i, j, sep = ""))
-      }
+    # Pre-allocate matrices and vectors
+    A <- matrix(0, n, n) # Adjacency matrix for each configuration
+    m.seq <- matrix(0, nrow(edge.seq), choose(n, 2) + n) # Pre-allocate for all configurations
+
+    # Iterate over each graph configuration
+    for (g in seq_len(nrow(edge.seq))) {
+        # Directly use the matrix 'z' constructed from 'edge.seq'
+        z <- matrix(edge.seq[g, ], ncol = 2, byrow = TRUE)
+
+        # Reset the adjacency matrix for each configuration
+        A[, ] <- 0
+
+        # Vectorized operation to fill the adjacency matrix
+        for (i in 1:m) {
+            A[z[i, 1], z[i, 2]] <- A[z[i, 1], z[i, 2]] + 1
+            A[z[i, 2], z[i, 1]] <- A[z[i, 2], z[i, 1]] + 1 # If undirected graph
+        }
+
+        # Extract the lower triangle including the diagonal as the edge multiplicity sequence
+        m.seq[g, ] <- A[lower.tri(A, diag = TRUE)]
     }
-  }
-  colnames(m.seq) <- sprintf("M%s", idx[1:r])
-  return(m.seq)
+    m.seq <- as.data.frame(m.seq)
+
+    comb <- expand.grid(1:n, 1:n)
+    filtered_comb <- comb[comb$Var1 <= comb$Var2, ]
+    idx <- paste(filtered_comb$Var1, filtered_comb$Var2, sep = "")
+
+    colnames(m.seq) <- sprintf("M%s", idx[1:r])
+    return(m.seq)
 }
