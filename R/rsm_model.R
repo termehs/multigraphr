@@ -54,7 +54,7 @@ rsm_model <- function(deg.seq) {
 
     # initial edge sequence (read as labelled 2-tuples of connected nodes connected)
     s <- edge.seq <- rep(seq_len(n), deg.seq)
-
+    edge.seqs <- list(edge.seq)
     # initial edge list
     z <- matrix(edge.seq, ncol = 2, byrow = TRUE)
     # create all possible sequences of edges given degree sequence
@@ -74,7 +74,7 @@ rsm_model <- function(deg.seq) {
             W <- W[-del]
             ss <- c(W1, W)
             s[(2 * m - length(ss) + 1):(2 * m)] <- ss
-            edge.seq <- rbind(edge.seq, s, deparse.level = 0)
+            edge.seqs[[length(edge.seqs) + 1]] <- s
             for (i in 1:m) {
                 z[i, 1] <- s[2 * i - 1]
                 z[i, 2] <- s[2 * i]
@@ -84,7 +84,7 @@ rsm_model <- function(deg.seq) {
             k <- k - 1
         }
     }
-
+    edge.seq <- do.call(rbind,edge.seqs)
     # for each possible edge sequence/multigraph given degree sequence, count number of loops and number of multiple edges using:
     # edge multiplicity sequence = m.seq
     # ordered edge multiplicity sequence = m.seq.star
@@ -99,6 +99,7 @@ rsm_model <- function(deg.seq) {
     shifts <- numeric(nrow(edge.seq))
     tot <- numeric(nrow(edge.seq))
     simple <- numeric(nrow(edge.seq))
+    m.seq <- matrix(0, nrow(edge.seq), choose(n, 2) + n) # Pre-allocate for all configurations
 
     for (g in seq_len(nrow(edge.seq))) {
         z <- matrix(edge.seq[g, ], ncol = 2, byrow = TRUE)
@@ -125,8 +126,7 @@ rsm_model <- function(deg.seq) {
         }
 
         # the edge multiplicity sequence m.seq
-        tmp <- t(A)[lower.tri(t(A), diag = TRUE)]
-        m.seq <- rbind(m.seq, tmp, deparse.level = 0)
+        m.seq[g, ] <- t(A)[lower.tri(t(A), diag = TRUE)]
 
         # complexity measure t (t=0 means the graphs is simple)
         mz[g] <- prod(factorial(tmp))

@@ -43,7 +43,7 @@ get_edge_multip_seq <- function(deg.seq) {
 
     # initial edge sequence (read as labelled 2-tuples of connected nodes connected)
     s <- edge.seq <- rep(seq_len(n), deg.seq)
-
+    edge.seqs <- list(edge.seq)
     # initial edge list
     z <- matrix(edge.seq, ncol = 2, byrow = TRUE)
     # create all possible sequences of edges given degree sequence
@@ -63,7 +63,8 @@ get_edge_multip_seq <- function(deg.seq) {
             W <- W[-del]
             ss <- c(W1, W)
             s[(2 * m - length(ss) + 1):(2 * m)] <- ss
-            edge.seq <- rbind(edge.seq, s, deparse.level = 0)
+            edge.seqs[[length(edge.seqs) + 1]] <- s
+            # edge.seq <- rbind(edge.seq, s, deparse.level = 0)
             for (i in 1:m) {
                 z[i, 1] <- s[2 * i - 1]
                 z[i, 2] <- s[2 * i]
@@ -73,10 +74,7 @@ get_edge_multip_seq <- function(deg.seq) {
             k <- k - 1
         }
     }
-
-    # edge multiplicity sequence = m.seq
-    m.seq <- vector()
-
+    edge.seq <- do.call(rbind, edge.seqs)
     # Pre-allocate matrices and vectors
     A <- matrix(0, n, n) # Adjacency matrix for each configuration
     m.seq <- matrix(0, nrow(edge.seq), choose(n, 2) + n) # Pre-allocate for all configurations
