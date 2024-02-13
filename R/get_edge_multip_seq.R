@@ -88,13 +88,12 @@ get_edge_multip_seq <- function(deg.seq) {
         A[, ] <- 0
 
         # Vectorized operation to fill the adjacency matrix
-        for (i in 1:m) {
+        for (i in seq_len(nrow(z))) {
             A[z[i, 1], z[i, 2]] <- A[z[i, 1], z[i, 2]] + 1
-            A[z[i, 2], z[i, 1]] <- A[z[i, 2], z[i, 1]] + 1 # If undirected graph
         }
 
         # Extract the lower triangle including the diagonal as the edge multiplicity sequence
-        m.seq[g, ] <- A[lower.tri(A, diag = TRUE)]
+        m.seq[g, ] <- t(A)[lower.tri(t(A), diag = TRUE)]
     }
     m.seq <- as.data.frame(m.seq)
 
