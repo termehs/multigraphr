@@ -35,17 +35,19 @@ use the IEA approximation of the RSM model via the function \code{\link{iea_mode
 }
 \examples{
 # Given a specified degree sequence
-D <- c(2,2,3,3) # degree sequence
+D <- c(2, 2, 3, 3) # degree sequence
 mod1 <- rsm_model(D)
 mod1$m.seq
 mod1$prob.dists
 mod1$M
 
 # Given an observed graph
-A <-  matrix(c(0, 1, 2,
-                1, 2, 1,
-                2, 1, 2), nrow=3, ncol=3)
-D <-  get_degree_seq(adj = A, type = 'graph')
+A <- matrix(c(
+    0, 1, 2,
+    1, 2, 1,
+    2, 1, 2
+), nrow = 3, ncol = 3)
+D <- get_degree_seq(adj = A, type = "graph")
 mod2 <- rsm_model(D)
 }
 \references{
