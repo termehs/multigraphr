@@ -28,10 +28,12 @@ Only practical for small multigraphs.
 }
 \examples{
 # Adjacency matrix for undirected network with 3 nodes
- A <-  matrix(c(0, 1, 2,
-                1, 2, 1,
-                2, 1, 2), nrow=3, ncol=3)
-deg <- get_degree_seq(A, 'multigraph')
+A <- matrix(c(
+    0, 1, 2,
+    1, 2, 1,
+    2, 1, 2
+), nrow = 3, ncol = 3)
+deg <- get_degree_seq(A, "multigraph")
 get_edge_multip_seq(deg)
 }
 \references{

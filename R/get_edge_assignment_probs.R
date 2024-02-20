@@ -28,45 +28,45 @@
 #' \emph{Statistical Methods & Applications} 30, 1425–1444.
 #' @examples
 #' # Under the IEAS model with 10 possible vertex pair sites (4 vertices)
-#' get_edge_assignment_probs(m = 8, deg.seq = c(4,4,4,4), model = 'IEAS')
+#' get_edge_assignment_probs(m = 8, deg.seq = c(4, 4, 4, 4), model = "IEAS")
 #'
 #' # Under the ISA model with 21 possible vertex pair sites (6 vertices)
-#' get_edge_assignment_probs(m = 10, deg.seq = c(8,4,2,2,2,2), model = 'ISA')
+#' get_edge_assignment_probs(m = 10, deg.seq = c(8, 4, 2, 2, 2, 2), model = "ISA")
 #' @export
 #'
 get_edge_assignment_probs <- function(m, deg.seq, model) {
-  if (sum(deg.seq) %% 2 == 1)
-    stop("not a graphical degree sequence, the sum is not equal to 2m.")
-  n <- length(deg.seq)
-  if (model == 'IEAS') {
-    Q.mat <- matrix(0, n, n)
-    for (i in 1:n) {
-      for (j in 1:n) {
-        if (i == j) {
-          Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
-        } else {
-          Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
-        }
-      }
+    if (sum(deg.seq) %% 2 == 1) {
+        stop("not a graphical degree sequence, the sum is not equal to 2m.")
     }
-    Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
-    return(Q.seq)
-  }
-  else if (model == 'ISA') {
-    p.seq <- deg.seq / (2 * m)
-    Q.mat <- matrix(0, n, n)
-    for (i in 1:n) {
-      for (j in 1:n) {
-        if (i == j) {
-          Q.mat[i, j] <- p.seq[i] ^ 2
-        } else {
-          Q.mat[i, j] <- 2 * p.seq[i] * p.seq[j]
+    n <- length(deg.seq)
+    if (model == "IEAS") {
+        Q.mat <- matrix(0, n, n)
+        for (i in 1:n) {
+            for (j in 1:n) {
+                if (i == j) {
+                    Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
+                } else {
+                    Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
+                }
+            }
         }
-      }
+        Q.seq <- t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
+        return(Q.seq)
+    } else if (model == "ISA") {
+        p.seq <- deg.seq / (2 * m)
+        Q.mat <- matrix(0, n, n)
+        for (i in 1:n) {
+            for (j in 1:n) {
+                if (i == j) {
+                    Q.mat[i, j] <- p.seq[i]^2
+                } else {
+                    Q.mat[i, j] <- 2 * p.seq[i] * p.seq[j]
+                }
+            }
+        }
+        Q.seq <- t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
+        return(Q.seq)
+    } else {
+        stop("model must be one of 'IEAS' or 'ISA'.")
     }
-    Q.seq <-  t(Q.mat)[lower.tri(Q.mat, diag = TRUE)]
-    return(Q.seq)
-  } else{
-    stop("model must be one of 'IEAS' or 'ISA'.")
-  }
 }
