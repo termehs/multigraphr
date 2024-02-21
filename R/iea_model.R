@@ -177,7 +177,7 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
   Em2 <- m * sum(Q.upmat)
   # alt Em2=m-E(m1)
 
-  cov2 <- vector()
+  cov2 <- vector("numeric", n*n)
   for (i in 1:n) {
     for (j in 1:n) {
       if (i != j) {
@@ -204,19 +204,19 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
   out.M <- round(out.M, 3)
 
   # Rk = frequencies of sites with multiplicities k
-  R <- vector()
+  R <- vector("numeric", K+1)
   for (k in 0:K) {
     R[k + 1] <- sum(m.seq == k)
   }
 
-  ER <- vector()
+  ER <- vector("numeric", K+1)
   for (k in 0:K) {
     ER[k + 1] <- sum(choose(m, k) * Q.seq ^ k * (1 - Q.seq) ^ (m - k))
   }
 
-  VarR <- vector()
-  lower95 <- vector()
-  upper95 <- vector()
+  VarR <- vector("numeric", K+1)
+  lower95 <- vector("numeric", K+1)
+  upper95 <- vector("numeric", K+1)
   for (k in 0:K) {
     covRk <- matrix(0, r, r)
     for (i in 1:r) {
