@@ -48,9 +48,9 @@ these kinds of aggregations, see Shafie (2015;2016).
 
 Multigraphs are represented by their edge multiplicity sequence **M**
 with elements *M(i,j)*, denoting the number of edges at vertex pair
-sites *(i,j)* ordered according to *(1,1) &lt; (1,2) &lt;···&lt; (1,n)
-&lt; (2,2) &lt; (2,3) &lt;···&lt; (n,n)*, where *n* is number of nodes.
-The number of vertex pair sites is given by *r = n(n+1)/2*.
+sites *(i,j)* ordered according to *(1,1) \< (1,2) \<···\< (1,n) \<
+(2,2) \< (2,3) \<···\< (n,n)*, where *n* is number of nodes. The number
+of vertex pair sites is given by *r = n(n+1)/2*.
 
 ## Random multigraph models
 
@@ -67,10 +67,10 @@ degree sequence of a multigraphs, so that edge assignments to vertex
 pair sites are dependent. The second is obtained by independent edge
 assignments (IEA) according to a common probability distribution. There
 are two ways in which an approximate IEA model can be obtained from an
-RSM model, thus facilitating the structural analysis. These two ways are
-- independent stub assignment (ISA)
+RSM model, thus facilitating the structural analysis. These two ways
+are - independent stub assignment (ISA)
 
--   independent edge assignment of stubs (IEAS) (Shafie, 2016).
+- independent edge assignment of stubs (IEAS) (Shafie, 2016).
 
 ### Example
 
@@ -112,7 +112,7 @@ of a unique multigraph):
 ``` r
 rsm_1 <- rsm_model(deg.seq = D)
 rsm_1$m.seq
-#>   M11 M12 M13 M22 M23 M33
+#>   M11 M12 M22 M13 M23 M33
 #> 1   1   1   0   3   0   1
 #> 2   1   1   0   2   2   0
 #> 3   1   0   1   3   1   0
@@ -181,11 +181,11 @@ distributions under RSM (no analytical solutions exist for these
 moments).
 
 Under the IEA models (IEAS or ISA), moments of these statistics,
-together with the complexity statistic *R*<sub>*k*</sub> representing
-the sequence of frequencies of edge sites with multiplicities *0,1,…,k*,
-are found using derived formulas. Thus, there is no limit on multigraph
-size to use these. When the IEAS model is used to approximate the RSM
-model as shown above:
+together with the complexity statistic $R_k$ representing the sequence
+of frequencies of edge sites with multiplicities *0,1,…,k*, are found
+using derived formulas. Thus, there is no limit on multigraph size to
+use these. When the IEAS model is used to approximate the RSM model as
+shown above:
 
 ``` r
 ieas_1$M
@@ -417,11 +417,11 @@ flor_d
 ```
 
 Now we test whether the observed network fits the IEAS or the ISA model.
-The *p*-values for testing whether there is a significant difference
+The $p$-values for testing whether there is a significant difference
 between observed and expected edge multiplicity values according to the
 two approximate IEA models are given in the output tables below. Note
-that the asymptotic χ²-distribution has
-*r* − 1 = (*n*(*n* + 1)/2) − 1 = 35 degrees of freedom.
+that the asymptotic χ²-distribution has $r-1 = (n(n+1)/2) - 1 =35$
+degrees of freedom.
 
 ``` r
 flor_ieas_test <- gof_test(flor_adj, 'multigraph', 'IEAS', flor_d, 35)
@@ -452,15 +452,16 @@ consult the following literature which the package is based on:
 
 > Shafie, T. (2015). A multigraph approach to social network analysis.
 > *Journal of Social Structure*, 16.
-> [Link](https://www.exeley.com/journal_of_social_structure/doi/10.21307/joss-2019-011)
+> [Link](https://www.doi.org/10.21307/joss-2019-011)
 
 > Shafie, T. (2016). Analyzing local and global properties of
 > multigraphs. *The Journal of Mathematical Sociology*, 40(4), 239-264.
-> [Link](https://www.tandfonline.com/doi/abs/10.1080/0022250X.2016.1219732?journalCode=gmas20)
+> [Link](https://doi.org/10.1080/0022250X.2016.1219732)
 
 > Shafie, T., Schoch, D. (2021) Multiplexity analysis of networks using
 > multigraph representations. *Statistical Methods & Applications* 30,
 > 1425–1444. [Link](https://doi.org/10.1007/s10260-021-00596-0)
 
-> Shafie, T. (Under review). Goodness of fit tests for random multigraph
-> models.
+> Shafie, T. (2023). Goodness of fit tests for random multigraph models,
+> *Journal of Applied Statistics*, 50:15, 3062-3087.
+> [Link](https://doi.org/10.1080/02664763.2022.2099816)
