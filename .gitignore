@@ -3,3 +3,4 @@
 .RData
 inst/doc
 CRAN-SUBMISSION
+.DS_Store
