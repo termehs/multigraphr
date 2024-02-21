@@ -42,11 +42,12 @@ get_edge_assignment_probs <- function(m, deg.seq, model) {
     if (model == "IEAS") {
         Q.mat <- matrix(0, n, n)
         for (i in 1:n) {
-            for (j in 1:n) {
+            for (j in seq_len(i)) {
                 if (i == j) {
                     Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
                 } else {
                     Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
+                    Q.mat[j, i] <- Q.mat[i, j]
                 }
             }
         }
@@ -56,11 +57,12 @@ get_edge_assignment_probs <- function(m, deg.seq, model) {
         p.seq <- deg.seq / (2 * m)
         Q.mat <- matrix(0, n, n)
         for (i in 1:n) {
-            for (j in 1:n) {
+            for (j in seq_len(n)) {
                 if (i == j) {
                     Q.mat[i, j] <- p.seq[i]^2
                 } else {
                     Q.mat[i, j] <- 2 * p.seq[i] * p.seq[j]
+                    Q.mat[j, i] <- Q.mat[i, j]
                 }
             }
         }

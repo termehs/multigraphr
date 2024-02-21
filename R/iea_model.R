@@ -111,11 +111,12 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       deg.seq <- get_degree_seq(adj, type)
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
-        for (j in 1:n) {
+        for (j in seq_len(i)) {
           if (i == j) {
             Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
           } else if (i != j) {
             Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
+            Q.mat[j, i] <- Q.mat[i, j]
           } else {
             Q.mat[i, j] <- 0
           }
@@ -130,7 +131,7 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       }
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
-        for (j in 1:n) {
+        for (j in seq_len(i)) {
           if (i == j) {
             Q.mat[i, j] <- p.seq[i]^2
           } else if (i != j) {
