@@ -86,8 +86,8 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
     round(S, 5) # if you wish to round before finding unique values to make outcome space smaller
   S.uni <- sort(unique(S))
   # probability distribution of the S values
-  prob.tmp <- vector()
-  prob.S <- vector()
+  prob.tmp <- vector("numeric", length(S.uni)*length(S))
+  prob.S <- vector("numeric", length(S.uni))
   for (i in 1:length(S.uni)) {
     for (j in 1:length(S)) {
       if (S.uni[i] == S[j]) {
@@ -95,7 +95,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       }
     }
     prob.S[i] <- sum(prob.tmp)
-    prob.tmp <- vector()
+    prob.tmp <- vector("numeric", length(S.uni)*length(S))
   }
   cumprob.S <- cumsum(prob.S)
   ExpS <- sum(S.uni * prob.S)
@@ -133,8 +133,8 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
   # A <- round(A,3) # if you wish to round
   A <- (2 * m * D) / log2(exp(1)) # the asymptotic A statistics
   A.uni <- sort(unique(A))
-  prob.tmp <- vector()
-  prob.A <- vector()
+  prob.tmp <- vector("numeric", length(A.uni)*length(A))
+  prob.A <- vector("numeric", length(A))
   for (i in 1:length(A.uni)) {
     for (j in 1:length(A)) {
       if (A.uni[i] == A[j]) {
@@ -142,7 +142,7 @@ gof_stats <- function(m, dof, m.seq, prob.mg, Q.seq) {
       }
     }
     prob.A[i] <- sum(prob.tmp)
-    prob.tmp <- vector()
+    prob.tmp <- vector("numeric", length(A.uni)*length(A))
   }
   cumprob.A <- cumsum(prob.A)
   ExpA <- sum(A.uni * prob.A)

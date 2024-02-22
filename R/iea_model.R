@@ -111,11 +111,12 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       deg.seq <- get_degree_seq(adj, type)
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
-        for (j in 1:n) {
+        for (j in seq_len(i)) {
           if (i == j) {
             Q.mat[i, j] <- deg.seq[i] * (deg.seq[i] - 1) / (2 * m * (2 * m - 1))
           } else if (i != j) {
             Q.mat[i, j] <- 2 * deg.seq[i] * (deg.seq[j]) / (2 * m * (2 * m - 1))
+            Q.mat[j, i] <- Q.mat[i, j]
           } else {
             Q.mat[i, j] <- 0
           }
@@ -130,13 +131,13 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       }
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
-        for (j in 1:n) {
+        for (j in seq_len(i)) {
           if (i == j) {
             Q.mat[i, j] <- p.seq[i]^2
           } else if (i != j) {
             Q.mat[i, j] <- 2*p.seq[i]*p.seq[j]
-          } else {
-            Q.mat[i, j] <- 0
+            # No need to fill the other triangle:
+            # only the lower triangle of the transposed matrix is used
           }
         }
       }
@@ -146,11 +147,13 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
       p.seq <- deg.seq/(2*m)
       Q.mat <- matrix(0, n, n)
       for (i in 1:n) {
-        for (j in 1:n) {
+        for (j in seq_len(i)) {
           if (i == j) {
             Q.mat[i, j] <- p.seq[i]^2
           } else if (i != j) {
             Q.mat[i, j] <- 2*p.seq[i]*p.seq[j]
+            # No need to fill the other triangle:
+            # only the lower triangle of the transposed matrix is used
           } else {
             Q.mat[i, j] <- 0
           }
@@ -174,7 +177,7 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
   Em2 <- m * sum(Q.upmat)
   # alt Em2=m-E(m1)
 
-  cov2 <- vector()
+  cov2 <- vector("numeric", n*n)
   for (i in 1:n) {
     for (j in 1:n) {
       if (i != j) {
@@ -201,23 +204,23 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
   out.M <- round(out.M, 3)
 
   # Rk = frequencies of sites with multiplicities k
-  R <- vector()
+  R <- vector("numeric", K+1)
   for (k in 0:K) {
     R[k + 1] <- sum(m.seq == k)
   }
 
-  ER <- vector()
+  ER <- vector("numeric", K+1)
   for (k in 0:K) {
     ER[k + 1] <- sum(choose(m, k) * Q.seq ^ k * (1 - Q.seq) ^ (m - k))
   }
 
-  VarR <- vector()
-  lower95 <- vector()
-  upper95 <- vector()
+  VarR <- vector("numeric", K+1)
+  lower95 <- vector("numeric", K+1)
+  upper95 <- vector("numeric", K+1)
   for (k in 0:K) {
     covRk <- matrix(0, r, r)
     for (i in 1:r) {
-      for (j in 1:r)
+      for (j in seq_len(i))
         if (i != j) {
           covRk[i, j] <-
             (choose(m, k) * choose(m - k, k)) * (Q.seq[i] ^ k) * (Q.seq[j] ^ k) * (1 -
@@ -226,6 +229,7 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
               choose(m, k) * (Q.seq[i] ^ k) * (1 - Q.seq[i]) ^ (m - k) * (choose(m, k) *
                                                                             (Q.seq[j] ^ k) * (1 - Q.seq[j]) ^ (m - k))
             ))
+          covRk[j, i] <- covRk[i, j]
         } else{
           covRk[i, j] <- (choose(m, k) * (Q.seq[i] ^ k) * (1 - Q.seq[i]) ^ (m - k)) *
             (1 - (choose(m, k) * Q.seq[i] ^ k * ((1 - Q.seq[i]) ^ (m - k))))
@@ -245,12 +249,13 @@ iea_model <- function(adj, type = 'multigraph',  model = 'IEAS', K = 0, apx = FA
 
   # the covariance matrix for local edge multiplicities
   sigma <- matrix(0, r, r)
-  for (i in 1:r) {
-    for (j in 1:r) {
+  for (i in r) {
+    for (j in seq_len(i)) {
       if (i == j) {
         sigma[i, j] <- Q.seq[i] * (1 - Q.seq[j])
       } else {
         sigma[i, j] <- -(Q.seq[i] * Q.seq[j])
+        sigma[j, i] <- sigma[i, j]
       }
     }
   }

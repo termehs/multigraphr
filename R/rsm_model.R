@@ -88,11 +88,10 @@ rsm_model <- function(deg.seq) {
     # for each possible edge sequence/multigraph given degree sequence, count number of loops and number of multiple edges using:
     # edge multiplicity sequence = m.seq
     # ordered edge multiplicity sequence = m.seq.star
-    m.seq <- vector()
     m1 <- numeric(nrow(edge.seq))
     m2 <- numeric(nrow(edge.seq))
     m3 <- numeric(nrow(edge.seq))
-    edge.perm <- vector()
+    edge.perm <- vector("numeric", nrow(edge.seq))
     mz <- numeric(nrow(edge.seq))
     tz <- numeric(nrow(edge.seq))
     t <- numeric(nrow(edge.seq))
@@ -155,7 +154,7 @@ rsm_model <- function(deg.seq) {
     Ntot <- sum(tot) # should be equal to: factorial(2*m)/prod(factorial(degvec))
 
     # probability of each multigraph under RSM
-    prob.rsm <- vector()
+    prob.rsm <- vector("numeric", nrow(edge.seq))
     for (i in seq_len(nrow(edge.seq))) {
         tmp <- factorial(m) / prod(factorial(m.seq[i, ]))
         prob.rsm[i] <- ((2^(m2[i])) * tmp) / Ntot
