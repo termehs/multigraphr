@@ -4,10 +4,11 @@ Version: 0.2.0
 Authors@R: 
     c(
         person("Termeh","Shafie",,"termeh.shafie@uni-konstanz.de",role = c("aut", "cre")),
+           comment = c(ORCID = "0000-0002-8419-8477")
         person("David", "Schoch", , "david@schochastics.net", role = c("ctb"),
            comment = c(ORCID = "0000-0003-2952-4812"))
         )
-Description: Methods and models for analysing multigraphs as introduced by Shafie (2015) <doi:10.21307/joss-2019-011>, including methods to study local and global properties <doi:10.1080/0022250X.2016.1219732> and goodness of fit tests.
+Description: Methods and models for analysing multigraphs as introduced by Shafie (2015) <doi:10.21307/joss-2019-011>, including methods to study local and global properties <doi:10.1080/0022250X.2016.1219732> and goodness of fit tests <doi:10.1080/02664763.2022.2099816>.
 Depends: R (>= 3.2.0)
 URL: https://github.com/termehs/multigraphr
 BugReports: https://github.com/termehs/multigraphr/issues
